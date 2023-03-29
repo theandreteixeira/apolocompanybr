@@ -23,11 +23,10 @@ export const Footer = () => {
                         fontWeight={600}
                         flexDirection={'column'}
                     >
-                        <Text>FIND A NEARBY STORE</Text>
-                        <Text>BECOME A MEMBER</Text>
-                        <Text>ALREADY A MEMBER</Text>
-                        <Text>SIGNUP FOR EMAIL</Text>
-                        <Text>SEND US FEEDBACK</Text>
+                        <Text>CAMISAS</Text>
+                        <Text>ACADEMIA</Text>
+                        <Text>JAQUETAS E MOLETONS</Text>
+                        <Text>ACESSÓRIOS</Text>
                     </Flex>
                 </Center>
 

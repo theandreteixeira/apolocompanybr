@@ -13,8 +13,12 @@ export const getDataErrorHome = () => ({ type: GET_DATA_ERROR_HOME });
 export const getClothData = () => async (dispatch) => {
     try {
         dispatch(getDataLoadingHome());
-        let res = await axios.get("/clothData");
-        dispatch(getDataSuccessCloth(res.data));
+        // let res = await axios.get("/clothData");
+        let dataMock = {
+            heading: 'Camisa Barcelona',
+            description: 'Camisa do Barcelona para a temporada 23/24', img: 'https://imgnike-a.akamaihd.net/1920x1920/02192515.jpg', gender: 'male', handleSection: null
+        };
+        dispatch(getDataSuccessCloth(dataMock));
     } catch (err) {
         console.log(err);
         dispatch(getDataErrorHome());

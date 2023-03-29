@@ -21,7 +21,7 @@ export const AuthPage = () => {
             <Box w={["95%", "95%", "50%", "37%", "27%"]} m={"20px auto"}>
 
                 <Text fontWeight={'700'} fontSize={'23px'} my={'40px'} mx={'10%'} textAlign={'center'}>
-                    {isLogin ? "YOUR ACCOUNT FOR EVERYTHING NIKE" : isReset ? "RESET PASSWORD" : "BECOME A NIKE MEMBER"}
+                    {isLogin ? "PARA QUEM JÁ É MEMBRO APOLO" : isReset ? "RESET PASSWORD" : "SEJA UM MEMBRO"}
                 </Text>
 
                 {isLogin ? <LoginForm /> : isReset ? <ResetForm /> : <SignupForm />}

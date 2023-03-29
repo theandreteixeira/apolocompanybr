@@ -57,7 +57,7 @@ export const Coupon = () => {
 const DiscountText = ({ num }) => {
     return (
         <Tr>
-            <Td><Code colorScheme='yellow' children={`NIKE${num}`} /></Td>
+            <Td><Code colorScheme='yellow' children={`APOLO${num}`} /></Td>
             <Td textAlign={'end'}><Kbd>{num}% OFF</Kbd></Td>
         </Tr>
     );
