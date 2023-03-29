@@ -32,7 +32,12 @@ export const resetFilters = () => ({ type: RESET_FILTERS });
 export const getRequest = (path) => async (dispatch) => {
     try {
         dispatch(getDataLoading());
-        const { data } = await axios.get(path);
+        // const { data } = await axios.get(path);
+        const data = [
+            { title: 'Camisa Barcelona 21/22', description: 'Camisa do Barcelona Casa', color: 'FF0000', rating: 2.9, price: 149.99, size: ['P', 'M'], gender: 'men', img: ['https://imgnike-a.akamaihd.net/1920x1920/02192515.jpg', 'https://imgnike-a.akamaihd.net/1920x1920/02192515A1.jpg', 'https://imgnike-a.akamaihd.net/1920x1920/02192515A2.jpg'], onClick: undefined },
+            { title: 'Camisa Barcelona 21/22', description: 'Camisa do Barcelona Casa', color: 'FF0000', rating: 2.9, price: 149.99, size: ['P', 'M'], gender: 'men', img: ['https://imgnike-a.akamaihd.net/1920x1920/02192515.jpg', 'https://imgnike-a.akamaihd.net/1920x1920/02192515A1.jpg', 'https://imgnike-a.akamaihd.net/1920x1920/02192515A2.jpg'], onClick: undefined },
+            { title: 'Camisa Barcelona 21/22', description: 'Camisa do Barcelona Casa', color: 'FF0000', rating: 2.9, price: 149.99, size: ['P', 'M'], gender: 'men', img: ['https://imgnike-a.akamaihd.net/1920x1920/02192515.jpg', 'https://imgnike-a.akamaihd.net/1920x1920/02192515A1.jpg', 'https://imgnike-a.akamaihd.net/1920x1920/02192515A2.jpg'], onClick: undefined },
+        ];
         dispatch(getDataSuccess(data));
     } catch (err) {
         console.log(err);

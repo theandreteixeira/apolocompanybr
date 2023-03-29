@@ -1,5 +1,5 @@
 import { Box, Flex, Image, Spacer, Text } from "@chakra-ui/react";
-import { AiOutlineStar } from "react-icons/ai";
+import { AiFillStar } from "react-icons/ai";
 import { numberWithCommas, shortString } from "../../utils/extraFunctions";
 import { DescText, PriceText } from "./DescText";
 
@@ -26,15 +26,15 @@ export const ProductDisplayBox = ({ title, description, color, rating, price, si
                             mr={'3px'}
                             mt={'4px'}
                         >
-                            <AiOutlineStar />
+                            <AiFillStar color="#f5ad42" />
                         </Box>
                         <Text fontSize={['13px', '15px', '17px', '17px', '18px']}>{rating}</Text>
                     </Flex>
 
                     <DescText>{shortString(description, 20)}</DescText>
                     <DescText>{size.join(", ")}</DescText>
-                    <DescText>{gender}, {color} Colour</DescText>
-                    <PriceText>₹{numberWithCommas(price)}.00</PriceText>
+                    {/* <DescText>{gender}, {color} Colour</DescText> */}
+                    <PriceText>R${numberWithCommas(price)}</PriceText>
                 </Box>
             </Flex>
         </>

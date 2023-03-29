@@ -34,7 +34,7 @@ export const Navbar = () => {
 
             <Flex h={'60px'} flexDirection={"row"} px={'20px'} >
 
-                <Box w={'80px'}>
+                <Box w={'100px'} mt={'10px'}>
                     <Link to={'/'}><Image src={nikeLogo} /></Link>
                 </Box>
 

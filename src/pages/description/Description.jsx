@@ -57,7 +57,7 @@ export const Description = () => {
                     <Text fontSize={"29px"}>{title}</Text>
                     <Text>{description}</Text>
                     <Text fontSize={"22px"} mt="20px">
-                        ₹ {numberWithCommas(price)}
+                        R$ {numberWithCommas(price)}
                     </Text>
                     <Text color={"gray"}>incl. of taxes and duties</Text>
                     <Text fontSize={"18px"} mt={"30px"} mb={"10px"}>
@@ -87,7 +87,7 @@ export const Description = () => {
                     <Divider my={'30px'} />
 
                     <Text fontSize={"18px"} mb={"10px"} textDecoration={"underline"}>
-                        Product Deatils
+                        Detalhes
                     </Text>
                     <UnorderedList fontSize={"18px"}>
                         <ListItem>Gender: {gender}</ListItem>
