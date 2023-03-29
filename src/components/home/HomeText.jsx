@@ -6,7 +6,7 @@ export const HomeText = ({ children }) => {
         <Text
             fontWeight={600}
             letterSpacing={2}
-            fontFamily={"'Anton', sans-serif"}
+            fontFamily={"'Roboto', sans-serif"}
             fontSize={['35px', '40px', '55px', '60px', '60px']}
         >{children}
         </Text>

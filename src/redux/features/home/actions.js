@@ -16,11 +16,11 @@ export const getClothData = () => async (dispatch) => {
         // let res = await axios.get("/clothData");
         let dataMock = {
             heading: 'Camisa Barcelona',
-            description: 'Camisa do Barcelona para a temporada 23/24', img: 'https://imgnike-a.akamaihd.net/1920x1920/02192515.jpg', gender: 'male', handleSection: null
+            description: 'Camisa do Barcelona para a temporada 23/24', img: ['https://imgnike-a.akamaihd.net/1920x1920/02192515.jpg', 'https://imgnike-a.akamaihd.net/1920x1920/02192515A1.jpg', 'https://imgnike-a.akamaihd.net/1920x1920/02192515A2.jpg', 'https://imgnike-a.akamaihd.net/1920x1920/02192515A3.jpg'], gender: 'male', handleSection: null
         };
-        dispatch(getDataSuccessCloth(dataMock));
+        dispatch(getDataSuccessCloth([dataMock]));
     } catch (err) {
-        console.log(err);
+        console.log("erro no getCloth:" + err);
         dispatch(getDataErrorHome());
     }
 };
@@ -28,8 +28,12 @@ export const getClothData = () => async (dispatch) => {
 export const getShoeData = () => async (dispatch) => {
     try {
         dispatch(getDataLoadingHome());
-        let res = await axios.get("/shoeData");
-        dispatch(getDataSuccessShoe(res.data));
+        // let res = await axios.get("/shoeData");
+        let dataMock = {
+            heading: 'Camisa Barcelona',
+            description: 'Camisa do Barcelona para a temporada 23/24', img: ['https://imgnike-a.akamaihd.net/1920x1920/02192515.jpg', 'https://imgnike-a.akamaihd.net/1920x1920/02192515A1.jpg', 'https://imgnike-a.akamaihd.net/1920x1920/02192515A2.jpg', 'https://imgnike-a.akamaihd.net/1920x1920/02192515A3.jpg'], gender: 'male', handleSection: null
+        };
+        dispatch(getDataSuccessShoe([dataMock]));
     } catch (err) {
         console.log(err);
         dispatch(getDataErrorHome());
