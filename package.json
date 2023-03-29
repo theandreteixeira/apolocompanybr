@@ -8,8 +8,8 @@
   },
   "dependencies": {
     "@chakra-ui/react": "^2.5.4",
-    "@emotion/react": "^11",
-    "@emotion/styled": "^11",
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
     "axios": "^0.27.2",
     "framer-motion": "^6",
     "react-icons": "^4.4.0",
@@ -20,11 +20,11 @@
     "react-anchor-link-smooth-scroll": "^1.0.12",
     "react-dom": "^18.2.0",
     "react-github-btn": "^1.2.0",
-    "react-modal": "^3.13.1",
-    "react-rnd": "^10.2.4",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.3",
-    "react-slick": "^0.28.1"
+    "react-modal": "^3.16.1",
+    "react-rnd": "^10.4.1",
+    "react-router-dom": "^6.9.0",
+    "react-scripts": "5.0.1",
+    "react-slick": "^0.29.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.0",
