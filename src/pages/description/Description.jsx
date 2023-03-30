@@ -81,22 +81,22 @@ export const Description = () => {
                     <Text color='grey'>{description}</Text>
                     <Divider my={'15px'}/>
                     <UnorderedList fontSize={"18px"} styleType="none" mb={"20px"}>
-                        <ListItem>
+                        <ListItem my={'5px'}>
                           <Flex direction="row">
                             <Text fontWeight={"bold"}> Gênero: </Text> {gender}
                           </Flex>
                         </ListItem>
-                        <ListItem>
+                        <ListItem my={'5px'}>
                         <Flex direction="row">
                           <Text fontWeight={"bold"}> Categoria: </Text> {category}
                           </Flex>
                           </ListItem>
-                        <ListItem>
+                        <ListItem my={'5px'}>
                         <Flex direction="row">
                           <Text fontWeight={"bold"}> Cor: </Text> {color}
                           </Flex>
                           </ListItem>
-                        <ListItem>
+                        <ListItem my={'5px'}>
                         <Flex direction="row">
                           <Text fontWeight={"bold"}> Avaliação: </Text> {rating}
                           </Flex>
