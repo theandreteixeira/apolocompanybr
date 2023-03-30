@@ -9,7 +9,6 @@ export const NewButton = ({ click, name, bgColor, color, hoverBg, hoverBorder, b
                 bg={bgColor}
                 color={color}
                 border={`1px solid ${borderColor}`}
-                borderRadius={"50px"}
                 w={"100%"}
                 fontSize={"17px"}
                 my={"10px"}

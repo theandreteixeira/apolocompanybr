@@ -1,5 +1,6 @@
-import { Center, Icon, Text, useColorMode } from "@chakra-ui/react";
+import { Center, Icon, Text, useColorMode, Box } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
+import { AiOutlineSearch} from "react-icons/ai";
 
 
 export const Category = ({ text, link, handlePath, name }) => {

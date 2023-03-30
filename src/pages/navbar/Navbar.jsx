@@ -8,7 +8,7 @@ import { setItemSession } from "../../utils/sessionStorage";
 import { Auth } from "../../components/auth/Auth";
 import { Logout } from "../../components/auth/Logout";
 import { DarkModeBtn } from "../../components/darkmode/DarkModeBtn";
-import { Category, NavIcon } from "../../components/navbar/CategoryAndIcon";
+import { Category, NavIcon, SearchBox } from "../../components/navbar/CategoryAndIcon";
 import { SideDrawer } from "../../components/navbar/SideDrawer";
 
 
@@ -49,6 +49,10 @@ export const Navbar = () => {
                 </Box>
 
                 <Spacer />
+
+                <Center mr={'10px'} >
+                    <SearchBox />
+                </Center>
 
                 <Center mr={'10px'} >
                     <Link to={'/favourite'}>
