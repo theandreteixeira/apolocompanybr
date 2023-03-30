@@ -75,7 +75,10 @@ export const Description = () => {
                     <Text color='grey'>{description}</Text>
                     <Divider my={'15px'}/>
                     <UnorderedList fontSize={"18px"} styleType="none" mb={"20px"}>
-                        <ListItem>Gênero: {gender}</ListItem>
+                        <ListItem>
+                        <Text as='b'> Gênero: </Text>
+                           {gender}
+                          </ListItem>
                         <ListItem>Categoria: {category}</ListItem>
                         <ListItem>Cor: {color}</ListItem>
                         <ListItem>Avaliação: {rating}</ListItem>
