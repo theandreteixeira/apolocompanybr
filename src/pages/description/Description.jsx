@@ -76,12 +76,21 @@ export const Description = () => {
                     <Divider my={'15px'}/>
                     <UnorderedList fontSize={"18px"} styleType="none" mb={"20px"}>
                         <ListItem>
-                        <Text as='b'> Gênero: </Text>
+                        <Text fontWeight={"bold"}> Gênero: </Text>
                            {gender}
                           </ListItem>
-                        <ListItem>Categoria: {category}</ListItem>
-                        <ListItem>Cor: {color}</ListItem>
-                        <ListItem>Avaliação: {rating}</ListItem>
+                        <ListItem>
+                          <Text fontWeight={"bold"}> Categoria: </Text>
+                           {category}
+                          </ListItem>
+                        <ListItem>
+                          <Text fontWeight={"bold"}> Cor: </Text>
+                          {color}
+                          </ListItem>
+                        <ListItem>
+                          <Text fontWeight={"bold"}> Avaliação: </Text>
+                          {rating}
+                          </ListItem>
                     </UnorderedList>
                     <Box my={"30px"}>
                         <SelectSize size={size} setMySize={setMySize} />
