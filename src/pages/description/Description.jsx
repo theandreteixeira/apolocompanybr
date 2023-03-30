@@ -19,6 +19,7 @@ import {
     DrawerContent,
     DrawerCloseButton,
   } from '@chakra-ui/react'
+import { StarIcon } from '@chakra-ui/icons'
 
 
 export const Description = () => {
@@ -70,9 +71,9 @@ export const Description = () => {
                         R$ {numberWithCommas(price)}
                     </Text>
                     <Box my={"15px"}>
-                        <AiFillStar color="#000000" height={'30px'} />
+                        <StarIcon boxSize={6} color="black" />
                     </Box>
-                    <Text>{description}</Text>
+                    <Text color='grey'>{description}</Text>
                     <Divider my={'15px'}/>
                     <UnorderedList fontSize={"18px"} styleType="none" mb={"20px"}>
                         <ListItem>Gênero: {gender}</ListItem>
