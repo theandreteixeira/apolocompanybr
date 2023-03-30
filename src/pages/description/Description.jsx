@@ -1,4 +1,4 @@
-import { Box, Divider, Grid, ListItem, OrderedList, Text, UnorderedList, useToast, Icon } from "@chakra-ui/react";
+import { Box, Divider, Grid, ListItem, OrderedList, Text, UnorderedList, useToast, Icon, Flex } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
 import { numberWithCommas, setToast } from "../../utils/extraFunctions";
 import { ImageModal } from "../../components/description/ImageModal";
@@ -70,22 +70,36 @@ export const Description = () => {
                         R$ {numberWithCommas(price)}
                     </Text>
                     <Box my={"15px"}>
+                    <Flex direction="row">
                       <Icon boxSize={6} color="black" as={AiFillStar} />
+                      <Icon boxSize={6} color="black" as={AiFillStar} />
+                      <Icon boxSize={6} color="black" as={AiFillStar} />
+                      <Icon boxSize={6} color="black" as={AiFillStar} />
+                      <Icon boxSize={6} color="#E2E8F0" as={AiFillStar} />
+                      </Flex>
                     </Box>
                     <Text color='grey'>{description}</Text>
                     <Divider my={'15px'}/>
                     <UnorderedList fontSize={"18px"} styleType="none" mb={"20px"}>
                         <ListItem>
-                        <Text fontWeight={"bold"}> Gênero: </Text> {gender}
-                          </ListItem>
+                          <Flex direction="row">
+                            <Text fontWeight={"bold"}> Gênero: </Text> {gender}
+                          </Flex>
+                        </ListItem>
                         <ListItem>
+                        <Flex direction="row">
                           <Text fontWeight={"bold"}> Categoria: </Text> {category}
+                          </Flex>
                           </ListItem>
                         <ListItem>
+                        <Flex direction="row">
                           <Text fontWeight={"bold"}> Cor: </Text> {color}
+                          </Flex>
                           </ListItem>
                         <ListItem>
+                        <Flex direction="row">
                           <Text fontWeight={"bold"}> Avaliação: </Text> {rating}
+                          </Flex>
                           </ListItem>
                     </UnorderedList>
                     <Box my={"30px"}>
