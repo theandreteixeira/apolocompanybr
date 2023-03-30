@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/static/css/main.46721f32.css",
-    "main.js": "/static/js/main.2bb50be8.js",
+    "main.js": "/static/js/main.b7aabef5.js",
+    "static/media/Nike-logo.png": "/static/media/Nike-logo.251e76627990a8d13481.png",
     "static/media/nikeLogoPayment.png": "/static/media/nikeLogoPayment.a8465cbb00f09d1bbd22.png",
-    "static/media/Nike-logo.png": "/static/media/Nike-logo.8feecb29c4505ca0800f.png",
     "index.html": "/index.html",
     "main.46721f32.css.map": "/static/css/main.46721f32.css.map",
-    "main.2bb50be8.js.map": "/static/js/main.2bb50be8.js.map"
+    "main.b7aabef5.js.map": "/static/js/main.b7aabef5.js.map"
   },
   "entrypoints": [
     "static/css/main.46721f32.css",
-    "static/js/main.2bb50be8.js"
+    "static/js/main.b7aabef5.js"
   ]
 }

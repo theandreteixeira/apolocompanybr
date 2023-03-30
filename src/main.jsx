@@ -12,7 +12,7 @@ import { theme } from './theme';
 
 // axios.defaults.baseURL = "http://localhost:8080";
 
-axios.defaults.baseURL = "https://api.apolocompanybr.com/";
+axios.defaults.baseURL = "https://google.com/";
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

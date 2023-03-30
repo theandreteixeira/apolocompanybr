@@ -1,4 +1,4 @@
-import { Box, Divider, Grid, ListItem, Text, UnorderedList, useToast } from "@chakra-ui/react";
+import { Box, Divider, Grid, ListItem, OrderedList, Text, UnorderedList, useToast } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
 import { numberWithCommas, setToast } from "../../utils/extraFunctions";
 import { ImageModal } from "../../components/description/ImageModal";
@@ -6,6 +6,7 @@ import { SelectSize } from "../../components/description/SelectSize";
 import { NewButton } from "../../components/description/NewButton";
 import { getItemSession } from "../../utils/sessionStorage";
 import { addToCartRequest } from "../../redux/features/cart/actions";
+import { AiFillStar } from "react-icons/ai";
 import { useState } from "react";
 import { addToFavouriteRequest } from "../../redux/features/favourite/actions";
 import { useNavigate } from "react-router-dom";
@@ -24,7 +25,7 @@ export const Description = () => {
 
     const handleAddToCart = () => {
         if (mySize === false) {
-            setToast(toast, "Please select a Size", "error");
+            setToast(toast, "Por favor selecione um tamanho", "error");
         } else {
             const payload = { ...data, size: mySize, quantity: 1 };
             dispatch(addToCartRequest(payload, toast));
@@ -53,48 +54,32 @@ export const Description = () => {
                 <ImageModal img={img} />
 
                 <Box px={["20px", "40px"]}>
-
-                    <Text fontSize={"29px"}>{title}</Text>
-                    <Text>{description}</Text>
-                    <Text fontSize={"22px"} mt="20px">
+                    <Text fontSize={"32px"} fontWeight={"black"}>{title.toUpperCase()}</Text>
+                    <Text fontSize={"22px"} mt="15px" mb="20px" fontWeight={"black"}>
                         R$ {numberWithCommas(price)}
                     </Text>
-                    <Text color={"gray"}>incl. of taxes and duties</Text>
-                    <Text fontSize={"18px"} mt={"30px"} mb={"10px"}>
-                        Select Size
-                    </Text>
-                    <Box mb={"30px"}>
+                    <Box my={"15px"}>
+                        <AiFillStar color="#000000" height={'30px'} />
+                    </Box>
+                    <Text>{description}</Text>
+                    <Divider my={'15px'}/>
+                    <UnorderedList fontSize={"18px"} styleType="none" mb={"20px"}>
+                        <ListItem>Gênero: {gender}</ListItem>
+                        <ListItem>Categoria: {category}</ListItem>
+                        <ListItem>Cor: {color}</ListItem>
+                        <ListItem>Avaliação: {rating}</ListItem>
+                    </UnorderedList>
+                    <Box my={"30px"}>
                         <SelectSize size={size} setMySize={setMySize} />
                     </Box>
-
                     <NewButton
                         click={handleAddToCart}
-                        name={"Add to Bag"}
+                        name={"Adicionar a sacola"}
                         bgColor={"black"}
                         color={"white"}
                         hoverBg={'#1e1e1e'}
                         borderColor={'transparent'}
                     />
-                    <NewButton
-                        click={handleAddToFavourite}
-                        name={"Favourite"}
-                        bgColor={"white"}
-                        color={"black"}
-                        hoverBorder={"black"}
-                        borderColor={'#cecdce'}
-                    />
-
-                    <Divider my={'30px'} />
-
-                    <Text fontSize={"18px"} mb={"10px"} textDecoration={"underline"}>
-                        Detalhes
-                    </Text>
-                    <UnorderedList fontSize={"18px"}>
-                        <ListItem>Gender: {gender}</ListItem>
-                        <ListItem>Category: {category}</ListItem>
-                        <ListItem>Colour: {color}</ListItem>
-                        <ListItem>Rating: {rating}</ListItem>
-                    </UnorderedList>
                 </Box>
             </Grid>
         </>

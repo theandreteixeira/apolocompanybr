@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { ClothSection } from "../../components/home/ClothSection.jsx";
 import { ShoeSection } from "../../components/home/ShoeSection.jsx";
+import { Banner } from "../../components/home/Banner.jsx";
 import { Error } from "../../components/loading/Error.jsx";
 import { Loading } from "../../components/loading/Loading.jsx";
 import { getClothData, getShoeData } from "../../redux/features/home/actions.js";
@@ -44,6 +45,7 @@ export const Home = () => {
             {clothData.map((data, index) => (
                 <ClothSection handleSection={handleSection} key={index} {...data} />
             ))}
+           { Banner({source: 'https://imgnike-a.akamaihd.net/branding/home-sbf/touts/tout-liverpool-LBJ-22-03-desk-v2.jpg'}) }
         </>
     );
 };

@@ -17,7 +17,6 @@ const RadioCard = (props) => {
                 cursor="pointer"
                 borderWidth="1px"
                 borderRadius="md"
-                boxShadow="md"
                 _checked={{ border: `2px solid ${colorMode === 'light' ? 'black' : 'white'}` }}
                 px={5} py={3}
             >
