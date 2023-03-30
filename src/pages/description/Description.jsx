@@ -80,7 +80,7 @@ export const Description = () => {
                     </Box>
                     <Text color='grey'>{description}</Text>
                     <Divider my={'15px'}/>
-                    <UnorderedList fontSize={"14px"} styleType="none" mb={"20px"}>
+                    <UnorderedList fontSize={"15px"} styleType="none" mb={"20px"}>
                         <ListItem my={'10px'}>
                           <Flex direction="row">
                             <Text fontWeight={"bold"}> Gênero: </Text> {gender}
