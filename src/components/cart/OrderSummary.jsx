@@ -22,9 +22,9 @@ export const OrderSummary = () => {
 
     const handleCouponCode = ({ target: { textContent } }) => {
         switch (textContent) {
-            case 'Apply Coupon':
+            case 'Adicionar cupom':
                 return applyCouponCode();
-            case 'Remove Coupon':
+            case 'Remover cupom':
                 return removeCouponCode();
         };
     };

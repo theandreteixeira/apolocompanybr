@@ -1,4 +1,4 @@
-import { Center, Icon, Text, useColorMode, Box } from "@chakra-ui/react";
+import { Center, Icon, Text, useColorMode, Box, Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { AiOutlineSearch} from "react-icons/ai";
 
@@ -55,7 +55,7 @@ export const NavIcon = ({ iconName }) => {
 export const SearchBox = () => {
     return (
         <Center>
-            <Box
+            {/* <Box
                 borderRadius={50}
                 w={'180px'}
                 color={'#ced2d6'}
@@ -64,12 +64,30 @@ export const SearchBox = () => {
                 p={'7px'}
                 _hover={{ bg: '#ececec', color: 'black' }}
                 cursor={'text'}
-            >
-                <Center justifyContent={'left'} >
-                    <NavIcon iconName={AiOutlineSearch} />
-                    <Text fontSize={'17px'}>Search</Text>
-                </Center>
-            </Box>
+            > */}
+                {/* <Center justifyContent={'left'} > */}
+                <InputGroup
+                    my={'20px'}
+                     w={'210px'}
+                >
+                <InputLeftElement
+                    pointerEvents='none'
+                    children={<Icon as={AiOutlineSearch} />}
+                />
+                <Input
+                    placeholder={'Pesquisar...'}
+                    type={'text'}
+                    borderRadius={50}
+                    borderStyle={'none'}
+                    variant={'filled'}
+                    textAlign={'left'}
+                    padding={'17px'}
+                />
+                </InputGroup>
+                    {/* <NavIcon iconName={AiOutlineSearch} />
+                    <Text fontSize={'17px'}>Search</Text> */}
+                {/* </Center> */}
+            {/* </Box> */}
         </Center>
     );
 };

@@ -10,7 +10,6 @@ export const CheckoutBtn = ({  onClick, name, bgColor, color, hoverBg, hoverBord
                 bg={bgColor}
                 color={color}
                 border={`1px solid ${borderColor}`}
-                borderRadius={"50px"}
                 w={"100%"}
                 fontSize={"17px"}
                 mb={'20px'}

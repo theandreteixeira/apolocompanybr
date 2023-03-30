@@ -24,7 +24,8 @@ export const Navbar = () => {
     };
 
     return (
-        <>
+        <
+        >
             <Box h={'36px'} bg={colorMode === 'light' && '#f5f5f5'} >
                 <Center h={'36px'} justifyContent={'right'} mr={'40px'} fontSize={'16px'} cursor={'pointer'}>
                     {!token ? <Auth /> : <Logout />}
@@ -32,7 +33,7 @@ export const Navbar = () => {
                 </Center>
             </Box>
 
-            <Flex h={'60px'} flexDirection={"row"} px={'20px'} >
+            <Flex h={'60px'} flexDirection={"row"} px={'20px'}  >
 
                 <Box w={'100px'} mt={'10px'}>
                     <Link to={'/'}><Image src={nikeLogo} /></Link>
