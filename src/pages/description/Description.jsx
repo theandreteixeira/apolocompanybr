@@ -1,4 +1,4 @@
-import { Box, Divider, Grid, ListItem, OrderedList, Text, UnorderedList, useToast } from "@chakra-ui/react";
+import { Box, Divider, Grid, ListItem, OrderedList, Text, UnorderedList, useToast, Icon } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
 import { numberWithCommas, setToast } from "../../utils/extraFunctions";
 import { ImageModal } from "../../components/description/ImageModal";
@@ -19,7 +19,6 @@ import {
     DrawerContent,
     DrawerCloseButton,
   } from '@chakra-ui/react'
-import { StarIcon } from '@chakra-ui/icons'
 
 
 export const Description = () => {
@@ -71,7 +70,7 @@ export const Description = () => {
                         R$ {numberWithCommas(price)}
                     </Text>
                     <Box my={"15px"}>
-                        <StarIcon boxSize={6} color="black" />
+                      <Icon boxSize={6} color="black" as={AiFillStar} />
                     </Box>
                     <Text color='grey'>{description}</Text>
                     <Divider my={'15px'}/>
