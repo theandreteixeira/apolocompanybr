@@ -76,20 +76,16 @@ export const Description = () => {
                     <Divider my={'15px'}/>
                     <UnorderedList fontSize={"18px"} styleType="none" mb={"20px"}>
                         <ListItem>
-                        <Text fontWeight={"bold"}> Gênero: </Text>
-                           {gender}
+                        <Text fontWeight={"bold"}> Gênero: </Text> {gender}
                           </ListItem>
                         <ListItem>
-                          <Text fontWeight={"bold"}> Categoria: </Text>
-                           {category}
+                          <Text fontWeight={"bold"}> Categoria: </Text> {category}
                           </ListItem>
                         <ListItem>
-                          <Text fontWeight={"bold"}> Cor: </Text>
-                          {color}
+                          <Text fontWeight={"bold"}> Cor: </Text> {color}
                           </ListItem>
                         <ListItem>
-                          <Text fontWeight={"bold"}> Avaliação: </Text>
-                          {rating}
+                          <Text fontWeight={"bold"}> Avaliação: </Text> {rating}
                           </ListItem>
                     </UnorderedList>
                     <Box my={"30px"}>
