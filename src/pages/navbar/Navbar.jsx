@@ -1,4 +1,4 @@
-import { Box, Center, Flex, Image, Spacer, useColorMode } from "@chakra-ui/react";
+import { Box, Center, Flex, Image, Spacer, useColorMode, Badge } from "@chakra-ui/react";
 import { RiHeartLine, RiShoppingBagLine } from "react-icons/ri";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -46,7 +46,7 @@ export const Navbar = () => {
                     <Category handlePath={handlePath} name={'allProducts'} text={"Todos os produtos"} link={'/allProducts'} />
                     <Category handlePath={handlePath} name={'men'} text={"Masculino"} link={'/men'} />
                     <Category handlePath={handlePath} name={'women'} text={"Feminino"} link={'women'} />
-                    <Category handlePath={handlePath} name={'kids'} text={"Infantil"} link={'/kids'} />
+                    {/* <Category handlePath={handlePath} name={'kids'} text={"Infantil"} link={'/kids'} /> */}
                 </Box>
 
                 <Spacer />
@@ -74,7 +74,7 @@ export const Navbar = () => {
                 </Box>
 
             </Flex>
-
+            <Badge w={'100%'} p={2} color="grey">Frete grátis para todo o Brasil</Badge>
             <Box h={['10px', '20px', '30px', '40px', '40px']} ></Box>
         </>
     );
