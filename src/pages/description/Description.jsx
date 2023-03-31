@@ -18,6 +18,7 @@ import {
     DrawerOverlay,
     DrawerContent,
     DrawerCloseButton,
+    useDisclosure
   } from '@chakra-ui/react'
 
 
@@ -30,6 +31,10 @@ export const Description = () => {
     const toast = useToast();
     const navigate = useNavigate();
     const dispatch = useDispatch();
+
+    // drawer para carinho
+    const { isOpen, onOpen, onClose } = useDisclosure()
+    const btnRef = React.useRef()
 
 
     const handleAddToCart = async () => {
@@ -106,7 +111,7 @@ export const Description = () => {
                         <SelectSize size={size} setMySize={setMySize} />
                     </Box>
                     <NewButton
-                        click={handleAddToCart}
+                        click={onOpen}
                         name={"Adicionar a sacola"}
                         bgColor={"black"}
                         color={"white"}
@@ -115,6 +120,29 @@ export const Description = () => {
                     />
                 </Box>
             </Grid>
+            <Drawer
+          isOpen={isOpen}
+          placement='right'
+          onClose={onClose}
+          finalFocusRef={btnRef}
+        >
+          <DrawerOverlay />
+          <DrawerContent>
+            <DrawerCloseButton />
+            <DrawerHeader>Produto adicionado ao carrinho!</DrawerHeader>
+
+            <DrawerBody>
+              <Input placeholder='Digite aqui...' />
+            </DrawerBody>
+
+            <DrawerFooter>
+              <Button variant='outline' mr={3} onClick={onClose}>
+                Cancel
+              </Button>
+              <Button colorScheme='blue'>Salvar</Button>
+            </DrawerFooter>
+          </DrawerContent>
+        </Drawer>
         </>
     );
 };
