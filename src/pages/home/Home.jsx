@@ -38,9 +38,9 @@ export const Home = () => {
         <Error />
     ) : (
         <>
-            {shoeData.map((data, index) => (
+            {/* {shoeData.map((data, index) => (
                 <ShoeSection handleSection={handleSection} key={index} {...data} />
-            ))}
+            ))} */}
 
             {clothData.map((data, index) => (
                 <ClothSection handleSection={handleSection} key={index} {...data} />
