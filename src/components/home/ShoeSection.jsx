@@ -18,7 +18,7 @@ export const ShoeSection = ({ heading, description, img, gender, handleSection }
                 gap={['10px', '10px', '10px', '10px', '20px']}
                 templateColumns={'repeat(2, 1fr)'}
             >
-                <BigGridBox source={img[0]} />
+                {/* <BigGridBox source={img[0]} /> */}
                 <SmallGridBox source={img[1]} />
                 <SmallGridBox source={img[2]} />
             </Grid>
