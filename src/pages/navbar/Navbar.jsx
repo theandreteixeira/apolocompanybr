@@ -1,4 +1,4 @@
-import { Box, Center, Flex, Image, Spacer, useColorMode, Badge } from "@chakra-ui/react";
+import { Box, Center, Flex, Image, Spacer, useColorMode, Badge, Icon } from "@chakra-ui/react";
 import { RiHeartLine, RiShoppingBagLine } from "react-icons/ri";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -10,6 +10,7 @@ import { Logout } from "../../components/auth/Logout";
 import { DarkModeBtn } from "../../components/darkmode/DarkModeBtn";
 import { Category, NavIcon, SearchBox } from "../../components/navbar/CategoryAndIcon";
 import { SideDrawer } from "../../components/navbar/SideDrawer";
+import { FaTruckMoving } from 'react-icons/fa'
 
 
 export const Navbar = () => {
@@ -74,7 +75,9 @@ export const Navbar = () => {
                 </Box>
 
             </Flex>
-            <Badge w={'100%'} p={2} color="grey" textAlign={'center'}>Frete grátis para todo o Brasil</Badge>
+            <Badge w={'100%'} p={2} color="grey" textAlign={'center'}>
+               <Icon  mx={'10px'} as={FaTruckMoving} /> Frete grátis para todo o Brasil
+            </Badge>
             <Box h={['10px', '20px', '30px', '40px', '40px']} ></Box>
         </>
     );
