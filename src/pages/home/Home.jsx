@@ -9,7 +9,7 @@ import { Loading } from "../../components/loading/Loading.jsx";
 import { getClothData, getShoeData } from "../../redux/features/home/actions.js";
 import { setNavbarPath } from "../../redux/features/path/actions.js";
 import { setItemSession } from "../../utils/sessionStorage.js";
-import { Image } from '@chakra-ui/react';
+import { Image, Box } from '@chakra-ui/react';
 
 export const Home = () => {
 
@@ -47,10 +47,20 @@ export const Home = () => {
             ))}
            {/* { Banner({source: 'https://imgnike-a.akamaihd.net/branding/home-sbf/touts/tout-liverpool-LBJ-22-03-desk-v2.jpg'}) } */}
            {
-            <Image mx={'15px'} my={'10px'} src='https://imgnike-a.akamaihd.net/branding/home-sbf/touts/tout-future-fitness-30-01-desk-v2.jpg'/>
+            <Box
+                m={'60px auto 60px'}
+                w={['94%', '94%', '94%', '94%', '80%']}
+            >
+                <Image src='https://imgnike-a.akamaihd.net/branding/home-sbf/touts/tout-future-fitness-30-01-desk-v2.jpg'/>
+            </Box>
            }
            {
-            <Image mx={'15px'} src='https://imgnike-a.akamaihd.net/branding/home-sbf/touts/tout-liverpool-LBJ-22-03-desk-v2.jpg'/>
+             <Box
+                m={'20px auto 20px'}
+                w={['94%', '94%', '94%', '94%', '80%']}
+             >
+                <Image mx={'15px'} src='https://imgnike-a.akamaihd.net/branding/home-sbf/touts/tout-liverpool-LBJ-22-03-desk-v2.jpg'/>
+            </Box>
            }
         </>
     );
