@@ -74,7 +74,7 @@ export const Navbar = () => {
                 </Box>
 
             </Flex>
-            <Badge w={'100%'} p={2} color="grey">Frete grátis para todo o Brasil</Badge>
+            <Badge w={'100%'} p={2} color="grey" textAlign={'center'}>Frete grátis para todo o Brasil</Badge>
             <Box h={['10px', '20px', '30px', '40px', '40px']} ></Box>
         </>
     );
