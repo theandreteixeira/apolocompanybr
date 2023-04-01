@@ -16,18 +16,18 @@ import { Error } from "../../components/loading/Error";
 export const Products = () => {
 
     const { colorMode } = useColorMode();
-    const [isFilter, setIsFilter] = useState(true);
+    const [isFilter, setIsFilter] = useState(false);
     const { products, isLoading, isError } = useSelector((state) => state.prodReducer);
     const path = getItemSession("path");
     const dispatch = useDispatch();
     const toast = useToast();
     const navigate = useNavigate();
 
-    
+
     const resetFilter = () => {
         setIsFilter(!isFilter);
         dispatch(getRequest(path));
-        setToast(toast, "Filter Reset Successfully", "success");
+        setToast(toast, "Filtros apagados!", "success");
     };
 
     const handleSingleProduct = (data) => {
@@ -52,9 +52,9 @@ export const Products = () => {
             >
                 <Center textAlign={'start'}>
                     <Text w={'100%'} ml={['20px', '20px', '30px', '40px', '50px']} fontSize={['20px', '25px']} fontWeight={500}>
-                        {path === "men" ? "Men's Products"
-                            : path === "women" ? "Women's Products"
-                                : path === "kids" ? "Kids's Products" : "All Products"} [{products.length}]
+                        {path === "men" ? "Masculino"
+                            : path === "women" ? "Feminino"
+                                : path === "kids" ? "Kids's Products" : "Produtos"}
                     </Text>
                 </Center>
                 <Spacer />
@@ -66,10 +66,10 @@ export const Products = () => {
                         px={['8px', '8px', '20px', '20px', '20px']}
                     >
                         <Button onClick={() => { setIsFilter(!isFilter) }} fontSize={['13px', '16px']} rightIcon={<IoOptionsOutline />} >
-                            {isFilter ? 'Hide Filter' : 'Show Filter'}
+                            {isFilter ? 'Ocultar filtros' : 'Exibir filtros'}
                         </Button>
                         <Spacer />
-                        <Button onClick={resetFilter} fontSize={['13px', '16px']}>Reset Filter</Button>
+                        <Button onClick={resetFilter} fontSize={['13px', '16px']}>Apagar filtros</Button>
                         <Spacer />
                         <SortFilters />
                     </Flex>

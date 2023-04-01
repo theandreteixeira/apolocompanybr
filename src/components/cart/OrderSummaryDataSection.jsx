@@ -10,27 +10,27 @@ export const OrderSummaryDataSection = ({ subTotal, discount, quantity, total, s
             <Box my={'20px'} fontSize={'18px'}>
                 <Flex justifyContent={'space-between'}>
                     <Text>Subtotal</Text>
-                    <Text>₹{numberWithCommas(subTotal)}.00</Text>
+                    <Text>R${numberWithCommas(subTotal)}</Text>
                 </Flex>
 
                 <Flex mt={'5px'} justifyContent={'space-between'}>
-                    <Text>Quantity</Text>
+                    <Text>Quantidade</Text>
                     <Text>{quantity}</Text>
                 </Flex>
 
                 <Flex mt={'5px'} justifyContent={'space-between'}>
-                    <Text >Estimated Delivery</Text>
+                    <Text >Frete</Text>
                     <Text
-                        title={'Free delivery applies to orders of ₹14,000 or more'}
+                        title={'Todos os pedidos possuem frete grátis para o Brasil todo.'}
                         cursor={'pointer'}
                     >
-                        ₹{numberWithCommas(shipping)}.00
+                        R${numberWithCommas(shipping)}
                     </Text>
                 </Flex>
 
                 <Flex mt={'5px'} justifyContent={'space-between'}>
-                    <Text>Discount</Text>
-                    <Text>₹{numberWithCommas(discount)}.00</Text>
+                    <Text>Desconto</Text>
+                    <Text>R${numberWithCommas(discount)}</Text>
                 </Flex>
             </Box>
 
@@ -38,7 +38,7 @@ export const OrderSummaryDataSection = ({ subTotal, discount, quantity, total, s
 
             <Flex fontSize={'18px'} justifyContent={'space-between'} my={'20px'}>
                 <Text>Total</Text>
-                <Text fontWeight={500} >₹{numberWithCommas(total)}.00</Text>
+                <Text fontWeight={500} >R${numberWithCommas(total)}</Text>
             </Flex>
 
             <Divider mb={'20px'} />

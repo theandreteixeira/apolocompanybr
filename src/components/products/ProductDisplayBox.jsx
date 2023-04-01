@@ -4,7 +4,7 @@ import { numberWithCommas, shortString } from "../../utils/extraFunctions";
 import { DescText, PriceText } from "./DescText";
 
 
-export const ProductDisplayBox = ({ title, description, color, rating, price, size, gender, img, onClick }) => {
+export const ProductDisplayBox = ({ title, description, color, rating, price, size, gender, img, onClick, category }) => {
 
     return (
         <>
@@ -16,25 +16,14 @@ export const ProductDisplayBox = ({ title, description, color, rating, price, si
                     <Flex justifyItems={'center'} mt={'10px'}>
                         <Text
                             fontSize={['13px', '15px', '17px', '17px', '18px']}
-                            fontWeight={600}
+                            fontWeight={500}
                         >
-                            {shortString(title)}
+                            {shortString(title, 40)}
                         </Text>
-                        <Spacer />
-                        <Box
-                            fontSize={['13px', '15px', '17px', '17px', '18px']}
-                            mr={'3px'}
-                            mt={'4px'}
-                        >
-                            <AiFillStar color="#f5ad42" />
-                        </Box>
-                        <Text fontSize={['13px', '15px', '17px', '17px', '18px']}>{rating}</Text>
                     </Flex>
 
-                    <DescText>{shortString(description, 20)}</DescText>
-                    <DescText>{size.join(", ")}</DescText>
-                    {/* <DescText>{gender}, {color} Colour</DescText> */}
-                    <PriceText>R${numberWithCommas(price)}</PriceText>
+                    <DescText>{category}</DescText>
+                    <PriceText>R$ {numberWithCommas(price)}</PriceText>
                 </Box>
             </Flex>
         </>

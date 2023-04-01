@@ -21,7 +21,7 @@ import {
     useDisclosure,
     Input,
     Button,
-    Tabs, TabList, Tab, TabPanels, TabPanel
+    Tabs, TabList, Tab, TabPanels, TabPanel, TabIndicator
   } from '@chakra-ui/react'
   import React from "react";
 
@@ -147,16 +147,30 @@ export const Description = () => {
             </DrawerFooter>
           </DrawerContent>
         </Drawer>
-        <Tabs>
-        <TabList>
-          <Tab>DESCRIÇÃO</Tab>
-          <Tab>Two</Tab>
-          <Tab>Three</Tab>
-        </TabList>
+        <Box
+        p={'10px'}
+        w={["100%", "100%", "100%", "100%", "90%"]}
+        gap={['40px', '40px', "4%", "4%", "4%"]}
+                m={["40px auto 100px", "40px auto 100px", "40px auto 60px", "40px auto 60px", "40px auto 60px"]}
 
+        >
+        <Tabs position="relative" variant="unstyled">
+        <TabList color={'grey'}>
+          <Tab fontWeight={'black'} _selected={{color:'black'}}>DESCRIÇÃO</Tab>
+          <Tab fontWeight={'black'} _selected={{color:'black'}}>AVALIAÇÕES</Tab>
+          <Tab fontWeight={'black'} _selected={{color:'black'}}>MEDIDAS</Tab>
+        </TabList>
+        <TabIndicator
+          mt="-1.5px"
+          height="3px"
+          bg="blue.900"
+          borderRadius="1px"
+        />
         <TabPanels>
-          <TabPanel>
-            <p>one!</p>
+          <TabPanel color={'grey'}>
+            <p>
+            Lorem ipsum dolor sit amet, consec tetuer adipiscing elit. Aenean commodo ligula eget dolor massa. Cum sociis natoque penatibus et magnis dis part urient montes, nascetur ridiculus mus donec quam.
+            </p>
           </TabPanel>
           <TabPanel>
             <p>two!</p>
@@ -166,6 +180,7 @@ export const Description = () => {
           </TabPanel>
         </TabPanels>
       </Tabs>
+      </Box>
         </>
     );
 };

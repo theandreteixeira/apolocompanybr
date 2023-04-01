@@ -61,7 +61,7 @@ export const ItemBox = ({ title, description, img, price, quantity, index, data 
                         <Text color={'gray'}>{description}</Text>
 
                         <Flex alignItems={'center'} gap={'10px'} my={'8px'}>
-                            <Text >Quantity:</Text>
+                            <Text >Quantidade:</Text>
 
                             <QuantityBtn
                                 text={'-'}
@@ -86,7 +86,7 @@ export const ItemBox = ({ title, description, img, price, quantity, index, data 
                     </Box>
 
                     <Box minH={'150px'}>
-                        <Text fontSize={'18px'} textAlign={'end'}>₹{numberWithCommas(price)}</Text>
+                        <Text fontSize={'18px'} textAlign={'end'}>R${numberWithCommas(price)}</Text>
                     </Box>
                 </Box>
 

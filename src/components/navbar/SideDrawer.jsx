@@ -21,7 +21,7 @@ export const SideDrawer = ({ handlePath }) => {
                 <DrawerOverlay />
                 <DrawerContent>
                     <DrawerCloseButton />
-                    <DrawerHeader>Hi {user}</DrawerHeader>
+                    <DrawerHeader>Olá {user}</DrawerHeader>
                     <Divider />
                     <DrawerBody>
                         <VStack gap={'30px'} mt={'40px'} onClick={onClose}>

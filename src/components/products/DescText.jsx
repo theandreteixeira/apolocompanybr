@@ -4,7 +4,7 @@ import { Text } from "@chakra-ui/react";
 export const DescText = ({ children }) => {
     return (
         <Text
-            fontSize={['12px', '12px', '13px', '16px', '17px']}
+            fontSize={['14px', '14px', '15px', '18px', '19px']}
             color={'gray'}
         >
             {children}
@@ -17,7 +17,7 @@ export const PriceText = ({children}) => {
     return (
         <>
             <Text
-                fontSize={['15px', '20px', '17px', '20px', '20px']}
+                fontSize={['14px', '18px', '15px', '18px', '18px']}
                 fontWeight={600}
                 my={'6px'}
             >
