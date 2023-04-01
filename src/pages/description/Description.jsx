@@ -24,6 +24,7 @@ import {
     Tabs, TabList, Tab, TabPanels, TabPanel, TabIndicator
   } from '@chakra-ui/react'
   import React from "react";
+import { BagItems } from "../../components/cart/BagItems";
 
 
 export const Description = () => {
@@ -42,13 +43,13 @@ export const Description = () => {
 
 
     const handleAddToCart = async () => {
+        onOpen();
         if (mySize === false) {
             setToast(toast, "Por favor selecione um tamanho", "error");
         } else {
             const payload = { ...data, size: mySize, quantity: 1 };
-            await new Promise(res => setTimeout(() => res(true), 2000));
             dispatch(addToCartRequest(payload, toast));
-            navigate('/cart')
+            // navigate('/cart')
         }
     };
 
@@ -87,7 +88,7 @@ export const Description = () => {
                       <Icon boxSize={6} color="#E2E8F0" as={AiFillStar} />
                       </Flex>
                     </Box>
-                    <Text color='grey'>{description}</Text>
+                    <Text color='grey'>{category}</Text>
                     <Divider my={'15px'}/>
                     <UnorderedList fontSize={"15px"} styleType="none" mb={"20px"}>
                         <ListItem my={'10px'}>
@@ -115,7 +116,7 @@ export const Description = () => {
                         <SelectSize size={size} setMySize={setMySize} />
                     </Box>
                     <NewButton
-                        click={onOpen}
+                        click={handleAddToCart}
                         name={"Adicionar a sacola"}
                         bgColor={"black"}
                         color={"white"}
@@ -133,17 +134,16 @@ export const Description = () => {
           <DrawerOverlay />
           <DrawerContent>
             <DrawerCloseButton />
-            <DrawerHeader>Produto adicionado ao carrinho!</DrawerHeader>
+            <DrawerHeader>Produto adicionado!</DrawerHeader>
 
             <DrawerBody>
-              <Input placeholder='Digite aqui...' />
+              <BagItems/>
             </DrawerBody>
 
             <DrawerFooter>
               <Button variant='outline' mr={3} onClick={onClose}>
                 Cancel
               </Button>
-              <Button colorScheme='blue'>Salvar</Button>
             </DrawerFooter>
           </DrawerContent>
         </Drawer>
@@ -168,9 +168,7 @@ export const Description = () => {
         />
         <TabPanels>
           <TabPanel color={'grey'}>
-            <p>
-            Lorem ipsum dolor sit amet, consec tetuer adipiscing elit. Aenean commodo ligula eget dolor massa. Cum sociis natoque penatibus et magnis dis part urient montes, nascetur ridiculus mus donec quam.
-            </p>
+            {description}
           </TabPanel>
           <TabPanel>
             <p>two!</p>

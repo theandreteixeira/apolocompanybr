@@ -4,7 +4,7 @@ import { numberWithCommas, shortString } from "../../utils/extraFunctions";
 import { DescText, PriceText } from "./DescText";
 
 
-export const ProductDisplayBox = ({ title, description, color, rating, price, size, gender, img, onClick, category }) => {
+export const ProductDisplayBox = ({ title, price, img, onClick, category }) => {
 
     return (
         <>
