@@ -33,10 +33,10 @@ export const Auth = () => {
 
                         <Box textAlign={'center'} mt={'20px'}>
                             <Text display={'inline'} mt={'25px'} color={'#b0a8af'}>
-                                {isLogin ? "Not a Member? " : isReset ? "Or return to " : "Already a Member? "}
+                                {isLogin ? "Não é um membro? " : isReset ? "Or return to " : "Já é um membro? "}
                             </Text>
                             <Text onClick={displayLogin} display={'inline'} textDecoration={'underline'} cursor={'pointer'}>
-                                {isLogin ? "Signup" : "Login"}
+                                {isLogin ? "Cadastrar" : "Entrar"}
                             </Text>
                         </Box>
                     </ModalBody>

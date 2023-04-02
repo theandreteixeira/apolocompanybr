@@ -16,6 +16,7 @@ export const Category = ({ text, link, handlePath, name }) => {
                 onClick={handlePath}
                 to={link}
                 name={name}
+                fontWeight={'black'}
             >
                 {text}
             </Link>
@@ -54,7 +55,7 @@ export const NavIcon = ({ iconName }) => {
 //Search box, will add it later
 export const SearchBox = () => {
     return (
-        <Center>
+        <>
             {/* <Box
                 borderRadius={50}
                 w={'180px'}
@@ -88,6 +89,6 @@ export const SearchBox = () => {
                     <Text fontSize={'17px'}>Search</Text> */}
                 {/* </Center> */}
             {/* </Box> */}
-        </Center>
+            </>
     );
 };
