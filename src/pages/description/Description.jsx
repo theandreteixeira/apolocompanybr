@@ -5,7 +5,7 @@ import { ImageModal } from "../../components/description/ImageModal";
 import { SelectSize } from "../../components/description/SelectSize";
 import { NewButton } from "../../components/description/NewButton";
 import { getItemSession } from "../../utils/sessionStorage";
-import { addToCartRequest } from "../../redux/features/cart/actions";
+import { Product, addToCartRequest } from "../../redux/features/cart/actions";
 import { AiFillStar } from "react-icons/ai";
 import { useState } from "react";
 import { addToFavouriteRequest } from "../../redux/features/favourite/actions";
@@ -30,7 +30,7 @@ import { BagItems } from "../../components/cart/BagItems";
 export const Description = () => {
 
     const data = getItemSession("singleProduct");
-    const { title, gender, description, category, price, size, color, rating, img } = data;
+    const { name, gender, description, category, price, sizes, color, rating, photos } = data;
     const [mySize, setMySize] = useState(false);
     const token = useSelector((state) => state.authReducer.token);
     const toast = useToast();
@@ -43,13 +43,12 @@ export const Description = () => {
 
 
     const handleAddToCart = async () => {
-        onOpen();
         if (mySize === false) {
             setToast(toast, "Por favor selecione um tamanho", "error");
         } else {
+            onOpen();
             const payload = { ...data, size: mySize, quantity: 1 };
             dispatch(addToCartRequest(payload, toast));
-            // navigate('/cart')
         }
     };
 
@@ -70,12 +69,12 @@ export const Description = () => {
                 gap={['40px', '40px', "4%", "4%", "4%"]}
                 templateColumns={["100%", "100%", "55% 41%", "62% 34%", "62% 34%"]}
                 w={["100%", "100%", "100%", "100%", "90%"]}
-                m={["40px auto 100px", "40px auto 100px", "40px auto 60px", "40px auto 60px", "40px auto 60px"]}
+                m={["40px auto 20px", "40px auto 20px", "40px auto 10px", "40px auto 10px", "40px auto 10px"]}
             >
-                <ImageModal img={img} />
+                <ImageModal img={photos} />
 
                 <Box px={["20px", "40px"]}>
-                    <Text fontSize={"32px"} fontWeight={"black"}>{title.toUpperCase()}</Text>
+                    <Text fontSize={"32px"} fontWeight={"black"}>{name}</Text>
                     <Text fontSize={"22px"} mt="15px" mb="20px" fontWeight={"black"}>
                         R$ {numberWithCommas(price)}
                     </Text>
@@ -90,7 +89,7 @@ export const Description = () => {
                     </Box>
                     <Text color='grey'>{category}</Text>
                     <Divider my={'15px'}/>
-                    <UnorderedList fontSize={"15px"} styleType="none" mb={"20px"}>
+                    <UnorderedList fontSize={"16px"} styleType="none" mb={"20px"}>
                         <ListItem my={'10px'}>
                           <Flex direction="row">
                             <Text fontWeight={"bold"}> Gênero: </Text> {gender}
@@ -113,7 +112,7 @@ export const Description = () => {
                           </ListItem>
                     </UnorderedList>
                     <Box my={"30px"}>
-                        <SelectSize size={size} setMySize={setMySize} />
+                        <SelectSize sizes={sizes} setMySize={setMySize} />
                     </Box>
                     <NewButton
                         click={handleAddToCart}
@@ -137,20 +136,30 @@ export const Description = () => {
             <DrawerHeader bgColor={"black"} color={"white"} fontSize={"15px"}>Produto adicionado ao carrinho</DrawerHeader>
 
             <DrawerBody>
-              <BagItems/>
+
             </DrawerBody>
 
             <DrawerFooter>
-                <Button bgColor={"black"} color={"white"} width={"100%"} onClick={()=> navigate('/cart')}>FINALIZAR COMPRA</Button>
+                <Button
+                  color={"white"}
+                  width={"100%"}
+                  onClick={()=> navigate('/cart')}
+                  h={"60px"}
+                  bg={"black"}
+                  border={`1px solid ${'#cecdce'}`}
+                  w={"100%"}
+                  fontSize={"17px"}
+                  mb={'20px'}
+                  _hover={{ bg: "black", borderColor: 'black' }}
+                >FINALIZAR COMPRA</Button>
             </DrawerFooter>
           </DrawerContent>
         </Drawer>
         <Box
-        p={'10px'}
-        w={["100%", "100%", "100%", "100%", "90%"]}
-        gap={['40px', '40px', "4%", "4%", "4%"]}
-                m={["40px auto 100px", "40px auto 100px", "40px auto 60px", "40px auto 60px", "40px auto 60px"]}
-
+          p={'10px'}
+          w={["100%", "100%", "100%", "100%", "90%"]}
+          gap={['40px', '40px', "4%", "4%", "4%"]}
+          m={["20px auto 50px", "20px auto 50px", "20px auto 40px", "20px auto 40px", "20px auto 40px"]}
         >
         <Tabs position="relative" variant="unstyled">
         <TabList color={'grey'}>

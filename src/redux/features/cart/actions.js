@@ -5,6 +5,22 @@ import { getItem, setItem } from "../../../utils/localstorage";
 import { getItemSession, removeItemSession, setItemSession } from "../../../utils/sessionStorage";
 import { ADD_TO_CART_SUCCESS, APPLY_COUPON_SUCCESS, REMOVE_COUPON_SUCCESS, REMOVE_FROM_CART, UPDATE_CART_DETAILS } from "./actionTypes";
 
+export class Product {
+    name; price; description; photos; category; gender; color; rating; sizes;
+    constructor({
+        name, price, description, photos, category, gender, color, rating, sizes
+    }) {
+        this.name = name;
+        this.price = price;
+        this.description = description;
+        this.photos = photos;
+        this.category = category;
+        this.gender = gender;
+        this.color = color;
+        this.rating = rating;
+        this.sizes = sizes;
+    };
+}
 
 export const addToCartSuccess = (payload) => {
     return { type: ADD_TO_CART_SUCCESS, payload };
@@ -36,9 +52,7 @@ export const addToCartRequest = (data, toast, operation = 'add') => (dispatch) =
     setItem('orderSummary', orderSummary);
     dispatch(addToCartSuccess({ cartData, orderSummary }));
 
-    if (operation === 'add') {
-        setToast(toast, 'Item added to the cart', 'success');
-    } else if (operation === 'reduce') {
+    if (operation === 'reduce') {
         setToast(toast, 'Item quantity reduced', 'success');
     }
 };

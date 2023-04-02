@@ -1,5 +1,6 @@
 import { GET_DATA_ERROR, GET_DATA_LOADING, GET_DATA_SUCCESS, GET_PRICE_RANGE, NAME_A_TO_Z, NAME_Z_TO_A, RATING_HIGH_TO_LOW, RATING_LOW_TO_HIGH, RESET_FILTERS, SET_ALL_FILTERS, SORT_HIGH_TO_LOW, SORT_LOW_TO_HIGH } from "./actionTypes";
 import axios from "axios";
+import { Product } from "../cart/actions";
 
 
 export const getDataLoading = () => ({ type: GET_DATA_LOADING });
@@ -33,13 +34,44 @@ export const getRequest = (path) => async (dispatch) => {
     try {
         dispatch(getDataLoading());
         // await axios.get('/men');
-        await new Promise(res => setTimeout(() => res(true), 4000));
-        const dataMock = [
-            { title: 'Camisa Barcelona 21/22', description: 'Camisa do Barcelona Casa', color: 'FF0000', rating: 2.9, price: 149.99, size: ['P', 'M'], gender: 'men', img: ['https://imgnike-a.akamaihd.net/1920x1920/02192515.jpg', 'https://imgnike-a.akamaihd.net/1920x1920/02192515A1.jpg', 'https://imgnike-a.akamaihd.net/1920x1920/02192515A2.jpg'], onClick: undefined, category: 'Futebol' },
-            { title: 'Camisa Barcelona 21/22', description: 'Camisa do Barcelona Casa', color: 'FF0000', rating: 2.9, price: 149.99, size: ['P', 'M'], gender: 'men', img: ['https://imgnike-a.akamaihd.net/1920x1920/02192515.jpg', 'https://imgnike-a.akamaihd.net/1920x1920/02192515A1.jpg', 'https://imgnike-a.akamaihd.net/1920x1920/02192515A2.jpg'], onClick: undefined, category: 'Futebol' },
-            { title: 'Camisa Barcelona 21/22', description: 'Camisa do Barcelona Casa', color: 'FF0000', rating: 2.9, price: 149.99, size: ['P', 'M'], gender: 'men', img: ['https://imgnike-a.akamaihd.net/1920x1920/02192515.jpg', 'https://imgnike-a.akamaihd.net/1920x1920/02192515A1.jpg', 'https://imgnike-a.akamaihd.net/1920x1920/02192515A2.jpg'], onClick: undefined, category: 'Futebol' },
-        ];
-        dispatch(getDataSuccess(dataMock));
+        await new Promise(res => setTimeout(() => res(true), 3000));
+        let barcelona = new Product({
+            name: 'Camisa Barcelona',
+            description: 'Camisa do Barcelona para a temporada 23/24',
+            photos: ['https://imgnike-a.akamaihd.net/1920x1920/02192515.jpg', 'https://imgnike-a.akamaihd.net/1920x1920/02192515A1.jpg', 'https://imgnike-a.akamaihd.net/1920x1920/02192515A2.jpg', 'https://imgnike-a.akamaihd.net/1920x1920/02192515A3.jpg'],
+            gender: 'Masculino',
+            price: 149.99,
+            category: 'Futebol',
+            color: 'Azul',
+            rating: 4.9,
+            handleSection: null,
+            sizes: ['P', 'M', 'G', 'GG']
+        });
+        let liverpool = new Product({
+            name: 'Camisa Nike Liverpool I 2022/23 Torcedor Pro Masculina',
+            description: 'Camisa do Barcelona para a temporada 23/24',
+            photos: ['https://imgnike-a.akamaihd.net/1920x1920/021924P1.jpg', 'https://imgnike-a.akamaihd.net/1920x1920/021924P1A1.jpg', 'https://imgnike-a.akamaihd.net/1920x1920/021924P1A2.jpg', 'https://imgnike-a.akamaihd.net/1920x1920/021924P1A3.jpg'],
+            gender: 'Masculino',
+            price: 149.99,
+            category: 'Futebol',
+            color: 'Azul',
+            rating: 4.9,
+            handleSection: null,
+            sizes: ['P', 'M', 'G', 'GG']
+        });
+        let brasil = new Product({
+            name: 'Camisa Nike Brasil II 2022/24 Torcedor Pro Masculina',
+            description: 'Camisa do Barcelona para a temporada 23/24',
+            photos: ['https://imgnike-a.akamaihd.net/1920x1920/02284415.jpg', 'https://imgnike-a.akamaihd.net/1920x1920/02284415A1.jpg', 'https://imgnike-a.akamaihd.net/1920x1920/02284415A2.jpg', 'https://imgnike-a.akamaihd.net/1920x1920/02284415A3.jpg'],
+            gender: 'Masculino',
+            price: 149.99,
+            category: 'Futebol',
+            color: 'Azul',
+            rating: 4.9,
+            handleSection: null,
+            sizes: ['P', 'M', 'G', 'GG']
+        });
+        dispatch(getDataSuccess([barcelona, liverpool, brasil]));
     } catch (err) {
         console.log(err);
         dispatch(getDataError());

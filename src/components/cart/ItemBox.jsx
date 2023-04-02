@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { addToFavouriteRequest } from "../../redux/features/favourite/actions";
 
 
-export const ItemBox = ({ title, description, img, price, quantity, index, data }) => {
+export const ItemBox = ({ name, description, photos, price, quantity, index, data }) => {
 
     const dispatch = useDispatch();
     const toast = useToast();
@@ -47,7 +47,7 @@ export const ItemBox = ({ title, description, img, price, quantity, index, data 
                     w={['80px', '80px', '150px', '150px', '150px']}
                     h={['80px', '80px', '150px', '150px', '150px']}
                 >
-                    <Image h={'100%'} src={img[0]} />
+                    <Image h={'100%'} src={photos[0]} />
                 </Box>
 
                 <Box
@@ -57,7 +57,7 @@ export const ItemBox = ({ title, description, img, price, quantity, index, data 
                     gridTemplateColumns={['67% 30%', '67% 30%', '80% 18%', '80% 18%', '80% 18%']}
                 >
                     <Box minH={'150px'}>
-                        <Text fontWeight={500}>{title}</Text>
+                        <Text fontWeight={500}>{name}</Text>
                         <Text color={'gray'}>{description}</Text>
 
                         <Flex alignItems={'center'} gap={'10px'} my={'8px'}>

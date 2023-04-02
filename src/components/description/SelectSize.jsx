@@ -27,14 +27,13 @@ const RadioCard = (props) => {
 };
 
 
-export const SelectSize = ({ size, setMySize }) => {
-
+export const SelectSize = ({ sizes, setMySize }) => {
     const { getRootProps, getRadioProps } = useRadioGroup({ name: "SelectSize" });
     const group = getRootProps();
 
     return (
         <HStack {...group}>
-            {size.map((value) => {
+            {sizes.map((value) => {
                 const radio = getRadioProps({ value });
                 return (
                     <RadioCard
