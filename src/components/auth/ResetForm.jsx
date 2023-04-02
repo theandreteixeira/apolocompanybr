@@ -16,15 +16,16 @@ export const ResetForm = () => {
                         color={'gray'}
                         textAlign={'center'}
                     >
-                        This feature is not available now, will be available in future, till then you can create a new account.
+                        Essa opção ainda não está disponível, para que isso seja possível, você precisa entrar em contato conosco através do nosso email contato@apolocompanybr.com.
                     </Text>
 
                     <Input
                         type={'email'}
-                        placeholder="Email address"
+                        placeholder="Email"
+                        isDisabled
                     />
 
-                    <AuthBtn value={'RESET'} />
+                    <AuthBtn value={'RECUPERAR'} isDisabled={'true'} />
                 </VStack>
             </form>
         </>

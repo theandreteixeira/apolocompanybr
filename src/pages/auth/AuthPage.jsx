@@ -21,17 +21,17 @@ export const AuthPage = () => {
             <Box w={["95%", "95%", "50%", "37%", "27%"]} m={"20px auto"}>
 
                 <Text fontWeight={'700'} fontSize={'23px'} my={'40px'} mx={'10%'} textAlign={'center'}>
-                    {isLogin ? "PARA QUEM JÁ É MEMBRO APOLO" : isReset ? "RESET PASSWORD" : "SEJA UM MEMBRO"}
+                    {isLogin ? "PARA QUEM JÁ É MEMBRO APOLO" : isReset ? "RECUPERAR SENHA" : "SEJA UM MEMBRO"}
                 </Text>
 
                 {isLogin ? <LoginForm /> : isReset ? <ResetForm /> : <SignupForm />}
 
                 <Box textAlign={'center'} mt={'20px'}>
                     <Text display={'inline'} mt={'25px'} color={'#b0a8af'}>
-                        {isLogin ? "Not a Member? " : isReset ? "Or return to " : "Already a Member? "}
+                        {isLogin ? "Não tem uma conta? " : isReset ? "Or return to " : "Já tem uma conta? "}
                     </Text>
                     <Text onClick={displayLogin} display={'inline'} textDecoration={'underline'} cursor={'pointer'}>
-                        {isLogin ? "Signup" : "Login"}
+                        {isLogin ? "Cadastre-se" : "Entrar"}
                     </Text>
                 </Box>
             </Box>

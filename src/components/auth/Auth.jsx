@@ -25,7 +25,7 @@ export const Auth = () => {
                 <ModalOverlay />
                 <ModalContent>
                     <ModalHeader fontWeight={'700'} fontSize={'23px'} mt={'40px'} mx={'10%'} textAlign={'center'}>
-                        {isLogin ? "EVERYTHING IS APOLO" : isReset ? "RESET PASSWORD" : "SEJA UM MEMBRO APOLO"}
+                        {isLogin ? "EVERYTHING IS APOLO" : isReset ? "RECUPERAR SENHA" : "SEJA UM MEMBRO APOLO"}
                     </ModalHeader>
                     <ModalCloseButton />
                     <ModalBody>

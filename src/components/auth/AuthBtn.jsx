@@ -1,6 +1,6 @@
 import { Input } from "@chakra-ui/react";
 
-export const AuthBtn = ({ value }) => {
+export const AuthBtn = ({ value, isDisabled }) => {
     return (
         <Input
             value={value}
@@ -9,6 +9,7 @@ export const AuthBtn = ({ value }) => {
             _hover={{ backgroundColor: "#1e1e1e" }}
             color={'white'}
             w={'100%'}
+            isDisabled={isDisabled}
         />
     );
 };

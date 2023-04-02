@@ -1,4 +1,4 @@
-import { Input, Select, useToast, VStack } from "@chakra-ui/react";
+import { Badge, Input, Select, useToast, VStack } from "@chakra-ui/react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -36,7 +36,7 @@ export const SignupForm = () => {
 
         const isPassword = validatePassword(form.password);
         if (!isPassword.status) {
-            return setToast(toast, 'Password must contain these things:', 'error', 3000, isPassword.message);
+            return setToast(toast, 'A senha deve conter os seguintes caracteres:', 'error', 3000, isPassword.message);
         }
 
         dispatch(getSignupSuccess(form, toast, navigate));
@@ -57,33 +57,33 @@ export const SignupForm = () => {
                         name="email"
                         onChange={handleInputChange}
                         type={'email'}
-                        placeholder="Email address"
+                        placeholder="Email"
                     />
 
                     <Input
                         name="password"
                         onChange={handleInputChange}
                         type={'password'}
-                        placeholder="Password"
+                        placeholder="Senha"
                     />
 
                     <Input
                         name="firstName"
                         onChange={handleInputChange}
                         type={'text'}
-                        placeholder="First Name"
+                        placeholder="Nome"
                     />
 
                     <Input
                         name="lastName"
                         onChange={handleInputChange}
                         type={'text'}
-                        placeholder="Last Name"
+                        placeholder="Sobrenome"
                     />
 
-                    <Select name="gender" onChange={handleInputChange} placeholder='Choose Gender'>
-                        <option>Male</option>
-                        <option>Female</option>
+                    <Select name="gender" onChange={handleInputChange} placeholder='Sexo'>
+                        <option>Masculino</option>
+                        <option>Feminino</option>
                     </Select>
 
                     <Input
@@ -91,8 +91,11 @@ export const SignupForm = () => {
                         onChange={handleInputChange}
                         type={'date'}
                     />
+                    <Badge w={'100%'} p={2} color={"blue.900"} textAlign={'center'} bgColor={"blue.100"}>
+                        Descontos especiais no mês do seu aniversário.
+                    </Badge>
 
-                    <AuthBtn value={'JOIN US'} />
+                    <AuthBtn value={'CADASTRAR'} />
 
                 </VStack>
             </form>

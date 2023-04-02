@@ -133,17 +133,15 @@ export const Description = () => {
         >
           <DrawerOverlay />
           <DrawerContent>
-            <DrawerCloseButton />
-            <DrawerHeader>Produto adicionado!</DrawerHeader>
+            <DrawerCloseButton color={"white"} />
+            <DrawerHeader bgColor={"black"} color={"white"} fontSize={"15px"}>Produto adicionado ao carrinho</DrawerHeader>
 
             <DrawerBody>
               <BagItems/>
             </DrawerBody>
 
             <DrawerFooter>
-              <Button variant='outline' mr={3} onClick={onClose}>
-                Cancel
-              </Button>
+                <Button bgColor={"black"} color={"white"} width={"100%"} onClick={()=> navigate('/cart')}>FINALIZAR COMPRA</Button>
             </DrawerFooter>
           </DrawerContent>
         </Drawer>

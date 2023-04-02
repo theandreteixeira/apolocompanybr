@@ -20,7 +20,7 @@ export const getSignupSuccess = (data, toast, navigate) => async (dispatch) => {
         dispatch(getToken(res));
         setItem('token', res.token);
         setItem('user', res.user);
-        setToast(toast, 'Signup successfully', 'success');
+        setToast(toast, 'Cadastro realizado com sucesso', 'success');
         navigate(-1);
     } catch (err) {
         console.log(err);

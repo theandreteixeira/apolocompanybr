@@ -16,7 +16,6 @@ export const Category = ({ text, link, handlePath, name }) => {
                 onClick={handlePath}
                 to={link}
                 name={name}
-                fontWeight={'black'}
             >
                 {text}
             </Link>
