@@ -6,7 +6,7 @@ import { SelectSize } from "../../components/description/SelectSize";
 import { NewButton } from "../../components/description/NewButton";
 import { getItemSession } from "../../utils/sessionStorage";
 import { Product, addToCartRequest } from "../../redux/features/cart/actions";
-import { AiFillStar } from "react-icons/ai";
+import { GrStar } from "react-icons/gr";
 import { useState } from "react";
 import { addToFavouriteRequest } from "../../redux/features/favourite/actions";
 import { useNavigate } from "react-router-dom";
@@ -80,11 +80,11 @@ export const Description = () => {
                     </Text>
                     <Box my={"15px"}>
                     <Flex direction="row">
-                      <Icon boxSize={6} color="black" as={AiFillStar} />
-                      <Icon boxSize={6} color="black" as={AiFillStar} />
-                      <Icon boxSize={6} color="black" as={AiFillStar} />
-                      <Icon boxSize={6} color="black" as={AiFillStar} />
-                      <Icon boxSize={6} color="#E2E8F0" as={AiFillStar} />
+                      <Icon boxSize={6} color="black" as={GrStar} />
+                      <Icon boxSize={6} color="black" as={GrStar} />
+                      <Icon boxSize={6} color="black" as={GrStar} />
+                      <Icon boxSize={6} color="black" as={GrStar} />
+                      <Icon boxSize={6} color="#E2E8F0" as={GrStar} />
                       </Flex>
                     </Box>
                     <Text color='grey'>{category}</Text>
