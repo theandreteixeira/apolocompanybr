@@ -1,4 +1,4 @@
-import { Box, Center, Flex, Image, Spacer, useColorMode, Badge, Icon, Text, HStack } from "@chakra-ui/react";
+import { Box, Center, Flex, Image, Spacer, useColorMode, Badge, Icon, Badge, HStack } from "@chakra-ui/react";
 import { RiShoppingBagLine } from "react-icons/ri";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -62,7 +62,7 @@ export const Navbar = () => {
                     <Link to={'/cart'}>
                 <HStack>
                         <NavIcon iconName={RiShoppingBagLine} />
-                        <Text> {getCartQuantity()} </Text>
+                        <Badge> {getCartQuantity()} </Badge>
                 </HStack>
                     </Link>
                 </Center>

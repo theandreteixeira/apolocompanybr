@@ -45,7 +45,6 @@ export const NavIcon = ({ iconName }) => {
             as={iconName}
             w={'28px'}
             h={'28px'}
-            mr={'10px'}
         />
     );
 };
