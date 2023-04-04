@@ -3,6 +3,8 @@ import { ItemBox } from "./ItemBox";
 
 
 export const BagItems = ({products}) => {
+    console.log("PRODUCTS: abaixo:");
+    console.log(products);
 
     return (
         <>
