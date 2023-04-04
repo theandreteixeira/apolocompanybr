@@ -8,6 +8,7 @@ import { addToFavouriteRequest } from "../../redux/features/favourite/actions";
 
 
 export const ItemBox = ({ name, description, photos, price, quantity, index, data }) => {
+    console.log(data)
 
     const dispatch = useDispatch();
     const toast = useToast();
