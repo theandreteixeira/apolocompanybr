@@ -1,4 +1,4 @@
-import { Box, Center, Flex, Image, Spacer, useColorMode, Badge, Icon } from "@chakra-ui/react";
+import { Box, Center, Flex, Image, Spacer, useColorMode, Badge, Icon, Text } from "@chakra-ui/react";
 import { RiShoppingBagLine } from "react-icons/ri";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
