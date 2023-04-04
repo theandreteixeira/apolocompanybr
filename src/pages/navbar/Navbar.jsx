@@ -25,6 +25,8 @@ export const Navbar = () => {
         setItemSession("path", name);
     };
 
+    console.log(getCartQuantity());
+
     return (
         <
         >
