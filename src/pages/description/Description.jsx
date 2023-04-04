@@ -74,7 +74,7 @@ export const Description = () => {
                 <ImageModal img={photos} />
 
                 <Box px={["20px", "40px"]}>
-                    <Text fontSize={"32px"} fontWeight={"black"}>{name}</Text>
+                    <Text fontSize={"32px"} fontWeight={"black"}>{name.toUpperCase()}</Text>
                     <Text fontSize={"22px"} mt="15px" mb="20px" fontWeight={"black"}>
                         R$ {numberWithCommas(price)}
                     </Text>

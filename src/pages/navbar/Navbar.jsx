@@ -68,8 +68,8 @@ export const Navbar = () => {
                 </Box>
 
             </Flex>
-            <Badge w={'100%'} p={2} color="grey" textAlign={'center'}>
-               <Icon  mx={'10px'} as={FaTruckMoving} /> Frete grátis para todo o Brasil
+            <Badge w={'100%'} p={5} color="grey" textAlign={'center'}>
+               <Icon  mx={'16px'} as={FaTruckMoving} /> Frete grátis para todo o Brasil
             </Badge>
             <Box h={['10px', '20px', '30px', '40px', '40px']} ></Box>
         </>
