@@ -147,6 +147,7 @@ export const Description = () => {
                   h={"60px"}
                   bg={"black"}
                   border={`1px solid ${'#cecdce'}`}
+                  borderRadius="0"
                   w={"100%"}
                   fontSize={"17px"}
                   mb={'20px'}
