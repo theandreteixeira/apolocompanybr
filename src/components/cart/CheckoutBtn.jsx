@@ -12,6 +12,7 @@ export const CheckoutBtn = ({  onClick, name, bgColor, color, hoverBg, hoverBord
                 border={`1px solid ${borderColor}`}
                 w={"100%"}
                 fontSize={"17px"}
+                borderRadius="0"
                 mb={'20px'}
                 _hover={{ bg: hoverBg, borderColor: hoverBorder }}
             >

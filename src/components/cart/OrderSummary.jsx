@@ -72,7 +72,7 @@ export const OrderSummary = () => {
 
                 <Input
                     onChange={(e) => { setCoupon(e.target.value) }}
-                    placeholder={'Coupon'}
+                    placeholder={'CUPOM'}
                     disabled={orderSummary.discount > 0}
                     value={coupon}
                     type={'text'}
@@ -81,7 +81,7 @@ export const OrderSummary = () => {
 
                 <CheckoutBtn
                     onClick={handleCouponCode}
-                    name={orderSummary.discount > 0 ? 'Remove Coupon' : 'Apply Coupon'}
+                    name={orderSummary.discount > 0 ? 'Remove Coupon' : 'Adicionar cupom'}
                     bgColor={"white"}
                     color={"black"}
                     hoverBorder={"black"}
@@ -90,7 +90,7 @@ export const OrderSummary = () => {
 
                 <CheckoutBtn
                     onClick={handleMemberCheckout}
-                    name={"Member Checkout"}
+                    name={"CONTINUAR"}
                     bgColor={"black"}
                     color={"white"}
                     hoverBg={'#1e1e1e'}
