@@ -10,6 +10,7 @@ import { Logout } from "../../components/auth/Logout";
 import { DarkModeBtn } from "../../components/darkmode/DarkModeBtn";
 import { Category, NavIcon, SearchBox } from "../../components/navbar/CategoryAndIcon";
 import { SideDrawer } from "../../components/navbar/SideDrawer";
+import { getCartQuantity } from "../../redux/features/cart/actions";
 import { FaTruckMoving } from 'react-icons/fa'
 
 
@@ -64,6 +65,7 @@ export const Navbar = () => {
                 <Box display={['flex', 'flex', 'none', 'none', 'none']}>
                     <Center mr={'10px'}>
                         <SideDrawer handlePath={handlePath} />
+                        <Text> {getCartQuantity()} </Text>
                     </Center>
                 </Box>
 
