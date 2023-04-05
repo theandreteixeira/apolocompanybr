@@ -15,12 +15,12 @@ export const getClothData = () => async (dispatch) => {
     try {
         dispatch(getDataLoadingHome());
         let data = await axios.get('/obterProdutos', {
-            headers: {
-                "Access-Control-Allow-Origin": "*",
-                "Access-Control-Allow-Methods": "GET",
-                "Access-Control-Allow-Headers": "*",
-                "Access-Control-Max-Age": 86400
-            },
+            // headers: {
+            //     "Access-Control-Allow-Origin": "*",
+            //     "Access-Control-Allow-Methods": "GET",
+            //     "Access-Control-Allow-Headers": "*",
+            //     "Access-Control-Max-Age": 86400
+            // },
         });
         dispatch(getDataSuccessCloth(data.produtos));
     } catch (err) {
