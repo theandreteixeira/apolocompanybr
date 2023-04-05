@@ -33,45 +33,8 @@ export const resetFilters = () => ({ type: RESET_FILTERS });
 export const getRequest = (path) => async (dispatch) => {
     try {
         dispatch(getDataLoading());
-        // await axios.get('/men');
-        await new Promise(res => setTimeout(() => res(true), 3000));
-        let barcelona = new Product({
-            name: 'Camisa Barcelona',
-            description: 'Camisa do Barcelona para a temporada 23/24',
-            photos: ['https://imgnike-a.akamaihd.net/1920x1920/02192515.jpg', 'https://imgnike-a.akamaihd.net/1920x1920/02192515A1.jpg', 'https://imgnike-a.akamaihd.net/1920x1920/02192515A2.jpg', 'https://imgnike-a.akamaihd.net/1920x1920/02192515A3.jpg'],
-            gender: 'Masculino',
-            price: 149.99,
-            category: 'Futebol',
-            color: 'Azul',
-            rating: 4.9,
-            handleSection: null,
-            sizes: ['P', 'M', 'G', 'GG']
-        });
-        let liverpool = new Product({
-            name: 'Camisa Nike Liverpool I 2022/23 Torcedor Pro Masculina',
-            description: 'Camisa do Barcelona para a temporada 23/24',
-            photos: ['https://imgnike-a.akamaihd.net/1920x1920/021924P1.jpg', 'https://imgnike-a.akamaihd.net/1920x1920/021924P1A1.jpg', 'https://imgnike-a.akamaihd.net/1920x1920/021924P1A2.jpg', 'https://imgnike-a.akamaihd.net/1920x1920/021924P1A3.jpg'],
-            gender: 'Masculino',
-            price: 149.99,
-            category: 'Futebol',
-            color: 'Azul',
-            rating: 4.9,
-            handleSection: null,
-            sizes: ['P', 'M', 'G', 'GG']
-        });
-        let brasil = new Product({
-            name: 'Camisa Nike Brasil II 2022/24 Torcedor Pro Masculina',
-            description: 'Camisa do Barcelona para a temporada 23/24',
-            photos: ['https://imgnike-a.akamaihd.net/1920x1920/02284415.jpg', 'https://imgnike-a.akamaihd.net/1920x1920/02284415A1.jpg', 'https://imgnike-a.akamaihd.net/1920x1920/02284415A2.jpg', 'https://imgnike-a.akamaihd.net/1920x1920/02284415A3.jpg'],
-            gender: 'Masculino',
-            price: 149.99,
-            category: 'Futebol',
-            color: 'Azul',
-            rating: 4.9,
-            handleSection: null,
-            sizes: ['P', 'M', 'G', 'GG']
-        });
-        dispatch(getDataSuccess([barcelona, liverpool, brasil]));
+        let data = await axios.get('/obterProdutos');
+        dispatch(getDataSuccess(data.produtos));
     } catch (err) {
         console.log(err);
         dispatch(getDataError());

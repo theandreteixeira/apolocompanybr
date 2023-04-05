@@ -14,20 +14,8 @@ export const getDataErrorHome = () => ({ type: GET_DATA_ERROR_HOME });
 export const getClothData = () => async (dispatch) => {
     try {
         dispatch(getDataLoadingHome());
-        // let res = await axios.get("/clothData");
-        let data = new Product({
-            name: 'Camisa Barcelona',
-            description: 'Camisa do Barcelona para a temporada 23/24',
-            photos: ['https://imgnike-a.akamaihd.net/1920x1920/02192515.jpg', 'https://imgnike-a.akamaihd.net/1920x1920/02192515A1.jpg', 'https://imgnike-a.akamaihd.net/1920x1920/02192515A2.jpg', 'https://imgnike-a.akamaihd.net/1920x1920/02192515A3.jpg'],
-            gender: 'Masculino',
-            price: 149.99,
-            category: 'Futebol',
-            color: 'Azul',
-            rating: 4.9,
-            handleSection: null,
-            sizes: ['P', 'M', 'G', 'GG'],
-        });
-        dispatch(getDataSuccessCloth([data]));
+        let data = await axios.get('/obterProdutos');
+        dispatch(getDataSuccessCloth(data.produtos));
     } catch (err) {
         console.log("erro no getCloth:" + err);
         dispatch(getDataErrorHome());

@@ -7,9 +7,12 @@ import { BrowserRouter } from 'react-router-dom';
 import { store } from './redux/store/store';
 import { theme } from './theme';
 import axios from 'axios';
+import { Amplify } from 'aws-amplify';
+import awsExports from './aws-exports';
+Amplify.configure(awsExports);
 
 
-axios.defaults.baseURL = "https://api.apolocompanybr.com";
+axios.defaults.baseURL = "https://v5xzb38gfg.execute-api.us-east-1.amazonaws.com/default/";
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
