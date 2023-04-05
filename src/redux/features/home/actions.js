@@ -14,7 +14,11 @@ export const getDataErrorHome = () => ({ type: GET_DATA_ERROR_HOME });
 export const getClothData = () => async (dispatch) => {
     try {
         dispatch(getDataLoadingHome());
-        let data = await axios.get('/obterProdutos');
+        let data = await axios.get('/obterProdutos', {
+            headers: {
+                "Access-Control-Allow-Origin": "*"
+            }
+        });
         dispatch(getDataSuccessCloth(data.produtos));
     } catch (err) {
         console.log("erro no getCloth:" + err);

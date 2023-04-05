@@ -33,7 +33,11 @@ export const resetFilters = () => ({ type: RESET_FILTERS });
 export const getRequest = (path) => async (dispatch) => {
     try {
         dispatch(getDataLoading());
-        let data = await axios.get('/obterProdutos');
+        let data = await axios.get('/obterProdutos', {
+            headers: {
+                "Access-Control-Allow-Origin": "*"
+            },
+        });
         dispatch(getDataSuccess(data.produtos));
     } catch (err) {
         console.log(err);
