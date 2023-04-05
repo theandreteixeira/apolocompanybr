@@ -16,8 +16,11 @@ export const getClothData = () => async (dispatch) => {
         dispatch(getDataLoadingHome());
         let data = await axios.get('/obterProdutos', {
             headers: {
-                "Access-Control-Allow-Origin": "*"
-            }
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Methods": POST, GET,
+                "Access-Control-Allow-Headers": "*",
+                "Access-Control-Max-Age": 86400
+            },
         });
         dispatch(getDataSuccessCloth(data.produtos));
     } catch (err) {
