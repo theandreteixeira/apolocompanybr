@@ -14,7 +14,8 @@ Amplify.configure(awsExports);
 
 axios.defaults.baseURL = "https://v5xzb38gfg.execute-api.us-east-1.amazonaws.com/default/";
 axios.defaults.headers = {
-  "Access-Control-Allow-Origin": "https://www.apolocompanybr.com",
+  "Access-Control-Allow-Origin": "*", // Required for CORS support to work
+  "Access-Control-Allow-Credentials": true,
   "Access-Control-Allow-Methods": "GET",
   "Access-Control-Allow-Headers": "*",
   "Access-Control-Max-Age": 86400
