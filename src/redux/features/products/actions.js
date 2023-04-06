@@ -34,12 +34,13 @@ export const getRequest = (path) => async (dispatch) => {
     try {
         dispatch(getDataLoading());
         let data = await axios.get('/obterProdutos', {
-            // headers: {
-            //     "Access-Control-Allow-Origin": "*",
-            //     "Access-Control-Allow-Methods": "GET",
-            //     "Access-Control-Allow-Headers": "*",
-            //     "Access-Control-Max-Age": 86400
-            // },
+            headers: {
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Methods": "GET",
+                "Access-Control-Allow-Headers": "*",
+                "Access-Control-Max-Age": 86400,
+                "Access-Control-Allow-Credentials": true,
+            },
         });
         dispatch(getDataSuccess(data.produtos));
     } catch (err) {
