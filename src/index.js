@@ -12,7 +12,7 @@ import awsExports from './aws-exports';
 Amplify.configure(awsExports);
 
 
-axios.defaults.baseURL = "https://izl2z0zsx7.execute-api.us-east-1.amazonaws.com/default/";
+axios.defaults.baseURL = "https://nu2j0olma7.execute-api.us-east-1.amazonaws.com/default/";
 axios.defaults.headers = {
   "Access-Control-Allow-Origin": "*", // Required for CORS support to work
   "Access-Control-Allow-Credentials": true,
