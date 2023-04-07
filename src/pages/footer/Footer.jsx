@@ -6,11 +6,6 @@ export const Footer = () => {
 
     return (
         <Box h={'450px'} bg={'black'} color={'white'} mt={'80px'} paddingTop={'60px'}>
-
-            {/* <Center h={'80px'}>
-                <Text className="typeWritertheme">Made with <Icon as={FcLike} /> by Mohit Sehrawat</Text>
-            </Center> */}
-
             <Grid
                 h={'220px'}
                 p={'10px'}
@@ -23,10 +18,10 @@ export const Footer = () => {
                         fontWeight={600}
                         flexDirection={'column'}
                     >
-                        <Text>CAMISAS</Text>
-                        <Text>ACADEMIA</Text>
-                        <Text>JAQUETAS E MOLETONS</Text>
-                        <Text>ACESSÓRIOS</Text>
+                        <Link>CAMISAS</Link>
+                        <Link>ACADEMIA</Link>
+                        <Link>JAQUETAS E MOLETONS</Link>
+                        <Link>ACESSÓRIOS</Link>
                     </Flex>
                 </Center>
 
@@ -38,11 +33,11 @@ export const Footer = () => {
                         flexDirection={'column'}
                         color={'gray'}
                     >
-                        <Text color={'white'} fontWeight={600}>GET HELP</Text>
-                        <Text>Order Status</Text>
-                        <Text>Delivery</Text>
-                        <Text>Returns</Text>
-                        <Text>Payment Options</Text>
+                        <Link color={'white'} fontWeight={600}>AJUDA</Link>
+                        <Link>Order Status</Link>
+                        <Link>Delivery</Link>
+                        <Link>Returns</Link>
+                        <Link>Payment Options</Link>
                     </Flex>
                 </Center>
 
