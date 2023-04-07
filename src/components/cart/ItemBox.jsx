@@ -80,9 +80,7 @@ export const ItemBox = ({ name, description, photos, price, quantity, index, dat
 
                         <Box display={'flex'} gap={'10px'}>
 
-                            <BagItemBtn title={'Favourites'} onClick={handleAddToFavourite} />
-
-                            <BagItemBtn title={'Remove'} onClick={handleRemoveItem} />
+                            <BagItemBtn title={'Apagar'} onClick={handleRemoveItem} />
                         </Box>
                     </Box>
 
