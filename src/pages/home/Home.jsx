@@ -63,7 +63,7 @@ export const Home = () => {
             letterSpacing={2}
             fontFamily={"'Roboto', sans-serif"}
             fontSize={['30px', '35px', '50px', '55px', '55px']} mt={"10px"} fontSize={30} fontWeigth={"bold"} textAlign={"center"}>{"lebron x Liverpool FC".toUpperCase()}</Text>
-             <Text fontSize={"20px"} textAlign={"center"}>Alcance sua própria grandeza com a nova coleção inspirada no legado que eles deixaram em suas comunidades.</Text>
+             <Text fontSize={"15px"} textAlign={"center"}>Alcance sua própria grandeza com a nova coleção inspirada no legado que eles deixaram em suas comunidades.</Text>
             <Center><Button
             color={"white"}
                             onClick={()=> navigate('/cart')}
