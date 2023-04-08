@@ -7,7 +7,7 @@ const RadioCard = (props) => {
     const input = getInputProps();
     const checkbox = getCheckboxProps();
     const { colorMode } = useColorMode();
-    const isDisabled = props.value.quantity == 0;
+    const isDisabled = props.item.quantity == 0;
 
     console.log(props)
 
@@ -39,12 +39,16 @@ export const SelectSize = ({ sizes, setMySize }) => {
         <HStack {...group}>
             {sizes.map((value) => {
                 const radio = getRadioProps({ value: value.name });
+                console.log("radio")
+                console.log(radio)
+                console.log("value")
+                console.log(value)
                 return (
                     <RadioCard
                         onClick={() => {
                             setMySize(value.name);
                         }}
-                        value={value}
+                        item={value}
                         {...radio}
                     >
                         {value.name}
