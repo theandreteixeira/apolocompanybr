@@ -1,4 +1,4 @@
-import { Route, BrowserRouter, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { AuthPage } from "../pages/auth/AuthPage";
 import { Cart } from "../pages/cart/Cart";
 import { Checkout } from "../pages/checkout/Checkout";
@@ -13,12 +13,9 @@ import { Private } from "./Private";
 import { Public } from "./Public";
 
 export const Router = () => {
-
     return (
         <>
             <Navbar />
-
-            <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/allProducts" element={<Products />} />
@@ -32,7 +29,6 @@ export const Router = () => {
                 <Route path="/checkout" element={<Public><Checkout /></Public>} />
                 <Route path="/orders" element={<Public><Order /></Public>} />
             </Routes>
-            </BrowserRouter>
 
             <Footer />
         </>
