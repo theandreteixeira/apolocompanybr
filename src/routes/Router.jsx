@@ -26,10 +26,10 @@ export const Router = () => {
                 <Route path="/kids" element={<Products />} />
                 <Route path="/description" element={<Description />} />
                 <Route path="/auth" element={<Public><AuthPage /></Public>} />
-                <Route path="/favourite" element={<Private><Favourite /></Private>} />
+                <Route path="/favourite" element={<Public><Favourite /></Public>} />
                 <Route path="/cart" element={<Cart />} />
-                <Route path="/checkout" element={<Private><Checkout /></Private>} />
-                <Route path="/orders" element={<Private><Order /></Private>} />
+                <Route path="/checkout" element={<Public><Checkout /></Public>} />
+                <Route path="/orders" element={<Public><Order /></Public>} />
             </Routes>
 
             <Footer />
