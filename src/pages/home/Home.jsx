@@ -59,10 +59,9 @@ export const Home = () => {
            <Box align="center" my={"10px"}>
            <Image w={"80%"}
            borderRadius={'15px'}  src="https://images2.minutemediacdn.com/image/upload/c_crop,w_4445,h_2500,x_0,y_264/c_fill,w_720,ar_16:9,f_auto,q_auto,g_auto/images/GettyImages/mmsport/90min_pt-BR_international_web/01gx40rbg6vx73b2yacb.jpg"></Image>
-            <Text fontWeight={900}
-            letterSpacing={2}
+            <Text fontWeight={1000}
             fontFamily={"'Roboto', sans-serif"}
-            fontSize={['30px', '35px', '50px', '55px', '55px']} mt={"10px"} fontSize={30} fontWeigth={"bold"} textAlign={"center"}>{"lebron x Liverpool FC".toUpperCase()}</Text>
+            fontSize={['32px', '37px', '52px', '57px', '57px']} mt={"10px"} fontWeigth={"bold"} textAlign={"center"}>{"lebron x Liverpool FC".toUpperCase()}</Text>
              <Text fontSize={"15px"} textAlign={"center"}>Alcance sua própria grandeza com a nova coleção inspirada no legado que eles deixaram em suas comunidades.</Text>
             <Center><Button
             color={"white"}
@@ -71,9 +70,10 @@ export const Home = () => {
                             bg={"black"}
                             border={`1px solid ${'#cecdce'}`}
                             borderRadius="50"
-                            fontSize={"15px"}
+                            fontSize={"16px"}
                             mb={'20px'}
-                             px={'50px'}
+                            px={'40px'}
+                            py={'25px'}
                             mt={'10px'}
                             _hover={{ bg: "black", borderColor: 'black' }}
             >VER MAIS</Button></Center>
