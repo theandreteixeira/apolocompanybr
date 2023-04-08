@@ -9,7 +9,7 @@ const RadioCard = (props) => {
     const { colorMode } = useColorMode();
     const isDisabled = props.item.quantity == 0;
 
-    console.log(checkbox)
+    console.log(input)
 
     return (
         <Box as="label">
@@ -21,7 +21,7 @@ const RadioCard = (props) => {
                 cursor={isDisabled ? "not-allowed" : "pointer"}
                 borderWidth="1px"
                 borderRadius="md"
-                _checked={{ border: `2px solid ${colorMode === 'light' ? 'black' : 'white'}` }}
+                _checked=  {isDisabled?null:{ border: `2px solid ${colorMode === 'light' ? 'black' : 'white'}` }}
                 px={5} py={3}
             >
                 {props.children}
