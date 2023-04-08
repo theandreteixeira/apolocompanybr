@@ -72,7 +72,7 @@ export const Navbar = () => {
                 </Box>
 
             </Flex>
-            <Badge w={'100%'} p={4} color={colorMode === 'light' && '#f5f5f5'} textAlign={'center'}>
+            <Badge w={'100%'} p={3} bgColor={colorMode === 'light' && '#f5f5f5'} textAlign={'center'}>
                <Icon  mx={'12px'} as={FaTruckMoving} boxSize={4} /> Frete grátis para todo o Brasil
             </Badge>
             <Box h={['10px', '20px', '30px', '40px', '40px']} ></Box>
