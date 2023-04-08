@@ -38,7 +38,6 @@ export const getRequest = (path) => async (dispatch) => {
                 "Access-Control-Allow-Origin": "*",
                 "Access-Control-Allow-Methods": "GET",
                 "Access-Control-Allow-Headers": "*",
-                "Access-Control-Max-Age": 86400,
                 "Access-Control-Allow-Credentials": true,
             },
         });
