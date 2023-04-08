@@ -8,6 +8,9 @@ const RadioCard = (props) => {
     const checkbox = getCheckboxProps();
     const { colorMode } = useColorMode();
 
+    console.log(props)
+    console.log(props.value)
+
     return (
         <Box as="label">
             <input {...input} />
@@ -17,7 +20,6 @@ const RadioCard = (props) => {
                 cursor="pointer"
                 borderWidth="1px"
                 borderRadius="md"
-                _disabled={props.value.quantity == 0}
                 _checked={{ border: `2px solid ${colorMode === 'light' ? 'black' : 'white'}` }}
                 px={5} py={3}
             >

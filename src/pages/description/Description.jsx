@@ -47,7 +47,7 @@ export const Description = () => {
             setToast(toast, "Por favor selecione um tamanho", "error");
         } else {
             onOpen();
-            const payload = { ...data, size: mySize, quantity: 1 };
+            const payload = { ...data, size: mySize.name, quantity: 1 };
             dispatch(addToCartRequest(payload, toast));
         }
     };
