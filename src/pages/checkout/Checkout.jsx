@@ -70,13 +70,13 @@ export const Checkout = () => {
         if (!handleFormValidation(form)) return;
 
         //To get order id
-        const { data } = await axios.post('/api/payment/order', { amount: orderSummary.total });
+        const { data } = await axios.post('/payment/order', { amount: orderSummary.total });
 
-        //Passing order id to razorpay function
-        
+        //Passing order id to pagar.me function
+
         initPayment(form, data, orderSummary, cartProducts, token, toast, dispatch, navigate);
 
-       
+
     };
 
 

@@ -2,7 +2,7 @@ import { Box, Center, Flex, Image, Spacer, useColorMode, Badge, Icon, HStack, Te
 import { RiShoppingBagLine } from "react-icons/ri";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { nikeLogo } from "../../constants/images";
+import { apoloLogo } from "../../constants/images";
 import { setNavbarPath } from "../../redux/features/path/actions";
 import { setItemSession } from "../../utils/sessionStorage";
 import { Auth } from "../../components/auth/Auth";
@@ -37,7 +37,7 @@ export const Navbar = () => {
             <Flex h={'60px'} flexDirection={"row"} px={'20px'}  >
 
                 <Box w={'100px'} mt={'10px'}>
-                    <Link to={'/'}><Image src={nikeLogo} /></Link>
+                    <Link to={'/'}><Image src={apoloLogo} /></Link>
                 </Box>
 
                 <Spacer />
