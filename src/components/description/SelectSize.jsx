@@ -7,18 +7,18 @@ const RadioCard = (props) => {
     const input = getInputProps();
     const checkbox = getCheckboxProps();
     const { colorMode } = useColorMode();
+    const isDisabled = props.value.quantity == 0;
 
     console.log(props)
-    console.log(props.value)
 
     return (
         <Box as="label">
             <input {...input} />
             <Box
-                onClick= { props.value.quantity > 0 ? props.onClick : null}
-                bgColor={props.value.quantity == 0 ? "#f5f5f5" : null}
+                onClick= { !isDisabled ? props.onClick : null}
+                bgColor={isDisabled ? "#f5f5f5" : null}
                 {...checkbox}
-                cursor="pointer"
+                cursor={isDisabled ? "not-allowed" : "pointer"}
                 borderWidth="1px"
                 borderRadius="md"
                 _checked={{ border: `2px solid ${colorMode === 'light' ? 'black' : 'white'}` }}
@@ -38,7 +38,7 @@ export const SelectSize = ({ sizes, setMySize }) => {
     return (
         <HStack {...group}>
             {sizes.map((value) => {
-                const radio = getRadioProps({ value });
+                const radio = getRadioProps({ value: value.name });
                 return (
                     <RadioCard
                         onClick={() => {
