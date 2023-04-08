@@ -11,8 +11,7 @@ import { DarkModeBtn } from "../../components/darkmode/DarkModeBtn";
 import { Category, NavIcon, SearchBox } from "../../components/navbar/CategoryAndIcon";
 import { SideDrawer } from "../../components/navbar/SideDrawer";
 import { getCartQuantity } from "../../redux/features/cart/actions";
-import { FaTruckMoving } from 'react-icons/fa'
-
+import { TbTruckDelivery } from "react-icons/tb";
 
 export const Navbar = () => {
 
@@ -72,8 +71,11 @@ export const Navbar = () => {
                 </Box>
 
             </Flex>
-            <Badge w={'100%'} p={3} bgColor={colorMode === 'light' && '#f5f5f5'} textAlign={'center'}>
-               <Icon  mx={'12px'} as={FaTruckMoving} boxSize={4} /> Frete grátis para todo o Brasil
+            <Badge w={'100%'} p={3} bgColor={colorMode === 'light' && '#f5f5f5'} textAlign={'center'} >
+                <Flex align="center" justifyContent="center">
+                    <Icon  mx={'12px'} as={ TbTruckDelivery } boxSize={4} />
+                    <Text>Frete grátis para todo o Brasil</Text>
+                </Flex>
             </Badge>
             <Box h={['10px', '20px', '30px', '40px', '40px']} ></Box>
         </>
