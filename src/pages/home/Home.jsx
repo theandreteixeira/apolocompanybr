@@ -58,11 +58,11 @@ export const Home = () => {
             <>
            <Box align="center" my={"10px"}>
            <Image w={"80%"}
-           borderRadius={'15px'}  src="https://images2.minutemediacdn.com/image/upload/c_crop,w_4445,h_2500,x_0,y_264/c_fill,w_720,ar_16:9,f_auto,q_auto,g_auto/images/GettyImages/mmsport/90min_pt-BR_international_web/01gx40rbg6vx73b2yacb.jpg"></Image>
+           borderRadius={'15px'}  src="https://cdn.pixabay.com/photo/2017/12/17/12/45/football-3024154_1280.jpg"></Image>
             <Text fontWeight={1000}
             fontFamily={"'Roboto', sans-serif"}
-            fontSize={['28px', '33px', '48px', '53px', '53px']} mt={"10px"} textAlign={"center"}>{"lebron x Liverpool FC".toUpperCase()}</Text>
-             <Text fontSize={"16px"} textAlign={"center"}>Alcance sua própria grandeza com a nova coleção inspirada no legado que eles deixaram em suas comunidades.</Text>
+            fontSize={['25px', '30px', '45px', '50px', '50px']} mt={"10px"} textAlign={"center"}>{"lebron x Liverpool FC".toUpperCase()}</Text>
+             <Text fontSize={['14px', '15px', '16px', '16px', '16px']} textAlign={"center"}>Alcance sua própria grandeza com a nova coleção inspirada no legado que eles deixaram em suas comunidades.</Text>
             <Center><Button
             color={"white"}
                             onClick={()=> navigate('/cart')}
@@ -73,7 +73,7 @@ export const Home = () => {
                             mb={'20px'}
                             px={'40px'}
                             py={'25px'}
-                            mt={'10px'}
+                            mt={'15px'}
                             _hover={{ bg: "black", borderColor: 'black' }}
             >VER MAIS</Button></Center>
            </Box>
