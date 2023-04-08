@@ -34,6 +34,7 @@ export const getRequest = (path) => async (dispatch) => {
     try {
         dispatch(getDataLoading());
         let data = await axios.get('/obterProdutos');
+        console.log(data)
         dispatch(getDataSuccess(data.produtos));
     } catch (err) {
         console.log(err);
