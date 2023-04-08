@@ -16,7 +16,6 @@ axios.defaults.baseURL = "https://nu2j0olma7.execute-api.us-east-1.amazonaws.com
 axios.defaults.headers = {
   "Access-Control-Allow-Origin": "*", // Required for CORS support to work
   "Access-Control-Allow-Credentials": true,
-  "Access-Control-Allow-Methods": "GET",
   "Access-Control-Allow-Headers": "*",
 }
 
