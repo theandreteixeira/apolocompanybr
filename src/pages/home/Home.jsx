@@ -66,7 +66,6 @@ export const Home = () => {
             <Center><Button
             color={"white"}
                             onClick={()=> navigate('/cart')}
-                            h={"60px"}
                             bg={"black"}
                             border={`1px solid ${'#cecdce'}`}
                             borderRadius="50"
