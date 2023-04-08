@@ -57,10 +57,13 @@ export const Home = () => {
            {
             <>
            <Box my={"10px"}>
-           <Image
+           <Image w={"100%"}
            borderRadius={'15px'}  src="https://images2.minutemediacdn.com/image/upload/c_crop,w_4445,h_2500,x_0,y_264/c_fill,w_720,ar_16:9,f_auto,q_auto,g_auto/images/GettyImages/mmsport/90min_pt-BR_international_web/01gx40rbg6vx73b2yacb.jpg"></Image>
             <Text mt={"10px"} fontSize={30} fontWeigth={"bold"} textAlign={"center"}>{"lebron x Liverpool FC".toUpperCase()}</Text>
-             <Text fontSize={20} textAlign={"center"}>"Alcance sua própria grandeza com a nova coleção inspirada no legado que eles deixaram em suas comunidades."</Text>
+             <Text fontWeight={700}
+            letterSpacing={2}
+            fontFamily={"'Roboto', sans-serif"}
+            fontSize={['30px', '35px', '50px', '55px', '55px']} textAlign={"center"}>Alcance sua própria grandeza com a nova coleção inspirada no legado que eles deixaram em suas comunidades.</Text>
             <Center><Button
             color={"white"}
                             onClick={()=> navigate('/cart')}
