@@ -15,7 +15,8 @@ const RadioCard = (props) => {
         <Box as="label">
             <input {...input} />
             <Box
-                onClick={props.onClick}
+                onClick= { props.value.quantity > 0 ? props.onClick : null}
+                bgColor={props.value.quantity == 0 ? "#f5f5f5" : null}
                 {...checkbox}
                 cursor="pointer"
                 borderWidth="1px"
@@ -41,7 +42,7 @@ export const SelectSize = ({ sizes, setMySize }) => {
                 return (
                     <RadioCard
                         onClick={() => {
-                            setMySize(value);
+                            setMySize(value.name);
                         }}
                         value={value}
                         {...radio}
