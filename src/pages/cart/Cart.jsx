@@ -1,4 +1,4 @@
-import { Box, Image, Text, Center, HStack  } from "@chakra-ui/react";
+import { Box, Image, Text, Center, Flex  } from "@chakra-ui/react";
 import { BagItems } from "../../components/cart/BagItems";
 import { OrderSummary } from "../../components/cart/OrderSummary";
 import { useSelector } from "react-redux";
@@ -33,11 +33,11 @@ export const Cart = () => {
 export const EmptyCart = () => {
     return (
         <>
-        <HStack>
+       <Flex align="center" justifyContent="center">
         <Box position='relative' p={'20px'}>
                 <Text fontSize={'25'} fontWeight={'extrabold'}>SUA SACOLA ESTÁ VAZIA</Text>
                 <Text fontSize={'20px'}>Nenhum item adicionado a sacola ainda.</Text>
         </Box>
-        </HStack>
+        </Flex>
          </>);
 }
