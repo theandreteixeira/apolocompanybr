@@ -17,6 +17,7 @@ const RadioCard = (props) => {
                 cursor="pointer"
                 borderWidth="1px"
                 borderRadius="md"
+                _disabled={props.value.quantity == 0}
                 _checked={{ border: `2px solid ${colorMode === 'light' ? 'black' : 'white'}` }}
                 px={5} py={3}
             >
@@ -40,10 +41,10 @@ export const SelectSize = ({ sizes, setMySize }) => {
                         onClick={() => {
                             setMySize(value);
                         }}
-                        key={value}
+                        value={value}
                         {...radio}
                     >
-                        {value}
+                        {value.name}
                     </RadioCard>
                 );
             })}
