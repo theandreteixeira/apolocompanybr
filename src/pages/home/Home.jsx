@@ -61,7 +61,7 @@ export const Home = () => {
            borderRadius={'15px'}  src="https://cdn.pixabay.com/photo/2017/12/17/12/45/football-3024154_1280.jpg"></Image>
             <Text fontWeight={1000}
             fontFamily={"'Roboto', sans-serif"}
-            fontSize={['25px', '30px', '45px', '50px', '50px']} mt={"10px"} textAlign={"center"}>{"lebron x Liverpool FC".toUpperCase()}</Text>
+            fontSize={['20px', '25px', '40px', '45px', '45px']} mt={"10px"} textAlign={"center"}>{"lebron x Liverpool FC".toUpperCase()}</Text>
              <Text fontSize={['14px', '15px', '16px', '16px', '16px']} textAlign={"center"}>Alcance sua própria grandeza com a nova coleção inspirada no legado que eles deixaram em suas comunidades.</Text>
             <Center><Button
             color={"white"}
@@ -69,13 +69,13 @@ export const Home = () => {
                             bg={"black"}
                             border={`1px solid ${'#cecdce'}`}
                             borderRadius="50"
-                            fontSize={"16px"}
+                            fontSize={"15px"}
                             mb={'20px'}
-                            px={'40px'}
-                            py={'25px'}
+                            px={'35px'}
+                            py={'20px'}
                             mt={'15px'}
                             _hover={{ bg: "black", borderColor: 'black' }}
-            >VER MAIS</Button></Center>
+            >Ver mais</Button></Center>
            </Box>
           </>
            }
