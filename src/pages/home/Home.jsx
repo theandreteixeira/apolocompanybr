@@ -57,7 +57,8 @@ export const Home = () => {
            {
             <>
            <Box align="center" my={"10px"}>
-           <Image w={"80%"}
+           <Image m={'60px auto 60px'}
+            w={['94%', '94%', '94%', '94%', '80%']}
            borderRadius={'15px'}  src="https://cdn.pixabay.com/photo/2017/12/17/12/45/football-3024154_1280.jpg"></Image>
             <Text fontWeight={1000}
             fontFamily={"'Roboto', sans-serif"}
