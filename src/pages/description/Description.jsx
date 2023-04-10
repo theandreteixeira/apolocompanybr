@@ -124,7 +124,7 @@ export const Description = () => {
                           </ListItem>
                     </UnorderedList>
                     <Box my={"30px"}>
-                   { isSouldOut ? <Text olor='grey' fontSize={"17px"}>PRODUTO ESGOTADO</Text> : <SelectSize sizes={sizes} setMySize={setMySize} /> }
+                   { isSouldOut ? <Text color='grey' fontSize={"20px"}>PRODUTO ESGOTADO</Text> : <SelectSize sizes={sizes} setMySize={setMySize} /> }
                     </Box>
                     {!isSouldOut &&
                     <NewButton
