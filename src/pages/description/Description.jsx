@@ -25,6 +25,7 @@ import {
   } from '@chakra-ui/react'
   import React from "react";
 import { BagItems } from "../../components/cart/BagItems";
+import { ItemBoxToDescription } from "../../components/cart/ItemBox";
 
 
 export const Description = () => {
@@ -150,10 +151,15 @@ export const Description = () => {
             <DrawerHeader bgColor={"black"} color={"white"} fontSize={"15px"}>Produto adicionado ao carrinho</DrawerHeader>
 
             <DrawerBody>
-
+            <ItemBoxToDescription  {...data} size={mySize}/>
             </DrawerBody>
 
             <DrawerFooter>
+              <Box w={"100%"}>
+                <Flex my={"10px"}  justifyContent="center">
+                  <Text fontSize={"25px"} color={"grey"}>Subtotal:</Text>
+                  <Text fontSize={"25px"} fontWeight={600} >R$149,99</Text>
+                </Flex>
                 <Button
                   color={"white"}
                   width={"100%"}
@@ -164,9 +170,25 @@ export const Description = () => {
                   borderRadius="0"
                   w={"100%"}
                   fontSize={"17px"}
-                  mb={'20px'}
+                  mb={'10px'}
                   _hover={{ bg: "black", borderColor: 'black' }}
                 >FINALIZAR COMPRA</Button>
+                <Button
+                  width={"100%"}
+                  onClick={onClose}
+                  h={"60px"}
+                  border={`1px solid ${'#cecdce'}`}
+                  borderRadius="0"
+                  w={"100%"}
+                  fontSize={"17px"}
+                  mb={'20px'}
+
+                  bgColor={"white"}
+                  color={"black"}
+                  hoverBorder={"black"}
+                  borderColor={'#cecdce'}
+                >CONTINUAR COMPRANDO</Button>
+              </Box>
             </DrawerFooter>
           </DrawerContent>
         </Drawer>

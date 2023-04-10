@@ -1,6 +1,6 @@
 const checkDuplicate = (arr, target) => {
     for (let item of arr) {
-        if (item._id === target._id || item.name === target.name) {
+        if (item.id === target.id || item.name === target.name) {
             return true;
         }
     }
@@ -18,7 +18,7 @@ export const handleCartDuplicate = (arr, target, operation) => {
 
     } else {
         arr = arr.map((item) => {
-            if (item._id === target._id || item.name === target.name) {
+            if (item.id === target.id || item.name === target.name) {
                 const singlePrice = item.price / item.quantity;
                 return {
                     ...item,

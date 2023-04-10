@@ -59,7 +59,6 @@ export const addToCartRequest = (data, toast, operation = 'add') => (dispatch) =
 
 export const getCartQuantity = () => {
     let cartData = getItem('cartProducts') || [];
-    console.log(cartData)
     return cartData.length;
 }
 

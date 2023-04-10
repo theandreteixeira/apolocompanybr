@@ -5,7 +5,7 @@ import { numberWithCommas } from "../../utils/extraFunctions";
 export const OrderSummaryDataSection = ({ subTotal, discount, quantity, total, shipping }) => {
     return (
         <>
-            <Text fontSize={'20px'} fontWeight={600}>Summary</Text>
+            <Text fontSize={'20px'} fontWeight={600}>Resumo</Text>
 
             <Box my={'20px'} fontSize={'18px'}>
                 <Flex justifyContent={'space-between'}>

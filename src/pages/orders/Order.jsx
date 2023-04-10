@@ -78,7 +78,7 @@ export const Order = () => {
 
                             return <OrderSection date={date} time={time}>
 
-                                <Box key={item._id}>
+                                <Box key={item.id}>
 
                                     <Grid
                                         templateColumns={['100%', '100%', '48% 48%', '32% 31% 33%', '31% 30% 31%']}
@@ -88,7 +88,7 @@ export const Order = () => {
                                             <Text fontSize={'20px'} fontWeight={600}>Itens pedidos</Text>
                                             <Divider mb={'20px'} />
                                             {item.cartProducts.map((product) => (
-                                                <OrderBox key={product._id} {...product} />
+                                                <OrderBox key={product.id} {...product} />
                                             ))}
                                         </Box>
 
