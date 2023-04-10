@@ -189,11 +189,11 @@ export const Description = () => {
           borderRadius="1px"
         />
         <TabPanels>
-          <TabPanel color={'grey'}>
+          <TabPanel >
             {description}
           </TabPanel>
           <TabPanel>
-            <p>two!</p>
+            <Text color={'grey'}>Nenhuma avaliação para esse produto.</Text>
           </TabPanel>
           <TabPanel>
             <p>three!</p>
