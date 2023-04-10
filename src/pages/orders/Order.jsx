@@ -23,9 +23,9 @@ export const Order = () => {
         try {
             setIsLoading(true);
             // let { data } = await axios.get('/orders', { headers: { 'Authorization': `Bearer ${token}` } });
-            const mock = {
+            const mock = [{
                 img: ['https://imgnike-a.akamaihd.net/1920x1920/025214ID.jpg'], title:'Camisa Barcelona', price:123, quantity:12
-            };
+            }];
             setData(mock);
             setIsLoading(false);
         } catch (error) {
