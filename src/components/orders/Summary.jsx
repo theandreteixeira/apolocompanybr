@@ -13,7 +13,7 @@ export const Summary = ({ subTotal, discount, quantity, total, shipping, created
             <Box py={'15px'} px={'25px'}>
 
                 <Text fontSize={'20px'} fontWeight={600}>Summary</Text>
-                
+
                 <Divider />
 
                 <Flex flexDirection={'column'} gap={'5px'} my={'20px'} fontSize={'18px'}>
@@ -30,22 +30,22 @@ export const Summary = ({ subTotal, discount, quantity, total, shipping, created
 
                     <Divider my={'10px'} />
 
-                    <OrderPageText name={'Subtotal'} value={`₹${numberWithCommas(subTotal)}.00`} />
+                    <OrderPageText name={'Subtotal'} value={`R$ ${numberWithCommas(subTotal)}`} />
 
                     <OrderPageText name={'Quantity'} value={quantity} />
 
                     <Flex justifyContent={'space-between'}>
-                        <Text >Estimated Delivery</Text>
-                        <Text title={'Free delivery applies to orders of ₹14,000 or more'} cursor={'pointer'}>
-                            ₹{numberWithCommas(shipping)}.00
+                        <Text >Entrega</Text>
+                        <Text title={'Todos os pedidos incluem frete grátis para todo o Brasil.'} cursor={'pointer'}>
+                            R${numberWithCommas(shipping)}
                         </Text>
                     </Flex>
 
-                    <OrderPageText name={'Discount'} value={`₹${numberWithCommas(discount)}.00`} />
+                    <OrderPageText name={'Discount'} value={`R$${numberWithCommas(discount)}`} />
 
                     <Divider my={'10px'} />
 
-                    <OrderPageText name={'Total'} value={`₹${numberWithCommas(total)}.00`} />
+                    <OrderPageText name={'Total'} value={`R$${numberWithCommas(total)}`} />
 
                 </Flex>
             </Box>
