@@ -11,8 +11,8 @@ export const OrderBox = ({ img, title, price, quantity }) => {
             <Center>
                 <Box px={'20px'} w={'100%'} >
                     <Text fontWeight={600}>{shortString(title)}</Text>
-                    <Text>Price: ₹ {numberWithCommas(price)}</Text>
-                    <Text>Quantity: {quantity}</Text>
+                    <Text>Preço: R$ {numberWithCommas(price)}</Text>
+                    <Text>Quantidade: {quantity}</Text>
                 </Box>
             </Center>
         </Grid>

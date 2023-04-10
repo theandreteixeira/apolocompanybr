@@ -22,9 +22,11 @@ export const Order = () => {
     const handleOrdersGetRequest = async (token) => {
         try {
             setIsLoading(true);
-            let { data } = await axios.get('/order', { headers: { 'Authorization': `Bearer ${token}` } });
-            data = data.reverse();
-            setData(data);
+            // let { data } = await axios.get('/orders', { headers: { 'Authorization': `Bearer ${token}` } });
+            const mock = {
+                img: ['https://imgnike-a.akamaihd.net/1920x1920/025214ID.jpg'], title:'Camisa Barcelona', price:123, quantity:12
+            };
+            setData(mock);
             setIsLoading(false);
         } catch (error) {
             console.log(error);
@@ -42,7 +44,7 @@ export const Order = () => {
         return (
             <Box >
                 <Center h={'40vh'}>
-                    <Text fontSize={'20px'}>Your orders will be displayed here.</Text>
+                    <Text fontSize={'20px'}>Os seus pedidos serão exibidos aqui.</Text>
                 </Center>
             </Box>
         );
@@ -59,7 +61,7 @@ export const Order = () => {
 
                 <Flex justify={'space-between'} maxW={1200} m={'20px auto'}>
                     <Center>
-                        <Text fontWeight={600} fontSize={['20px', '25px']}>Orders &nbsp;</Text>
+                        <Text fontWeight={600} fontSize={['20px', '25px']}>Pedidos &nbsp;</Text>
                         <Text fontSize={['16px', '20px']}> ({data.length})</Text>
                     </Center>
                 </Flex>
@@ -83,7 +85,7 @@ export const Order = () => {
                                         gap={['20px', '20px', '4%', '2%', '4%']}
                                     >
                                         <Box py={'15px'} px={'25px'}>
-                                            <Text fontSize={'20px'} fontWeight={600}>Ordered Items</Text>
+                                            <Text fontSize={'20px'} fontWeight={600}>Itens pedidos</Text>
                                             <Divider mb={'20px'} />
                                             {item.cartProducts.map((product) => (
                                                 <OrderBox key={product._id} {...product} />

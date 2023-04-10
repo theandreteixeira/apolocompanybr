@@ -43,14 +43,14 @@ export const Description = () => {
     const btnRef = React.useRef()
 
     const verifyIsSouldOut = (sizes) => {
-      let isSouldOut = true;
+      var isSold = true;
       for (let i = 0; i < sizes.length; i++) {
         if(sizes[i].quantity > 0) {
-          isSouldOut = false;
+          isSold = false;
           break;
         }
       }
-      return isSouldOut;
+      return isSold;
     }
 
 
