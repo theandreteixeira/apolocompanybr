@@ -28,6 +28,17 @@ import { BagItems } from "../../components/cart/BagItems";
 
 
 export const Description = () => {
+  const verifyIsSouldOut = (sizes) => {
+    var isSold = true;
+    console.log(sizes);
+    for (let i = 0; i < sizes.length; i++) {
+      if(sizes[i].quantity > 0) {
+        isSold = false;
+        break;
+      }
+    }
+    return isSold;
+  }
 
     const data = getItemSession("singleProduct");
     const { name, gender, description, category, price, sizes, color, rating, photos } = data;
@@ -41,18 +52,6 @@ export const Description = () => {
     // drawer para carinho
     const { isOpen, onOpen, onClose } = useDisclosure()
     const btnRef = React.useRef()
-
-    const verifyIsSouldOut = (sizes) => {
-      var isSold = true;
-      console.log(sizes);
-      for (let i = 0; i < sizes.length; i++) {
-        if(sizes[i].quantity > 0) {
-          isSold = false;
-          break;
-        }
-      }
-      return isSold;
-    }
 
 
     const handleAddToCart = async () => {
