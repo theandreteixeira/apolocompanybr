@@ -36,10 +36,22 @@ export const Description = () => {
     const toast = useToast();
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const isSouldOut = verifyIsSouldOut(sizes);
 
     // drawer para carinho
     const { isOpen, onOpen, onClose } = useDisclosure()
     const btnRef = React.useRef()
+
+    const verifyIsSouldOut = (sizes) => {
+      let isSouldOut = true;
+      for (let i = 0; i < sizes.length; i++) {
+        if(sizes[i].quantity > 0) {
+          isSouldOut = false;
+          break;
+        }
+      }
+      return isSouldOut;
+    }
 
 
     const handleAddToCart = async () => {
@@ -112,16 +124,18 @@ export const Description = () => {
                           </ListItem>
                     </UnorderedList>
                     <Box my={"30px"}>
-                        <SelectSize sizes={sizes} setMySize={setMySize} />
+                   { isSouldOut ? <Text>PRODUTO ESGOTADO</Text> : <SelectSize sizes={sizes} setMySize={setMySize} /> }
                     </Box>
+                    {!isSouldOut &&
                     <NewButton
-                        click={handleAddToCart}
-                        name={"Adicionar a sacola"}
-                        bgColor={"black"}
-                        color={"white"}
-                        hoverBg={'#1e1e1e'}
-                        borderColor={'transparent'}
+                    click={handleAddToCart}
+                    name={"Adicionar a sacola"}
+                    bgColor={"black"}
+                    color={"white"}
+                    hoverBg={'#1e1e1e'}
+                    borderColor={'transparent'}
                     />
+                  }
                 </Box>
             </Grid>
             <Drawer
