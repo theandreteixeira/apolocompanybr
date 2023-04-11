@@ -22,9 +22,18 @@ export const Order = () => {
     const handleOrdersGetRequest = async (token) => {
         try {
             setIsLoading(true);
-            // let { data } = await axios.get('/orders', { headers: { 'Authorization': `Bearer ${token}` } });
+            // let { data } = await axios.get('/obterPedidos'});
+            await new Promise((res, rej)=>{res("")}, 3000)
             const mock = [{
-                img: ['https://imgnike-a.akamaihd.net/1920x1920/025214ID.jpg'], title:'Camisa Barcelona', price:123, quantity:12
+                cartProducts: [
+                    {
+                        img:["https://imgnike-a.akamaihd.net/1920x1920/025214ID.jpg"], title: "Camisa Barcelona", price: 125, quantity:1
+                    },
+                ],
+                orderSummary: {
+                    subTotal:149.99, discount:0, quantity:2, total:159.99, shipping:0, orderId: "125"
+                },
+                createdAt: new Date().toISOString(),  img: ['https://imgnike-a.akamaihd.net/1920x1920/025214ID.jpg'], title:'Camisa Barcelona', price:123, quantity:12
             }];
             setData(mock);
             setIsLoading(false);

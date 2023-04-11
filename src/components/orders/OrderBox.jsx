@@ -1,5 +1,5 @@
 import { Box, Center, Grid, Image, Text } from "@chakra-ui/react";
-import { numberWithCommas, shortString } from '../../utils/extraFunctions';
+import { numberWithCommas } from '../../utils/extraFunctions';
 
 
 export const OrderBox = ({ img, title, price, quantity }) => {
@@ -10,8 +10,8 @@ export const OrderBox = ({ img, title, price, quantity }) => {
             </Box>
             <Center>
                 <Box px={'20px'} w={'100%'} >
-                    <Text fontWeight={600}>{shortString(title)}</Text>
-                    <Text>Preço: R$ {numberWithCommas(price)}</Text>
+                    <Text fontWeight={600}>{title}</Text>
+                    <Text>Preço: R${numberWithCommas(price)}</Text>
                     <Text>Quantidade: {quantity}</Text>
                 </Box>
             </Center>

@@ -16,8 +16,8 @@ const awsmobile = {
             "profile",
             "aws.cognito.signin.user.admin"
         ],
-        "redirectSignIn": "https://www.apolocompanybr.com/login/",
-        "redirectSignOut": "https://www.apolocompanybr.com/logout/",
+        "redirectSignIn": "https://www.apolocompanybr.com/login/,http://localhost:3000/login/",
+        "redirectSignOut": "https://www.apolocompanybr.com/logout/,http://localhost:3000/logout/",
         "responseType": "code"
     },
     "federationTarget": "COGNITO_USER_POOLS",

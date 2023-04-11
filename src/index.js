@@ -8,8 +8,28 @@ import { store } from './redux/store/store';
 import { theme } from './theme';
 import axios from 'axios';
 import { Amplify, Auth } from 'aws-amplify';
-import awsExports from './aws-exports';
-Amplify.configure(awsExports);
+import awsConfig from './aws-exports';
+
+const isLocalhost = Boolean(window.location.hostname === "localhost");
+console.log("islocalhost" + isLocalhost)
+const [
+  productionRedirectSignIn,
+  localRedirectSignIn,
+] = awsConfig.oauth.redirectSignIn.split(",");
+const [
+  productionRedirectSignOut,
+  localRedirectSignOut,
+] = awsConfig.oauth.redirectSignOut.split(",");
+const updatedAwsConfig = {
+  ...awsConfig,
+  oauth: {
+    ...awsConfig.oauth,
+    redirectSignIn: isLocalhost ? localRedirectSignIn : productionRedirectSignIn,
+    redirectSignOut: isLocalhost ? localRedirectSignOut : productionRedirectSignOut,
+  }
+}
+
+Amplify.configure(updatedAwsConfig);
 
 
 axios.defaults.baseURL = "https://nu2j0olma7.execute-api.us-east-1.amazonaws.com/default/";

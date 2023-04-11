@@ -4,7 +4,7 @@ import { numberWithCommas } from "../../utils/extraFunctions";
 import { OrderPageText } from "./OrderPageText";
 
 
-export const Summary = ({ subTotal, discount, quantity, total, shipping, createdAt, orderId, razorpayPaymentId }) => {
+export const Summary = ({ subTotal, discount, quantity, total, shipping, createdAt, orderId }) => {
 
     const { date, time } = dateFormator(createdAt);
 
@@ -12,36 +12,32 @@ export const Summary = ({ subTotal, discount, quantity, total, shipping, created
         <>
             <Box py={'15px'} px={'25px'}>
 
-                <Text fontSize={'20px'} fontWeight={600}>Summary</Text>
+                <Text fontSize={'20px'} fontWeight={600}>Resumo</Text>
 
                 <Divider />
 
                 <Flex flexDirection={'column'} gap={'5px'} my={'20px'} fontSize={'18px'}>
 
-                    <OrderPageText name={'Order Date'} value={date} />
-
-                    <OrderPageText name={'Order Time'} value={time} />
+                    <OrderPageText name={'Data do pedido'} value={date} />
 
                     <Divider my={'10px'} />
 
-                    <OrderPageText name={'Order ID'} value={orderId} />
-
-                    <OrderPageText name={'Payment ID'} value={razorpayPaymentId} />
+                    <OrderPageText name={'ID do pedido'} value={orderId} />
 
                     <Divider my={'10px'} />
 
                     <OrderPageText name={'Subtotal'} value={`R$ ${numberWithCommas(subTotal)}`} />
 
-                    <OrderPageText name={'Quantity'} value={quantity} />
+                    <OrderPageText name={'Quantidade'} value={quantity} />
 
                     <Flex justifyContent={'space-between'}>
-                        <Text >Entrega</Text>
+                        <Text fontWeight={"bold"}>Entrega</Text>
                         <Text title={'Todos os pedidos incluem frete grátis para todo o Brasil.'} cursor={'pointer'}>
                             R${numberWithCommas(shipping)}
                         </Text>
                     </Flex>
 
-                    <OrderPageText name={'Discount'} value={`R$${numberWithCommas(discount)}`} />
+                    <OrderPageText name={'Desconto'} value={`R$${numberWithCommas(discount)}`} />
 
                     <Divider my={'10px'} />
 

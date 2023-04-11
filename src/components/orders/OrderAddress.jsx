@@ -6,31 +6,31 @@ export const OrderAddress = ({ firstName, lastName, email, mobile, addressLine1,
     return (
         <Box py={'15px'} px={'25px'}>
 
-            <Text fontSize={'20px'} fontWeight={600}>Shipping Address</Text>
+            <Text fontSize={'20px'} fontWeight={600}>Entrega</Text>
 
             <Divider mb={'20px'} />
 
             <Flex flexDirection={'column'} gap={'5px'} my={'20px'} fontSize={'18px'}>
 
-                <OrderPageText name={'Full Name'} value={`${firstName} ${lastName}`} />
+                <OrderPageText name={'Nome completo'} value={`${firstName} ${lastName}`} />
 
-                <OrderPageText name={'Mobile'} value={`+91 ${mobile}`} />
+                <OrderPageText name={'Telefone'} value={`+55 ${mobile}`} />
 
                 <OrderPageText name={'Email'} value={email} />
 
                 <Divider my={'10px'} />
 
-                <OrderPageText name={'Address'} value={addressLine1} />
+                <OrderPageText name={'Endereço'} value={addressLine1} />
 
                 {addressLine2 && <OrderPageText name={'Address(2)'} value={addressLine2} />}
 
-                <OrderPageText name={'City'} value={locality} />
+                <OrderPageText name={'Cidade'} value={locality} />
 
-                <OrderPageText name={'State'} value={state} />
+                <OrderPageText name={'Estado'} value={state} />
 
-                <OrderPageText name={'Pincode'} value={pinCode} />
+                <OrderPageText name={'CEP'} value={pinCode} />
 
-                <OrderPageText name={'Country'} value={country} />
+                <OrderPageText name={'País'} value={country} />
 
                 <Divider my={'10px'} />
 

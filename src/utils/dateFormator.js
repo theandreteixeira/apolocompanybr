@@ -4,7 +4,7 @@ export const dateFormator = (dt) => {
 
     const time = rawDate.toLocaleTimeString();
 
-    const dateFormatter = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+    const dateFormatter = new Intl.DateTimeFormat('pt-BR', { year: 'numeric', month: 'long', day: 'numeric' });
 
     const date = dateFormatter.format(rawDate);
 
