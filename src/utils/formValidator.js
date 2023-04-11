@@ -63,7 +63,7 @@ export const isCheckoutFormEmpty = (obj) => {
 
     if (!firstName || !lastName || !addressLine1 || !locality || !pinCode || !state || !country || !email || !mobile) {
 
-        return { status: false, message: 'Please fill the mandatory details' };
+        return { status: false, message: 'Preencha os campos obrigatórios!' };
     }
     return { status: true };
 };
@@ -71,8 +71,8 @@ export const isCheckoutFormEmpty = (obj) => {
 
 export const validatePinCode = (num) => {
 
-    if (num.length !== 6) {
-        return { status: false, message: 'Please provide 6 digit valid pincode' };
+    if (num.length < 1) {
+        return { status: false, message: 'CEP inválido!' };
     }
     return { status: true };
 };
@@ -80,8 +80,8 @@ export const validatePinCode = (num) => {
 
 export const validateMobile = (num) => {
 
-    if (num.length !== 10) {
-        return { status: false, message: 'Please provide 10 digit valid mobile number' };
+    if (num.length < 1) {
+        return { status: false, message: 'Número de telefone inválido!' };
     }
     return { status: true };
 };

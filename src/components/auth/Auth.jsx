@@ -19,7 +19,7 @@ export const Auth = () => {
 
     return (
         <>
-            <Button onClick={onOpen} bg={'transparent'} size={'sm'}>Sign up</Button>
+            <Button onClick={onOpen} bg={'transparent'} size={'sm'}>Cadastrar</Button>
 
             <Modal isOpen={isOpen} onClose={onClose} >
                 <ModalOverlay />

@@ -20,13 +20,13 @@ export const sendOrderRequest = async (shippingDetails, orderId, response, order
     try {
         await axios.post('/order', payload, { headers: { 'Authorization': `Bearer ${token}` } });
 
-        setToast(toast, 'Order placed successfully', 'success');
+        setToast(toast, 'Pedido realizado com sucesso', 'success');
 
         //Empty the cart
         removeItem('cartProducts');
         removeItem('orderSummary');
         dispatch(updateCartDetails());
-        navigate('/');
+        navigate('/orders');
 
     } catch (err) {
         console.log(err);

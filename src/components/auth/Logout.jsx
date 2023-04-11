@@ -24,24 +24,24 @@ export const Logout = () => {
     return (
         <>
             <Menu>
-                <MenuButton as={Button} size='sm' bg={'transparent'} rightIcon={<BsFillCaretDownFill />}>{user}</MenuButton>
+                <MenuButton as={Button} size='sm' bg={'transparent'} rightIcon={<BsFillCaretDownFill />}>{"André"}</MenuButton>
                 <MenuList zIndex={2}>
                     <Flex flexDirection={'column'} gap={'5px'} fontSize={'17px'}>
-                        <MenuItem onClick={() => { navigate('/favourite') }} icon={<FaRegHeart />} >
+                        {/* <MenuItem onClick={() => { navigate('/favourite') }} icon={<FaRegHeart />} >
                             Wishlist
-                        </MenuItem>
+                        </MenuItem> */}
                         <MenuItem onClick={() => { navigate('/orders') }} icon={<RiLuggageCartLine />} >
-                            Orders
+                            Pedidos
                         </MenuItem>
 
                         <Coupon />
 
                         <MenuItem onClick={() => { navigate('/cart') }} icon={<BsCart2 />} >
-                            Cart
+                            Carrinho
                         </MenuItem>
                         <Divider />
-                        <MenuItem onClick={handleLogoutBtn} icon={<FiLogOut />}>
-                            Logout
+                        <MenuItem onClick={handleLogoutBtn} icon={<FiLogOut />} color={"red"}>
+                            Sair
                         </MenuItem>
                     </Flex>
                 </MenuList>

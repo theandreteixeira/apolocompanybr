@@ -26,8 +26,8 @@ export const Router = () => {
                 <Route path="/auth" element={<Public><AuthPage /></Public>} />
                 <Route path="/favourite" element={<Public><Favourite /></Public>} />
                 <Route path="/cart" element={<Cart />} />
-                <Route path="/checkout" element={<Public><Checkout /></Public>} />
-                <Route path="/orders" element={<Public><Order /></Public>} />
+                <Route path="/checkout" element={<Private><Checkout /></Private>} />
+                <Route path="/orders" element={<Private><Order /></Private>} />
             </Routes>
 
             <Footer />

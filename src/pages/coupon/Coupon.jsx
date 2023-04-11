@@ -9,13 +9,13 @@ export const Coupon = () => {
     return (
         <>
             <MenuItem onClick={onOpen} icon={<RiCoupon3Line />} >
-                Coupons
+                Cupons
             </MenuItem>
 
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
                 <ModalContent>
-                    <ModalHeader>Coupon Codes</ModalHeader>
+                    <ModalHeader>Cupons disponíveis</ModalHeader>
                     <ModalCloseButton />
                     <ModalBody>
                         <TableContainer>
@@ -23,7 +23,7 @@ export const Coupon = () => {
                                 <Thead>
                                     <Tr>
                                         <Th>Coupon</Th>
-                                        <Th textAlign={'end'}>Discount Value</Th>
+                                        <Th textAlign={'end'}>Desconto</Th>
                                     </Tr>
                                 </Thead>
                                 <Tbody>
@@ -44,7 +44,7 @@ export const Coupon = () => {
                             _hover={{ bg: '#1e1e1e' }}
                             onClick={onClose}
                         >
-                            Close
+                            Fechar
                         </Button>
                     </ModalFooter>
                 </ModalContent>
