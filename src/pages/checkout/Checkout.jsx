@@ -82,13 +82,15 @@ export const Checkout = () => {
     return true
   }
 
-  async function createOrder({ orderId, status }) {
+  async function createOrder({ data }) {
     try {
-      const response = await axios.post('/criarPedido', {
+      await axios.post('/criarPedido', {
         userId: user.id,
         products: cartProducts,
-        status,
-        orderSummary: { ...orderSummary, orderId },
+        status: data.status,
+        qrCode: data.charges[0].last_transaction.qr_code,
+        qrCodeUrl: data.charges[0].last_transaction.qr_code_url,
+        orderSummary: { ...orderSummary, orderId: data.id },
         shippingDetails: {
           addressLine1: form.addressLine1,
           addressLine2: form.addressLine2,
@@ -105,10 +107,12 @@ export const Checkout = () => {
       setIsLoading(false)
       navigate('/orderMade', {
         state: {
-          id: '2'
+          data
         }
       })
     } catch (error) {
+      setIsLoading(false)
+      setToast(toast, 'Não foi possível realizar o pagamento', 'error', 3500)
       console.log(error)
     }
   }
@@ -163,12 +167,12 @@ export const Checkout = () => {
       } else {
         console.log(response.data)
         createOrder({
-          orderId: response.data.id,
-          status: response.data.status
+          data: response.data
         })
       }
     } catch (error) {
       setIsLoading(false)
+      setToast(toast, 'Não foi possível realizar o pagamento', 'error', 3500)
       console.log('erro ao pagar: ' + error.data)
     }
   }
@@ -208,7 +212,7 @@ export const Checkout = () => {
           //     )
           //   })
           // ) :
-          <CheckoutForm onChange={handleInputChange} />
+          <CheckoutForm onChange={handleInputChange} isLoading={isLoading} />
         }
 
         <CheckoutOrderSummary

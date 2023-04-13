@@ -1,10 +1,10 @@
-import { Box, Flex, Input, Text } from '@chakra-ui/react'
+import { Box, Flex, FormControl, Input, Text } from '@chakra-ui/react'
 import MaskedInput from 'react-text-mask'
 import createAutoCorrectDataPipe from 'text-mask-addons/dist/createAutoCorrectedDatePipe'
 import createNumberMask from 'text-mask-addons/dist/createNumberMask'
 import React, { useState } from 'react'
 
-export const CheckoutForm = ({ onChange }) => {
+export const CheckoutForm = ({ onChange, isLoading }) => {
   const [cpf, setCpf] = useState('')
   const [phoneNumber, setPhoneNumber] = useState('')
   const cpfMask = [
@@ -64,63 +64,65 @@ export const CheckoutForm = ({ onChange }) => {
         </Text>
 
         <Flex flexDirection={'column'} gap={'20px'}>
-          <Input
-            onChange={onChange}
-            type={'text'}
-            name={'addressLine1'}
-            placeholder={'Endereço*'}
-          />
-          <Input
-            onChange={onChange}
-            type={'text'}
-            name={'addressLine2'}
-            placeholder={'Número'}
-          />
-          <Flex gap={'20px'}>
+          <FormControl isDisabled={isLoading}>
             <Input
               onChange={onChange}
               type={'text'}
-              name={'city'}
-              placeholder={'Cidade*'}
+              name={'addressLine1'}
+              placeholder={'Endereço*'}
             />
             <Input
               onChange={onChange}
               type={'text'}
-              name={'pinCode'}
-              placeholder={'CEP*'}
+              name={'addressLine2'}
+              placeholder={'Número'}
             />
-          </Flex>
-          <Flex gap={'20px'}>
-            <Input
-              onChange={onChange}
-              type={'text'}
-              name={'state'}
-              placeholder={'Estado*'}
+            <Flex gap={'20px'}>
+              <Input
+                onChange={onChange}
+                type={'text'}
+                name={'city'}
+                placeholder={'Cidade*'}
+              />
+              <Input
+                onChange={onChange}
+                type={'text'}
+                name={'pinCode'}
+                placeholder={'CEP*'}
+              />
+            </Flex>
+            <Flex gap={'20px'}>
+              <Input
+                onChange={onChange}
+                type={'text'}
+                name={'state'}
+                placeholder={'Estado*'}
+              />
+              <Input
+                onChange={onChange}
+                type={'text'}
+                name={'country'}
+                placeholder={'País*'}
+              />
+            </Flex>
+            <Text fontSize={'20px'} fontWeight={600} mb={'20px'}>
+              Preencha com os seus dados:
+            </Text>
+            <MaskedInput
+              onChange={handleChange}
+              name={'cpf'}
+              mask={cpfMask}
+              placeholder={'CPF*'}
+              value={cpf}
             />
-            <Input
-              onChange={onChange}
-              type={'text'}
-              name={'country'}
-              placeholder={'País*'}
+            <MaskedInput
+              onChange={handleChangePhoneNumber}
+              name={'phoneNumber'}
+              mask={phoneNumberMask}
+              placeholder={'Telefone*'}
+              value={phoneNumber}
             />
-          </Flex>
-          <Text fontSize={'20px'} fontWeight={600} mb={'20px'}>
-            Preencha com os seus dados:
-          </Text>
-          <MaskedInput
-            onChange={handleChange}
-            name={'cpf'}
-            mask={cpfMask}
-            placeholder={'CPF*'}
-            value={cpf}
-          />
-          <MaskedInput
-            onChange={handleChangePhoneNumber}
-            name={'phoneNumber'}
-            mask={phoneNumberMask}
-            placeholder={'Telefone*'}
-            value={phoneNumber}
-          />
+          </FormControl>
         </Flex>
       </Box>
     </>

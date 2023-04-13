@@ -51,10 +51,6 @@ export const addToCartRequest = (data, toast, operation = 'add') => (dispatch) =
     const orderSummary = getCartTotal(cartData, discountPercent);
     setItem('orderSummary', orderSummary);
     dispatch(addToCartSuccess({ cartData, orderSummary }));
-
-    if (operation === 'reduce') {
-        setToast(toast, 'Item quantity reduced', 'success');
-    }
 };
 
 export const getCartQuantity = () => {
