@@ -59,9 +59,9 @@ export const validatePassword = (password) => {
 
 export const isCheckoutFormEmpty = (obj) => {
 
-    const { firstName, lastName, addressLine1, locality, pinCode, state, country, email, mobile } = obj;
+    const { addressLine1, addressLine2, city, pinCode, state, country, cpf, phoneNumber } = obj;
 
-    if (!firstName || !lastName || !addressLine1 || !locality || !pinCode || !state || !country || !email || !mobile) {
+    if (!addressLine1 || !addressLine2 || !city || !pinCode || !state || !cpf || !country || !phoneNumber) {
 
         return { status: false, message: 'Preencha os campos obrigatórios!' };
     }
@@ -71,16 +71,16 @@ export const isCheckoutFormEmpty = (obj) => {
 
 export const validatePinCode = (num) => {
 
-    if (num.length < 1) {
-        return { status: false, message: 'CEP inválido!' };
+    if (num.length < 8) {
+        return { status: false, message: 'CEP precisa ser 8 dígitos!' };
     }
     return { status: true };
 };
 
 
-export const validateMobile = (num) => {
+export const validatephoneNumber = (num) => {
 
-    if (num.length < 1) {
+    if (num.length < 8) {
         return { status: false, message: 'Número de telefone inválido!' };
     }
     return { status: true };

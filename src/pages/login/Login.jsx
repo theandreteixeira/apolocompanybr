@@ -22,9 +22,9 @@ export const Login = () => {
   const handleOrdersGetRequest = async () => {
     try {
       setIsLoading(true)
-      console.log('PARAMSSSSS' + searchParams)
-      setUserData()
-      // navigate('/')
+      console.log('PARAMS' + searchParams)
+      await setUserData()
+      navigate('/')
     } catch (error) {
       console.log(error)
       setIsLoading(false)

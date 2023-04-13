@@ -11,6 +11,7 @@ import { initPayment } from '../payment/razorpay'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import { CheckoutPaymentMethod } from '../../components/checkout/CheckoutPaymentMethod'
 
 export const Checkout = () => {
   const { orderSummary, cartProducts } = useSelector(
@@ -18,6 +19,7 @@ export const Checkout = () => {
     shallowEqual
   )
   const token = useSelector(state => state.authReducer.token)
+  const user = useSelector(state => state.authReducer.user)
   const [isLoading, setIsLoading] = useState(false)
   const [data, setData] = useState([])
 
@@ -50,10 +52,13 @@ export const Checkout = () => {
   const [form, setForm] = useState({
     addressLine1: '',
     addressLine2: '',
-    locality: '',
     pinCode: '',
+    city: '',
     state: '',
-    country: ''
+    country: '',
+    cpf: '',
+    phoneNumber: '',
+    paymentMethod: 'pix'
   })
   const toast = useToast()
   const dispatch = useDispatch()
@@ -77,32 +82,105 @@ export const Checkout = () => {
     return true
   }
 
+  async function createOrder({ orderId, status }) {
+    try {
+      const response = await axios.post('/criarPedido', {
+        userId: user.id,
+        products: cartProducts,
+        status,
+        orderSummary: { ...orderSummary, orderId },
+        shippingDetails: {
+          addressLine1: form.addressLine1,
+          addressLine2: form.addressLine2,
+          city: form.city,
+          state: form.state,
+          country: form.country,
+          email: user.email,
+          firstName: user.firstName,
+          lastName: user.lastName,
+          mobile: form.phoneNumber,
+          pinCode: form.pinCode
+        }
+      })
+      setIsLoading(false)
+      navigate('/orderMade', {
+        state: {
+          id: '2'
+        }
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   const handleFormSubmit = async e => {
     e.preventDefault()
 
     if (!handleFormValidation(form)) return
 
-    //To get order id
-    const { data } = await axios.post('/payment/order', {
-      amount: orderSummary.total
-    })
-
-    //Passing order id to pagar.me function
-    initPayment(
-      form,
-      data,
-      orderSummary,
-      cartProducts,
-      token,
-      toast,
-      dispatch,
-      navigate
-    )
+    try {
+      setIsLoading(true)
+      const response = await axios.post('/realizarPagamento', {
+        customer: {
+          name: user.name,
+          cpf: form.cpf,
+          email: user.email,
+          phoneNumber: form.phoneNumber
+        },
+        address: {
+          addressLine1: form.addressLine1,
+          addressLine2: form.addressLine2,
+          city: form.city,
+          state: form.state,
+          zipCode: form.pinCode
+        },
+        products: cartProducts.map(prod => ({
+          price: prod.price,
+          description: prod.description,
+          quantity: prod.quantity,
+          id: prod.id
+        })),
+        shipping: 0,
+        paymentMethod: form.paymentMethod,
+        payment: {
+          creditCard: {
+            card: {
+              number: '4000000000000010',
+              holder_name: 'Tony Stark',
+              exp_month: 1,
+              exp_year: 30,
+              cvv: '3531'
+            },
+            installments: 1,
+            statement_descriptor: 'AVENGERS'
+          }
+        }
+      })
+      if (response.data.status == 'failed') {
+        setIsLoading(false)
+        console.log(response.data)
+        setToast(toast, 'Não foi possível realizar o pagamento', 'error', 3500)
+      } else {
+        console.log(response.data)
+        createOrder({
+          orderId: response.data.id,
+          status: response.data.status
+        })
+      }
+    } catch (error) {
+      setIsLoading(false)
+      console.log('erro ao pagar: ' + error.data)
+    }
   }
 
   useEffect(() => {
     handleAddressGetRequest()
   }, [])
+
+  function handlePaymentMethod(method) {
+    console.log(method)
+    setForm({ ...form, paymentMethod: method })
+  }
 
   return (
     <>
@@ -115,27 +193,30 @@ export const Checkout = () => {
         gap={['40px', '40px', '40px', '10%', '10%']}
         gridTemplateColumns={['100%', '100%', '100%', '55% 35%', '60% 30%']}
       >
-        {isLoading ? (
-          <Text>Carregando enderecos</Text>
-        ) : data.length > 0 ? (
-          data.map(e => {
-            return (
-              <>
-                <Text fontWeight={'bold'}>
-                  Escolha um endereço para entrega
-                </Text>
-                <SelectAddress {...e} />
-              </>
-            )
-          })
-        ) : (
+        {
+          // isLoading ? (
+          //   <Text>Carregando enderecos</Text>
+          // ) : data.length > 0 ? (
+          //   data.map(e => {
+          //     return (
+          //       <>
+          //         <Text fontWeight={'bold'}>
+          //           Escolha um endereço para entrega
+          //         </Text>
+          //         <SelectAddress {...e} />
+          //       </>
+          //     )
+          //   })
+          // ) :
           <CheckoutForm onChange={handleInputChange} />
-        )}
+        }
 
         <CheckoutOrderSummary
           onClick={handleFormSubmit}
           orderSummary={orderSummary}
+          isLoading={isLoading}
         />
+        <CheckoutPaymentMethod handlePaymentMethod={handlePaymentMethod} />
       </Box>
     </>
   )

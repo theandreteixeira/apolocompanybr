@@ -12,6 +12,7 @@ import { Products } from '../pages/products/Products'
 import { ConfirmAccount } from '../pages/confirm-account/confirm-account'
 import { Login } from '../pages/login/Login'
 import { Logout } from '../pages/logout/Logout'
+import { OrderMade } from '../pages/order-made/OrderMade'
 import { Private } from './Private'
 import { Public } from './Public'
 
@@ -81,6 +82,14 @@ export const Router = () => {
             <Public>
               <Login />
             </Public>
+          }
+        />
+        <Route
+          path='/orderMade'
+          element={
+            <Private>
+              <OrderMade />
+            </Private>
           }
         />
       </Routes>

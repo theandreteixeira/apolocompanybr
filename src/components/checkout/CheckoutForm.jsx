@@ -1,6 +1,61 @@
 import { Box, Flex, Input, Text } from '@chakra-ui/react'
+import MaskedInput from 'react-text-mask'
+import createAutoCorrectDataPipe from 'text-mask-addons/dist/createAutoCorrectedDatePipe'
+import createNumberMask from 'text-mask-addons/dist/createNumberMask'
+import React, { useState } from 'react'
 
 export const CheckoutForm = ({ onChange }) => {
+  const [cpf, setCpf] = useState('')
+  const [phoneNumber, setPhoneNumber] = useState('')
+  const cpfMask = [
+    /\d/,
+    /\d/,
+    /\d/,
+    '.',
+    /\d/,
+    /\d/,
+    /\d/,
+    '.',
+    /\d/,
+    /\d/,
+    /\d/,
+    '-',
+    /\d/,
+    /\d/
+  ]
+  const phoneNumberMask = [
+    '(',
+    /\d/,
+    /\d/,
+    ')',
+    /\d/,
+    /\d/,
+    /\d/,
+    /\d/,
+    /\d/,
+    '-',
+    /\d/,
+    /\d/,
+    /\d/,
+    /\d/
+  ]
+  const cpfPipe = createAutoCorrectDataPipe('dd/mm/yyyy')
+  const phoneNumberPipe = createNumberMask('(dd) ddddd-dddd')
+
+  const handleChange = event => {
+    const value = event.target.value.replace(/[^\d]/g, '')
+    const maskedValue = cpfPipe(value) || ''
+    onChange({ target: { name: 'cpf', value } })
+    setCpf(maskedValue.value)
+  }
+
+  const handleChangePhoneNumber = event => {
+    const value = event.target.value.replace(/[^\d]/g, '')
+    const maskedValue = phoneNumberPipe(value) || ''
+    onChange({ target: { name: 'phoneNumber', value } })
+    setPhoneNumber(maskedValue.value)
+  }
+
   return (
     <>
       <Box>
@@ -25,7 +80,7 @@ export const CheckoutForm = ({ onChange }) => {
             <Input
               onChange={onChange}
               type={'text'}
-              name={'locality'}
+              name={'city'}
               placeholder={'Cidade*'}
             />
             <Input
@@ -49,6 +104,23 @@ export const CheckoutForm = ({ onChange }) => {
               placeholder={'País*'}
             />
           </Flex>
+          <Text fontSize={'20px'} fontWeight={600} mb={'20px'}>
+            Preencha com os seus dados:
+          </Text>
+          <MaskedInput
+            onChange={handleChange}
+            name={'cpf'}
+            mask={cpfMask}
+            placeholder={'CPF*'}
+            value={cpf}
+          />
+          <MaskedInput
+            onChange={handleChangePhoneNumber}
+            name={'phoneNumber'}
+            mask={phoneNumberMask}
+            placeholder={'Telefone*'}
+            value={phoneNumber}
+          />
         </Flex>
       </Box>
     </>
@@ -88,7 +160,7 @@ export const SelectAddress = ({
             <Text
               onChange={onChange}
               type={'text'}
-              name={'locality'}
+              name={'city'}
               placeholder={'Cidade*'}
             >
               {city}

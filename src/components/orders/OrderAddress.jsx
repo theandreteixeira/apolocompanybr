@@ -1,40 +1,52 @@
-import { Box, Divider, Flex, Text } from "@chakra-ui/react";
-import { OrderPageText } from "./OrderPageText";
+import { Box, Divider, Flex, Text } from '@chakra-ui/react'
+import { OrderPageText } from './OrderPageText'
 
+export const OrderAddress = ({
+  firstName,
+  lastName,
+  email,
+  mobile,
+  addressLine1,
+  addressLine2,
+  city,
+  state,
+  pinCode,
+  country
+}) => {
+  return (
+    <Box py={'15px'} px={'25px'}>
+      <Text fontSize={'20px'} fontWeight={600}>
+        Entrega
+      </Text>
 
-export const OrderAddress = ({ firstName, lastName, email, mobile, addressLine1, addressLine2, locality, state, pinCode, country }) => {
-    return (
-        <Box py={'15px'} px={'25px'}>
+      <Divider mb={'20px'} />
 
-            <Text fontSize={'20px'} fontWeight={600}>Entrega</Text>
+      <Flex flexDirection={'column'} gap={'5px'} my={'20px'} fontSize={'18px'}>
+        <OrderPageText
+          name={'Nome completo'}
+          value={`${firstName} ${lastName}`}
+        />
 
-            <Divider mb={'20px'} />
+        <OrderPageText name={'Telefone'} value={`+55 ${mobile}`} />
 
-            <Flex flexDirection={'column'} gap={'5px'} my={'20px'} fontSize={'18px'}>
+        <OrderPageText name={'Email'} value={email} />
 
-                <OrderPageText name={'Nome completo'} value={`${firstName} ${lastName}`} />
+        <Divider my={'10px'} />
 
-                <OrderPageText name={'Telefone'} value={`+55 ${mobile}`} />
+        <OrderPageText name={'Endereço'} value={addressLine1} />
 
-                <OrderPageText name={'Email'} value={email} />
+        {addressLine2 && <OrderPageText name={'Número'} value={addressLine2} />}
 
-                <Divider my={'10px'} />
+        <OrderPageText name={'Cidade'} value={city} />
 
-                <OrderPageText name={'Endereço'} value={addressLine1} />
+        <OrderPageText name={'Estado'} value={state} />
 
-                {addressLine2 && <OrderPageText name={'Address(2)'} value={addressLine2} />}
+        <OrderPageText name={'CEP'} value={pinCode} />
 
-                <OrderPageText name={'Cidade'} value={locality} />
+        <OrderPageText name={'País'} value={country} />
 
-                <OrderPageText name={'Estado'} value={state} />
-
-                <OrderPageText name={'CEP'} value={pinCode} />
-
-                <OrderPageText name={'País'} value={country} />
-
-                <Divider my={'10px'} />
-
-            </Flex>
-        </Box>
-    );
-};
+        <Divider my={'10px'} />
+      </Flex>
+    </Box>
+  )
+}

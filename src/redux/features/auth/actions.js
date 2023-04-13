@@ -1,12 +1,13 @@
 import axios from "axios";
 import { setToast } from "../../../utils/extraFunctions";
 import { removeItem, setItem } from "../../../utils/localstorage";
-import { GET_TOKEN, REMOVE_TOKEN, SHOW_LOGIN_PAGE, SHOW_RESET_PAGE } from "./actionTypes";
+import { GET_TOKEN, REMOVE_TOKEN, SHOW_LOGIN_PAGE, SHOW_RESET_PAGE, SHOW_HOME_PAGE } from "./actionTypes";
 import { Auth } from 'aws-amplify';
 import { CognitoHostedUIIdentityProvider } from '@aws-amplify/auth';
 
 
 export const showLoginPage = () => ({ type: SHOW_LOGIN_PAGE });
+export const showHomePage = () => ({ type: SHOW_HOME_PAGE });
 
 export const showResetPage = () => ({ type: SHOW_RESET_PAGE });
 
@@ -92,6 +93,7 @@ export const setUserData = async () => {
         });
         setItem('token', token);
         dispatch(getToken(token));
+        dispatch(showHomePage())
         console.log(data.signInUserSession.accessToken.jwtToken)
     } catch (err) {
         console.log(err);
