@@ -66,8 +66,8 @@ export const SearchBox = () => {
           borderStyle={'none'}
           variant={'filled'}
           textAlign={'left'}
-          onSubmit={(val) async => {
-            const response = axios.get('/obterProdutos', {
+          onSubmit={async val => {
+            const response = await axios.get('/obterProdutos', {
               params: {
                 search: val
               }

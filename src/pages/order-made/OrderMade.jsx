@@ -28,8 +28,9 @@ export const OrderMade = () => {
       <Center flexDirection={'column'}>
         {/* <Rive src='https://apolocompany.s3.amazonaws.com/check.riv' /> */}
         <Image
-          height={'110px'}
+          height={'90px'}
           src='https://cdn-icons-png.flaticon.com/512/5610/5610944.png'
+          mb={'15px'}
         />
         <Text textAlign={'center'} fontWeight={'extrabold'} fontSize={'30px'}>
           {'Pedido realizado com sucesso!'.toUpperCase()}
@@ -69,6 +70,16 @@ export const OrderMade = () => {
                 </Text>
               </Flex>
             </Center>
+            <Box display={'flex'} justifyContent={'start'}>
+              <Text fontWeight={'extrabold'} fontSize={'30px'}>
+                {'Detalhes do pedido'.toUpperCase()}
+              </Text>
+            </Box>
+            <Text>Subtotal: {data.orderSummary.subTotal}</Text>
+            <Text>Quantidade: {data.orderSummary.quantity}</Text>
+            <Text>Desconto: {data.orderSummary.discount}</Text>
+            <Text>Frete: {data.orderSummary.shipping}</Text>
+            <Text>Total: {data.orderSummary.total}</Text>
           </Box>
         )}
       </Center>

@@ -5,7 +5,7 @@ import { Error } from '../../components/loading/Error'
 import { Summary } from '../../components/orders/Summary'
 import { OrderBox } from '../../components/orders/OrderBox'
 import { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { OrderSection } from '../../components/orders/OrderSection'
 import { dateFormator } from '../../utils/dateFormator'
@@ -18,13 +18,13 @@ export const Login = () => {
   const [isLoading, setIsLoading] = useState(false)
   const [isError, setIsError] = useState(false)
   const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   const handleOrdersGetRequest = async () => {
     try {
       setIsLoading(true)
       console.log('PARAMS' + searchParams)
-      await setUserData()
-      navigate('/checkout')
+      dispatch(setUserData(navigate))
     } catch (error) {
       console.log(error)
       setIsLoading(false)

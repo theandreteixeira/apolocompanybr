@@ -20,6 +20,8 @@ import { dateFormator } from '../../utils/dateFormator'
 
 export const Order = () => {
   const token = useSelector(state => state.authReducer.token)
+  console.log(useSelector(state => state.authReducer))
+  const id = useSelector(state => state.authReducer.user.id)
   const [isLoading, setIsLoading] = useState(false)
   const [isError, setIsError] = useState(false)
   const [data, setData] = useState([])
@@ -27,7 +29,11 @@ export const Order = () => {
   const handleOrdersGetRequest = async token => {
     try {
       setIsLoading(true)
-      const { data } = await axios.get('/obterPedidos')
+      const { data } = await axios.get('/obterPedidos', {
+        params: {
+          id
+        }
+      })
       console.log(data.pedidos)
       setData(data.pedidos)
       setIsLoading(false)

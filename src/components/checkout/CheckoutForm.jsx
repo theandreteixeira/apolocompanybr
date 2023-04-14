@@ -69,7 +69,7 @@ export const CheckoutForm = ({ onChange, isLoading }) => {
   const handleChangeCEP = event => {
     const value = event.target.value.replace(/[^\d]/g, '')
     const maskedValue = CEPPipe(value) || ''
-    onChange({ target: { name: 'CEP', value } })
+    onChange({ target: { name: 'pinCode', value } })
     setCEP(maskedValue.value)
   }
 

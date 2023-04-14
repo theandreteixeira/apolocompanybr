@@ -58,13 +58,19 @@ export const Checkout = () => {
     country: '',
     cpf: '',
     phoneNumber: '',
-    paymentMethod: 'pix'
+    paymentMethod: 'pix',
+    cardNumber: '',
+    holderName: '',
+    expireMonth: 0,
+    expireYear: 0,
+    cvv: ''
   })
   const toast = useToast()
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
   const handleInputChange = ({ target: { name, value } }) => {
+    console.log(name, value)
     setForm({ ...form, [name]: value })
   }
 
@@ -112,6 +118,7 @@ export const Checkout = () => {
           qrCode: data.charges[0].last_transaction.qr_code,
           qrCodeUrl: data.charges[0].last_transaction.qr_code_url,
           shippingDetails,
+          orderSummary,
           total: orderSummary.total
         }
       })
@@ -154,14 +161,14 @@ export const Checkout = () => {
         payment: {
           creditCard: {
             card: {
-              number: '4000000000000010',
-              holder_name: 'Tony Stark',
-              exp_month: 1,
-              exp_year: 30,
-              cvv: '3531'
+              number: form.cardNumber,
+              holder_name: form.holderName,
+              exp_month: form.expireMonth,
+              exp_year: form.expireYear,
+              cvv: form.cvv
             },
             installments: 1,
-            statement_descriptor: 'AVENGERS'
+            statement_descriptor: form.holderName.toUpperCase()
           }
         }
       })
@@ -219,7 +226,10 @@ export const Checkout = () => {
           // ) :
           <CheckoutForm onChange={handleInputChange} isLoading={isLoading} />
         }
-        <CheckoutPaymentMethod handlePaymentMethod={handlePaymentMethod} />
+        <CheckoutPaymentMethod
+          handlePaymentMethod={handlePaymentMethod}
+          onChange={handleInputChange}
+        />
 
         <CheckoutOrderSummary
           onClick={handleFormSubmit}

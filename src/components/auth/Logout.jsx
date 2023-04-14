@@ -21,6 +21,8 @@ export const Logout = () => {
   const dispatch = useDispatch()
   const toast = useToast()
   const navigate = useNavigate()
+  console.log('state.authReducer')
+  console.log(useSelector(state => state.authReducer))
   const user = useSelector(state => state.authReducer.user.firstName)
 
   const handleLogoutBtn = () => {

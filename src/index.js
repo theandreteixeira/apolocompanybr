@@ -11,7 +11,6 @@ import { Amplify, Auth } from 'aws-amplify';
 import awsConfig from './aws-exports';
 
 const isLocalhost = Boolean(window.location.hostname === "localhost");
-console.log("islocalhost" + isLocalhost)
 const [
   productionRedirectSignIn,
   localRedirectSignIn,
@@ -28,7 +27,7 @@ const updatedAwsConfig = {
     redirectSignOut: isLocalhost ? localRedirectSignOut : productionRedirectSignOut,
   }
 }
-
+console.log(localRedirectSignIn)
 Amplify.configure(updatedAwsConfig);
 
 

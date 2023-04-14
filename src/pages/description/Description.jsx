@@ -74,6 +74,10 @@ export const Description = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const isSouldOut = verifyIsSouldOut(sizes)
+  const cartProducts = useSelector(state => state.cartReducer.cartProducts)
+  const currentSummary = useSelector(state => state.cartReducer.orderSummary)
+  console.log('cartttttt')
+  console.log(cartProducts)
 
   // drawer para carinho
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -84,7 +88,7 @@ export const Description = () => {
       setToast(toast, 'Por favor selecione um tamanho', 'error')
     } else {
       onOpen()
-      const payload = { ...data, size: mySize.name, quantity: 1 }
+      const payload = { ...data, size: mySize.name }
       dispatch(addToCartRequest(payload, toast))
     }
   }
@@ -190,7 +194,9 @@ export const Description = () => {
           </DrawerHeader>
 
           <DrawerBody>
-            <ItemBoxToDescription {...data} size={mySize} />
+            {cartProducts.map(prod => (
+              <ItemBoxToDescription {...prod} size={mySize} />
+            ))}
           </DrawerBody>
 
           <DrawerFooter>
@@ -200,7 +206,7 @@ export const Description = () => {
                   Subtotal:
                 </Text>
                 <Text fontSize={'25px'} fontWeight={600}>
-                  R$149,99
+                  R${numberWithCommas(currentSummary.subTotal)}
                 </Text>
               </Flex>
               <Button

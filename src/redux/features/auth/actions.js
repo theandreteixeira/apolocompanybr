@@ -1,17 +1,16 @@
 import axios from "axios";
 import { setToast } from "../../../utils/extraFunctions";
 import { removeItem, setItem } from "../../../utils/localstorage";
-import { GET_TOKEN, REMOVE_TOKEN, SHOW_LOGIN_PAGE, SHOW_RESET_PAGE, SHOW_HOME_PAGE } from "./actionTypes";
+import { GET_TOKEN, REMOVE_TOKEN, SHOW_LOGIN_PAGE, SHOW_RESET_PAGE } from "./actionTypes";
 import { Auth } from 'aws-amplify';
 import { CognitoHostedUIIdentityProvider } from '@aws-amplify/auth';
 
 
 export const showLoginPage = () => ({ type: SHOW_LOGIN_PAGE });
-export const showHomePage = () => ({ type: SHOW_HOME_PAGE });
 
 export const showResetPage = () => ({ type: SHOW_RESET_PAGE });
 
-export const getToken = (payload) => ({ type: GET_TOKEN, payload });
+export const getToken = (token, user) => ({ type: GET_TOKEN, payload: { token, user } })
 
 export const removeToken = () => ({ type: REMOVE_TOKEN });
 
@@ -49,24 +48,28 @@ export const getSignupSuccess = (data, toast, navigate) => async (dispatch) => {
     }
 };
 
-export const getLoginSuccess = (data, toast, navigate) => async (dispatch) => {
+export const getLoginSuccess = (data, toast, navigate, setIsLoading) => async (dispatch) => {
     try {
+        setIsLoading(true)
         const user = await Auth.signIn(data.email, data.password);
         console.log(user)
         const token = user.signInUserSession.accessToken.jwtToken
-        setItem('user', {
+        const userData = {
+            id: user.attributes.sub,
             email: data.email,
             firstName: user.attributes.given_name,
             lastName: user.attributes.family_name,
             name: user.attributes.name,
-        });
+        }
+        setItem('user', userData);
         setItem('token', token);
-        dispatch(getToken(token));
-        console.log(user.signInUserSession.accessToken.jwtToken)
-        navigate("/");
+        dispatch(getToken(token, userData));
+        setIsLoading(false)
+        navigate("/checkout");
     } catch (err) {
         console.log(err);
-        setToast(toast, err.response.data.message, 'error');
+        setIsLoading(false)
+        setToast(toast, "erro ao fazer login", 'error');
     }
 };
 
@@ -79,13 +82,14 @@ export const getLoginByGoogleSuccess = () => async (dispatch) => {
     }
 };
 
-export const setUserData = async () => {
+export const setUserData = (navigate) => async (dispatch) => {
     try {
         console.log("passou no setuserdata")
         const data = await Auth.currentAuthenticatedUser();
         console.log(data)
         const token = data.signInUserSession.accessToken.jwtToken
         setItem('user', {
+            id: data.attributes.sub,
             email: data.attributes.email,
             firstName: data.attributes.given_name,
             lastName: data.attributes.family_name,
@@ -93,8 +97,8 @@ export const setUserData = async () => {
         });
         setItem('token', token);
         dispatch(getToken(token));
-        dispatch(showHomePage())
         console.log(data.signInUserSession.accessToken.jwtToken)
+        navigate('/checkout')
     } catch (err) {
         console.log(err);
     }

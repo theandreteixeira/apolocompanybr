@@ -1,7 +1,7 @@
 import { Box, Button, Flex, Text } from '@chakra-ui/react'
 import { PaymentMethod } from './PaymentMethod'
 
-export const CheckoutPaymentMethod = ({ handlePaymentMethod }) => {
+export const CheckoutPaymentMethod = ({ handlePaymentMethod, onChange }) => {
   return (
     <>
       <Box>
@@ -10,7 +10,10 @@ export const CheckoutPaymentMethod = ({ handlePaymentMethod }) => {
         </Text>
 
         <Flex flexDirection={'row'} gap={'20px'}>
-          <PaymentMethod handlePaymentMethod={handlePaymentMethod} />
+          <PaymentMethod
+            handlePaymentMethod={handlePaymentMethod}
+            onChange={onChange}
+          />
         </Flex>
       </Box>
     </>
