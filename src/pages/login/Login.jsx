@@ -24,7 +24,7 @@ export const Login = () => {
       setIsLoading(true)
       console.log('PARAMS' + searchParams)
       await setUserData()
-      navigate('/')
+      navigate('/checkout')
     } catch (error) {
       console.log(error)
       setIsLoading(false)

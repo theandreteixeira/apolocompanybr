@@ -76,7 +76,7 @@ export const applyCouponRequest = (discountPercent, toast) => (dispatch) => {
     const orderSummary = getCartTotal(cartData, discountPercent);
     setItem('orderSummary', orderSummary);
     dispatch(applyCouponSuccess(orderSummary));
-    setToast(toast, 'Coupon Applied Successfully', 'success', 2000, `You got ${discountPercent}% discount`);
+    setToast(toast, 'Cupom adicionado com sucesso!', 'success', 2000, `Você ganhou ${discountPercent}% de desconto`);
 };
 
 export const removeCouponRequest = (toast) => (dispatch) => {
@@ -85,5 +85,5 @@ export const removeCouponRequest = (toast) => (dispatch) => {
     const orderSummary = getCartTotal(cartData, 0);
     setItem('orderSummary', orderSummary);
     dispatch(removeCouponSuccess(orderSummary));
-    setToast(toast, 'Coupon Removed Successfully', 'success');
+    setToast(toast, 'Cupom removido com sucesso', 'success');
 };

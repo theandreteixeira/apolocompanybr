@@ -84,30 +84,35 @@ export const Checkout = () => {
 
   async function createOrder({ data }) {
     try {
-      await axios.post('/criarPedido', {
+      const shippingDetails = {
+        addressLine1: form.addressLine1,
+        addressLine2: form.addressLine2,
+        city: form.city,
+        state: form.state,
+        country: form.country,
+        email: user.email,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        mobile: form.phoneNumber,
+        pinCode: form.pinCode
+      }
+      const response = await axios.post('/criarPedido', {
         userId: user.id,
         products: cartProducts,
         status: data.status,
         qrCode: data.charges[0].last_transaction.qr_code,
         qrCodeUrl: data.charges[0].last_transaction.qr_code_url,
         orderSummary: { ...orderSummary, orderId: data.id },
-        shippingDetails: {
-          addressLine1: form.addressLine1,
-          addressLine2: form.addressLine2,
-          city: form.city,
-          state: form.state,
-          country: form.country,
-          email: user.email,
-          firstName: user.firstName,
-          lastName: user.lastName,
-          mobile: form.phoneNumber,
-          pinCode: form.pinCode
-        }
+        shippingDetails
       })
       setIsLoading(false)
       navigate('/orderMade', {
         state: {
-          data
+          id: response.data.id,
+          qrCode: data.charges[0].last_transaction.qr_code,
+          qrCodeUrl: data.charges[0].last_transaction.qr_code_url,
+          shippingDetails,
+          total: orderSummary.total
         }
       })
     } catch (error) {
@@ -214,13 +219,13 @@ export const Checkout = () => {
           // ) :
           <CheckoutForm onChange={handleInputChange} isLoading={isLoading} />
         }
+        <CheckoutPaymentMethod handlePaymentMethod={handlePaymentMethod} />
 
         <CheckoutOrderSummary
           onClick={handleFormSubmit}
           orderSummary={orderSummary}
           isLoading={isLoading}
         />
-        <CheckoutPaymentMethod handlePaymentMethod={handlePaymentMethod} />
       </Box>
     </>
   )

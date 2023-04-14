@@ -2,7 +2,7 @@ import { getItem } from "../../../utils/localstorage";
 import { GET_TOKEN, REMOVE_TOKEN, SHOW_LOGIN_PAGE, SHOW_RESET_PAGE } from "./actionTypes";
 
 const init = {
-    isLogin: false,
+    isLogin: true,
     isReset: false,
     token: getItem('token') || false,
     user: getItem('user') || {}

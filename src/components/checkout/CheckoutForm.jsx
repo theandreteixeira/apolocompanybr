@@ -1,4 +1,11 @@
-import { Box, Flex, FormControl, Input, Text } from '@chakra-ui/react'
+import {
+  Box,
+  Flex,
+  FormControl,
+  FormLabel,
+  Input,
+  Text
+} from '@chakra-ui/react'
 import MaskedInput from 'react-text-mask'
 import createAutoCorrectDataPipe from 'text-mask-addons/dist/createAutoCorrectedDatePipe'
 import createNumberMask from 'text-mask-addons/dist/createNumberMask'
@@ -7,6 +14,7 @@ import React, { useState } from 'react'
 export const CheckoutForm = ({ onChange, isLoading }) => {
   const [cpf, setCpf] = useState('')
   const [phoneNumber, setPhoneNumber] = useState('')
+  const [cep, setCEP] = useState('')
   const cpfMask = [
     /\d/,
     /\d/,
@@ -39,8 +47,10 @@ export const CheckoutForm = ({ onChange, isLoading }) => {
     /\d/,
     /\d/
   ]
+  const CEPMask = [/\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/]
   const cpfPipe = createAutoCorrectDataPipe('dd/mm/yyyy')
   const phoneNumberPipe = createNumberMask('(dd) ddddd-dddd')
+  const CEPPipe = createNumberMask('ddddd-ddd')
 
   const handleChange = event => {
     const value = event.target.value.replace(/[^\d]/g, '')
@@ -56,10 +66,17 @@ export const CheckoutForm = ({ onChange, isLoading }) => {
     setPhoneNumber(maskedValue.value)
   }
 
+  const handleChangeCEP = event => {
+    const value = event.target.value.replace(/[^\d]/g, '')
+    const maskedValue = CEPPipe(value) || ''
+    onChange({ target: { name: 'CEP', value } })
+    setCEP(maskedValue.value)
+  }
+
   return (
     <>
       <Box>
-        <Text fontSize={'20px'} fontWeight={600} mb={'20px'}>
+        <Text fontSize={'20px'} fontWeight={600} mb={'10px'}>
           Escolha um endereço para entrega:
         </Text>
 
@@ -69,26 +86,30 @@ export const CheckoutForm = ({ onChange, isLoading }) => {
               onChange={onChange}
               type={'text'}
               name={'addressLine1'}
-              placeholder={'Endereço*'}
+              placeholder={'Endereço'}
+              mb={'10px'}
             />
             <Input
               onChange={onChange}
               type={'text'}
               name={'addressLine2'}
               placeholder={'Número'}
+              mb={'10px'}
             />
             <Flex gap={'20px'}>
               <Input
                 onChange={onChange}
                 type={'text'}
                 name={'city'}
-                placeholder={'Cidade*'}
+                placeholder={'Cidade'}
+                mb={'10px'}
               />
-              <Input
-                onChange={onChange}
-                type={'text'}
-                name={'pinCode'}
-                placeholder={'CEP*'}
+              <MaskedInput
+                onChange={handleChangeCEP}
+                name={'CEP'}
+                mask={CEPMask}
+                placeholder={'CEP'}
+                value={cep}
               />
             </Flex>
             <Flex gap={'20px'}>
@@ -96,16 +117,17 @@ export const CheckoutForm = ({ onChange, isLoading }) => {
                 onChange={onChange}
                 type={'text'}
                 name={'state'}
-                placeholder={'Estado*'}
+                placeholder={'Estado'}
+                mb={'10px'}
               />
               <Input
                 onChange={onChange}
                 type={'text'}
                 name={'country'}
-                placeholder={'País*'}
+                placeholder={'País'}
               />
             </Flex>
-            <Text fontSize={'20px'} fontWeight={600} mb={'20px'}>
+            <Text fontSize={'20px'} fontWeight={600} mb={'10px'} mt={'10px'}>
               Preencha com os seus dados:
             </Text>
             <MaskedInput

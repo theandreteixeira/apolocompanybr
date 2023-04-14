@@ -52,8 +52,6 @@ export const Logout = () => {
               Pedidos
             </MenuItem>
 
-            <Coupon />
-
             <MenuItem
               onClick={() => {
                 navigate('/cart')
