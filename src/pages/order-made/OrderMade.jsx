@@ -69,18 +69,18 @@ export const OrderMade = () => {
                 </Text>
               </Flex>
             </Center>
-            <Box display={'flex'} justifyContent={'start'}>
-              <Text fontWeight={'extrabold'} fontSize={'30px'}>
-                {'Detalhes do pedido'.toUpperCase()}
-              </Text>
-            </Box>
-            <Text>Subtotal: {data.orderSummary.subTotal}</Text>
-            <Text>Quantidade: {data.orderSummary.quantity}</Text>
-            <Text>Desconto: {data.orderSummary.discount}</Text>
-            <Text>Frete: {data.orderSummary.shipping}</Text>
-            <Text>Total: {data.orderSummary.total}</Text>
           </Box>
         )}
+        <Box display={'flex'} justifyContent={'start'}>
+          <Text fontWeight={'extrabold'} fontSize={'30px'}>
+            {'Detalhes do pedido'.toUpperCase()}
+          </Text>
+        </Box>
+        <Text>Subtotal: R${numberWithCommas(data.orderSummary.subTotal)}</Text>
+        <Text>Quantidade: {data.orderSummary.quantity}</Text>
+        <Text>Desconto: {data.orderSummary.discount}</Text>
+        <Text>Frete: {data.orderSummary.shipping}</Text>
+        <Text>Total: R${numberWithCommas(data.orderSummary.total)}</Text>
       </Center>
     </Box>
   )

@@ -12,13 +12,18 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { CheckoutPaymentMethod } from '../../components/checkout/CheckoutPaymentMethod'
-import { clearCart } from '../../redux/features/cart/actions'
+import {
+  clearCart,
+  removeCouponRequest
+} from '../../redux/features/cart/actions'
 
 export const Checkout = () => {
   const { orderSummary, cartProducts } = useSelector(
     state => state.cartReducer,
     shallowEqual
   )
+  const toast = useToast()
+
   const token = useSelector(state => state.authReducer.token)
   const user = useSelector(state => state.authReducer.user)
   const [isLoading, setIsLoading] = useState(false)
@@ -42,7 +47,6 @@ export const Checkout = () => {
     expireYear: 0,
     cvv: ''
   })
-  const toast = useToast()
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -90,6 +94,7 @@ export const Checkout = () => {
       })
       setIsLoading(false)
       dispatch(clearCart())
+      dispatch(removeCouponRequest())
       navigate('/orderMade', {
         state: {
           id: response.data.id,
