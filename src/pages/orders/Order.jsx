@@ -103,6 +103,7 @@ export const Order = () => {
                           createdAt={item.createdAt}
                           {...item.paymentDetails}
                           {...item.orderSummary}
+                          id={item.id}
                           status={item.status}
                         />
                       </Grid>
