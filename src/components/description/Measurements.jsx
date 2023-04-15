@@ -1,4 +1,4 @@
-import { Table, TableCaption, TableContainer, Tbody, Th, Thead, Tr } from "@chakra-ui/react";
+import { Table, TableCaption, TableContainer, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
 
 export const Measurements = ({measurements}) => {
     return (
