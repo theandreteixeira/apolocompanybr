@@ -6,7 +6,9 @@ import {
   Box,
   Input,
   InputGroup,
-  InputLeftElement
+  Collapse,
+  InputLeftElement,
+  useDisclosure
 } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 import { AiOutlineSearch } from 'react-icons/ai'
@@ -33,6 +35,36 @@ export const Category = ({ text, link, handlePath, name }) => {
 export const DrawerCategory = ({ text, link, handlePath, name }) => {
   return (
     <Text fontSize={'20px'} fontWeight={500}>
+      <Link onClick={handlePath} to={link} name={name}>
+        {text}
+      </Link>
+    </Text>
+  )
+}
+export const DrawerCategoryWithSubCategory = ({
+  text,
+  link,
+  handlePath,
+  name,
+  subCategories
+}) => {
+  const { isOpen, onOpen, onToggle } = useDisclosure()
+  return (
+    <>
+      <Text fontSize={'20px'} fontWeight={500}>
+        <Link onClick={onToggle}>{text}</Link>
+      </Text>
+      <Collapse in={isOpen} animateOpacity>
+        {subCategories.map(sub => {
+          return DrawerSubCategory(sub)
+        })}
+      </Collapse>
+    </>
+  )
+}
+export const DrawerSubCategory = ({ text, link, handlePath, name }) => {
+  return (
+    <Text fontSize={'16px'} mb={'10px'}>
       <Link onClick={handlePath} to={link} name={name}>
         {text}
       </Link>

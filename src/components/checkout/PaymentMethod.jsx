@@ -29,31 +29,31 @@ export const PaymentMethoda = ({ isOpen, onChange }) => {
           <Input
             type={'number'}
             name={'cardNumber'}
-            placeholder={'Número*'}
+            placeholder={'Número'}
             onChange={onChange}
           />
           <Input
             type={'text'}
             name={'holderName'}
-            placeholder={'Nome (igual no cartão)*'}
+            placeholder={'Nome (igual no cartão)'}
             onChange={handleHolderName}
             value={text}
           />
           <Input
             name={'expireMonth'}
             maxLength={2}
-            placeholder={'Mês*'}
+            placeholder={'Mês'}
             onChange={onChange}
           />
           <Input
             name={'expireYear'}
             maxLength={2}
-            placeholder={'Ano*'}
+            placeholder={'Ano'}
             onChange={onChange}
           />
           <Input
             name={'cvv'}
-            placeholder={'CVV*'}
+            placeholder={'CVV'}
             onChange={onChange}
             maxLength={4}
           />

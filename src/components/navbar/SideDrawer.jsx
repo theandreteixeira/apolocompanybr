@@ -13,12 +13,26 @@ import {
 } from '@chakra-ui/react'
 import { useSelector } from 'react-redux'
 import { BiMenu } from 'react-icons/bi'
-import { DrawerCategory } from './CategoryAndIcon'
+import {
+  DrawerCategory,
+  DrawerCategoryWithSubCategory
+} from './CategoryAndIcon'
+import { useState } from 'react'
 
 export const SideDrawer = ({ handlePath }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
+  // const [isOpen, setIsOpen] = useState(false)
   const user = useSelector(state => state.authReducer.user.firstName)
   console.log(useSelector(state => state.authReducer))
+
+  const handleSelectSection = path => {
+    onClose()
+    handlePath(path)
+  }
+
+  // const onToggle = isOpen => {
+  //   setIsOpen(isOpen)
+  // }
 
   return (
     <>
@@ -30,36 +44,62 @@ export const SideDrawer = ({ handlePath }) => {
           <DrawerHeader>Olá {user}</DrawerHeader>
           <Divider />
           <DrawerBody>
-            <VStack gap={'30px'} mt={'40px'} onClick={onClose}>
+            <VStack gap={'30px'} mt={'40px'}>
               <DrawerCategory
-                handlePath={handlePath}
+                handlePath={handleSelectSection}
                 name={'/'}
-                text={'Home'}
+                text={'Início'}
                 link={'/'}
               />
               <DrawerCategory
-                handlePath={handlePath}
+                handlePath={handleSelectSection}
                 name={'allProducts'}
                 text={'Todos os Produtos'}
                 link={'/allProducts'}
               />
-              <DrawerCategory
-                handlePath={handlePath}
+              {/* <DrawerCategory
+                handlePath={handleSelectSection}
                 name={'men'}
                 text={'Masculino'}
                 link={'/men'}
+              /> */}
+              <DrawerCategoryWithSubCategory
+                handlePath={handleSelectSection}
+                name={'men'}
+                text={'Masculino'}
+                link={'/men'}
+                subCategories={[
+                  {
+                    text: 'Ver tudo',
+                    link: 'link',
+                    handlePath: handleSelectSection,
+                    name: 'futebol'
+                  },
+                  {
+                    text: 'Futebol',
+                    link: 'link',
+                    handlePath: handleSelectSection,
+                    name: 'futebol'
+                  },
+                  {
+                    text: 'Academia',
+                    link: 'link',
+                    handlePath: handleSelectSection,
+                    name: 'futebol'
+                  },
+                  {
+                    text: 'Casual',
+                    link: 'link',
+                    handlePath: handleSelectSection,
+                    name: 'futebol'
+                  }
+                ]}
               />
               <DrawerCategory
-                handlePath={handlePath}
+                handlePath={handleSelectSection}
                 name={'women'}
                 text={'Feminino'}
                 link={'women'}
-              />
-              <DrawerCategory
-                handlePath={handlePath}
-                name={'kids'}
-                text={'Infantil'}
-                link={'/kids'}
               />
             </VStack>
           </DrawerBody>
