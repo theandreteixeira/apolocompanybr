@@ -37,7 +37,7 @@ export const Checkout = () => {
     pinCode: '',
     city: '',
     state: '',
-    country: '',
+    country: 'Brasil',
     cpf: '',
     phoneNumber: '',
     paymentMethod: 'pix',

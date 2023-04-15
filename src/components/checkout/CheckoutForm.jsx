@@ -4,6 +4,7 @@ import {
   FormControl,
   FormLabel,
   Input,
+  Select,
   Text
 } from '@chakra-ui/react'
 import MaskedInput from 'react-text-mask'
@@ -12,6 +13,35 @@ import createNumberMask from 'text-mask-addons/dist/createNumberMask'
 import React, { useState } from 'react'
 
 export const CheckoutForm = ({ onChange, isLoading }) => {
+  const states = [
+    { name: 'Acre', value: 'AC' },
+    { name: 'Alagoas', value: 'AL' },
+    { name: 'Amapá', value: 'AP' },
+    { name: 'Amazonas', value: 'AM' },
+    { name: 'Bahia', value: 'BA' },
+    { name: 'Ceará', value: 'CE' },
+    { name: 'Distrito Federal', value: 'DF' },
+    { name: 'Espírito Santo', value: 'ES' },
+    { name: 'Goiás', value: 'GO' },
+    { name: 'Maranhão', value: 'MA' },
+    { name: 'Mato Grosso', value: 'MT' },
+    { name: 'Mato Grosso do Sul', value: 'MS' },
+    { name: 'Minas Gerais', value: 'MG' },
+    { name: 'Pará', value: 'PA' },
+    { name: 'Paraíba', value: 'PB' },
+    { name: 'Paraná', value: 'PR' },
+    { name: 'Pernambuco', value: 'PE' },
+    { name: 'Piauí', value: 'PI' },
+    { name: 'Rio de Janeiro', value: 'RJ' },
+    { name: 'Rio Grande do Norte', value: 'RN' },
+    { name: 'Rio Grande do Sul', value: 'RS' },
+    { name: 'Rondônia', value: 'RO' },
+    { name: 'Roraima', value: 'RR' },
+    { name: 'Santa Catarina', value: 'SC' },
+    { name: 'São Paulo', value: 'SP' },
+    { name: 'Sergipe', value: 'SE' },
+    { name: 'Tocantins', value: 'TO' },
+  ];
   const [cpf, setCpf] = useState('')
   const [phoneNumber, setPhoneNumber] = useState('')
   const [cep, setCEP] = useState('')
@@ -113,19 +143,13 @@ export const CheckoutForm = ({ onChange, isLoading }) => {
               />
             </Flex>
             <Flex gap={'20px'}>
-              <Input
-                onChange={onChange}
-                type={'text'}
-                name={'state'}
-                placeholder={'Estado'}
-                mb={'10px'}
-              />
-              <Input
-                onChange={onChange}
-                type={'text'}
-                name={'country'}
-                placeholder={'País'}
-              />
+              <Select placeholder='Estado' name={'state'} onChange={onChange} mb={'10px'}>
+                {
+                  states.map((state) => {
+                    return (<option value={state.value}>{state.name}</option>)
+                  })
+                }
+              </Select>
             </Flex>
             <Text fontSize={'20px'} fontWeight={600} mb={'10px'} mt={'10px'}>
               Preencha com os seus dados:
