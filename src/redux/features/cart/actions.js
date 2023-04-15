@@ -1,26 +1,9 @@
 import { setToast } from "../../../utils/extraFunctions";
 import { getCartTotal } from "../../../utils/getCartTotal";
 import { handleCartDuplicate } from "../../../utils/handleCartDuplicate";
-import { getItem, setItem } from "../../../utils/localstorage";
+import { getItem, removeItem, setItem } from "../../../utils/localstorage";
 import { getItemSession, removeItemSession, setItemSession } from "../../../utils/sessionStorage";
-import { ADD_TO_CART_SUCCESS, APPLY_COUPON_SUCCESS, REMOVE_COUPON_SUCCESS, REMOVE_FROM_CART, UPDATE_CART_DETAILS } from "./actionTypes";
-
-export class Product {
-    name; price; description; photos; category; gender; color; rating; sizes;
-    constructor({
-        name, price, description, photos, category, gender, color, rating, sizes
-    }) {
-        this.name = name;
-        this.price = price;
-        this.description = description;
-        this.photos = photos;
-        this.category = category;
-        this.gender = gender;
-        this.color = color;
-        this.rating = rating;
-        this.sizes = sizes;
-    };
-}
+import { ADD_TO_CART_SUCCESS, APPLY_COUPON_SUCCESS, CLEAR_CART, REMOVE_COUPON_SUCCESS, REMOVE_FROM_CART, UPDATE_CART_DETAILS } from "./actionTypes";
 
 export const addToCartSuccess = (payload) => {
     return { type: ADD_TO_CART_SUCCESS, payload };
@@ -41,6 +24,9 @@ export const removeCouponSuccess = (payload) => {
 export const updateCartDetails = () => {
     return { type: UPDATE_CART_DETAILS };
 }
+export const clearCartSuccess = () => {
+    return { type: CLEAR_CART };
+}
 
 
 export const addToCartRequest = (data, toast, operation = 'add') => (dispatch) => {
@@ -53,9 +39,10 @@ export const addToCartRequest = (data, toast, operation = 'add') => (dispatch) =
     dispatch(addToCartSuccess({ cartData, orderSummary }));
 };
 
-export const getCartQuantity = () => {
-    let cartData = getItem('cartProducts') || [];
-    return cartData.length;
+export const clearCart = () => (dispatch) => {
+    setItem('orderSummary', {})
+    setItem('cartProducts', [])
+    dispatch(clearCartSuccess())
 }
 
 export const removeFromCartRequest = (index, toast) => (dispatch) => {

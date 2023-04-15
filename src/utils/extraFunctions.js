@@ -11,7 +11,9 @@ export const convertObject = (obj) => {
 
 
 export const numberWithCommas = (x) => {
-    return x.toFixed(2).replace('.', ',').replace(/(\d)(?=(\d{3})+\b)/g, '$1.');
+    if (x) {
+        return x.toFixed(2).replace('.', ',').replace(/(\d)(?=(\d{3})+\b)/g, '$1.');
+    }
 };
 
 

@@ -16,7 +16,6 @@ import { useState } from 'react'
 import copy from 'copy-to-clipboard'
 import Confetti from 'react-confetti'
 import { numberWithCommas } from '../../utils/extraFunctions'
-import Rive from '@rive-app/react-canvas'
 
 export const OrderMade = () => {
   const route = useLocation()

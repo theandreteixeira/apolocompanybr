@@ -25,12 +25,12 @@ import {
   SearchBox
 } from '../../components/navbar/CategoryAndIcon'
 import { SideDrawer } from '../../components/navbar/SideDrawer'
-import { getCartQuantity } from '../../redux/features/cart/actions'
 import { TbTruckDelivery } from 'react-icons/tb'
 
 export const Navbar = () => {
   const dispatch = useDispatch()
   const { token } = useSelector(state => state.authReducer, shallowEqual)
+  const cart = useSelector(state => state.cartReducer.cartProducts)
   const { colorMode } = useColorMode()
 
   const handlePath = ({ target: { name } }) => {
@@ -116,7 +116,7 @@ export const Navbar = () => {
           <Link to={'/cart'}>
             <HStack>
               <NavIcon iconName={RiShoppingBagLine} />
-              <Badge> {getCartQuantity()} </Badge>
+              <Badge> {cart.length} </Badge>
             </HStack>
           </Link>
         </Center>

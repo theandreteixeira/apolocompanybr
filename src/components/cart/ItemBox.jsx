@@ -11,7 +11,6 @@ import {
 import { useDispatch, useSelector } from 'react-redux'
 import {
   addToCartRequest,
-  getCartQuantity,
   removeFromCartRequest
 } from '../../redux/features/cart/actions'
 import { numberWithCommas, setToast } from '../../utils/extraFunctions'
@@ -167,7 +166,7 @@ export const ItemBoxToDescription = ({
             <Text fontSize={'14px'}>{name}</Text>
             <Text fontSize={'14px'}>R${numberWithCommas(price)}</Text>
 
-            <Text fontSize={'13px'}> Quantidade:{getCartQuantity()}</Text>
+            <Text fontSize={'13px'}> Quantidade:{quantity}</Text>
 
             <Text fontSize={'13px'}>Tamanho:{' ' + size}</Text>
           </Box>

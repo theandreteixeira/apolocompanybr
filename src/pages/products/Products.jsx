@@ -21,10 +21,13 @@ import { getItemSession, setItemSession } from '../../utils/sessionStorage'
 import { ProductDisplayBox } from '../../components/products/ProductDisplayBox'
 import { Loading } from '../../components/loading/Loading'
 import { Error } from '../../components/loading/Error'
+import { useMediaQuery } from 'react-responsive'
 
 export const Products = () => {
   const { colorMode } = useColorMode()
-  const [isFilter, setIsFilter] = useState(false)
+  const [isFilter, setIsFilter] = useState(
+    useMediaQuery({ minDeviceWidth: 1224 })
+  )
   const { products, isLoading, isError } = useSelector(
     state => state.prodReducer
   )
@@ -144,15 +147,19 @@ export const Products = () => {
                 'repeat(3, 1fr)'
               ]}
             >
-              {products.map((product, index) => (
-                <ProductDisplayBox
-                  {...product}
-                  key={index}
-                  onClick={() => {
-                    handleSingleProduct(product)
-                  }}
-                />
-              ))}
+              {products.length > 0 ? (
+                products.map((product, index) => (
+                  <ProductDisplayBox
+                    {...product}
+                    key={index}
+                    onClick={() => {
+                      handleSingleProduct(product)
+                    }}
+                  />
+                ))
+              ) : (
+                <Text>Nenhum produto foi encontrado.</Text>
+              )}
             </Grid>
           )}
         </Box>

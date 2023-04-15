@@ -88,42 +88,31 @@ export const setUserData = (navigate) => async (dispatch) => {
         const data = await Auth.currentAuthenticatedUser();
         console.log(data)
         const token = data.signInUserSession.accessToken.jwtToken
-        setItem('user', {
+        const userData = {
             id: data.attributes.sub,
             email: data.attributes.email,
             firstName: data.attributes.given_name,
             lastName: data.attributes.family_name,
             name: data.attributes.name,
-        });
+        }
+        setItem('user', userData);
         setItem('token', token);
-        dispatch(getToken(token));
+        dispatch(getToken(token, userData));
         console.log(data.signInUserSession.accessToken.jwtToken)
         navigate('/checkout')
     } catch (err) {
         console.log(err);
     }
 };
-export const logout = async () => {
-    try {
-        console.log("passou no logout")
-        const data = await Auth.signOut();
-        removeItem('token');
-        removeItem('user');
-        dispatch(removeToken());
-        console.log(data)
-    } catch (err) {
-        console.log(err);
-    }
-};
 
 
-export const logoutFromAccount = (toast) => async (dispatch) => {
+export const logoutFromAccount = (toast, navigate) => async (dispatch) => {
     try {
         await Auth.signOut();
         removeItem('token');
         removeItem('user');
         dispatch(removeToken());
-        setToast(toast, 'Logout Successfully', 'success');
+        navigate('/')
     } catch (err) {
         console.log(err);
         setToast(toast, 'Something went wrong', 'error');

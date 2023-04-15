@@ -12,6 +12,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { CheckoutPaymentMethod } from '../../components/checkout/CheckoutPaymentMethod'
+import { clearCart } from '../../redux/features/cart/actions'
 
 export const Checkout = () => {
   const { orderSummary, cartProducts } = useSelector(
@@ -23,31 +24,7 @@ export const Checkout = () => {
   const [isLoading, setIsLoading] = useState(false)
   const [data, setData] = useState([])
 
-  const handleAddressGetRequest = async () => {
-    try {
-      setIsLoading(true)
-      // let { data } = await axios.get('/obterPedidos'});
-      await new Promise((res, rej) => {
-        res('')
-      }, 5000)
-      const mock = [
-        {
-          addressLine1: 'Rua José Bandeira da Mota',
-          addressLine2: '705',
-          pinCode: '39272014',
-          city: 'Pirapora',
-          country: 'Brasil',
-          state: 'Minas Gerais'
-        }
-      ]
-      setData(mock)
-      setIsLoading(false)
-    } catch (error) {
-      console.log(error)
-      setIsLoading(false)
-      setIsError(true)
-    }
-  }
+  const handleAddressGetRequest = async () => {}
 
   const [form, setForm] = useState({
     addressLine1: '',
@@ -112,6 +89,7 @@ export const Checkout = () => {
         shippingDetails
       })
       setIsLoading(false)
+      dispatch(clearCart())
       navigate('/orderMade', {
         state: {
           id: response.data.id,

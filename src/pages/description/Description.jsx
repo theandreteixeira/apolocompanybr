@@ -87,9 +87,9 @@ export const Description = () => {
     if (mySize === false) {
       setToast(toast, 'Por favor selecione um tamanho', 'error')
     } else {
-      onOpen()
-      const payload = { ...data, size: mySize.name }
+      const payload = { ...data, size: mySize.name, quantity: 1 }
       dispatch(addToCartRequest(payload, toast))
+      onOpen()
     }
   }
 
