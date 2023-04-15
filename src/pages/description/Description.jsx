@@ -42,6 +42,7 @@ import {
 import React from 'react'
 import { BagItems } from '../../components/cart/BagItems'
 import { ItemBoxToDescription } from '../../components/cart/ItemBox'
+import { Measurements } from '../../components/description/Measurements'
 
 export const Description = () => {
   const verifyIsSouldOut = sizes => {
@@ -66,7 +67,8 @@ export const Description = () => {
     sizes,
     color,
     rating,
-    photos
+    photos,
+    measurements
   } = data
   const [mySize, setMySize] = useState(false)
   const token = useSelector(state => state.authReducer.token)
@@ -280,7 +282,7 @@ export const Description = () => {
               <Text color={'grey'}>Nenhuma avaliação para esse produto.</Text>
             </TabPanel>
             <TabPanel>
-              <p>three!</p>
+              <Measurements measurements={measurements}/>
             </TabPanel>
           </TabPanels>
         </Tabs>
