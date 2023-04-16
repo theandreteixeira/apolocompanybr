@@ -36,7 +36,10 @@ export const Checkout = () => {
     addressLine2: '',
     pinCode: '',
     city: '',
-    state: '',
+    state: {
+      name: '',
+      value: ''
+    },
     country: 'Brasil',
     cpf: '',
     phoneNumber: '',
@@ -75,8 +78,9 @@ export const Checkout = () => {
         addressLine1: form.addressLine1,
         addressLine2: form.addressLine2,
         city: form.city,
-        state: form.state,
+        state: form.state.name,
         country: form.country,
+        uf: form.state.value,
         email: user.email,
         firstName: user.firstName,
         lastName: user.lastName,
@@ -130,7 +134,7 @@ export const Checkout = () => {
           addressLine1: form.addressLine1,
           addressLine2: form.addressLine2,
           city: form.city,
-          state: form.state,
+          state: form.state.value,
           zipCode: form.pinCode
         },
         products: cartProducts.map(prod => ({
