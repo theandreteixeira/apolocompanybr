@@ -39,7 +39,18 @@ export const SelectSize = ({ sizes, setMySize }) => {
         <HStack {...group}>
             {sizes.map((value) => {
                 const radio = getRadioProps({ value: value.name });
-                return (
+                const isDisabled = value.quantity === 0
+                return isDisabled ? <Box as="label">
+                    <Box
+                        bgColor={"#f5f5f5"}
+                        cursor={ "not-allowed"}
+                        borderWidth="1px"
+                        borderRadius="md"
+                        px={5} py={3}
+                    >
+                        {value.name}
+                    </Box>
+                </Box> : (
                     <RadioCard
                         onClick={() => {
                             setMySize(value.name);
