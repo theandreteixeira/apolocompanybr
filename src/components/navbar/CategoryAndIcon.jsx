@@ -26,7 +26,7 @@ export const Category = ({ text, link, handlePath, name }) => {
       }}
     >
       <Link onClick={handlePath} to={link} name={name}>
-        {text}
+        <Text fontWeight={'bold'}>{text}</Text>
       </Link>
     </Center>
   )
