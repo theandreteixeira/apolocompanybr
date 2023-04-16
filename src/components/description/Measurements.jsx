@@ -1,6 +1,5 @@
 import {
   Table,
-  TableCaption,
   TableContainer,
   Tbody,
   Td,
@@ -14,7 +13,6 @@ export const Measurements = ({ measurements }) => {
     <>
       <TableContainer>
         <Table variant='striped' colorScheme='blue'>
-          <TableCaption>Imperial to metric conversion factors</TableCaption>
           <Thead>
             <Tr>
               <Th>Medida</Th>
@@ -22,7 +20,7 @@ export const Measurements = ({ measurements }) => {
               <Th>Comprimento</Th>
             </Tr>
           </Thead>
-          <Tbody>
+          <Tbody display={'flex'} justifyContent={'center'}>
             {measurements.map(measurement => {
               return (
                 <Tr>
