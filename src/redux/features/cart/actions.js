@@ -68,7 +68,7 @@ export const applyCouponRequest = (discountPercent, toast) => (dispatch) => {
 
 export const removeCouponRequest = () => (dispatch) => {
     const cartData = getItem('cartProducts');
-    removeItemSession('discountPercent');
+    setItemSession('discountPercent', 0);
     const orderSummary = getCartTotal(cartData, 0);
     setItem('orderSummary', orderSummary);
     dispatch(removeCouponSuccess(orderSummary));

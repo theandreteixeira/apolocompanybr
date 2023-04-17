@@ -43,6 +43,7 @@ import React from 'react'
 import { BagItems } from '../../components/cart/BagItems'
 import { ItemBoxToDescription } from '../../components/cart/ItemBox'
 import { Measurements } from '../../components/description/Measurements'
+import { handleCategory } from '../../utils/handleCategory'
 
 export const Description = () => {
   const verifyIsSouldOut = sizes => {
@@ -137,7 +138,7 @@ export const Description = () => {
               <Icon boxSize={6} color='#E2E8F0' as={GrStar} />
             </Flex>
           </Box>
-          <Text color='grey'>{category}</Text>
+          <Text color='grey'>{handleCategory(category)}</Text>
           <Divider my={'15px'} />
           <UnorderedList fontSize={'16px'} styleType='none' mb={'20px'}>
             <ListItem my={'10px'}>
@@ -147,7 +148,8 @@ export const Description = () => {
             </ListItem>
             <ListItem my={'10px'}>
               <Flex direction='row'>
-                <Text fontWeight={'bold'}> Categoria: </Text> {category}
+                <Text fontWeight={'bold'}> Categoria: </Text>{' '}
+                {handleCategory(category)}
               </Flex>
             </ListItem>
             <ListItem my={'10px'}>
@@ -282,7 +284,7 @@ export const Description = () => {
               <Text color={'grey'}>Nenhuma avaliação para esse produto.</Text>
             </TabPanel>
             <TabPanel>
-              <Measurements measurements={measurements}/>
+              <Measurements measurements={measurements} />
             </TabPanel>
           </TabPanels>
         </Tabs>

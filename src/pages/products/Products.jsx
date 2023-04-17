@@ -39,7 +39,6 @@ export const Products = () => {
   const resetFilter = () => {
     setIsFilter(!isFilter)
     dispatch(getRequest(path))
-    setToast(toast, 'Filtros apagados!', 'success')
   }
 
   const handleSingleProduct = data => {

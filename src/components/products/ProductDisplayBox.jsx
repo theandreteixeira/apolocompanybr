@@ -1,6 +1,7 @@
 import { Box, Flex, Image, Spacer, Text } from '@chakra-ui/react'
 import { numberWithCommas, shortString } from '../../utils/extraFunctions'
 import { DescText, PriceText } from './DescText'
+import { handleCategory } from '../../utils/handleCategory'
 
 export const ProductDisplayBox = ({
   name,
@@ -31,7 +32,7 @@ export const ProductDisplayBox = ({
             </Text>
           </Flex>
 
-          <DescText>{category}</DescText>
+          <DescText>{handleCategory(category)}</DescText>
           <PriceText>R$ {numberWithCommas(price)}</PriceText>
         </Box>
       </Flex>

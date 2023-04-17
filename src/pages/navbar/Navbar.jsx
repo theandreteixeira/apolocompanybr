@@ -33,7 +33,7 @@ export const Navbar = () => {
   const cart = useSelector(state => state.cartReducer.cartProducts)
   const { colorMode } = useColorMode()
 
-  const handlePath = ({ target: { name } }) => {
+  const handlePath = name => {
     dispatch(setNavbarPath(name))
     setItemSession('path', name)
   }
