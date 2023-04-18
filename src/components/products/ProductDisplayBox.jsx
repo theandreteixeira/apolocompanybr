@@ -9,7 +9,8 @@ export const ProductDisplayBox = ({
   photos,
   onClick,
   category,
-  sizes
+  sizes,
+  oldPrice
 }) => {
   return (
     <>
@@ -33,7 +34,23 @@ export const ProductDisplayBox = ({
           </Flex>
 
           <DescText>{handleCategory(category)}</DescText>
-          <PriceText>R$ {numberWithCommas(price)}</PriceText>
+          <Box display={'flex'}>
+            <Text
+              textDecoration={'line-through'}
+              fontSize={['11px', '15px', '12px', '15px', '15px']}
+            >
+              R${numberWithCommas(oldPrice)}
+            </Text>
+            <Box ml={'5px'} bg={'green.400'} p={'2px'} borderRadius={'md'}>
+              <Text
+                color={'white'}
+                fontSize={['9px', '13px', '10px', '13px', '13px']}
+              >
+                {parseInt(((oldPrice - price) / oldPrice) * 100)} %
+              </Text>
+            </Box>
+          </Box>
+          <PriceText>R${numberWithCommas(price)}</PriceText>
         </Box>
       </Flex>
     </>
