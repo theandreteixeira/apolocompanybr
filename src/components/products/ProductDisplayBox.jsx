@@ -44,7 +44,7 @@ export const ProductDisplayBox = ({
             <Box ml={'5px'} bg={'green.400'} p={'2px'} borderRadius={'md'}>
               <Text
                 color={'white'}
-                fontSize={['9px', '13px', '10px', '13px', '13px']}
+                fontSize={['8px', '12px', '9px', '12px', '12px']}
               >
                 {parseInt(((oldPrice - price) / oldPrice) * 100)} %
               </Text>
