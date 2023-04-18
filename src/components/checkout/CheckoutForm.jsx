@@ -40,8 +40,8 @@ export const CheckoutForm = ({ onChange, isLoading }) => {
     { name: 'Santa Catarina', value: 'SC' },
     { name: 'São Paulo', value: 'SP' },
     { name: 'Sergipe', value: 'SE' },
-    { name: 'Tocantins', value: 'TO' },
-  ];
+    { name: 'Tocantins', value: 'TO' }
+  ]
   const [cpf, setCpf] = useState('')
   const [phoneNumber, setPhoneNumber] = useState('')
   const [cep, setCEP] = useState('')
@@ -143,12 +143,17 @@ export const CheckoutForm = ({ onChange, isLoading }) => {
               />
             </Flex>
             <Flex gap={'20px'}>
-              <Select placeholder='Estado' name={'state'} onChange={onChange} mb={'10px'}>
-                {
-                  states.map((state) => {
-                    return (<option value={state.value}>{state.name}</option>)
-                  })
-                }
+              <Select
+                placeholder='Estado'
+                name={'state'}
+                onChange={onChange}
+                mb={'10px'}
+              >
+                {states.map(state => {
+                  return (
+                    <option value={JSON.stringify(state)}>{state.name}</option>
+                  )
+                })}
               </Select>
             </Flex>
             <Text fontSize={'20px'} fontWeight={600} mb={'10px'} mt={'10px'}>

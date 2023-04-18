@@ -16,6 +16,7 @@ import {
   clearCart,
   removeCouponRequest
 } from '../../redux/features/cart/actions'
+import { PaymentIndevido } from '../../components/checkout/PaymentIndevido'
 
 export const Checkout = () => {
   const { orderSummary, cartProducts } = useSelector(
@@ -54,7 +55,9 @@ export const Checkout = () => {
   const navigate = useNavigate()
 
   const handleInputChange = ({ target: { name, value } }) => {
-    console.log(name, value)
+    if (name === 'state') {
+      value = JSON.parse(value)
+    }
     setForm({ ...form, [name]: value })
   }
 
@@ -111,7 +114,8 @@ export const Checkout = () => {
       })
     } catch (error) {
       setIsLoading(false)
-      setToast(toast, 'Não foi possível realizar o pagamento', 'error', 3500)
+      // setToast(toast, 'Não foi possível realizar o pagamento', 'error', 3500)
+      PaymentIndevido({ open: true })
       console.log(error)
     }
   }
@@ -120,7 +124,13 @@ export const Checkout = () => {
     e.preventDefault()
 
     if (!handleFormValidation(form)) return
-
+    const address = {
+      addressLine1: form.addressLine1,
+      addressLine2: form.addressLine2,
+      city: form.city,
+      state: form.state.value,
+      zipCode: form.pinCode
+    }
     try {
       setIsLoading(true)
       const response = await axios.post('/realizarPagamento', {
@@ -130,13 +140,7 @@ export const Checkout = () => {
           email: user.email,
           phoneNumber: form.phoneNumber
         },
-        address: {
-          addressLine1: form.addressLine1,
-          addressLine2: form.addressLine2,
-          city: form.city,
-          state: form.state.value,
-          zipCode: form.pinCode
-        },
+        address,
         products: cartProducts.map(prod => ({
           price: prod.price,
           description: prod.description,

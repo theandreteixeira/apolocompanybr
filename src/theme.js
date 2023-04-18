@@ -16,6 +16,9 @@ const breakpoints = {
 const styles = {
     global: {
         body: {
+            dark: {
+                bg: 'blue',
+            },
             fontFamily: "'Roboto', sans-serif",
         },
     },
@@ -27,10 +30,10 @@ const Input = {
     }
 };
 
-
 export const theme = extendTheme({
     breakpoints,
     config,
+    // styles,
     styles,
     components: { Input }
 });

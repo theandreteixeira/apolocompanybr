@@ -5,14 +5,21 @@ import {
   Td,
   Th,
   Thead,
-  Tr
+  Tr,
+  Tfoot,
+  Text
 } from '@chakra-ui/react'
 
 export const Measurements = ({ measurements }) => {
   return (
     <>
       <TableContainer>
-        <Table variant='striped' colorScheme='blue'>
+        <Table
+          variant='striped'
+          colorScheme='blue'
+          align='center'
+          textAlign={'center'}
+        >
           <Thead>
             <Tr>
               <Th>Medida</Th>
@@ -20,7 +27,7 @@ export const Measurements = ({ measurements }) => {
               <Th>Comprimento</Th>
             </Tr>
           </Thead>
-          <Tbody display={'flex'} justifyContent={'center'}>
+          <Tbody>
             {measurements.map(measurement => {
               return (
                 <Tr>
@@ -31,6 +38,9 @@ export const Measurements = ({ measurements }) => {
               )
             })}
           </Tbody>
+          <Tfoot>
+            <Text fontWeight={'bold'}>As medidas são calculadas em CM</Text>
+          </Tfoot>
         </Table>
       </TableContainer>
     </>
