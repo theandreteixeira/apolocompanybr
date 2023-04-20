@@ -21,18 +21,12 @@ import { useState } from 'react'
 
 export const SideDrawer = ({ handlePath }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
-  // const [isOpen, setIsOpen] = useState(false)
   const user = useSelector(state => state.authReducer.user.firstName)
-  console.log(useSelector(state => state.authReducer))
 
   const handleSelectSection = path => {
     onClose()
     handlePath(path)
   }
-
-  // const onToggle = isOpen => {
-  //   setIsOpen(isOpen)
-  // }
 
   return (
     <>
@@ -57,12 +51,6 @@ export const SideDrawer = ({ handlePath }) => {
                 text={'Todos os Produtos'}
                 link={'/allProducts'}
               />
-              {/* <DrawerCategory
-                handlePath={handleSelectSection}
-                name={'men'}
-                text={'Masculino'}
-                link={'/men'}
-              /> */}
               <DrawerCategoryWithSubCategory
                 handlePath={handleSelectSection}
                 name={'men'}
@@ -71,35 +59,61 @@ export const SideDrawer = ({ handlePath }) => {
                 subCategories={[
                   {
                     text: 'Ver tudo',
-                    link: 'link',
+                    link: '/men',
                     handlePath: handleSelectSection,
                     name: 'futebol'
                   },
                   {
                     text: 'Futebol',
-                    link: 'link',
+                    link: '/men',
                     handlePath: handleSelectSection,
                     name: 'futebol'
                   },
                   {
                     text: 'Academia',
-                    link: 'link',
+                    link: '/men',
                     handlePath: handleSelectSection,
                     name: 'futebol'
                   },
                   {
                     text: 'Casual',
-                    link: 'link',
+                    link: '/men',
                     handlePath: handleSelectSection,
                     name: 'futebol'
                   }
                 ]}
               />
-              <DrawerCategory
+              <DrawerCategoryWithSubCategory
                 handlePath={handleSelectSection}
-                name={'women'}
+                name={'men'}
                 text={'Feminino'}
-                link={'women'}
+                link={'/women'}
+                subCategories={[
+                  {
+                    text: 'Ver tudo',
+                    link: '/men',
+                    handlePath: handleSelectSection,
+                    name: 'futebol'
+                  },
+                  {
+                    text: 'Futebol',
+                    link: '/men',
+                    handlePath: handleSelectSection,
+                    name: 'futebol'
+                  },
+                  {
+                    text: 'Academia',
+                    link: '/men',
+                    handlePath: handleSelectSection,
+                    name: 'futebol'
+                  },
+                  {
+                    text: 'Casual',
+                    link: '/men',
+                    handlePath: handleSelectSection,
+                    name: 'futebol'
+                  }
+                ]}
               />
             </VStack>
           </DrawerBody>

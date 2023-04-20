@@ -13,7 +13,6 @@ import { useEffect, useState } from 'react'
 import { IoOptionsOutline } from 'react-icons/io5'
 import { useDispatch, useSelector } from 'react-redux'
 import { getRequest } from '../../redux/features/products/actions'
-import { setToast } from '../../utils/extraFunctions'
 import { LeftSideFilter } from '../../components/products/LeftSideFilter'
 import { SortFilters } from '../../components/products/SortFilters'
 import { useLocation, useNavigate } from 'react-router-dom'
@@ -33,8 +32,8 @@ export const Products = () => {
   )
   const path = getItemSession('path')
   const route = useLocation()
+  const search = route.state.search
   const dispatch = useDispatch()
-  const toast = useToast()
   const navigate = useNavigate()
 
   const resetFilter = () => {
@@ -48,11 +47,10 @@ export const Products = () => {
   }
 
   useEffect(() => {
-    const search = route.state.search
     const gender = path == 'men' || path == 'women' ? path : undefined
     const category = path == 'allProducts' ? undefined : undefined
     dispatch(getRequest(category, gender, search))
-  }, [path])
+  }, [path, search])
 
   return (
     <>

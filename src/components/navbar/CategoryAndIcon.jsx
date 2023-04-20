@@ -9,12 +9,15 @@ import {
   Collapse,
   InputLeftElement,
   Button,
-  useDisclosure
+  useDisclosure,
+  FormControl,
+  FormLabel
 } from '@chakra-ui/react'
 import { Form, Link, useNavigate } from 'react-router-dom'
 import { AiOutlineSearch } from 'react-icons/ai'
 import axios from 'axios'
 import { useState } from 'react'
+import { FaSearch } from 'react-icons/fa'
 
 export const Category = ({ text, link, handlePath, name }) => {
   const { colorMode } = useColorMode()
@@ -49,13 +52,7 @@ export const DrawerCategory = ({ text, link, handlePath, name }) => {
     </Text>
   )
 }
-export const DrawerCategoryWithSubCategory = ({
-  text,
-  link,
-  handlePath,
-  name,
-  subCategories
-}) => {
+export const DrawerCategoryWithSubCategory = ({ text, subCategories }) => {
   const { isOpen, onOpen, onToggle } = useDisclosure()
   return (
     <>
@@ -100,34 +97,25 @@ export const SearchBox = () => {
         search: value
       }
     })
-    console.log(value)
-    const response = await axios.get('/obterProdutos', {
-      params: {
-        search: value
-      }
-    })
-    console.log(response)
   }
 
   return (
     <>
-      <InputGroup my={'20px'} w={'210px'}>
-        <form onSubmit={handleSubmit}>
-          <Input
-            placeholder={'Pesquisar...'}
-            borderRadius={50}
-            borderStyle={'none'}
-            variant={'filled'}
-            value={value}
-            onChange={handleChange}
-            textAlign={'left'}
-          />
-          <InputLeftElement
-            pointerEvents='none'
-            children={<Icon as={AiOutlineSearch} />}
-          />
-        </form>
-      </InputGroup>
+      <form onSubmit={handleSubmit}>
+        <FormControl>
+          <InputGroup>
+            <InputLeftElement
+              pointerEvents='none'
+              children={<Icon as={FaSearch} color='gray.300' />}
+            />
+            <Input
+              type='text'
+              placeholder='Pesquisar'
+              onChange={handleChange}
+            />
+          </InputGroup>
+        </FormControl>
+      </form>
     </>
   )
 }
