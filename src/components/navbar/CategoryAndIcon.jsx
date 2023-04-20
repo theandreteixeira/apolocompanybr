@@ -11,7 +11,7 @@ import {
   Button,
   useDisclosure
 } from '@chakra-ui/react'
-import { Form, Link } from 'react-router-dom'
+import { Form, Link, useNavigate } from 'react-router-dom'
 import { AiOutlineSearch } from 'react-icons/ai'
 import axios from 'axios'
 import { useState } from 'react'
@@ -86,17 +86,24 @@ export const NavIcon = ({ iconName }) => {
 
 export const SearchBox = () => {
   const [value, setValue] = useState('')
+  const navigate = useNavigate()
 
   const handleChange = event => {
+    console.log(event)
     setValue(event.target.value)
   }
 
   const handleSubmit = async event => {
     event.preventDefault()
-    console.log(event)
+    navigate('/allProducts', {
+      state: {
+        search: value
+      }
+    })
+    console.log(value)
     const response = await axios.get('/obterProdutos', {
       params: {
-        search: event.target.value
+        search: value
       }
     })
     console.log(response)
@@ -115,11 +122,11 @@ export const SearchBox = () => {
             onChange={handleChange}
             textAlign={'left'}
           />
+          <InputLeftElement
+            pointerEvents='none'
+            children={<Icon as={AiOutlineSearch} />}
+          />
         </form>
-        <InputLeftElement
-          pointerEvents='none'
-          children={<Icon as={AiOutlineSearch} />}
-        />
       </InputGroup>
     </>
   )

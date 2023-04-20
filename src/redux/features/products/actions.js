@@ -27,16 +27,14 @@ export const setAllFilters = (payload) => ({ type: SET_ALL_FILTERS, payload });
 
 export const resetFilters = () => ({ type: RESET_FILTERS });
 
-
-
-//Action Functions
-export const getRequest = (path) => async (dispatch) => {
+export const getRequest = (category, gender, search) => async (dispatch) => {
     try {
+        console.log(search)
         dispatch(getDataLoading());
-        console.log(path)
+        console.log(category, gender)
         let response = await axios.get('/obterProdutos', {
             params: {
-                gender: path
+                category, gender, search
             }
         });
         console.log(response)

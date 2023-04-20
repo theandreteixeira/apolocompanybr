@@ -6,7 +6,7 @@ import { ShoeSection } from '../../components/home/ShoeSection.jsx'
 import { Banner } from '../../components/home/Banner.jsx'
 import { Error } from '../../components/loading/Error.jsx'
 import { Loading } from '../../components/loading/Loading.jsx'
-import { getClothData, getShoeData } from '../../redux/features/home/actions.js'
+import { getClothData } from '../../redux/features/home/actions.js'
 import { setNavbarPath } from '../../redux/features/path/actions.js'
 import { setItemSession } from '../../utils/sessionStorage.js'
 import { Image, Box, Text, Center, Button } from '@chakra-ui/react'
@@ -25,7 +25,6 @@ export const Home = () => {
 
   useEffect(() => {
     dispatch(getClothData())
-    dispatch(getShoeData())
   }, [])
 
   return loading ? (

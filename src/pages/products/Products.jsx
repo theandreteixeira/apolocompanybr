@@ -16,7 +16,7 @@ import { getRequest } from '../../redux/features/products/actions'
 import { setToast } from '../../utils/extraFunctions'
 import { LeftSideFilter } from '../../components/products/LeftSideFilter'
 import { SortFilters } from '../../components/products/SortFilters'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { getItemSession, setItemSession } from '../../utils/sessionStorage'
 import { ProductDisplayBox } from '../../components/products/ProductDisplayBox'
 import { Loading } from '../../components/loading/Loading'
@@ -32,6 +32,7 @@ export const Products = () => {
     state => state.prodReducer
   )
   const path = getItemSession('path')
+  const route = useLocation()
   const dispatch = useDispatch()
   const toast = useToast()
   const navigate = useNavigate()
@@ -47,7 +48,10 @@ export const Products = () => {
   }
 
   useEffect(() => {
-    dispatch(getRequest(path))
+    const search = route.state.search
+    const gender = path == 'men' || path == 'women' ? path : undefined
+    const category = path == 'allProducts' ? undefined : undefined
+    dispatch(getRequest(category, gender, search))
   }, [path])
 
   return (
