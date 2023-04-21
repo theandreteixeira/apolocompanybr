@@ -1,118 +1,43 @@
-import {
-  Box,
-  Button,
-  Collapse,
-  Flex,
-  HStack,
-  Image,
-  Input,
-  Text,
-  useDisclosure,
-  useRadio,
-  useRadioGroup
-} from '@chakra-ui/react'
+import { Box, Image, useDisclosure } from '@chakra-ui/react'
 import { useState } from 'react'
+import { CreditCardForm } from './CreditCardForm'
 
-export const PaymentMethoda = ({ isOpen, onChange }) => {
-  const [text, setText] = useState('')
-
-  const handleHolderName = event => {
-    const value = event.target.value.toUpperCase()
-    setText(value)
-    onChange({ target: { name: 'holderName', value } })
-  }
-
+const BoxCard = (value, selected, isOpen, onChange) => {
   return (
-    <>
-      <Collapse in={isOpen} animateOpacity>
-        <Flex flexDirection={'column'} gap={'20px'} mt={'15px'}>
-          <Input
-            type={'number'}
-            name={'cardNumber'}
-            placeholder={'Número'}
-            onChange={onChange}
-          />
-          <Input
-            type={'text'}
-            name={'holderName'}
-            placeholder={'Nome (igual no cartão)'}
-            onChange={handleHolderName}
-            value={text}
-          />
-          <Input
-            name={'expireMonth'}
-            maxLength={2}
-            placeholder={'Mês'}
-            onChange={onChange}
-          />
-          <Input
-            name={'expireYear'}
-            maxLength={2}
-            placeholder={'Ano'}
-            onChange={onChange}
-          />
-          <Input
-            name={'cvv'}
-            placeholder={'CVV'}
-            onChange={onChange}
-            maxLength={4}
-          />
-        </Flex>
-      </Collapse>
-    </>
-  )
-}
-
-function RadioCard(props) {
-  const { getInputProps, getRadioProps } = useRadio(props)
-
-  const input = getInputProps()
-  const checkbox = getRadioProps()
-
-  function onClick() {
-    props.item.onClick()
-  }
-
-  return (
-    <Box as='label'>
-      <input onClick={onClick} {...input} />
-      {/* <input {...input} /> */}
+    <label>
       <Box
-        {...checkbox}
-        cursor='pointer'
-        borderWidth='1px'
-        borderRadius='md'
-        _checked={{
-          bg: 'teal.600',
-          color: 'white',
-          borderColor: 'teal.600'
-        }}
         px={5}
-        py={6}
+        py={3}
+        borderRadius='md'
+        borderWidth='1px'
+        bg={selected && 'black'}
+        color={selected && 'white'}
+        onClick={value.onClick}
         display={'flex'}
         justifyContent={'center'}
         alignContent={'center'}
         flexDirection={'column'}
       >
-        <Image height={'25px'} src={props.item.image}></Image>
-        {props.children}
+        <Image height={'25px'} src={value.image} mb={'10px'}></Image>
+        {value.value}
       </Box>
-      {props.item.name === 'credit_card' && (
-        <PaymentMethoda isOpen={props.isOpen} onChange={props.onChange} />
+      {value.name === 'credit_card' && (
+        <CreditCardForm isOpen={isOpen} onChange={onChange} />
       )}
-    </Box>
+    </label>
   )
 }
 
-// Step 2: Use the `useRadioGroup` hook to control a group of custom radios.
 export const PaymentMethod = ({ handlePaymentMethod, onChange }) => {
   const handlePix = () => {
     onClose()
+    setSelectedBox('pix')
     handlePaymentMethod('pix')
   }
 
   const handleCreditCard = () => {
     onOpen()
+    setSelectedBox('credit_card')
     handlePaymentMethod('credit_card')
   }
 
@@ -133,29 +58,13 @@ export const PaymentMethod = ({ handlePaymentMethod, onChange }) => {
   ]
   const { isOpen, onOpen, onClose } = useDisclosure()
 
-  const { getRootProps, getRadioProps } = useRadioGroup({
-    name: 'paymentMethod',
-    defaultValue: 'PIX',
-    onChange: console.log
-  })
-
-  const group = getRootProps()
+  const [selectedBox, setSelectedBox] = useState(null)
 
   return (
-    <HStack {...group} align={'flex-start'}>
+    <Box display='flex' gap={'5px'} justifyContent={'center'}>
       {options.map(value => {
-        const radio = getRadioProps({ value: value.name })
-        return (
-          <RadioCard
-            item={value}
-            {...radio}
-            isOpen={isOpen}
-            onChange={onChange}
-          >
-            {value.value}
-          </RadioCard>
-        )
+        return BoxCard(value, selectedBox === value.name, isOpen, onChange)
       })}
-    </HStack>
+    </Box>
   )
 }

@@ -8,7 +8,15 @@ import {
   Badge,
   Icon,
   HStack,
-  Text
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+  Button,
+  Text,
+  MenuList,
+  MenuItem,
+  Menu,
+  MenuButton
 } from '@chakra-ui/react'
 import { RiShoppingBagLine } from 'react-icons/ri'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
@@ -26,6 +34,7 @@ import {
 } from '../../components/navbar/CategoryAndIcon'
 import { SideDrawer } from '../../components/navbar/SideDrawer'
 import { TbTruckDelivery } from 'react-icons/tb'
+import { useState } from 'react'
 
 export const Navbar = () => {
   const dispatch = useDispatch()
@@ -34,6 +43,7 @@ export const Navbar = () => {
   const { colorMode } = useColorMode()
 
   const handlePath = name => {
+    console.log('ele entra no nbavbar:' + name)
     dispatch(setNavbarPath(name))
     setItemSession('path', name)
   }

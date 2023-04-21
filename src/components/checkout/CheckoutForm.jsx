@@ -11,37 +11,9 @@ import MaskedInput from 'react-text-mask'
 import createAutoCorrectDataPipe from 'text-mask-addons/dist/createAutoCorrectedDatePipe'
 import createNumberMask from 'text-mask-addons/dist/createNumberMask'
 import React, { useState } from 'react'
+import { BrazilianStates } from '../../utils/BrazilianStates'
 
 export const CheckoutForm = ({ onChange, isLoading }) => {
-  const states = [
-    { name: 'Acre', value: 'AC' },
-    { name: 'Alagoas', value: 'AL' },
-    { name: 'Amapá', value: 'AP' },
-    { name: 'Amazonas', value: 'AM' },
-    { name: 'Bahia', value: 'BA' },
-    { name: 'Ceará', value: 'CE' },
-    { name: 'Distrito Federal', value: 'DF' },
-    { name: 'Espírito Santo', value: 'ES' },
-    { name: 'Goiás', value: 'GO' },
-    { name: 'Maranhão', value: 'MA' },
-    { name: 'Mato Grosso', value: 'MT' },
-    { name: 'Mato Grosso do Sul', value: 'MS' },
-    { name: 'Minas Gerais', value: 'MG' },
-    { name: 'Pará', value: 'PA' },
-    { name: 'Paraíba', value: 'PB' },
-    { name: 'Paraná', value: 'PR' },
-    { name: 'Pernambuco', value: 'PE' },
-    { name: 'Piauí', value: 'PI' },
-    { name: 'Rio de Janeiro', value: 'RJ' },
-    { name: 'Rio Grande do Norte', value: 'RN' },
-    { name: 'Rio Grande do Sul', value: 'RS' },
-    { name: 'Rondônia', value: 'RO' },
-    { name: 'Roraima', value: 'RR' },
-    { name: 'Santa Catarina', value: 'SC' },
-    { name: 'São Paulo', value: 'SP' },
-    { name: 'Sergipe', value: 'SE' },
-    { name: 'Tocantins', value: 'TO' }
-  ]
   const [cpf, setCpf] = useState('')
   const [phoneNumber, setPhoneNumber] = useState('')
   const [cep, setCEP] = useState('')
@@ -149,7 +121,7 @@ export const CheckoutForm = ({ onChange, isLoading }) => {
                 onChange={onChange}
                 mb={'10px'}
               >
-                {states.map(state => {
+                {BrazilianStates.map(state => {
                   return (
                     <option value={JSON.stringify(state)}>{state.name}</option>
                   )
@@ -159,20 +131,24 @@ export const CheckoutForm = ({ onChange, isLoading }) => {
             <Text fontSize={'20px'} fontWeight={600} mb={'10px'} mt={'10px'}>
               Preencha com os seus dados:
             </Text>
-            <MaskedInput
-              onChange={handleChange}
-              name={'cpf'}
-              mask={cpfMask}
-              placeholder={'CPF*'}
-              value={cpf}
-            />
-            <MaskedInput
-              onChange={handleChangePhoneNumber}
-              name={'phoneNumber'}
-              mask={phoneNumberMask}
-              placeholder={'Telefone*'}
-              value={phoneNumber}
-            />
+            <Box my={4}>
+              <MaskedInput
+                onChange={handleChange}
+                name={'cpf'}
+                mask={cpfMask}
+                placeholder={'CPF'}
+                value={cpf}
+              />
+            </Box>
+            <Box my={4}>
+              <MaskedInput
+                onChange={handleChangePhoneNumber}
+                name={'phoneNumber'}
+                mask={phoneNumberMask}
+                placeholder={'Telefone'}
+                value={phoneNumber}
+              />
+            </Box>
           </FormControl>
         </Flex>
       </Box>

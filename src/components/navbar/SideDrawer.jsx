@@ -17,15 +17,16 @@ import {
   DrawerCategory,
   DrawerCategoryWithSubCategory
 } from './CategoryAndIcon'
-import { useState } from 'react'
 
 export const SideDrawer = ({ handlePath }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const user = useSelector(state => state.authReducer.user.firstName)
 
   const handleSelectSection = path => {
+    console.log('fria', path)
+
     onClose()
-    handlePath(path)
+    handlePath(JSON.stringify(path))
   }
 
   return (
@@ -60,58 +61,51 @@ export const SideDrawer = ({ handlePath }) => {
                   {
                     text: 'Ver tudo',
                     link: '/men',
-                    handlePath: handleSelectSection,
-                    name: 'futebol'
+                    handlePath: handleSelectSection
                   },
                   {
                     text: 'Futebol',
                     link: '/men',
                     handlePath: handleSelectSection,
-                    name: 'futebol'
+                    category: 'football'
                   },
                   {
                     text: 'Academia',
                     link: '/men',
                     handlePath: handleSelectSection,
-                    name: 'futebol'
+                    category: 'academia'
                   },
                   {
                     text: 'Casual',
                     link: '/men',
                     handlePath: handleSelectSection,
-                    name: 'futebol'
+                    category: 'casual'
                   }
                 ]}
               />
               <DrawerCategoryWithSubCategory
                 handlePath={handleSelectSection}
-                name={'men'}
+                name={'women'}
                 text={'Feminino'}
                 link={'/women'}
                 subCategories={[
                   {
                     text: 'Ver tudo',
-                    link: '/men',
+                    link: '/women',
                     handlePath: handleSelectSection,
-                    name: 'futebol'
+                    category: 'allProducts'
                   },
                   {
                     text: 'Futebol',
-                    link: '/men',
+                    link: '/women',
                     handlePath: handleSelectSection,
-                    name: 'futebol'
+                    category: 'futebol'
                   },
                   {
                     text: 'Academia',
-                    link: '/men',
+                    link: '/women',
                     handlePath: handleSelectSection,
-                    name: 'futebol'
-                  },
-                  {
-                    text: 'Casual',
-                    link: '/men',
-                    handlePath: handleSelectSection,
-                    name: 'futebol'
+                    category: 'academia'
                   }
                 ]}
               />

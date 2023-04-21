@@ -11,7 +11,8 @@ import {
   Button,
   useDisclosure,
   FormControl,
-  FormLabel
+  FormLabel,
+  Stack
 } from '@chakra-ui/react'
 import { Form, Link, useNavigate } from 'react-router-dom'
 import { AiOutlineSearch } from 'react-icons/ai'
@@ -52,8 +53,12 @@ export const DrawerCategory = ({ text, link, handlePath, name }) => {
     </Text>
   )
 }
-export const DrawerCategoryWithSubCategory = ({ text, subCategories }) => {
-  const { isOpen, onOpen, onToggle } = useDisclosure()
+export const DrawerCategoryWithSubCategory = ({
+  text,
+  subCategories,
+  name
+}) => {
+  const { isOpen, onToggle } = useDisclosure()
   return (
     <>
       <Text fontSize={'20px'} fontWeight={500}>
@@ -61,16 +66,31 @@ export const DrawerCategoryWithSubCategory = ({ text, subCategories }) => {
       </Text>
       <Collapse in={isOpen} animateOpacity>
         {subCategories.map(sub => {
-          return DrawerSubCategory(sub)
+          return DrawerSubCategory({ ...sub, gender: name })
         })}
       </Collapse>
     </>
   )
 }
-export const DrawerSubCategory = ({ text, link, handlePath, name }) => {
+export const DrawerSubCategory = ({
+  text,
+  link,
+  handlePath,
+  category,
+  gender
+}) => {
   return (
     <Text fontSize={'16px'} mb={'10px'}>
-      <Link onClick={handlePath} to={link} name={name}>
+      <Link
+        onClick={p => {
+          handlePath({
+            category,
+            gender
+          })
+        }}
+        to={link}
+        name={name}
+      >
         {text}
       </Link>
     </Text>
@@ -92,29 +112,34 @@ export const SearchBox = () => {
 
   const handleSubmit = async event => {
     event.preventDefault()
-    navigate('/allProducts', {
-      state: {
-        search: value
-      }
-    })
+    if (value.length > 1) {
+      navigate('/allProducts', {
+        state: {
+          search: value
+        }
+      })
+    }
   }
 
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <FormControl>
-          <InputGroup>
-            <InputLeftElement
-              pointerEvents='none'
-              children={<Icon as={FaSearch} color='gray.300' />}
-            />
-            <Input
-              type='text'
-              placeholder='Pesquisar'
-              onChange={handleChange}
-            />
-          </InputGroup>
-        </FormControl>
+        <Stack spacing={4} ml={'10px'}>
+          <FormControl>
+            <InputGroup variant={'filled'}>
+              <InputLeftElement
+                pointerEvents='none'
+                children={<Icon as={FaSearch} color='gray' />}
+              />
+              <Input
+                type='text'
+                variant={'filled'}
+                placeholder='Pesquisar'
+                onChange={handleChange}
+              />
+            </InputGroup>
+          </FormControl>
+        </Stack>
       </form>
     </>
   )

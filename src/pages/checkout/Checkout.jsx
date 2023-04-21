@@ -24,13 +24,8 @@ export const Checkout = () => {
     shallowEqual
   )
   const toast = useToast()
-
-  const token = useSelector(state => state.authReducer.token)
   const user = useSelector(state => state.authReducer.user)
   const [isLoading, setIsLoading] = useState(false)
-  const [data, setData] = useState([])
-
-  const handleAddressGetRequest = async () => {}
 
   const [form, setForm] = useState({
     addressLine1: '',
@@ -96,7 +91,11 @@ export const Checkout = () => {
         status: data.status,
         qrCode: data.charges[0].last_transaction.qr_code,
         qrCodeUrl: data.charges[0].last_transaction.qr_code_url,
-        orderSummary: { ...orderSummary, orderId: data.id },
+        orderSummary: {
+          ...orderSummary,
+          orderId: data.id,
+          paymentMethod: form.paymentMethod
+        },
         shippingDetails
       })
       setIsLoading(false)
@@ -114,7 +113,7 @@ export const Checkout = () => {
       })
     } catch (error) {
       setIsLoading(false)
-      // setToast(toast, 'Não foi possível realizar o pagamento', 'error', 3500)
+      setToast(toast, 'Não foi possível realizar o pagamento', 'error', 3500)
       PaymentIndevido({ open: true })
       console.log(error)
     }
@@ -180,10 +179,6 @@ export const Checkout = () => {
     }
   }
 
-  useEffect(() => {
-    handleAddressGetRequest()
-  }, [])
-
   function handlePaymentMethod(method) {
     console.log(method)
     setForm({ ...form, paymentMethod: method })
@@ -193,30 +188,14 @@ export const Checkout = () => {
     <>
       <Box
         p={'20px'}
-        my={'30px'}
+        my={'auto'}
         mx={'auto'}
         maxW={'1200px'}
-        display={'grid'}
+        // display={'grid'}
         gap={['40px', '40px', '40px', '10%', '10%']}
-        gridTemplateColumns={['100%', '100%', '100%', '55% 35%', '60% 30%']}
+        // gridTemplateColumns={['100%', '100%', '100%', '55% 35%', '60% 30%']}
       >
-        {
-          // isLoading ? (
-          //   <Text>Carregando enderecos</Text>
-          // ) : data.length > 0 ? (
-          //   data.map(e => {
-          //     return (
-          //       <>
-          //         <Text fontWeight={'bold'}>
-          //           Escolha um endereço para entrega
-          //         </Text>
-          //         <SelectAddress {...e} />
-          //       </>
-          //     )
-          //   })
-          // ) :
-          <CheckoutForm onChange={handleInputChange} isLoading={isLoading} />
-        }
+        {<CheckoutForm onChange={handleInputChange} isLoading={isLoading} />}
         <CheckoutPaymentMethod
           handlePaymentMethod={handlePaymentMethod}
           onChange={handleInputChange}

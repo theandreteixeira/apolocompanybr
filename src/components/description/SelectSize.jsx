@@ -1,38 +1,5 @@
-import { Box, useColorMode, useRadio } from '@chakra-ui/react'
+import { Box, useColorMode } from '@chakra-ui/react'
 import { useState } from 'react'
-
-const RadioCard = props => {
-  const { getInputProps, getCheckboxProps } = useRadio(props)
-  const input = getInputProps()
-  const checkbox = getCheckboxProps()
-  const { colorMode } = useColorMode()
-  const isDisabled = props.item.quantity == 0
-
-  return (
-    <Box as='label'>
-      <input {...input} />
-      <Box
-        onClick={!isDisabled ? props.onClick : null}
-        bgColor={isDisabled ? '#f5f5f5' : null}
-        {...checkbox}
-        cursor={isDisabled ? 'not-allowed' : 'pointer'}
-        borderWidth='1px'
-        borderRadius='md'
-        _checked={
-          isDisabled
-            ? null
-            : {
-                border: `2px solid ${colorMode === 'light' ? 'black' : 'white'}`
-              }
-        }
-        px={5}
-        py={3}
-      >
-        {props.children}
-      </Box>
-    </Box>
-  )
-}
 
 const BoxCard = (value, handleBoxClick, selected) => {
   const { colorMode } = useColorMode()

@@ -2,8 +2,10 @@ import {
   Box,
   Button,
   Center,
+  Container,
   Flex,
   Grid,
+  Image,
   Spacer,
   Text,
   useColorMode,
@@ -32,7 +34,7 @@ export const Products = () => {
   )
   const path = getItemSession('path')
   const route = useLocation()
-  const search = route.state.search
+  const search = route.state?.search
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -47,9 +49,11 @@ export const Products = () => {
   }
 
   useEffect(() => {
-    const gender = path == 'men' || path == 'women' ? path : undefined
-    const category = path == 'allProducts' ? undefined : undefined
-    dispatch(getRequest(category, gender, search))
+    console.log('puts', path)
+    const attr = JSON.parse(path)
+    const { gender, category } = attr
+    console.log('me aceita', gender, category)
+    dispatch(getRequest(attr.category, attr.gender, search))
   }, [path, search])
 
   return (
@@ -136,7 +140,7 @@ export const Products = () => {
             <Loading />
           ) : isError ? (
             <Error />
-          ) : (
+          ) : products.length > 0 ? (
             <Grid
               gap={[2, 4]}
               p={['10px', '10px', '20px', '20px', '20px']}
@@ -148,20 +152,28 @@ export const Products = () => {
                 'repeat(3, 1fr)'
               ]}
             >
-              {products.length > 0 ? (
-                products.map((product, index) => (
-                  <ProductDisplayBox
-                    {...product}
-                    key={index}
-                    onClick={() => {
-                      handleSingleProduct(product)
-                    }}
-                  />
-                ))
-              ) : (
-                <Text>Nenhum produto foi encontrado.</Text>
-              )}
+              {/* {products.length > 0 ? ( */}
+              {products.map((product, index) => (
+                <ProductDisplayBox
+                  {...product}
+                  key={index}
+                  onClick={() => {
+                    handleSingleProduct(product)
+                  }}
+                />
+              ))}
             </Grid>
+          ) : (
+            <Container
+              my={'140px'}
+              display={'flex'}
+              flexDirection={'column'}
+              justifyContent={'center'}
+            >
+              <Text textAlign={'center'} color={'gray'}>
+                Nenhum produto foi encontrado.
+              </Text>
+            </Container>
           )}
         </Box>
       </Grid>
