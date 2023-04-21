@@ -5,5 +5,6 @@ import nikeLogoPayment from '../assets/nikeLogoPayment.png'
 import beMember from '../assets/signup.png'
 import womenCollection from '../assets/women-collection.png'
 import menCollection from '../assets/men-collection.png'
+import google from '../assets/google.png'
 
-export { apoloLogo, nikeLogoPayment, apoloLight, apoloDark, beMember, menCollection, womenCollection };
+export { apoloLogo, nikeLogoPayment, apoloLight, apoloDark, beMember, menCollection, womenCollection, google };

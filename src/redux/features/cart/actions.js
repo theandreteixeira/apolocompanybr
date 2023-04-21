@@ -54,7 +54,7 @@ export const removeFromCartRequest = (index, toast) => (dispatch) => {
     orderSummary.subTotal === 0 && removeItemSession('discountPercent');
     setItem('orderSummary', orderSummary);
     dispatch(removeFromCart({ index, orderSummary }));
-    setToast(toast, 'Produto removido do carrinho', 'success');
+    setToast(toast, 'Produto removido da sacola', 'success');
 };
 
 export const applyCouponRequest = (discountPercent, toast) => (dispatch) => {

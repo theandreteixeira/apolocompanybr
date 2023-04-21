@@ -18,12 +18,14 @@ const BoxCard = (value, selected, isOpen, onChange) => {
         alignContent={'center'}
         flexDirection={'column'}
       >
-        <Image height={'25px'} src={value.image} mb={'10px'}></Image>
+        <Image
+          width={'25px'}
+          height={'25px'}
+          src={value.image}
+          mb={'10px'}
+        ></Image>
         {value.value}
       </Box>
-      {value.name === 'credit_card' && (
-        <CreditCardForm isOpen={isOpen} onChange={onChange} />
-      )}
     </label>
   )
 }
@@ -61,10 +63,15 @@ export const PaymentMethod = ({ handlePaymentMethod, onChange }) => {
   const [selectedBox, setSelectedBox] = useState(null)
 
   return (
-    <Box display='flex' gap={'5px'} justifyContent={'center'}>
-      {options.map(value => {
-        return BoxCard(value, selectedBox === value.name, isOpen, onChange)
-      })}
+    <Box width={'100%'}>
+      <Box display='flex' gap={'5px'} justifyContent={'center'}>
+        {options.map(value => {
+          return BoxCard(value, selectedBox === value.name, isOpen, onChange)
+        })}
+      </Box>
+      {selectedBox === 'credit_card' && (
+        <CreditCardForm isOpen={isOpen} onChange={onChange} />
+      )}
     </Box>
   )
 }

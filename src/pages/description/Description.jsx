@@ -15,12 +15,12 @@ import { numberWithCommas, setToast } from '../../utils/extraFunctions'
 import { ImageModal } from '../../components/description/ImageModal'
 import { SelectSize } from '../../components/description/SelectSize'
 import { NewButton } from '../../components/description/NewButton'
-import { getItemSession } from '../../utils/sessionStorage'
-import { Product, addToCartRequest } from '../../redux/features/cart/actions'
+import { Loading } from '../../components/loading/Loading'
+import { Error } from '../../components/loading/Error'
+import { addToCartRequest } from '../../redux/features/cart/actions'
 import { GrStar } from 'react-icons/gr'
-import { useState } from 'react'
-import { addToFavouriteRequest } from '../../redux/features/favourite/actions'
-import { useNavigate } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 import {
   Drawer,
   DrawerBody,
@@ -30,7 +30,6 @@ import {
   DrawerContent,
   DrawerCloseButton,
   useDisclosure,
-  Input,
   Button,
   Tabs,
   TabList,
@@ -40,43 +39,22 @@ import {
   TabIndicator
 } from '@chakra-ui/react'
 import React from 'react'
-import { BagItems } from '../../components/cart/BagItems'
 import { ItemBoxToDescription } from '../../components/cart/ItemBox'
 import { Measurements } from '../../components/description/Measurements'
 import { handleCategory } from '../../utils/handleCategory'
+import { verifyIsSouldOut } from '../../utils/VerifyIsSouldOut'
+import axios from 'axios'
 
 export const Description = () => {
-  const verifyIsSouldOut = sizes => {
-    var isSold = true
-    console.log(sizes)
-    for (let i = 0; i < sizes.length; i++) {
-      if (sizes[i].quantity > 0) {
-        isSold = false
-        break
-      }
-    }
-    return isSold
-  }
-
-  const data = getItemSession('singleProduct')
-  const {
-    name,
-    gender,
-    description,
-    category,
-    price,
-    sizes,
-    color,
-    rating,
-    photos,
-    measurements
-  } = data
+  const location = useLocation()
+  const id = location.state.id
   const [mySize, setMySize] = useState(false)
-  const token = useSelector(state => state.authReducer.token)
   const toast = useToast()
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  const isSouldOut = verifyIsSouldOut(sizes)
+  const [isLoading, setIsLoading] = useState(true)
+  const [isError, setIsError] = useState(false)
+  const [data, setData] = useState()
   const cartProducts = useSelector(state => state.cartReducer.cartProducts)
   const currentSummary = useSelector(state => state.cartReducer.orderSummary)
   console.log('cartttttt')
@@ -96,16 +74,34 @@ export const Description = () => {
     }
   }
 
-  const handleAddToFavourite = () => {
-    if (!token) {
-      setToast(toast, 'Faça o login primeiro', 'error')
-      navigate('/auth')
-    } else {
-      dispatch(addToFavouriteRequest(data, token, toast))
+  const handleGetProduct = async id => {
+    try {
+      setIsLoading(true)
+      const { data } = await axios.get('/obterProduto', {
+        params: {
+          id
+        }
+      })
+      console.log(data)
+      console.log(data.produto)
+      setData(data.produto)
+      setIsLoading(false)
+    } catch (error) {
+      console.log(error)
+      setIsLoading(false)
+      setIsError(true)
     }
   }
 
-  return (
+  useEffect(() => {
+    handleGetProduct(id)
+  }, [id])
+
+  return isLoading ? (
+    <Loading />
+  ) : isError ? (
+    <Error />
+  ) : (
     <>
       <Grid
         p={'10px'}
@@ -120,59 +116,59 @@ export const Description = () => {
           '40px auto 10px'
         ]}
       >
-        <ImageModal img={photos} />
+        <ImageModal img={data.photos} />
 
         <Box px={['20px', '40px']}>
           <Text fontSize={'28px'} fontWeight={'black'}>
-            {name.toUpperCase()}
+            {data.name.toUpperCase()}
           </Text>
           <Text fontSize={'22px'} mt='15px' mb='20px' fontWeight={'black'}>
-            R$ {numberWithCommas(price)}
+            R$ {numberWithCommas(data.price)}
           </Text>
           <Box my={'15px'}>
             <Flex direction='row'>
-              <Icon boxSize={6} color='black' as={GrStar} />
-              <Icon boxSize={6} color='black' as={GrStar} />
-              <Icon boxSize={6} color='black' as={GrStar} />
-              <Icon boxSize={6} color='black' as={GrStar} />
+              <Icon boxSize={6} color='#E2E8F0' as={GrStar} />
+              <Icon boxSize={6} color='#E2E8F0' as={GrStar} />
+              <Icon boxSize={6} color='#E2E8F0' as={GrStar} />
+              <Icon boxSize={6} color='#E2E8F0' as={GrStar} />
               <Icon boxSize={6} color='#E2E8F0' as={GrStar} />
             </Flex>
           </Box>
-          <Text color='grey'>{handleCategory(category)}</Text>
+          <Text color='grey'>{handleCategory(data.category)}</Text>
           <Divider my={'15px'} />
           <UnorderedList fontSize={'16px'} styleType='none' mb={'20px'}>
             <ListItem my={'10px'}>
               <Flex direction='row'>
-                <Text fontWeight={'bold'}> Gênero: </Text> {gender}
+                <Text fontWeight={'bold'}> Gênero: </Text> {data.gender}
               </Flex>
             </ListItem>
             <ListItem my={'10px'}>
               <Flex direction='row'>
-                <Text fontWeight={'bold'}> Categoria: </Text>{' '}
-                {handleCategory(category)}
+                <Text fontWeight={'bold'}> Categoria: </Text>
+                {handleCategory(data.category)}
               </Flex>
             </ListItem>
             <ListItem my={'10px'}>
               <Flex direction='row'>
-                <Text fontWeight={'bold'}> Cor: </Text> {color}
+                <Text fontWeight={'bold'}> Cor: </Text> {data.color}
               </Flex>
             </ListItem>
             <ListItem my={'10px'}>
               <Flex direction='row'>
-                <Text fontWeight={'bold'}> Avaliação: </Text> {rating}
+                <Text fontWeight={'bold'}> Avaliação: </Text> {data.rating}
               </Flex>
             </ListItem>
           </UnorderedList>
           <Box my={'30px'}>
-            {isSouldOut ? (
+            {verifyIsSouldOut(data.sizes) ? (
               <Text color='grey' fontSize={'20px'}>
                 PRODUTO ESGOTADO
               </Text>
             ) : (
-              <SelectSize sizes={sizes} setMySize={setMySize} />
+              <SelectSize sizes={data.sizes} setMySize={setMySize} />
             )}
           </Box>
-          {!isSouldOut && (
+          {!verifyIsSouldOut(data.sizes) && (
             <NewButton
               click={handleAddToCart}
               name={'Adicionar a sacola'}
@@ -194,12 +190,12 @@ export const Description = () => {
         <DrawerContent>
           <DrawerCloseButton color={'white'} />
           <DrawerHeader bgColor={'black'} color={'white'} fontSize={'15px'}>
-            Produto adicionado ao carrinho
+            Produto adicionado à sacola
           </DrawerHeader>
 
           <DrawerBody>
-            {cartProducts.map(prod => (
-              <ItemBoxToDescription {...prod} size={mySize} />
+            {cartProducts.map((prod, index) => (
+              <ItemBoxToDescription {...prod} size={mySize} index={index} />
             ))}
           </DrawerBody>
 
@@ -213,21 +209,23 @@ export const Description = () => {
                   R${numberWithCommas(currentSummary.subTotal)}
                 </Text>
               </Flex>
-              <Button
-                color={'white'}
-                width={'100%'}
-                onClick={() => navigate('/cart')}
-                h={'60px'}
-                bg={'black'}
-                border={`1px solid ${'#cecdce'}`}
-                borderRadius='0'
-                w={'100%'}
-                fontSize={'17px'}
-                mb={'10px'}
-                _hover={{ bg: 'black', borderColor: 'black' }}
-              >
-                FINALIZAR COMPRA
-              </Button>
+              {cartProducts.length > 0 && (
+                <Button
+                  color={'white'}
+                  width={'100%'}
+                  onClick={() => navigate('/cart')}
+                  h={'60px'}
+                  bg={'black'}
+                  border={`1px solid ${'#cecdce'}`}
+                  borderRadius='0'
+                  w={'100%'}
+                  fontSize={'17px'}
+                  mb={'10px'}
+                  _hover={{ bg: 'black', borderColor: 'black' }}
+                >
+                  FINALIZAR COMPRA
+                </Button>
+              )}
               <Button
                 width={'100%'}
                 onClick={onClose}
@@ -279,12 +277,12 @@ export const Description = () => {
             borderRadius='1px'
           />
           <TabPanels>
-            <TabPanel>{description}</TabPanel>
+            <TabPanel>{data.description}</TabPanel>
             <TabPanel>
               <Text color={'grey'}>Nenhuma avaliação para esse produto.</Text>
             </TabPanel>
             <TabPanel>
-              <Measurements measurements={measurements} />
+              <Measurements measurements={data.measurements} />
             </TabPanel>
           </TabPanels>
         </Tabs>

@@ -60,7 +60,7 @@ export const Logout = () => {
               }}
               icon={<BsCart2 />}
             >
-              Carrinho
+              Sacola
             </MenuItem>
             <Divider />
             <MenuItem

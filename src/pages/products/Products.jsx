@@ -44,8 +44,11 @@ export const Products = () => {
   }
 
   const handleSingleProduct = data => {
-    setItemSession('singleProduct', data)
-    navigate('/description')
+    navigate('/description', {
+      state: {
+        id: data.id
+      }
+    })
   }
 
   useEffect(() => {

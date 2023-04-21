@@ -5,7 +5,8 @@ import {
   FormLabel,
   Input,
   Select,
-  Text
+  Text,
+  border
 } from '@chakra-ui/react'
 import MaskedInput from 'react-text-mask'
 import createAutoCorrectDataPipe from 'text-mask-addons/dist/createAutoCorrectedDatePipe'
@@ -77,7 +78,7 @@ export const CheckoutForm = ({ onChange, isLoading }) => {
 
   return (
     <>
-      <Box>
+      <Box width={'100%'}>
         <Text fontSize={'20px'} fontWeight={600} mb={'10px'}>
           Escolha um endereço para entrega:
         </Text>
@@ -98,7 +99,7 @@ export const CheckoutForm = ({ onChange, isLoading }) => {
               placeholder={'Número'}
               mb={'10px'}
             />
-            <Flex gap={'20px'}>
+            <Flex gap={'10px'}>
               <Input
                 onChange={onChange}
                 type={'text'}
@@ -112,6 +113,14 @@ export const CheckoutForm = ({ onChange, isLoading }) => {
                 mask={CEPMask}
                 placeholder={'CEP'}
                 value={cep}
+                style={{
+                  padding: '10px',
+                  borderWidth: '1px',
+                  borderStyle: 'solid',
+                  borderColor: 'grey',
+                  borderRadius: '10px',
+                  marginBottom: '10px'
+                }}
               />
             </Flex>
             <Flex gap={'20px'}>
@@ -131,22 +140,39 @@ export const CheckoutForm = ({ onChange, isLoading }) => {
             <Text fontSize={'20px'} fontWeight={600} mb={'10px'} mt={'10px'}>
               Preencha com os seus dados:
             </Text>
-            <Box my={4}>
+            <Box my={4} w={'100%'}>
               <MaskedInput
                 onChange={handleChange}
                 name={'cpf'}
                 mask={cpfMask}
                 placeholder={'CPF'}
                 value={cpf}
+                width={'100%'}
+                style={{
+                  padding: '10px',
+                  width: '100%',
+                  borderWidth: '1px',
+                  borderStyle: 'solid',
+                  borderColor: 'grey',
+                  borderRadius: '10px'
+                }}
               />
             </Box>
-            <Box my={4}>
+            <Box my={4} w={'100%'}>
               <MaskedInput
                 onChange={handleChangePhoneNumber}
                 name={'phoneNumber'}
                 mask={phoneNumberMask}
                 placeholder={'Telefone'}
                 value={phoneNumber}
+                style={{
+                  padding: '10px',
+                  width: '100%',
+                  borderWidth: '1px',
+                  borderStyle: 'solid',
+                  borderColor: 'grey',
+                  borderRadius: '10px'
+                }}
               />
             </Box>
           </FormControl>
@@ -173,7 +199,7 @@ export const SelectAddress = ({
             onChange={onChange}
             type={'text'}
             name={'addressLine1'}
-            placeholder={'Endereço*'}
+            placeholder={'Endereço'}
           >
             {addressLine1}
           </Text>
@@ -198,7 +224,7 @@ export const SelectAddress = ({
               onChange={onChange}
               type={'text'}
               name={'pinCode'}
-              placeholder={'CEP*'}
+              placeholder={'CEP'}
             >
               {pinCode}
             </Text>
@@ -208,7 +234,7 @@ export const SelectAddress = ({
               onChange={onChange}
               type={'text'}
               name={'state'}
-              placeholder={'Estado*'}
+              placeholder={'Estado'}
             >
               {state}
             </Text>
@@ -216,7 +242,7 @@ export const SelectAddress = ({
               onChange={onChange}
               type={'text'}
               name={'country'}
-              placeholder={'País*'}
+              placeholder={'País'}
             >
               {country}
             </Text>

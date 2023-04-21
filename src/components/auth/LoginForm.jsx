@@ -10,6 +10,7 @@ import {
 import { setToast } from '../../utils/extraFunctions'
 import { isLoginFormEmpty } from '../../utils/formValidator'
 import { AuthBtn } from './AuthBtn'
+import { google } from '../../constants/images'
 
 export const LoginForm = () => {
   const dispatch = useDispatch()
@@ -79,12 +80,8 @@ export const LoginForm = () => {
             p={'25px'}
             onClick={() => dispatch(getLoginByGoogleSuccess())}
           >
-            <Image
-              height={'25px'}
-              mr={'10px'}
-              src='https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/2008px-Google_%22G%22_Logo.svg.png'
-            />
-            Fazer login com o Google
+            <Image height={'25px'} mr={'10px'} src={google} />
+            Entrar com o Google
           </Button>
         </VStack>
       </form>

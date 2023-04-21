@@ -33,7 +33,7 @@ export const OrderSummary = () => {
 
   const applyCouponCode = async () => {
     if (orderSummary.total === 0) {
-      return setToast(toast, 'O carrinho está vazio', 'error')
+      return setToast(toast, 'A sacola está vazia', 'error')
     }
     if (!coupon) {
       return setToast(toast, 'Digite o código do cupom', 'error')
