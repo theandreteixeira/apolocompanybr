@@ -1,6 +1,5 @@
 import { GET_DATA_ERROR, GET_DATA_LOADING, GET_DATA_SUCCESS, GET_PRICE_RANGE, NAME_A_TO_Z, NAME_Z_TO_A, RATING_HIGH_TO_LOW, RATING_LOW_TO_HIGH, RESET_FILTERS, SET_ALL_FILTERS, SORT_HIGH_TO_LOW, SORT_LOW_TO_HIGH } from "./actionTypes";
 import axios from "axios";
-import { Product } from "../cart/actions";
 
 
 export const getDataLoading = () => ({ type: GET_DATA_LOADING });

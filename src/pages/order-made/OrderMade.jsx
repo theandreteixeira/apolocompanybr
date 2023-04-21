@@ -5,41 +5,37 @@ import {
   Center,
   Flex,
   Icon,
-  IconButton,
   Image,
   Text
 } from '@chakra-ui/react'
 import { useLocation } from 'react-router-dom'
 import { MdOutlineContentCopy } from 'react-icons/md'
 import { BsCheckCircle } from 'react-icons/bs'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import copy from 'copy-to-clipboard'
-import Confetti from 'react-confetti'
 import { numberWithCommas } from '../../utils/extraFunctions'
+import { check } from '../../constants/images'
 
 export const OrderMade = () => {
   const route = useLocation()
   const [isCopied, setIsCopied] = useState(false)
-  const data = route.state
-  console.log(data)
-  return (
+  const locationRef = useRef(route)
+  const data = locationRef.current.state
+  return data ? (
     <Box>
       <Center flexDirection={'column'}>
-        {/* <Rive src='https://apolocompany.s3.amazonaws.com/check.riv' /> */}
-        <Image
-          height={'90px'}
-          src='https://cdn-icons-png.flaticon.com/512/5610/5610944.png'
-          mb={'15px'}
-        />
-        <Text textAlign={'center'} fontWeight={'extrabold'} fontSize={'30px'}>
+        <Image height={'90px'} width={'90px'} src={check} mb={'15px'} />
+        <Text textAlign={'center'} fontWeight={'extrabold'} fontSize={'25'}>
           {'Pedido realizado com sucesso!'.toUpperCase()}
         </Text>
         <Text textAlign={'center'}>ID: {data.id}</Text>
         {data.qrCode && (
-          <Box my={'20px'}>
-            <Box p={'10px'}>
-              <Text fontSize={'25px'} color={'grey'}>
-                {data.qrCode}
+          <Box my={'20px'} width={'100%'}>
+            <Box p={'10px'} width={'100%'}>
+              <Text fontSize={'18px'} color={'grey'}>
+                {
+                  'fefhwefhweifiwefwefiwefwiwhefiwebifbweifbewifbweifbwebfiwebfiwefbiwefbweifbiewfbweifbweifbeiwbfweifbwebfiwefbb'
+                }
               </Text>
             </Box>
             <Button
@@ -56,7 +52,7 @@ export const OrderMade = () => {
               {isCopied ? 'Copiado!' : 'Copiar'}
             </Button>
             <Center flexDirection={'column'}>
-              <Image width={'45%'} src={route.state.qrCodeUrl} />
+              <Image width={'150px'} src={data.qrCodeUrl} />
               <Badge color={'blue.500'}>
                 Se você já pagou, por favor desconsidere o qrcode.
               </Badge>
@@ -71,17 +67,34 @@ export const OrderMade = () => {
             </Center>
           </Box>
         )}
-        <Box display={'flex'} justifyContent={'start'}>
-          <Text fontWeight={'extrabold'} fontSize={'30px'}>
+        <Box display={'flex'} textAlign='start' my={'10px'}>
+          <Text fontWeight={'extrabold'} fontSize={'20px'}>
             {'Detalhes do pedido'.toUpperCase()}
           </Text>
         </Box>
-        <Text>Subtotal: R${numberWithCommas(data.orderSummary.subTotal)}</Text>
-        <Text>Quantidade: {data.orderSummary.quantity}</Text>
-        <Text>Desconto: {data.orderSummary.discount}</Text>
-        <Text>Frete: {data.orderSummary.shipping}</Text>
-        <Text>Total: R${numberWithCommas(data.orderSummary.total)}</Text>
+        <Flex direction='row'>
+          <Text fontWeight={'bold'}> Subtotal: </Text>
+          R${numberWithCommas(data.orderSummary.subTotal)}
+        </Flex>
+        <Flex direction='row'>
+          <Text fontWeight={'bold'}> Quantidade: </Text>
+          {data.orderSummary.quantity}
+        </Flex>
+        <Flex direction='row'>
+          <Text fontWeight={'bold'}> Desconto: </Text>
+          {data.orderSummary.discount}
+        </Flex>
+        <Flex direction='row'>
+          <Text fontWeight={'bold'}> Frete: </Text>
+          {data.orderSummary.shipping}
+        </Flex>
+        <Flex direction='row'>
+          <Text fontWeight={'bold'}> Total: </Text>
+          R${numberWithCommas(data.orderSummary.total)}
+        </Flex>
       </Center>
     </Box>
+  ) : (
+    <Box> </Box>
   )
 }

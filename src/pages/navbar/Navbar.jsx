@@ -34,7 +34,6 @@ import {
 } from '../../components/navbar/CategoryAndIcon'
 import { SideDrawer } from '../../components/navbar/SideDrawer'
 import { TbTruckDelivery } from 'react-icons/tb'
-import { useState } from 'react'
 
 export const Navbar = () => {
   const dispatch = useDispatch()
@@ -77,11 +76,11 @@ export const Navbar = () => {
         </Box>
       )}
 
-      <Flex h={'60px'} flexDirection={'row'} px={'20px'}>
-        <Box w={'100px'} mt={'10px'}>
+      <Flex px={'20px'} justifyContent={'center'}>
+        <Box w={'90px'} mt={'10px'}>
           <Link to={'/'}>
             <Image
-              height={'30px'}
+              width={'60px'}
               src={colorMode === 'light' ? apoloLight : apoloDark}
             />
           </Link>

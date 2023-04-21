@@ -47,7 +47,13 @@ export const Category = ({ text, link, handlePath, name }) => {
 export const DrawerCategory = ({ text, link, handlePath, name }) => {
   return (
     <Text fontSize={'20px'} fontWeight={500}>
-      <Link onClick={handlePath} to={link} name={name}>
+      <Link
+        onClick={p => {
+          handlePath({})
+        }}
+        to={link}
+        name={name}
+      >
         {text}
       </Link>
     </Text>
@@ -89,7 +95,7 @@ export const DrawerSubCategory = ({
           })
         }}
         to={link}
-        name={name}
+        name={category}
       >
         {text}
       </Link>

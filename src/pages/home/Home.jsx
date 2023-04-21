@@ -31,6 +31,19 @@ export const Home = () => {
     navigate(`/${gender}`)
   }
 
+  const collections = [
+    {
+      photo: menCollection,
+      link: '/men',
+      path: 'men'
+    },
+    {
+      photo: womenCollection,
+      link: '/women',
+      path: 'women'
+    }
+  ]
+
   useEffect(() => {
     dispatch(getClothData())
   }, [])
@@ -43,7 +56,21 @@ export const Home = () => {
     <>
       {
         <>
-          <GenderSection photos={[menCollection, womenCollection]} />
+          {collections.map(item => {
+            return (
+              <Box
+                m={'30px auto 30px'}
+                w={['94%', '94%', '94%', '94%', '80%']}
+                textAlign={'center'}
+                onClick={() => {
+                  setItemSession('path', JSON.stringify({ gender: item.path }))
+                  navigate(item.link)
+                }}
+              >
+                <Image src={item.photo} />
+              </Box>
+            )
+          })}
           <Box m={'25px auto 25px'} w={['94%', '94%', '94%', '94%', '80%']}>
             <Link to={'/auth'}>
               <Image src={beMember} />

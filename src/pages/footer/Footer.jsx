@@ -23,14 +23,14 @@ export const Footer = () => {
             fontWeight={600}
             flexDirection={'column'}
           >
-            <Link>CAMISAS</Link>
-            <Link>ACADEMIA</Link>
-            <Link>JAQUETAS E MOLETONS</Link>
-            <Link>ACESSÓRIOS</Link>
+            <Link>MASCULINO</Link>
+            <Link>FEMININO</Link>
+            <Link>MINHA CONTA</Link>
+            <Link>CARRINHO</Link>
           </Flex>
         </Center>
 
-        <Center>
+        {/* <Center>
           <Flex
             display={['none', 'none', 'none', 'flex', 'flex']}
             fontSize={'14px'}
@@ -46,7 +46,7 @@ export const Footer = () => {
             <Link>Devoluções</Link>
             <Link>Formas de pagamento</Link>
           </Flex>
-        </Center>
+        </Center> */}
 
         <Flex
           mt={'20px'}

@@ -112,10 +112,10 @@ export const Checkout = () => {
         }
       })
     } catch (error) {
-      setIsLoading(false)
-      setToast(toast, 'Não foi possível realizar o pagamento', 'error', 3500)
-      PaymentIndevido({ open: true })
       console.log(error)
+      setIsLoading(false)
+      setToast(toast, 'Não foi possível criar o pedido', 'error', 3500)
+      PaymentIndevido({ open: true })
     }
   }
 
