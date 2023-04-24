@@ -7,7 +7,6 @@ import {
 import { Box, useToast, Text } from '@chakra-ui/react'
 import { setToast } from '../../utils/extraFunctions'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
-import { initPayment } from '../payment/razorpay'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
@@ -195,7 +194,7 @@ export const Checkout = () => {
         gap={['40px', '40px', '40px', '10%', '10%']}
         // gridTemplateColumns={['100%', '100%', '100%', '55% 35%', '60% 30%']}
       >
-        {<CheckoutForm onChange={handleInputChange} isLoading={isLoading} />}
+        <CheckoutForm onChange={handleInputChange} isLoading={isLoading} />
         <CheckoutPaymentMethod
           handlePaymentMethod={handlePaymentMethod}
           onChange={handleInputChange}

@@ -13,44 +13,13 @@ import createAutoCorrectDataPipe from 'text-mask-addons/dist/createAutoCorrected
 import createNumberMask from 'text-mask-addons/dist/createNumberMask'
 import React, { useState } from 'react'
 import { BrazilianStates } from '../../utils/BrazilianStates'
+import { phoneNumberMask, cpfMask, CEPMask } from '../../utils/InputMask'
 
-export const CheckoutForm = ({ onChange, isLoading }) => {
+export const CheckoutForm = ({ onChange, isLoading, user }) => {
   const [cpf, setCpf] = useState('')
   const [phoneNumber, setPhoneNumber] = useState('')
   const [cep, setCEP] = useState('')
-  const cpfMask = [
-    /\d/,
-    /\d/,
-    /\d/,
-    '.',
-    /\d/,
-    /\d/,
-    /\d/,
-    '.',
-    /\d/,
-    /\d/,
-    /\d/,
-    '-',
-    /\d/,
-    /\d/
-  ]
-  const phoneNumberMask = [
-    '(',
-    /\d/,
-    /\d/,
-    ')',
-    /\d/,
-    /\d/,
-    /\d/,
-    /\d/,
-    /\d/,
-    '-',
-    /\d/,
-    /\d/,
-    /\d/,
-    /\d/
-  ]
-  const CEPMask = [/\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/]
+
   const cpfPipe = createAutoCorrectDataPipe('dd/mm/yyyy')
   const phoneNumberPipe = createNumberMask('(dd) ddddd-dddd')
   const CEPPipe = createNumberMask('ddddd-ddd')
@@ -140,6 +109,18 @@ export const CheckoutForm = ({ onChange, isLoading }) => {
             <Text fontSize={'20px'} fontWeight={600} mb={'10px'} mt={'10px'}>
               Preencha com os seus dados:
             </Text>
+            <Box my={4} w={'100%'}>
+              <FormControl>
+                <FormLabel>Nome completo</FormLabel>
+                <Input
+                  onChange={handleChange}
+                  name={'name'}
+                  type={'text'}
+                  value={user.name}
+                  placeholder={'Por ex: João Oliveira dos Santos'}
+                />
+              </FormControl>
+            </Box>
             <Box my={4} w={'100%'}>
               <MaskedInput
                 onChange={handleChange}
