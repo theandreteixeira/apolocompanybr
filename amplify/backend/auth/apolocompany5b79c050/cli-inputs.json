@@ -64,6 +64,6 @@
     },
     "breakCircularDependency": true,
     "dependsOn": [],
-    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"https://www.apolocompanybr.com/login/\",\"http://localhost:3000/login/\"],\"LogoutURLs\":[\"https://www.apolocompanybr.com/logout/\",\"http://localhost:3000/logout/\"]}"
+    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"https://www.apolobr.com/login/\",\"http://localhost:3000/login/\"],\"LogoutURLs\":[\"https://www.apolobr.com/logout/\",\"http://localhost:3000/logout/\"]}"
   }
 }
