@@ -194,7 +194,11 @@ export const Checkout = () => {
         gap={['40px', '40px', '40px', '10%', '10%']}
         // gridTemplateColumns={['100%', '100%', '100%', '55% 35%', '60% 30%']}
       >
-        <CheckoutForm onChange={handleInputChange} isLoading={isLoading} />
+        <CheckoutForm
+          onChange={handleInputChange}
+          isLoading={isLoading}
+          user={user}
+        />
         <CheckoutPaymentMethod
           handlePaymentMethod={handlePaymentMethod}
           onChange={handleInputChange}
