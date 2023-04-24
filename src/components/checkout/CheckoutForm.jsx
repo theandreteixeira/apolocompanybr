@@ -109,18 +109,16 @@ export const CheckoutForm = ({ onChange, isLoading, user }) => {
             <Text fontSize={'20px'} fontWeight={600} mb={'10px'} mt={'10px'}>
               Preencha com os seus dados:
             </Text>
-            <Box my={4} w={'100%'}>
-              <FormControl>
-                <FormLabel>Nome completo</FormLabel>
-                <Input
-                  onChange={handleChange}
-                  name={'name'}
-                  type={'text'}
-                  value={user.name}
-                  placeholder={'Por ex: João Oliveira dos Santos'}
-                />
-              </FormControl>
-            </Box>
+            <FormControl>
+              <FormLabel>Nome completo</FormLabel>
+              <Input
+                onChange={handleChange}
+                name={'name'}
+                type={'text'}
+                defaultValue={user.name}
+                placeholder={'Por ex: João Oliveira dos Santos'}
+              />
+            </FormControl>
             <Box my={4} w={'100%'}>
               <MaskedInput
                 onChange={handleChange}
