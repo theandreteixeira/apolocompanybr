@@ -30,6 +30,7 @@ export const Checkout = () => {
     addressLine1: '',
     addressLine2: '',
     pinCode: '',
+    district: '',
     city: '',
     state: {
       name: '',
@@ -75,6 +76,7 @@ export const Checkout = () => {
         addressLine1: form.addressLine1,
         addressLine2: form.addressLine2,
         city: form.city,
+        district: form.district,
         state: form.state.name,
         country: form.country,
         uf: form.state.value,
@@ -127,7 +129,8 @@ export const Checkout = () => {
       addressLine2: form.addressLine2,
       city: form.city,
       state: form.state.value,
-      zipCode: form.pinCode
+      zipCode: form.pinCode,
+      district: form.district
     }
     try {
       setIsLoading(true)

@@ -54,28 +54,47 @@ export const CheckoutForm = ({ onChange, isLoading, user }) => {
 
         <Flex flexDirection={'column'} gap={'20px'}>
           <FormControl isDisabled={isLoading}>
-            <Input
-              onChange={onChange}
-              type={'text'}
-              name={'addressLine1'}
-              placeholder={'Endereço'}
-              mb={'10px'}
-            />
-            <Input
-              onChange={onChange}
-              type={'text'}
-              name={'addressLine2'}
-              placeholder={'Número'}
-              mb={'10px'}
-            />
-            <Flex gap={'10px'}>
+            <FormControl>
+              <FormLabel>Endereço</FormLabel>
               <Input
                 onChange={onChange}
                 type={'text'}
-                name={'city'}
-                placeholder={'Cidade'}
+                name={'addressLine1'}
+                placeholder={'Rua, avenida, alameda, etc'}
                 mb={'10px'}
               />
+            </FormControl>
+            <FormControl>
+              <FormLabel>Número</FormLabel>
+              <Input
+                onChange={onChange}
+                type={'text'}
+                name={'addressLine2'}
+                placeholder={'Número'}
+                mb={'10px'}
+              />
+            </FormControl>
+            <FormControl>
+              <FormLabel>Bairro</FormLabel>
+              <Input
+                onChange={onChange}
+                type={'text'}
+                name={'district'}
+                placeholder={'por exemplo: Bairro das Flores'}
+                mb={'10px'}
+              />
+            </FormControl>
+            <Flex gap={'10px'}>
+              <FormControl>
+                <FormLabel>Cidade</FormLabel>
+                <Input
+                  onChange={onChange}
+                  type={'text'}
+                  name={'city'}
+                  placeholder={'Por ex: Belo Horizonte'}
+                  mb={'10px'}
+                />
+              </FormControl>
               <MaskedInput
                 onChange={handleChangeCEP}
                 name={'CEP'}
