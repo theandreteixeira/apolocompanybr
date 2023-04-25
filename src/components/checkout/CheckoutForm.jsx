@@ -108,7 +108,7 @@ export const CheckoutForm = ({ onChange, isLoading, user }) => {
                     borderWidth: '1px',
                     borderStyle: 'solid',
                     borderColor: 'grey',
-                    borderRadius: '10px',
+                    borderRadius: '5px',
                     marginBottom: '10px'
                   }}
                 />
