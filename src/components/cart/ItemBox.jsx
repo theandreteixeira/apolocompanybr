@@ -18,10 +18,11 @@ import { BagItemBtn, QuantityBtn } from './BagItemBtn'
 import { useNavigate } from 'react-router-dom'
 import { addToFavouriteRequest } from '../../redux/features/favourite/actions'
 import { GrTrash } from 'react-icons/gr'
+import { handleCategory } from '../../utils/handleCategory'
 
 export const ItemBox = ({
   name,
-  description,
+  category,
   photos,
   price,
   quantity,
@@ -82,7 +83,7 @@ export const ItemBox = ({
         >
           <Box minH={'150px'}>
             <Text fontWeight={500}>{name}</Text>
-            <Text color={'gray'}>{description}</Text>
+            <Text color={'gray'}>{handleCategory(category)}</Text>
 
             <Flex alignItems={'center'} gap={'10px'} my={'8px'}>
               <Text>Quantidade:</Text>

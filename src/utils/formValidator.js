@@ -77,6 +77,47 @@ export const validatePinCode = (num) => {
     return { status: true };
 };
 
+export const validateCPF = (cpf) => {
+    cpf = cpf.replace(/[^\d]+/g, ''); // Remove caracteres não numéricos
+
+    if (cpf == '') return { status: false, message: 'O CPF é obrigatório!' }; // Verifica se o CPF está vazio
+
+    // Verifica se o CPF possui 11 dígitos
+    if (cpf.length != 11) return { status: false, message: 'O CPF precisar ter 11 dígitos!' };
+
+    // Verifica se todos os dígitos são iguais
+    var igual = true;
+    for (var i = 1; i < cpf.length; i++) {
+        if (cpf[i] != cpf[0]) {
+            igual = false;
+            break;
+        }
+    }
+    if (igual) return { status: false, message: 'O CPF é inválido!' };
+
+    // Verifica se os dois últimos dígitos verificadores estão corretos
+    var soma = 0;
+    for (var i = 0; i < 9; i++) {
+        soma += parseInt(cpf[i]) * (10 - i);
+    }
+    var resto = soma % 11;
+    var digito1 = resto < 2 ? 0 : 11 - resto;
+
+    soma = 0;
+    for (var i = 0; i < 10; i++) {
+        soma += parseInt(cpf[i]) * (11 - i);
+    }
+    resto = soma % 11;
+    var digito2 = resto < 2 ? 0 : 11 - resto;
+
+    if (digito1 != parseInt(cpf[9]) || digito2 != parseInt(cpf[10])) {
+        return { status: false, message: 'O CPF é inválido!' };
+    }
+
+    // Se chegou até aqui, o CPF é válido
+    return { status: true };
+};
+
 
 export const validatephoneNumber = (num) => {
 

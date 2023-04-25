@@ -1,4 +1,8 @@
-import { isCheckoutFormEmpty, validatePinCode } from '../../utils/formValidator'
+import {
+  isCheckoutFormEmpty,
+  validatePinCode,
+  validateCPF
+} from '../../utils/formValidator'
 import { CheckoutOrderSummary } from '../../components/checkout/CheckoutOrderSummary'
 import {
   CheckoutForm,
@@ -64,6 +68,11 @@ export const Checkout = () => {
       return isEmpty.status
     }
     const isPinCode = validatePinCode(form.pinCode)
+    const isCpf = validateCPF(form.cpf)
+    if (!isCpf.status) {
+      setToast(toast, isCpf.message, 'error')
+      return isCpf.status
+    }
     if (!isPinCode.status) {
       setToast(toast, isPinCode.message, 'error')
       return isPinCode.status

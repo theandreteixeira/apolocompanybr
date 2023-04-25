@@ -138,30 +138,30 @@ export const Description = () => {
           <Divider my={'15px'} />
           <UnorderedList fontSize={'16px'} styleType='none' mb={'20px'}>
             <ListItem my={'10px'}>
-              <Flex direction='row'>
-                <Text fontWeight={'bold'}> Gênero: </Text> {data.gender}
-              </Flex>
+              <Text>
+                <strong> Gênero: </strong> {data.gender}{' '}
+              </Text>
             </ListItem>
             <ListItem my={'10px'}>
-              <Flex direction='row'>
-                <Text fontWeight={'bold'}> Categoria: </Text>
-                {handleCategory(data.category)}
-              </Flex>
+              <Text>
+                <strong> Categoria:</strong> {handleCategory(data.category)}
+              </Text>
             </ListItem>
             <ListItem my={'10px'}>
-              <Flex direction='row'>
-                <Text fontWeight={'bold'}> Cor: </Text> {data.color}
-              </Flex>
+              <Text>
+                <strong> Cor: </strong>
+                {data.color}
+              </Text>
             </ListItem>
             <ListItem my={'10px'}>
-              <Flex direction='row'>
-                <Text fontWeight={'bold'}> Avaliação: </Text> {data.rating}
-              </Flex>
+              <Text>
+                <strong> Avaliação: </strong> {data.rating}
+              </Text>
             </ListItem>
           </UnorderedList>
           <Box my={'30px'}>
             {verifyIsSouldOut(data.sizes) ? (
-              <Text color='grey' fontSize={'20px'}>
+              <Text color='grey' textAlign={'center'} fontSize={'20px'}>
                 PRODUTO ESGOTADO
               </Text>
             ) : (
