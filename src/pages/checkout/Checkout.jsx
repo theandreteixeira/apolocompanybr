@@ -83,11 +83,12 @@ export const Checkout = () => {
         uf: form.state.value,
         email: user.email,
         firstName: form.name.trim().split(' ')[0],
-        lastName: form.name
-          .trim()
-          .split(' ')
-          .slice(1, form.name.trim().length)
-          .join(' '),
+        lastName:
+          form.name
+            .trim()
+            .split(' ')
+            .slice(1, form.name.trim().length)
+            .join(' ') ?? '',
         mobile: form.phoneNumber,
         pinCode: form.pinCode
       }
