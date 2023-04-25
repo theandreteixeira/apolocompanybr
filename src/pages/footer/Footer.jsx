@@ -11,11 +11,7 @@ export const Footer = () => {
       mt={'80px'}
       paddingTop={'60px'}
     >
-      <Grid
-        h={'220px'}
-        p={'10px'}
-        templateColumns={['100%', '48% 2% 50%', '48% 2% 50%', '25% 25% 50%']}
-      >
+      <Grid templateColumns='repeat(2, 1fr)' gap={6}>
         <Center>
           <Flex
             fontSize={['13px', '16px', '17px', '17px', '17px']}

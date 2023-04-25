@@ -26,7 +26,7 @@ export const SideDrawer = ({ handlePath }) => {
     console.log('fria', path)
 
     onClose()
-    handlePath(JSON.stringify(path))
+    handlePath(path)
   }
 
   return (

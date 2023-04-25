@@ -42,9 +42,10 @@ export const Navbar = () => {
   const { colorMode } = useColorMode()
 
   const handlePath = name => {
-    console.log('ele entra no nbavbar:' + name)
-    dispatch(setNavbarPath(name))
-    setItemSession('path', name)
+    console.log('ele entra no navbar:' + name)
+    const path = JSON.stringify(name)
+    dispatch(setNavbarPath(path))
+    setItemSession('path', path)
   }
 
   return (

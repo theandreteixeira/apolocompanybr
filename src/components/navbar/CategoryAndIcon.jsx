@@ -33,7 +33,9 @@ export const Category = ({ text, link, handlePath, name }) => {
     >
       <Link
         onClick={p => {
-          handlePath(name)
+          handlePath({
+            gender: name
+          })
         }}
         to={link}
         name={name}
