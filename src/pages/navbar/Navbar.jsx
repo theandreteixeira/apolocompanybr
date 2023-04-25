@@ -54,12 +54,11 @@ export const Navbar = () => {
           <Center
             h={'36px'}
             justifyContent={'right'}
-            mr={'40px'}
+            mr={'20px'}
             fontSize={'16px'}
             cursor={'pointer'}
           >
             <Logout />
-            <DarkModeBtn />
           </Center>
         </Box>
       ) : (
@@ -67,12 +66,10 @@ export const Navbar = () => {
           <Center
             h={'36px'}
             justifyContent={'right'}
-            mr={'40px'}
+            mr={'20px'}
             fontSize={'16px'}
             cursor={'pointer'}
-          >
-            <DarkModeBtn />
-          </Center>
+          ></Center>
         </Box>
       )}
 
@@ -117,7 +114,7 @@ export const Navbar = () => {
 
         <Spacer />
 
-        <Center mr={'10px'}>
+        <Center mr={'10px'} my={'5px'}>
           <SearchBox />
         </Center>
 
