@@ -95,21 +95,24 @@ export const CheckoutForm = ({ onChange, isLoading, user }) => {
                   mb={'10px'}
                 />
               </FormControl>
-              <MaskedInput
-                onChange={handleChangeCEP}
-                name={'CEP'}
-                mask={CEPMask}
-                placeholder={'CEP'}
-                value={cep}
-                style={{
-                  padding: '10px',
-                  borderWidth: '1px',
-                  borderStyle: 'solid',
-                  borderColor: 'grey',
-                  borderRadius: '10px',
-                  marginBottom: '10px'
-                }}
-              />
+              <FormControl>
+                <FormLabel>CEP</FormLabel>
+                <MaskedInput
+                  onChange={handleChangeCEP}
+                  name={'CEP'}
+                  mask={CEPMask}
+                  placeholder={'CEP'}
+                  value={cep}
+                  style={{
+                    padding: '10px',
+                    borderWidth: '1px',
+                    borderStyle: 'solid',
+                    borderColor: 'grey',
+                    borderRadius: '10px',
+                    marginBottom: '10px'
+                  }}
+                />
+              </FormControl>
             </Flex>
             <Flex gap={'20px'}>
               <Select
