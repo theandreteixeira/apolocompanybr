@@ -27,6 +27,7 @@ export const Checkout = () => {
   const [isLoading, setIsLoading] = useState(false)
 
   const [form, setForm] = useState({
+    name: user.name,
     addressLine1: '',
     addressLine2: '',
     pinCode: '',
@@ -81,8 +82,12 @@ export const Checkout = () => {
         country: form.country,
         uf: form.state.value,
         email: user.email,
-        firstName: user.firstName,
-        lastName: user.lastName,
+        firstName: form.name.trim().split(' ')[0],
+        lastName: form.name
+          .trim()
+          .split(' ')
+          .slice(1, form.name.trim().length)
+          .join(' '),
         mobile: form.phoneNumber,
         pinCode: form.pinCode
       }
@@ -136,7 +141,7 @@ export const Checkout = () => {
       setIsLoading(true)
       const response = await axios.post('/realizarPagamento', {
         customer: {
-          name: user.name,
+          name: form.name,
           cpf: form.cpf,
           email: user.email,
           phoneNumber: form.phoneNumber
