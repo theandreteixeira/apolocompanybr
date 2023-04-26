@@ -6,11 +6,10 @@ import { Summary } from '../../components/orders/Summary'
 import { OrderBox } from '../../components/orders/OrderBox'
 import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
 import { OrderSection } from '../../components/orders/OrderSection'
 import { dateFormator } from '../../utils/dateFormator'
 import { setUserData } from '../../redux/features/auth/actions'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 export const Login = () => {
   const location = useLocation()

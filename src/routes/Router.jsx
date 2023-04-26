@@ -15,14 +15,15 @@ import { Logout } from '../pages/logout/Logout'
 import { OrderMade } from '../pages/order-made/OrderMade'
 import { Private } from './Private'
 import { Public } from './Public'
+import { Contador } from '../pages/home/Contador'
 
 export const Router = () => {
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/allProducts' element={<Products />} />
+        <Route path='/' element={<Contador />} />
+        {/* <Route path='/allProducts' element={<Products />} />
         <Route path='/men' element={<Products />} />
         <Route path='/women' element={<Products />} />
         <Route path='/kids' element={<Products />} />
@@ -47,7 +48,7 @@ export const Router = () => {
         <Route
           path='/checkout'
           element={
-            <Private>
+            <Private path='/checkout'>
               <Checkout />
             </Private>
           }
@@ -55,7 +56,7 @@ export const Router = () => {
         <Route
           path='/orders'
           element={
-            <Private>
+            <Private path='/orders'>
               <Order />
             </Private>
           }
@@ -91,10 +92,10 @@ export const Router = () => {
               <OrderMade />
             </Private>
           }
-        />
+        /> */}
       </Routes>
 
-      <Footer />
+      {/* <Footer /> */}
     </>
   )
 }

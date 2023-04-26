@@ -1,6 +1,7 @@
-import { Box, Center, Flex, Grid, Icon, Link, Text } from '@chakra-ui/react'
+import { Box, Center, Flex, Grid, Icon, Text } from '@chakra-ui/react'
 import { FaInstagramSquare } from 'react-icons/fa'
 import { IconLink } from '../../components/footer/IconLink'
+import { Link } from 'react-router-dom'
 
 export const Footer = () => {
   return (
@@ -19,10 +20,10 @@ export const Footer = () => {
             fontWeight={600}
             flexDirection={'column'}
           >
-            <Link>MASCULINO</Link>
-            <Link>FEMININO</Link>
+            <Link to={'/men'}>MASCULINO</Link>
+            <Link to={'/women'}>FEMININO</Link>
             <Link>MINHA CONTA</Link>
-            <Link>CARRINHO</Link>
+            <Link to={'/cart'}>SACOLA</Link>
           </Flex>
         </Center>
 

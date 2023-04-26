@@ -1,9 +1,10 @@
 import axios from "axios";
 import { setToast } from "../../../utils/extraFunctions";
-import { removeItem, setItem } from "../../../utils/localstorage";
+import { getItem, removeItem, setItem } from "../../../utils/localstorage";
 import { GET_TOKEN, REMOVE_TOKEN, SHOW_LOGIN_PAGE, SHOW_RESET_PAGE } from "./actionTypes";
 import { Auth } from 'aws-amplify';
 import { CognitoHostedUIIdentityProvider } from '@aws-amplify/auth';
+import { getItemSession } from "../../../utils/sessionStorage";
 
 
 export const showLoginPage = () => ({ type: SHOW_LOGIN_PAGE });
@@ -65,7 +66,7 @@ export const getLoginSuccess = (data, toast, navigate, setIsLoading) => async (d
         setItem('token', token);
         dispatch(getToken(token, userData));
         setIsLoading(false)
-        navigate("/checkout");
+        navigate(-1);
     } catch (err) {
         console.log(err);
         setIsLoading(false)
@@ -98,8 +99,9 @@ export const setUserData = (navigate) => async (dispatch) => {
         setItem('user', userData);
         setItem('token', token);
         dispatch(getToken(token, userData));
-        console.log(data.signInUserSession.accessToken.jwtToken)
-        navigate('/checkout')
+        const path = getItemSession('previousPath') ?? '/'
+        console.log('pathhhh:', path)
+        navigate(path)
     } catch (err) {
         console.log(err);
     }

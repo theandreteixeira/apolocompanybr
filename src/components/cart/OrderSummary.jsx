@@ -60,17 +60,6 @@ export const OrderSummary = () => {
     setCoupon('')
   }
 
-  const handleMemberCheckout = () => {
-    if (!token) {
-      setToast(toast, 'Faça o login primeiro', 'error')
-      return navigate('/auth')
-    }
-    if (orderSummary.total === 0) {
-      return setToast(toast, 'Please add some products in the cart', 'error')
-    }
-    navigate('/checkout')
-  }
-
   return (
     <>
       <Box>
@@ -98,7 +87,9 @@ export const OrderSummary = () => {
         />
 
         <CheckoutBtn
-          onClick={handleMemberCheckout}
+          onClick={() => {
+            navigate('/checkout')
+          }}
           name={'CONTINUAR'}
           bgColor={'black'}
           color={'white'}
