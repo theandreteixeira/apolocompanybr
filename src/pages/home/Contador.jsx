@@ -1,45 +1,48 @@
-import { Text } from '@chakra-ui/react'
+import { Box, Text } from '@chakra-ui/react'
 import React, { useState, useEffect } from 'react'
 
 export const Contador = () => {
-  // const [timeLeft, setTimeLeft] = useState(null) // tempo restante em segundos
+  const [timeLeft, setTimeLeft] = useState(null) // tempo restante em segundos
 
-  // useEffect(() => {
-  //   // Data e hora para a qual deseja criar o contador regressivo
-  //   const targetDate = new Date('2023-06-14T00:00:00.000Z').getTime()
+  useEffect(() => {
+    // Data e hora para a qual deseja criar o contador regressivo
+    const targetDate = new Date('2023-04-28T18:00:00.000Z').getTime()
 
-  //   // Atualiza o tempo restante a cada segundo
-  //   const interval = setInterval(() => {
-  //     const now = new Date().getTime()
-  //     const diff = targetDate - now
+    // Atualiza o tempo restante a cada segundo
+    const interval = setInterval(() => {
+      const now = new Date().getTime()
+      const diff = targetDate - now
 
-  //     // Verifica se o contador regressivo chegou a zero
-  //     if (diff <= 0) {
-  //       clearInterval(interval)
-  //       setTimeLeft(0)
-  //     } else {
-  //       setTimeLeft(Math.floor(diff / 1000))
-  //     }
-  //   }, 1000)
+      // Verifica se o contador regressivo chegou a zero
+      if (diff <= 0) {
+        clearInterval(interval)
+        setTimeLeft(0)
+      } else {
+        setTimeLeft(Math.floor(diff / 1000))
+      }
+    }, 1000)
 
-  //   return () => clearInterval(interval)
-  // }, [])
+    return () => clearInterval(interval)
+  }, [])
 
   return (
-    <div>
-      {/* {timeLeft === null ? (
+    <Box bg={'black'} p={'20px'}>
+      {timeLeft === null ? (
         <h1>Carregando...</h1>
       ) : timeLeft === 0 ? (
         <h1>Contagem regressiva finalizada!</h1>
       ) : (
-        <h1>
-          {Math.floor(timeLeft / 86400)} dias,{' '}
-          {Math.floor(timeLeft / 3600) % 24} horas,{' '}
-          {Math.floor(timeLeft / 60) % 60} minutos e {timeLeft % 60} segundos
-          restantes
-        </h1>
-      )} */}
-      oi
-    </div>
+        <Text fontSize={'50px'} fontWeight={'bold'} color={'white'}>
+          {applyZero(Math.floor(timeLeft / 86400))}:{' '}
+          {applyZero(Math.floor(timeLeft / 3600) % 24)}:{' '}
+          {applyZero(Math.floor(timeLeft / 60) % 60)}:{applyZero(timeLeft % 60)}
+        </Text>
+      )}
+    </Box>
   )
+}
+
+export const applyZero = num => {
+  if (num < 10) return '0' + num
+  return num
 }

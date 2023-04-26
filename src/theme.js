@@ -16,9 +16,7 @@ const breakpoints = {
 const styles = {
     global: {
         body: {
-            dark: {
-                bg: 'blue',
-            },
+            bg: 'black',
             fontFamily: "'Roboto', sans-serif",
         },
     },
