@@ -1,5 +1,6 @@
-import { Box, Text } from '@chakra-ui/react'
+import { Box, Center, Image, Text } from '@chakra-ui/react'
 import React, { useState, useEffect } from 'react'
+import { proinsta } from '../../constants/images'
 
 export const Contador = () => {
   const [timeLeft, setTimeLeft] = useState(null) // tempo restante em segundos
@@ -26,17 +27,21 @@ export const Contador = () => {
   }, [])
 
   return (
-    <Box bg={'black'} p={'20px'}>
+    <Box bg={'black'} p={'20px'} display={'grid'} alignItems={'center'}>
       {timeLeft === null ? (
         <h1>Carregando...</h1>
       ) : timeLeft === 0 ? (
         <h1>Contagem regressiva finalizada!</h1>
       ) : (
-        <Text fontSize={'50px'} fontWeight={'bold'} color={'white'}>
-          {applyZero(Math.floor(timeLeft / 86400))}:{' '}
-          {applyZero(Math.floor(timeLeft / 3600) % 24)}:{' '}
-          {applyZero(Math.floor(timeLeft / 60) % 60)}:{applyZero(timeLeft % 60)}
-        </Text>
+        <>
+          <Image src={proinsta} width={'180px'} />
+          <Text fontSize={'50px'} fontWeight={'bold'} color={'white'}>
+            {applyZero(Math.floor(timeLeft / 86400))}:{' '}
+            {applyZero(Math.floor(timeLeft / 3600) % 24)}:{' '}
+            {applyZero(Math.floor(timeLeft / 60) % 60)}:
+            {applyZero(timeLeft % 60)}
+          </Text>
+        </>
       )}
     </Box>
   )
