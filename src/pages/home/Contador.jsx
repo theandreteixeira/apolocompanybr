@@ -7,7 +7,7 @@ export const Contador = () => {
 
   useEffect(() => {
     // Data e hora para a qual deseja criar o contador regressivo
-    const targetDate = new Date('2023-04-28T18:00:00.000Z').getTime()
+    const targetDate = new Date('2023-04-28T21:00:00.000Z').getTime()
 
     // Atualiza o tempo restante a cada segundo
     const interval = setInterval(() => {
