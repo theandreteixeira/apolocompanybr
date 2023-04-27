@@ -54,12 +54,14 @@ export const Contador = () => {
 const ShowCounter = ({ days, hours, minutes, seconds }) => {
   return (
     <div className='show-counter'>
-      <a
-        href='https://tapasadhikary.com'
-        target='_blank'
-        rel='noopener noreferrer'
-        className='countdown-link'
-      >
+      <Text fontWeight={'bold'} textAlign={'center'}>
+        APOLO FLEX.
+        <br />
+        EDIÇÃO 001
+        <br />
+        SAVE THE DATE.
+      </Text>
+      <a target='_blank' rel='noopener noreferrer' className='countdown-link'>
         <DateTimeDisplay value={days} type={'Dia'} isDanger={days <= 3} />
         <p>:</p>
         <DateTimeDisplay value={hours} type={'Horas'} isDanger={false} />
