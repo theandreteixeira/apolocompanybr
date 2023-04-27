@@ -2,48 +2,91 @@ import { Box, Center, Image, Text } from '@chakra-ui/react'
 import React, { useState, useEffect } from 'react'
 import { proinsta } from '../../constants/images'
 
-export const Contador = () => {
-  const [timeLeft, setTimeLeft] = useState(null) // tempo restante em segundos
+const useCountdown = targetDate => {
+  const countDownDate = new Date(targetDate).getTime()
+
+  const [countDown, setCountDown] = useState(
+    countDownDate - new Date().getTime()
+  )
 
   useEffect(() => {
-    // Data e hora para a qual deseja criar o contador regressivo
-    const targetDate = new Date('2023-04-28T21:00:00.000Z').getTime()
-
-    // Atualiza o tempo restante a cada segundo
     const interval = setInterval(() => {
-      const now = new Date().getTime()
-      const diff = targetDate - now
-
-      // Verifica se o contador regressivo chegou a zero
-      if (diff <= 0) {
-        clearInterval(interval)
-        setTimeLeft(0)
-      } else {
-        setTimeLeft(Math.floor(diff / 1000))
-      }
+      setCountDown(countDownDate - new Date().getTime())
     }, 1000)
 
     return () => clearInterval(interval)
-  }, [])
+  }, [countDownDate])
 
+  return getReturnValues(countDown)
+}
+
+const getReturnValues = countDown => {
+  // calculate time left
+  const days = Math.floor(countDown / (1000 * 60 * 60 * 24))
+  const hours = Math.floor(
+    (countDown % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+  )
+  const minutes = Math.floor((countDown % (1000 * 60 * 60)) / (1000 * 60))
+  const seconds = Math.floor((countDown % (1000 * 60)) / 1000)
+
+  return [days, hours, minutes, seconds]
+}
+
+export const Contador = () => {
+  const targetDate = new Date('2023-04-28T21:00:00.000Z').getTime()
+
+  const [days, hours, minutes, seconds] = useCountdown(targetDate)
+
+  if (days + hours + minutes + seconds <= 0) {
+    return <ExpiredNotice />
+  } else {
+    return (
+      <ShowCounter
+        days={days}
+        hours={hours}
+        minutes={minutes}
+        seconds={seconds}
+      />
+    )
+  }
+}
+
+const ShowCounter = ({ days, hours, minutes, seconds }) => {
   return (
-    <Box bg={'black'} p={'20px'} display={'grid'} alignItems={'center'}>
-      {timeLeft === null ? (
-        <h1>Carregando...</h1>
-      ) : timeLeft === 0 ? (
-        <h1>Contagem regressiva finalizada!</h1>
-      ) : (
-        <>
-          <Image src={proinsta} width={'180px'} />
-          <Text fontSize={'50px'} fontWeight={'bold'} color={'white'}>
-            {applyZero(Math.floor(timeLeft / 86400))}:{' '}
-            {applyZero(Math.floor(timeLeft / 3600) % 24)}:{' '}
-            {applyZero(Math.floor(timeLeft / 60) % 60)}:
-            {applyZero(timeLeft % 60)}
-          </Text>
-        </>
-      )}
-    </Box>
+    <div className='show-counter'>
+      <a
+        href='https://tapasadhikary.com'
+        target='_blank'
+        rel='noopener noreferrer'
+        className='countdown-link'
+      >
+        <DateTimeDisplay value={days} type={'Dia'} isDanger={days <= 3} />
+        <p>:</p>
+        <DateTimeDisplay value={hours} type={'Horas'} isDanger={false} />
+        <p>:</p>
+        <DateTimeDisplay value={minutes} type={'Minutos'} isDanger={false} />
+        <p>:</p>
+        <DateTimeDisplay value={seconds} type={'Segundos'} isDanger={false} />
+      </a>
+    </div>
+  )
+}
+
+const DateTimeDisplay = ({ value, type, isDanger }) => {
+  return (
+    <div className={isDanger ? 'countdown danger' : 'countdown'}>
+      <p>{value}</p>
+      <span>{type}</span>
+    </div>
+  )
+}
+
+const ExpiredNotice = () => {
+  return (
+    <div className='expired-notice'>
+      <span>Expired!!!</span>
+      <p>Please select a future date and time.</p>
+    </div>
   )
 }
 
