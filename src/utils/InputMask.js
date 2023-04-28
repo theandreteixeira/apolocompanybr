@@ -16,6 +16,29 @@ export const phoneNumberMask = [
   /\d/
 ]
 
+export const cardNumberMask = [
+  /\d/,
+  /\d/,
+  /\d/,
+  /\d/,
+  ' ',
+  /\d/,
+  /\d/,
+  /\d/,
+  /\d/,
+  ' ',
+  /\d/,
+  /\d/,
+  /\d/,
+  /\d/,
+  ' ',
+  /\d/,
+  /\d/,
+  /\d/,
+  /\d/,
+  ' ',
+]
+
 export const cpfMask = [
   /\d/,
   /\d/,

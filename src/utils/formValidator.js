@@ -120,7 +120,6 @@ export const validateCPF = (cpf) => {
 
 
 export const validatephoneNumber = (num) => {
-
     if (num.length < 8) {
         return { status: false, message: 'Número de telefone inválido!' };
     }

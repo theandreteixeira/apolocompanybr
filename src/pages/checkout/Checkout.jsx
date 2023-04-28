@@ -1,7 +1,8 @@
 import {
   isCheckoutFormEmpty,
   validatePinCode,
-  validateCPF
+  validateCPF,
+  validatephoneNumber
 } from '../../utils/formValidator'
 import { CheckoutOrderSummary } from '../../components/checkout/CheckoutOrderSummary'
 import {
@@ -26,6 +27,8 @@ export const Checkout = () => {
     state => state.cartReducer,
     shallowEqual
   )
+  console.log('=============cart products')
+  console.log(cartProducts)
   const toast = useToast()
   const user = useSelector(state => state.authReducer.user)
   const [isLoading, setIsLoading] = useState(false)
@@ -76,6 +79,11 @@ export const Checkout = () => {
     if (!isPinCode.status) {
       setToast(toast, isPinCode.message, 'error')
       return isPinCode.status
+    }
+    const isPhoneNumber = validatephoneNumber(form.phoneNumber)
+    if (!isPhoneNumber.status) {
+      setToast(toast, isPhoneNumber.message, 'error')
+      return isPhoneNumber.status
     }
     return true
   }

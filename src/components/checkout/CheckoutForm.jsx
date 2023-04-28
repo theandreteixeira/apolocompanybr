@@ -106,7 +106,7 @@ export const CheckoutForm = ({ onChange, isLoading, user }) => {
                     padding: '10px',
                     borderWidth: '1px',
                     borderStyle: 'solid',
-                    borderColor: 'grey',
+                    borderColor: '#CBD5E0',
                     borderRadius: '5px',
                     marginBottom: '10px'
                   }}
@@ -164,7 +164,7 @@ export const CheckoutForm = ({ onChange, isLoading, user }) => {
                     width: '100%',
                     borderWidth: '1px',
                     borderStyle: 'solid',
-                    borderColor: 'grey',
+                    borderColor: '#CBD5E0',
                     borderRadius: '10px'
                   }}
                 />
@@ -184,7 +184,7 @@ export const CheckoutForm = ({ onChange, isLoading, user }) => {
                     width: '100%',
                     borderWidth: '1px',
                     borderStyle: 'solid',
-                    borderColor: 'grey',
+                    borderColor: '#CBD5E0',
                     borderRadius: '10px'
                   }}
                 />

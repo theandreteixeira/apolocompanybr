@@ -1,5 +1,6 @@
-import { Box, useColorMode } from '@chakra-ui/react'
+import { Box, Text, useColorMode } from '@chakra-ui/react'
 import { useState } from 'react'
+import { souldout } from '../../constants/images'
 
 const BoxCard = (value, handleBoxClick, selected) => {
   const { colorMode } = useColorMode()
@@ -8,7 +9,10 @@ const BoxCard = (value, handleBoxClick, selected) => {
   return (
     <label>
       <Box
-        bg={isDisabled ? '#f5f5f5' : undefined}
+        bg={isDisabled && '#f5f5f5'}
+        backgroundImage={isDisabled && souldout}
+        backgroundSize={isDisabled && 'auto 150px'}
+        backgroundRepeat={isDisabled && 'repeat-x'}
         px={5}
         py={3}
         borderRadius='md'
@@ -30,7 +34,7 @@ const BoxCard = (value, handleBoxClick, selected) => {
         }
         onClick={isDisabled ? undefined : () => handleBoxClick(value.name)}
       >
-        {value.name}
+        <Text color={isDisabled && 'grey'}> {value.name}</Text>
       </Box>
     </label>
   )

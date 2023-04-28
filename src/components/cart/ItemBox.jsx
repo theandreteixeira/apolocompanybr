@@ -27,6 +27,7 @@ export const ItemBox = ({
   price,
   quantity,
   index,
+  size,
   data
 }) => {
   const dispatch = useDispatch()
@@ -84,6 +85,7 @@ export const ItemBox = ({
           <Box minH={'150px'}>
             <Text fontWeight={500}>{name}</Text>
             <Text color={'gray'}>{handleCategory(category)}</Text>
+            <Text color={'gray'}>Tamanho: {size}</Text>
 
             <Flex alignItems={'center'} gap={'10px'} my={'8px'}>
               <Text>Quantidade:</Text>

@@ -9,5 +9,6 @@ import google from '../assets/google.png'
 import check from '../assets/check.png'
 import proinsta from '../assets/proinsta.png'
 import thankyou from '../assets/thankyou.png'
+import souldout from '../assets/souldout.png'
 
-export { apoloLogo, nikeLogoPayment, apoloLight, apoloDark, beMember, menCollection, womenCollection, proinsta, google, check, thankyou };
+export { souldout, apoloLogo, nikeLogoPayment, apoloLight, apoloDark, beMember, menCollection, womenCollection, proinsta, google, check, thankyou };

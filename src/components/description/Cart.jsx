@@ -40,7 +40,7 @@ export const Cart = ({ mySize, isOpen, onClose }) => {
 
         <DrawerBody>
           {cartProducts.map((prod, index) => (
-            <ItemBoxToDescription {...prod} size={mySize} index={index} />
+            <ItemBoxToDescription {...prod} index={index} />
           ))}
         </DrawerBody>
 

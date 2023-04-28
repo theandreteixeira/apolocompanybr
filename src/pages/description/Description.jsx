@@ -45,10 +45,13 @@ export const Description = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
 
   const handleAddToCart = async () => {
+    console.log(mySize)
     if (mySize === false) {
       setToast(toast, 'Por favor selecione um tamanho', 'error')
     } else {
-      const payload = { ...data, size: mySize.name, quantity: 1 }
+      const payload = { ...data, size: mySize, quantity: 1 }
+      console.log('-------payload')
+      console.log(payload)
       dispatch(addToCartRequest(payload, toast))
       onOpen()
     }

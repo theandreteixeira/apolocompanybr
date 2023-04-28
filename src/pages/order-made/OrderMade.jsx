@@ -43,6 +43,7 @@ export const OrderMade = () => {
                 copy(data.qrCode)
                 setIsCopied(true)
               }}
+              cursor={'pointer'}
               color={'red'}
               fontWeight={'bold'}
               fontSize={'14px'}
@@ -92,7 +93,7 @@ export const OrderMade = () => {
           <strong> Total:</strong> R${numberWithCommas(data.orderSummary.total)}
         </Text>
       </Box>
-      <Image src={thankyou} mt={'20px'} width={'100%'} />
+      <Image src={thankyou} mt={'20px'} width={'50%'} />
     </Box>
   ) : (
     <Box>

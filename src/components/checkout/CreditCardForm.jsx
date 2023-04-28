@@ -1,8 +1,12 @@
 import { Collapse, Flex, Input } from '@chakra-ui/react'
 import { useState } from 'react'
+import MaskedInput from 'react-text-mask'
+import { cardNumberMask } from '../../utils/InputMask'
+import { createNumberMask } from 'text-mask-addons'
 
 export const CreditCardForm = ({ isOpen, onChange }) => {
   const [text, setText] = useState('')
+  const [cardNumber, setCardNumber] = useState('')
 
   const handleHolderName = event => {
     const value = event.target.value.toUpperCase()
@@ -10,15 +14,34 @@ export const CreditCardForm = ({ isOpen, onChange }) => {
     onChange({ target: { name: 'holderName', value } })
   }
 
+  const cardNumberPipe = createNumberMask('dddd dddd dddd dddd')
+
+  const handleChangeCardNumber = event => {
+    const value = event.target.value.replace(/[^\d]/g, '')
+    const maskedValue = cardNumberPipe(value) || ''
+    onChange({ target: { name: 'cardNumber', value } })
+    setCardNumber(maskedValue.value)
+  }
+
   return (
     <>
       <Collapse in={isOpen} animateOpacity>
         <Flex flexDirection={'column'} gap={'20px'} mt={'15px'}>
-          <Input
-            type={'number'}
+          <MaskedInput
+            onChange={handleChangeCardNumber}
             name={'cardNumber'}
+            mask={cardNumberMask}
             placeholder={'Número'}
-            onChange={onChange}
+            value={cardNumber}
+            width={'100%'}
+            style={{
+              padding: '10px',
+              width: '100%',
+              borderWidth: '1px',
+              borderStyle: 'solid',
+              borderColor: '#CBD5E0',
+              borderRadius: '10px'
+            }}
           />
           <Input
             type={'text'}
@@ -29,13 +52,13 @@ export const CreditCardForm = ({ isOpen, onChange }) => {
           />
           <Input
             name={'expireMonth'}
-            maxLength={2}
+            type={'number'}
             placeholder={'Mês'}
             onChange={onChange}
           />
           <Input
             name={'expireYear'}
-            maxLength={2}
+            type={'number'}
             placeholder={'Ano'}
             onChange={onChange}
           />
@@ -43,6 +66,7 @@ export const CreditCardForm = ({ isOpen, onChange }) => {
             name={'cvv'}
             placeholder={'CVV'}
             onChange={onChange}
+            type={'number'}
             maxLength={4}
           />
         </Flex>
