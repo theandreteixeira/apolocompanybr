@@ -6,8 +6,7 @@ import {
   FormLabel,
   Input,
   Select,
-  Text,
-  border
+  Text
 } from '@chakra-ui/react'
 import MaskedInput from 'react-text-mask'
 import createNumberMask from 'text-mask-addons/dist/createNumberMask'

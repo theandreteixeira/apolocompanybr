@@ -156,6 +156,7 @@ export const Checkout = () => {
           email: user.email,
           phoneNumber: form.phoneNumber
         },
+        orderSummary: orderSummary,
         address,
         products: cartProducts.map(prod => ({
           price: prod.price,
