@@ -1,4 +1,4 @@
-import { Box, Flex, Image, Spacer, Text } from '@chakra-ui/react'
+import { Box, Center, Flex, Image, Spacer, Text } from '@chakra-ui/react'
 import { numberWithCommas, shortString } from '../../utils/extraFunctions'
 import { DescText, PriceText } from './DescText'
 import { handleCategory } from '../../utils/handleCategory'
@@ -20,7 +20,7 @@ export const ProductDisplayBox = ({
         cursor='pointer'
         mb={'10px'}
       >
-        <Box overflow={'hidden'} bg={'#F3F3F3'}>
+        <Box overflow={'hidden'} bg={'#F3F3F3'} height={'200px'}>
           <Image className='imgAnimation' src={photos[0]} />
         </Box>
         <Box>
