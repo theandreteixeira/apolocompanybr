@@ -121,7 +121,7 @@ export const Description = () => {
           <UnorderedList fontSize={'16px'} styleType='none' mb={'20px'}>
             <ListItem my={'10px'}>
               <Text>
-                <strong> Gênero: </strong> {data.gender}{' '}
+                <strong> Gênero: </strong> Unissex
               </Text>
             </ListItem>
             <ListItem my={'10px'}>
