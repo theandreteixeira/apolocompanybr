@@ -13,8 +13,9 @@ import createNumberMask from 'text-mask-addons/dist/createNumberMask'
 import React, { useState } from 'react'
 import { BrazilianStates } from '../../utils/BrazilianStates'
 import { phoneNumberMask, cpfMask, CEPMask } from '../../utils/InputMask'
+import axios from 'axios'
 
-export const CheckoutForm = ({ onChange, isLoading, user }) => {
+export const CheckoutForm = ({ onChange, isLoading, user, setFrete }) => {
   const [cpf, setCpf] = useState('')
   const [phoneNumber, setPhoneNumber] = useState('')
   const [cep, setCEP] = useState('')
@@ -42,6 +43,24 @@ export const CheckoutForm = ({ onChange, isLoading, user }) => {
     const maskedValue = CEPPipe(value) || ''
     onChange({ target: { name: 'pinCode', value } })
     setCEP(maskedValue.value)
+    if (value.length == 8) {
+      console.log('aqui')
+      calcFrete(value)
+    }
+  }
+
+  const calcFrete = async frete => {
+    try {
+      const res = await axios.get('/calcularFrete', {
+        params: {
+          cep: frete
+        }
+      })
+      setFrete(res.data.frete)
+    } catch (error) {
+      console.log('erro no frete')
+      console.log(error)
+    }
   }
 
   return (

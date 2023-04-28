@@ -8,7 +8,8 @@ export const CheckoutBtn = ({
   hoverBg,
   hoverBorder,
   borderColor,
-  isLoading
+  isLoading,
+  disabled
 }) => {
   return (
     <>
@@ -22,6 +23,7 @@ export const CheckoutBtn = ({
         fontSize={'17px'}
         borderRadius='0'
         mb={'20px'}
+        isDisabled={disabled}
         _hover={{ bg: hoverBg, borderColor: hoverBorder }}
       >
         {isLoading ? <Spinner /> : name}

@@ -1,4 +1,4 @@
-import { Collapse, Flex, Input } from '@chakra-ui/react'
+import { Collapse, Flex, FormControl, FormLabel, Input } from '@chakra-ui/react'
 import { useState } from 'react'
 import MaskedInput from 'react-text-mask'
 import { cardNumberMask } from '../../utils/InputMask'
@@ -27,22 +27,25 @@ export const CreditCardForm = ({ isOpen, onChange }) => {
     <>
       <Collapse in={isOpen} animateOpacity>
         <Flex flexDirection={'column'} gap={'20px'} mt={'15px'}>
-          <MaskedInput
-            onChange={handleChangeCardNumber}
-            name={'cardNumber'}
-            mask={cardNumberMask}
-            placeholder={'Número'}
-            value={cardNumber}
-            width={'100%'}
-            style={{
-              padding: '10px',
-              width: '100%',
-              borderWidth: '1px',
-              borderStyle: 'solid',
-              borderColor: '#CBD5E0',
-              borderRadius: '10px'
-            }}
-          />
+          <FormControl>
+            <FormLabel>Número do cartão</FormLabel>
+            <MaskedInput
+              onChange={handleChangeCardNumber}
+              name={'cardNumber'}
+              mask={cardNumberMask}
+              placeholder={'Número'}
+              value={cardNumber}
+              width={'100%'}
+              style={{
+                padding: '10px',
+                width: '100%',
+                borderWidth: '1px',
+                borderStyle: 'solid',
+                borderColor: '#CBD5E0',
+                borderRadius: '10px'
+              }}
+            />
+          </FormControl>
           <Input
             type={'text'}
             name={'holderName'}

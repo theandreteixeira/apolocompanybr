@@ -20,9 +20,9 @@ import { Contador } from '../pages/home/Contador'
 export const Router = () => {
   return (
     <>
-      {/* <Navbar /> */}
+      <Navbar />
       <Routes>
-        <Route path='/' element={<Contador />} />
+        <Route path='/' element={<Home />} />
         <Route path='/allProducts' element={<Products />} />
         <Route path='/men' element={<Products />} />
         <Route path='/women' element={<Products />} />
@@ -95,7 +95,7 @@ export const Router = () => {
         />
       </Routes>
 
-      {/* <Footer /> */}
+      <Footer />
     </>
   )
 }

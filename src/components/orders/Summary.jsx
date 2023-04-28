@@ -89,7 +89,7 @@ export const Summary = ({
 
           <OrderPageText
             name={'Total'}
-            value={`R$${numberWithCommas(total)}`}
+            value={`R$${numberWithCommas(total + shipping)}`}
           />
         </Flex>
       </Box>

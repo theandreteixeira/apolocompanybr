@@ -20,7 +20,7 @@ export const ProductDisplayBox = ({
         cursor='pointer'
         mb={'10px'}
       >
-        <Box overflow={'hidden'}>
+        <Box overflow={'hidden'} bg={'#F3F3F3'}>
           <Image className='imgAnimation' src={photos[0]} />
         </Box>
         <Box>

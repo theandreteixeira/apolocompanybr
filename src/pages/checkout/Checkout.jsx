@@ -23,10 +23,11 @@ import {
 import { PaymentIndevido } from '../../components/checkout/PaymentIndevido'
 
 export const Checkout = () => {
-  const { orderSummary, cartProducts } = useSelector(
+  let { orderSummary, cartProducts } = useSelector(
     state => state.cartReducer,
     shallowEqual
   )
+  const [frete, setFrete] = useState(0)
   console.log('=============cart products')
   console.log(cartProducts)
   const toast = useToast()
@@ -117,8 +118,10 @@ export const Checkout = () => {
         qrCodeUrl: data.charges[0].last_transaction.qr_code_url,
         orderSummary: {
           ...orderSummary,
+          shipping: frete,
           orderId: data.id,
-          paymentMethod: form.paymentMethod
+          paymentMethod: form.paymentMethod,
+          frete: frete
         },
         shippingDetails
       })
@@ -132,6 +135,7 @@ export const Checkout = () => {
           qrCodeUrl: data.charges[0].last_transaction.qr_code_url,
           shippingDetails,
           orderSummary,
+          frete,
           total: orderSummary.total
         }
       })
@@ -172,7 +176,7 @@ export const Checkout = () => {
           quantity: prod.quantity,
           id: prod.id
         })),
-        shipping: 0,
+        shipping: frete,
         paymentMethod: form.paymentMethod,
         payment: {
           creditCard: {
@@ -191,7 +195,13 @@ export const Checkout = () => {
       if (response.data.status == 'failed') {
         setIsLoading(false)
         console.log(response.data)
-        setToast(toast, 'Não foi possível realizar o pagamento', 'error', 3500)
+        const errorCreditCard =
+          'Erro ao realizar cobrança no seu cartão de crédito, verifique se os dados estão corretos e se você possui saldo.'
+        const errorPix =
+          'Erro no pagamento, o PIX está temporariamente fora do ar, tente mais tarde.'
+        const message =
+          form.paymentMethod === 'pix' ? errorPix : errorCreditCard
+        setToast(toast, message, 'error', 4500)
       } else {
         console.log(response.data)
         createOrder({
@@ -200,8 +210,11 @@ export const Checkout = () => {
       }
     } catch (error) {
       setIsLoading(false)
-      setToast(toast, 'Não foi possível realizar o pagamento', 'error', 3500)
-      console.log('erro ao pagar: ' + error.data)
+      const message =
+        error.response.data ?? 'Não foi possível realizar o pagamento'
+      setToast(toast, message, 'error', 4500)
+      console.log('erro ao pagar: ')
+      console.log(error)
     }
   }
 
@@ -225,6 +238,7 @@ export const Checkout = () => {
           onChange={handleInputChange}
           isLoading={isLoading}
           user={user}
+          setFrete={setFrete}
         />
         <CheckoutPaymentMethod
           handlePaymentMethod={handlePaymentMethod}
@@ -235,6 +249,7 @@ export const Checkout = () => {
           onClick={handleFormSubmit}
           orderSummary={orderSummary}
           isLoading={isLoading}
+          frete={frete}
         />
       </Box>
     </>

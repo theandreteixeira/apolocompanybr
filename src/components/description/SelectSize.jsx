@@ -4,7 +4,7 @@ import { souldout } from '../../constants/images'
 
 const BoxCard = (value, handleBoxClick, selected) => {
   const { colorMode } = useColorMode()
-  const isDisabled = value.quantity == 0
+  const isDisabled = value.quantity <= 0
   console.log(value.name, value.quantity, selected, isDisabled)
   return (
     <label>

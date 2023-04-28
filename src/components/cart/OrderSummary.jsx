@@ -18,6 +18,7 @@ export const OrderSummary = () => {
 
   const [coupon, setCoupon] = useState('')
   const [isLoading, setIsLoading] = useState(false)
+  const [isCuoponValid, setIsCuoponValid] = useState(false)
   const toast = useToast()
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -57,6 +58,7 @@ export const OrderSummary = () => {
 
   const removeCouponCode = () => {
     dispatch(removeCouponRequest(toast))
+    setIsCuoponValid(false)
     setCoupon('')
   }
 
@@ -67,6 +69,11 @@ export const OrderSummary = () => {
 
         <Input
           onChange={e => {
+            if (e.target.value.length > 0) {
+              setIsCuoponValid(true)
+            } else {
+              setIsCuoponValid(false)
+            }
             setCoupon(e.target.value)
           }}
           placeholder={'CUPOM'}
@@ -84,6 +91,7 @@ export const OrderSummary = () => {
           hoverBorder={'black'}
           borderColor={'#cecdce'}
           isLoading={isLoading}
+          disabled={!isCuoponValid}
         />
 
         <CheckoutBtn

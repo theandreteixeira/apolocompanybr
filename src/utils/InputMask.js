@@ -36,7 +36,6 @@ export const cardNumberMask = [
   /\d/,
   /\d/,
   /\d/,
-  ' ',
 ]
 
 export const cpfMask = [

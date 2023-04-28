@@ -6,7 +6,8 @@ export const OrderSummaryDataSection = ({
   discount,
   quantity,
   total,
-  shipping
+  shipping,
+  frete
 }) => {
   return (
     <>
@@ -31,7 +32,7 @@ export const OrderSummaryDataSection = ({
             title={'Todos os pedidos possuem frete grátis para o Brasil todo.'}
             cursor={'pointer'}
           >
-            R${numberWithCommas(shipping)}
+            R${numberWithCommas(frete ?? 0)}
           </Text>
         </Flex>
 
@@ -45,7 +46,8 @@ export const OrderSummaryDataSection = ({
 
       <Flex fontSize={'18px'} justifyContent={'space-between'} my={'20px'}>
         <Text fontWeight={'bold'}>Total</Text>
-        <Text fontWeight={500}>R${numberWithCommas(total)}</Text>
+        {console.log('flexxx', total, frete)}
+        <Text fontWeight={500}>R${numberWithCommas(total + (frete ?? 0))}</Text>
       </Flex>
 
       <Divider mb={'20px'} />

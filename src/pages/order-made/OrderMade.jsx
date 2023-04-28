@@ -61,7 +61,7 @@ export const OrderMade = () => {
                   Total:
                 </Text>
                 <Text fontWeight={'extrabold'} fontSize={'30px'}>
-                  R${numberWithCommas(data.total)}
+                  R${numberWithCommas(data.total + data.frete)}
                 </Text>
               </Flex>
             </Center>
@@ -87,13 +87,13 @@ export const OrderMade = () => {
         </Text>
         <Text>
           <strong> Frete:</strong> R$
-          {numberWithCommas(data.orderSummary.shipping)}
+          {numberWithCommas(data.frete)}
         </Text>
         <Text>
-          <strong> Total:</strong> R${numberWithCommas(data.orderSummary.total)}
+          <strong> Total:</strong> R$
+          {numberWithCommas(data.orderSummary.total + data.frete)}
         </Text>
       </Box>
-      <Image src={thankyou} mt={'20px'} width={'50%'} />
     </Box>
   ) : (
     <Box>
