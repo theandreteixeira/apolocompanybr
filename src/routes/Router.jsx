@@ -45,14 +45,7 @@ export const Router = () => {
           }
         />
         <Route path='/cart' element={<Cart />} />
-        <Route
-          path='/checkout'
-          element={
-            <Private path='/checkout'>
-              <Checkout />
-            </Private>
-          }
-        />
+        <Route path='/checkout' element={<Checkout />} />
         <Route
           path='/orders'
           element={
@@ -85,14 +78,7 @@ export const Router = () => {
             </Public>
           }
         />
-        <Route
-          path='/orderMade'
-          element={
-            <Private>
-              <OrderMade />
-            </Private>
-          }
-        />
+        <Route path='/orderMade' element={<OrderMade />} />
       </Routes>
 
       <Footer />

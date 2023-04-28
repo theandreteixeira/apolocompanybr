@@ -15,7 +15,7 @@ import { BrazilianStates } from '../../utils/BrazilianStates'
 import { phoneNumberMask, cpfMask, CEPMask } from '../../utils/InputMask'
 import axios from 'axios'
 
-export const CheckoutForm = ({ onChange, isLoading, user, setFrete }) => {
+export const CheckoutForm = ({ onChange, isLoading, setFrete }) => {
   const [cpf, setCpf] = useState('')
   const [phoneNumber, setPhoneNumber] = useState('')
   const [cep, setCEP] = useState('')
@@ -155,12 +155,20 @@ export const CheckoutForm = ({ onChange, isLoading, user, setFrete }) => {
               Preencha com os seus dados:
             </Text>
             <FormControl>
+              <FormLabel>Email</FormLabel>
+              <Input
+                onChange={onChange}
+                name={'email'}
+                type={'text'}
+                placeholder={'Por ex: joao@gmail.com'}
+              />
+            </FormControl>
+            <FormControl>
               <FormLabel>Nome completo</FormLabel>
               <Input
-                onChange={handleChange}
+                onChange={onChange}
                 name={'name'}
                 type={'text'}
-                defaultValue={user.name}
                 placeholder={'Por ex: João Oliveira dos Santos'}
               />
               <FormHelperText>

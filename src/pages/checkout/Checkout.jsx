@@ -35,10 +35,11 @@ export const Checkout = () => {
   const [isLoading, setIsLoading] = useState(false)
 
   const [form, setForm] = useState({
-    name: user.name,
+    name: '',
     addressLine1: '',
     addressLine2: '',
     pinCode: '',
+    email: '',
     district: '',
     city: '',
     state: {
@@ -99,7 +100,7 @@ export const Checkout = () => {
         state: form.state.name,
         country: form.country,
         uf: form.state.value,
-        email: user.email,
+        email: form.email.trim(),
         firstName: form.name.trim().split(' ')[0],
         lastName:
           form.name
@@ -111,7 +112,7 @@ export const Checkout = () => {
         pinCode: form.pinCode
       }
       const response = await axios.post('/criarPedido', {
-        userId: user.id,
+        userId: 'pedido_sem_id',
         products: cartProducts,
         status: data.status,
         qrCode: data.charges[0].last_transaction.qr_code,
@@ -160,12 +161,13 @@ export const Checkout = () => {
       district: form.district
     }
     try {
+      console.log(form)
       setIsLoading(true)
       const response = await axios.post('/realizarPagamento', {
         customer: {
-          name: form.name,
+          name: form.name.trim(),
           cpf: form.cpf,
-          email: user.email,
+          email: form.email.trim(),
           phoneNumber: form.phoneNumber
         },
         orderSummary: orderSummary,
@@ -237,7 +239,6 @@ export const Checkout = () => {
         <CheckoutForm
           onChange={handleInputChange}
           isLoading={isLoading}
-          user={user}
           setFrete={setFrete}
         />
         <CheckoutPaymentMethod
