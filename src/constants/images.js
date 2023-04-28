@@ -8,5 +8,6 @@ import menCollection from '../assets/men-collection.png'
 import google from '../assets/google.png'
 import check from '../assets/check.png'
 import proinsta from '../assets/proinsta.png'
+import thankyou from '../assets/thankyou.png'
 
-export { apoloLogo, nikeLogoPayment, apoloLight, apoloDark, beMember, menCollection, womenCollection, proinsta, google, check };
+export { apoloLogo, nikeLogoPayment, apoloLight, apoloDark, beMember, menCollection, womenCollection, proinsta, google, check, thankyou };

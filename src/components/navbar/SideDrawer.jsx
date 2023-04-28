@@ -31,7 +31,7 @@ export const SideDrawer = ({ handlePath }) => {
 
   return (
     <>
-      <Icon w={'28px'} h={'28px'} mr={'10px'} onClick={onOpen} as={BiMenu} />
+      <Icon w={'28px'} h={'28px'} onClick={onOpen} as={BiMenu} />
       <Drawer isOpen={isOpen} placement='right' onClose={onClose}>
         <DrawerOverlay />
         <DrawerContent>

@@ -8,32 +8,22 @@ import {
   Badge,
   Icon,
   HStack,
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-  Button,
-  Text,
-  MenuList,
-  MenuItem,
-  Menu,
-  MenuButton
+  Text
 } from '@chakra-ui/react'
 import { RiShoppingBagLine } from 'react-icons/ri'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { apoloLogo, apoloLight, apoloDark } from '../../constants/images'
+import { apoloLight, apoloDark } from '../../constants/images'
 import { setNavbarPath } from '../../redux/features/path/actions'
 import { setItemSession } from '../../utils/sessionStorage'
-import { Auth } from '../../components/auth/Auth'
 import { Logout } from '../../components/auth/Logout'
-import { DarkModeBtn } from '../../components/darkmode/DarkModeBtn'
 import {
   Category,
   NavIcon,
   SearchBox
 } from '../../components/navbar/CategoryAndIcon'
 import { SideDrawer } from '../../components/navbar/SideDrawer'
-import { TbTruckDelivery } from 'react-icons/tb'
+import { TbBolt } from 'react-icons/tb'
 
 export const Navbar = () => {
   const dispatch = useDispatch()
@@ -51,17 +41,27 @@ export const Navbar = () => {
   return (
     <>
       {token ? (
-        <Box h={'36px'} bg={colorMode === 'light' && '#f5f5f5'}>
-          <Center
-            h={'36px'}
-            justifyContent={'right'}
-            mr={'20px'}
-            fontSize={'16px'}
-            cursor={'pointer'}
-          >
-            <Logout />
-          </Center>
-        </Box>
+        <Flex px={'20px'} bg={colorMode === 'light' && '#f5f5f5'} h={'36px'}>
+          <Box w={'90px'} mt={'10px'}>
+            <Link to={'/'}>
+              <Image
+                width={'60px'}
+                src={colorMode === 'light' ? apoloLight : apoloDark}
+              />
+            </Link>
+          </Box>
+          <Spacer />
+          <Box>
+            <Center
+              h={'36px'}
+              justifyContent={'right'}
+              fontSize={'16px'}
+              cursor={'pointer'}
+            >
+              <Logout />
+            </Center>
+          </Box>
+        </Flex>
       ) : (
         <Box h={'36px'} bg={colorMode === 'light' && '#f5f5f5'}>
           <Center
@@ -75,17 +75,6 @@ export const Navbar = () => {
       )}
 
       <Flex px={'20px'} justifyContent={'center'}>
-        <Box w={'90px'} mt={'10px'}>
-          <Link to={'/'}>
-            <Image
-              width={'60px'}
-              src={colorMode === 'light' ? apoloLight : apoloDark}
-            />
-          </Link>
-        </Box>
-
-        <Spacer />
-
         <Box display={['none', 'none', 'flex', 'flex', 'flex']}>
           <Category
             handlePath={handlePath}
@@ -129,7 +118,7 @@ export const Navbar = () => {
         </Center>
 
         <Box display={['flex', 'flex', 'none', 'none', 'none']}>
-          <Center mr={'10px'}>
+          <Center>
             <SideDrawer handlePath={handlePath} />
           </Center>
         </Box>
@@ -141,8 +130,8 @@ export const Navbar = () => {
         textAlign={'center'}
       >
         <Flex align='center' justifyContent='center'>
-          <Icon mx={'12px'} as={TbTruckDelivery} boxSize={4} />
-          <Text>Frete grátis para todo o Brasil</Text>
+          <Icon mx={'12px'} as={TbBolt} boxSize={4} />
+          <Text>PEÇAS APOLO FLEX DISPONÍVEIS.</Text>
         </Flex>
       </Badge>
       <Box h={['10px', '20px', '30px', '40px', '40px']}></Box>

@@ -2,6 +2,7 @@ import {
   Box,
   Flex,
   FormControl,
+  FormHelperText,
   FormLabel,
   Input,
   Select,
@@ -80,7 +81,7 @@ export const CheckoutForm = ({ onChange, isLoading, user }) => {
                 onChange={onChange}
                 type={'text'}
                 name={'district'}
-                placeholder={'por exemplo: Bairro das Flores'}
+                placeholder={'por ex: Bairro das Flores'}
                 mb={'10px'}
               />
             </FormControl>
@@ -115,18 +116,23 @@ export const CheckoutForm = ({ onChange, isLoading, user }) => {
               </FormControl>
             </Flex>
             <Flex gap={'20px'}>
-              <Select
-                placeholder='Estado'
-                name={'state'}
-                onChange={onChange}
-                mb={'10px'}
-              >
-                {BrazilianStates.map(state => {
-                  return (
-                    <option value={JSON.stringify(state)}>{state.name}</option>
-                  )
-                })}
-              </Select>
+              <FormControl>
+                <FormLabel>Estado</FormLabel>
+                <Select
+                  placeholder='Toque para selecionar'
+                  name={'state'}
+                  onChange={onChange}
+                  mb={'10px'}
+                >
+                  {BrazilianStates.map(state => {
+                    return (
+                      <option value={JSON.stringify(state)}>
+                        {state.name}
+                      </option>
+                    )
+                  })}
+                </Select>
+              </FormControl>
             </Flex>
             <Text fontSize={'20px'} fontWeight={600} mb={'10px'} mt={'10px'}>
               Preencha com os seus dados:
@@ -140,41 +146,51 @@ export const CheckoutForm = ({ onChange, isLoading, user }) => {
                 defaultValue={user.name}
                 placeholder={'Por ex: João Oliveira dos Santos'}
               />
+              <FormHelperText>
+                ATENÇÃO: Verifique o seu nome, é indispensável que ele esteja
+                completo para ser feita a entrega do pedido.
+              </FormHelperText>
             </FormControl>
             <Box my={4} w={'100%'}>
-              <MaskedInput
-                onChange={handleChange}
-                name={'cpf'}
-                mask={cpfMask}
-                placeholder={'CPF'}
-                value={cpf}
-                width={'100%'}
-                style={{
-                  padding: '10px',
-                  width: '100%',
-                  borderWidth: '1px',
-                  borderStyle: 'solid',
-                  borderColor: 'grey',
-                  borderRadius: '10px'
-                }}
-              />
+              <FormControl>
+                <FormLabel>CPF</FormLabel>
+                <MaskedInput
+                  onChange={handleChange}
+                  name={'cpf'}
+                  mask={cpfMask}
+                  placeholder={'CPF'}
+                  value={cpf}
+                  width={'100%'}
+                  style={{
+                    padding: '10px',
+                    width: '100%',
+                    borderWidth: '1px',
+                    borderStyle: 'solid',
+                    borderColor: 'grey',
+                    borderRadius: '10px'
+                  }}
+                />
+              </FormControl>
             </Box>
             <Box my={4} w={'100%'}>
-              <MaskedInput
-                onChange={handleChangePhoneNumber}
-                name={'phoneNumber'}
-                mask={phoneNumberMask}
-                placeholder={'Telefone'}
-                value={phoneNumber}
-                style={{
-                  padding: '10px',
-                  width: '100%',
-                  borderWidth: '1px',
-                  borderStyle: 'solid',
-                  borderColor: 'grey',
-                  borderRadius: '10px'
-                }}
-              />
+              <FormControl>
+                <FormLabel>Telefone</FormLabel>
+                <MaskedInput
+                  onChange={handleChangePhoneNumber}
+                  name={'phoneNumber'}
+                  mask={phoneNumberMask}
+                  placeholder={'DDD + Número'}
+                  value={phoneNumber}
+                  style={{
+                    padding: '10px',
+                    width: '100%',
+                    borderWidth: '1px',
+                    borderStyle: 'solid',
+                    borderColor: 'grey',
+                    borderRadius: '10px'
+                  }}
+                />
+              </FormControl>
             </Box>
           </FormControl>
         </Flex>

@@ -60,7 +60,7 @@ export const PaymentMethod = ({ handlePaymentMethod, onChange }) => {
   ]
   const { isOpen, onOpen, onClose } = useDisclosure()
 
-  const [selectedBox, setSelectedBox] = useState(null)
+  const [selectedBox, setSelectedBox] = useState('pix')
 
   return (
     <Box width={'100%'}>

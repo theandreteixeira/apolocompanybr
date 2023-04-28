@@ -132,7 +132,7 @@ export const SearchBox = () => {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <Stack spacing={4} ml={'10px'}>
+        <Stack spacing={4}>
           <FormControl>
             <InputGroup variant={'filled'}>
               <InputLeftElement

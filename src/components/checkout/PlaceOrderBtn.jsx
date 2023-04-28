@@ -1,9 +1,9 @@
-import { Input, Spinner } from '@chakra-ui/react'
+import { Button, Spinner } from '@chakra-ui/react'
 
 export const PlaceOrderBtn = ({ onClick, isLoading }) => {
   return (
     <>
-      <Input
+      <Button
         onClick={onClick}
         as={'button'}
         type={'submit'}
@@ -18,7 +18,7 @@ export const PlaceOrderBtn = ({ onClick, isLoading }) => {
         _hover={{ borderColor: 'black' }}
       >
         {isLoading ? <Spinner color='white' /> : 'REALIZAR PEDIDO'}
-      </Input>
+      </Button>
     </>
   )
 }

@@ -61,7 +61,7 @@ export const isCheckoutFormEmpty = (obj) => {
 
     const { addressLine1, addressLine2, city, pinCode, state, country, cpf, phoneNumber } = obj;
 
-    if (!addressLine1 || !addressLine2 || !city || !pinCode || !state || !cpf || !country || !phoneNumber) {
+    if (!addressLine1 || !addressLine2 || !city || !pinCode || !state.name || !state.value || !cpf || !country || !phoneNumber) {
 
         return { status: false, message: 'Preencha os campos obrigatórios!' };
     }

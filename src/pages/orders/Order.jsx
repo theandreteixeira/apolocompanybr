@@ -75,7 +75,7 @@ export const Order = () => {
             <Box maxW={1200} m={'40px auto'}>
               {data.map(item => {
                 return (
-                  <OrderSection title={item.title}>
+                  <OrderSection title={item.name}>
                     <Box key={item.id}>
                       <Grid
                         templateColumns={[

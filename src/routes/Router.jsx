@@ -20,10 +20,10 @@ import { Contador } from '../pages/home/Contador'
 export const Router = () => {
   return (
     <>
-      {/* <Navbar /> */}
+      <Navbar />
       <Routes>
-        <Route path='/' element={<Contador />} />
-        {/* <Route path='/allProducts' element={<Products />} />
+        <Route path='/' element={<Home />} />
+        <Route path='/allProducts' element={<Products />} />
         <Route path='/men' element={<Products />} />
         <Route path='/women' element={<Products />} />
         <Route path='/kids' element={<Products />} />
@@ -92,10 +92,10 @@ export const Router = () => {
               <OrderMade />
             </Private>
           }
-        /> */}
+        />
       </Routes>
 
-      {/* <Footer /> */}
+      <Footer />
     </>
   )
 }

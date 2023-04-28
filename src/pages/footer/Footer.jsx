@@ -55,7 +55,7 @@ export const Footer = () => {
         >
           <IconLink
             icon={FaInstagramSquare}
-            link={'https://instagram.com/apolocompbr'}
+            link={'https://instagram.com/apolobr_oficial'}
           />
         </Flex>
       </Grid>
