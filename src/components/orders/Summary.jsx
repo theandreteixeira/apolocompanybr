@@ -71,9 +71,9 @@ export const Summary = ({
           <Flex justifyContent={'space-between'}>
             <Text fontWeight={'bold'}>Entrega</Text>
             <Text
-              title={
-                'Todos os pedidos incluem frete grátis para todo o Brasil.'
-              }
+              // title={
+              //   'Todos os pedidos incluem frete grátis para todo o Brasil.'
+              // }
               cursor={'pointer'}
             >
               R${numberWithCommas(shipping)}

@@ -20,7 +20,7 @@ import { Loading } from '../../components/loading/Loading'
 import { Error } from '../../components/loading/Error'
 import { addToCartRequest } from '../../redux/features/cart/actions'
 import { GrStar } from 'react-icons/gr'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import React from 'react'
 import { ItemBoxToDescription } from '../../components/cart/ItemBox'
@@ -33,7 +33,8 @@ import { ProductDetails } from '../../components/description/ProductDetails'
 
 export const Description = () => {
   const location = useLocation()
-  const id = location.state.id
+  const locationRef = useRef(location)
+  const id = locationRef.current.state.id
   const [mySize, setMySize] = useState(false)
   const toast = useToast()
   const navigate = useNavigate()
