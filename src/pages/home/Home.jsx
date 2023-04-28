@@ -16,7 +16,8 @@ import { Image, Box, Text, Center, Button } from '@chakra-ui/react'
 import {
   beMember,
   menCollection,
-  womenCollection
+  womenCollection,
+  flexCollection
 } from '../../constants/images'
 
 export const Home = () => {
@@ -56,21 +57,50 @@ export const Home = () => {
     <>
       {
         <>
-          {collections.map(item => {
-            return (
-              <Box
-                m={'30px auto 30px'}
-                w={['94%', '94%', '94%', '94%', '80%']}
-                textAlign={'center'}
-                onClick={() => {
-                  setItemSession('path', JSON.stringify({ gender: item.path }))
-                  navigate(item.link)
-                }}
-              >
-                <Image src={item.photo} />
-              </Box>
-            )
-          })}
+          <>
+            <Box
+              m={'30px auto 30px'}
+              w={['94%', '94%', '94%', '94%', '80%']}
+              textAlign={'center'}
+              onClick={() => {
+                setItemSession('path', JSON.stringify({}))
+                navigate('/allProducts')
+              }}
+            >
+              <Text fontSize={'26px'} textAlign={'start'}>
+                APOLO FLEX
+              </Text>
+              <Image src={flexCollection} />
+            </Box>
+            <Box
+              m={'30px auto 30px'}
+              w={['94%', '94%', '94%', '94%', '80%']}
+              textAlign={'center'}
+              onClick={() => {
+                setItemSession('path', JSON.stringify({ gender: 'men' }))
+                navigate('/men')
+              }}
+            >
+              <Text fontSize={'26px'} textAlign={'start'}>
+                Coleção masculina
+              </Text>
+              <Image src={menCollection} />
+            </Box>
+            <Box
+              m={'30px auto 30px'}
+              w={['94%', '94%', '94%', '94%', '80%']}
+              textAlign={'center'}
+              onClick={() => {
+                setItemSession('path', JSON.stringify({ gender: 'women' }))
+                navigate('/women')
+              }}
+            >
+              <Text fontSize={'26px'} textAlign={'start'}>
+                Coleção feminina
+              </Text>
+              <Image src={womenCollection} />
+            </Box>
+          </>
           <Box m={'25px auto 25px'} w={['94%', '94%', '94%', '94%', '80%']}>
             <Link to={'/auth'}>
               <Image src={beMember} />
