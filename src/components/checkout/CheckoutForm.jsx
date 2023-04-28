@@ -10,7 +10,6 @@ import {
   border
 } from '@chakra-ui/react'
 import MaskedInput from 'react-text-mask'
-import createAutoCorrectDataPipe from 'text-mask-addons/dist/createAutoCorrectedDatePipe'
 import createNumberMask from 'text-mask-addons/dist/createNumberMask'
 import React, { useState } from 'react'
 import { BrazilianStates } from '../../utils/BrazilianStates'
@@ -21,7 +20,7 @@ export const CheckoutForm = ({ onChange, isLoading, user }) => {
   const [phoneNumber, setPhoneNumber] = useState('')
   const [cep, setCEP] = useState('')
 
-  const cpfPipe = createAutoCorrectDataPipe('dd/mm/yyyy')
+  const cpfPipe = createNumberMask('ddd.ddd.ddd-dd')
   const phoneNumberPipe = createNumberMask('(dd) ddddd-dddd')
   const CEPPipe = createNumberMask('ddddd-ddd')
 
@@ -81,7 +80,7 @@ export const CheckoutForm = ({ onChange, isLoading, user }) => {
                 onChange={onChange}
                 type={'text'}
                 name={'district'}
-                placeholder={'por ex: Bairro das Flores'}
+                placeholder={'Por ex: Bairro das Flores'}
                 mb={'10px'}
               />
             </FormControl>
