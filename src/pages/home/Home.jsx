@@ -70,6 +70,15 @@ export const Home = () => {
               <Text fontSize={'26px'} textAlign={'start'}>
                 APOLO FLEX
               </Text>
+              <Text
+                fontSize={'16px'}
+                mb={'5px'}
+                textAlign={'start'}
+                color={'grey'}
+              >
+                A primeira edição da Apolo conta com o estilo urbano e moderno.
+                Confira.
+              </Text>
               <Image src={flexCollection} />
             </Box>
             <Box
@@ -83,6 +92,14 @@ export const Home = () => {
             >
               <Text fontSize={'26px'} textAlign={'start'}>
                 Coleção masculina
+              </Text>
+              <Text
+                fontSize={'16px'}
+                mb={'5px'}
+                textAlign={'start'}
+                color={'grey'}
+              >
+                Confira as roupas da edição Apolo FLEX para os homens.
               </Text>
               <Image src={menCollection} />
             </Box>
@@ -98,14 +115,17 @@ export const Home = () => {
               <Text fontSize={'26px'} textAlign={'start'}>
                 Coleção feminina
               </Text>
+              <Text
+                fontSize={'16px'}
+                mb={'5px'}
+                textAlign={'start'}
+                color={'grey'}
+              >
+                Confira as roupas da edição Apolo FLEX para as mulheres.
+              </Text>
               <Image src={womenCollection} />
             </Box>
           </>
-          <Box m={'25px auto 25px'} w={['94%', '94%', '94%', '94%', '80%']}>
-            <Link to={'/auth'}>
-              <Image src={beMember} />
-            </Link>
-          </Box>
         </>
       }
     </>
