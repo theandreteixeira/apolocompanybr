@@ -10,7 +10,8 @@ import {
   HStack,
   Text
 } from '@chakra-ui/react'
-import { RiShoppingBagLine } from 'react-icons/ri'
+import { BsHandbag } from 'react-icons/bs'
+import { IoMenuOutline } from 'react-icons/io'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { apoloLight, apoloDark } from '../../constants/images'
@@ -41,7 +42,7 @@ export const Navbar = () => {
   return (
     <>
       {token ? (
-        <Flex px={'20px'} bg={colorMode === 'light' && '#f5f5f5'} h={'36px'}>
+        <Flex px={'20px'} h={'36px'}>
           <Spacer />
           <Box>
             <Center
@@ -55,7 +56,7 @@ export const Navbar = () => {
           </Box>
         </Flex>
       ) : (
-        <Flex px={'20px'} bg={colorMode === 'light' && '#f5f5f5'} h={'36px'}>
+        <Flex px={'20px'} h={'36px'}>
           <Box w={'90px'} mt={'10px'}>
             <Link to={'/'}>
               <Image
@@ -104,7 +105,7 @@ export const Navbar = () => {
         <Center mr={'10px'}>
           <Link to={'/cart'}>
             <HStack>
-              <NavIcon iconName={RiShoppingBagLine} />
+              <NavIcon iconName={BsHandbag} />
               <Badge> {cart.length} </Badge>
             </HStack>
           </Link>

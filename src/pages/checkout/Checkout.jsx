@@ -164,6 +164,7 @@ export const Checkout = () => {
       console.log(form)
       setIsLoading(true)
       const response = await axios.post('/realizarPagamento', {
+        env: 'dev',
         customer: {
           name: form.name.trim(),
           cpf: form.cpf,

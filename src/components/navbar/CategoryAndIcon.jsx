@@ -106,7 +106,7 @@ export const DrawerSubCategory = ({
 }
 
 export const NavIcon = ({ iconName }) => {
-  return <Icon as={iconName} w={'28px'} h={'28px'} />
+  return <Icon as={iconName} w={'25px'} h={'25px'} />
 }
 
 export const SearchBox = () => {

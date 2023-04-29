@@ -27,7 +27,7 @@ export const Footer = () => {
           </Flex>
         </Center>
 
-        {/* <Center>
+        <Center>
           <Flex
             display={['none', 'none', 'none', 'flex', 'flex']}
             fontSize={'14px'}
@@ -43,7 +43,7 @@ export const Footer = () => {
             <Link>Devoluções</Link>
             <Link>Formas de pagamento</Link>
           </Flex>
-        </Center> */}
+        </Center>
 
         <Flex
           mt={'20px'}

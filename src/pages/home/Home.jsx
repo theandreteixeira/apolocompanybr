@@ -19,6 +19,8 @@ import {
   womenCollection,
   flexCollection
 } from '../../constants/images'
+import { Carousel } from '../../components/home/Carousel.jsx'
+import { MySlide } from '../../components/home/Slide.jsx'
 
 export const Home = () => {
   const navigate = useNavigate()
@@ -57,75 +59,74 @@ export const Home = () => {
     <>
       {
         <>
-          <>
-            <Box
-              m={'5px auto 15px'}
-              w={['94%', '94%', '94%', '94%', '80%']}
-              textAlign={'center'}
-              onClick={() => {
-                setItemSession('path', JSON.stringify({}))
-                navigate('/allProducts')
-              }}
+          <Box
+            m={'5px auto 15px'}
+            w={['94%', '94%', '94%', '94%', '80%']}
+            textAlign={'center'}
+            onClick={() => {
+              setItemSession('path', JSON.stringify({}))
+              navigate('/allProducts')
+            }}
+          >
+            {/* <Carousel /> */}
+            <Text fontSize={'26px'} textAlign={'start'}>
+              APOLO FLEX
+            </Text>
+            <Text
+              fontSize={'16px'}
+              mb={'5px'}
+              textAlign={'start'}
+              color={'grey'}
             >
-              <Text fontSize={'26px'} textAlign={'start'}>
-                APOLO FLEX
-              </Text>
-              <Text
-                fontSize={'16px'}
-                mb={'5px'}
-                textAlign={'start'}
-                color={'grey'}
-              >
-                A primeira edição da Apolo conta com o estilo urbano e moderno.
-                Confira.
-              </Text>
-              <Image src={flexCollection} />
-            </Box>
-            <Box
-              m={'30px auto 30px'}
-              w={['94%', '94%', '94%', '94%', '80%']}
-              textAlign={'center'}
-              onClick={() => {
-                setItemSession('path', JSON.stringify({ gender: 'men' }))
-                navigate('/men')
-              }}
+              A primeira edição da Apolo conta com o estilo urbano e moderno.
+              Confira.
+            </Text>
+            <Image src={flexCollection} />
+          </Box>
+          <Box
+            m={'30px auto 30px'}
+            w={['94%', '94%', '94%', '94%', '80%']}
+            textAlign={'center'}
+            onClick={() => {
+              setItemSession('path', JSON.stringify({ gender: 'men' }))
+              navigate('/men')
+            }}
+          >
+            <Text fontSize={'26px'} textAlign={'start'}>
+              Coleção masculina
+            </Text>
+            <Text
+              fontSize={'16px'}
+              mb={'5px'}
+              textAlign={'start'}
+              color={'grey'}
             >
-              <Text fontSize={'26px'} textAlign={'start'}>
-                Coleção masculina
-              </Text>
-              <Text
-                fontSize={'16px'}
-                mb={'5px'}
-                textAlign={'start'}
-                color={'grey'}
-              >
-                Confira as roupas da edição Apolo FLEX para os homens.
-              </Text>
-              <Image src={menCollection} />
-            </Box>
-            <Box
-              m={'30px auto 30px'}
-              w={['94%', '94%', '94%', '94%', '80%']}
-              textAlign={'center'}
-              onClick={() => {
-                setItemSession('path', JSON.stringify({ gender: 'women' }))
-                navigate('/women')
-              }}
+              Confira as roupas da edição Apolo FLEX para os homens.
+            </Text>
+            <Image src={menCollection} />
+          </Box>
+          <Box
+            m={'30px auto 30px'}
+            w={['94%', '94%', '94%', '94%', '80%']}
+            textAlign={'center'}
+            onClick={() => {
+              setItemSession('path', JSON.stringify({ gender: 'women' }))
+              navigate('/women')
+            }}
+          >
+            <Text fontSize={'26px'} textAlign={'start'}>
+              Coleção feminina
+            </Text>
+            <Text
+              fontSize={'16px'}
+              mb={'5px'}
+              textAlign={'start'}
+              color={'grey'}
             >
-              <Text fontSize={'26px'} textAlign={'start'}>
-                Coleção feminina
-              </Text>
-              <Text
-                fontSize={'16px'}
-                mb={'5px'}
-                textAlign={'start'}
-                color={'grey'}
-              >
-                Confira as roupas da edição Apolo FLEX para as mulheres.
-              </Text>
-              <Image src={womenCollection} />
-            </Box>
-          </>
+              Confira as roupas da edição Apolo FLEX para as mulheres.
+            </Text>
+            <Image src={womenCollection} />
+          </Box>
         </>
       }
     </>

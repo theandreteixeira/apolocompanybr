@@ -33,14 +33,23 @@ export const AuthPage = () => {
 
         {isLogin ? <LoginForm /> : isReset ? <ResetForm /> : <SignupForm />}
 
-        {/* <Box textAlign={'center'} mt={'20px'}>
-                    <Text display={'inline'} mt={'25px'} color={'#b0a8af'}>
-                        {isLogin ? "Não tem uma conta? " : isReset ? "Or return to " : "Já tem uma conta? "}
-                    </Text>
-                    <Text onClick={displayLogin} display={'inline'} textDecoration={'underline'} cursor={'pointer'}>
-                        {isLogin ? "Cadastre-se" : "Entrar"}
-                    </Text>
-                </Box> */}
+        <Box textAlign={'center'} mt={'20px'}>
+          <Text display={'inline'} mt={'25px'} color={'#b0a8af'}>
+            {isLogin
+              ? 'Não tem uma conta? '
+              : isReset
+              ? 'Or return to '
+              : 'Já tem uma conta? '}
+          </Text>
+          <Text
+            onClick={displayLogin}
+            display={'inline'}
+            textDecoration={'underline'}
+            cursor={'pointer'}
+          >
+            {isLogin ? 'Cadastre-se' : 'Entrar'}
+          </Text>
+        </Box>
       </Box>
     </>
   )

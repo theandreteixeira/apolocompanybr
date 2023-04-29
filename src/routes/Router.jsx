@@ -15,7 +15,6 @@ import { Logout } from '../pages/logout/Logout'
 import { OrderMade } from '../pages/order-made/OrderMade'
 import { Private } from './Private'
 import { Public } from './Public'
-import { Contador } from '../pages/home/Contador'
 
 export const Router = () => {
   return (

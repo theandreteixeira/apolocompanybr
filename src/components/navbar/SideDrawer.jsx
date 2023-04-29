@@ -12,7 +12,7 @@ import {
   VStack
 } from '@chakra-ui/react'
 import { useSelector } from 'react-redux'
-import { BiMenu } from 'react-icons/bi'
+import { IoMenuOutline } from 'react-icons/io5'
 import {
   DrawerCategory,
   DrawerCategoryWithSubCategory
@@ -31,7 +31,7 @@ export const SideDrawer = ({ handlePath }) => {
 
   return (
     <>
-      <Icon w={'28px'} h={'28px'} onClick={onOpen} as={BiMenu} />
+      <Icon w={'28px'} h={'28px'} onClick={onOpen} as={IoMenuOutline} />
       <Drawer isOpen={isOpen} placement='right' onClose={onClose}>
         <DrawerOverlay />
         <DrawerContent>
