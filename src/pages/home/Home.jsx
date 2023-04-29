@@ -59,7 +59,7 @@ export const Home = () => {
         <>
           <>
             <Box
-              m={'30px auto 30px'}
+              m={'5px auto 15px'}
               w={['94%', '94%', '94%', '94%', '80%']}
               textAlign={'center'}
               onClick={() => {

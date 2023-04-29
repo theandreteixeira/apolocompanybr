@@ -42,14 +42,6 @@ export const Navbar = () => {
     <>
       {token ? (
         <Flex px={'20px'} bg={colorMode === 'light' && '#f5f5f5'} h={'36px'}>
-          <Box w={'90px'} mt={'10px'}>
-            <Link to={'/'}>
-              <Image
-                width={'60px'}
-                src={colorMode === 'light' ? apoloLight : apoloDark}
-              />
-            </Link>
-          </Box>
           <Spacer />
           <Box>
             <Center
@@ -63,15 +55,16 @@ export const Navbar = () => {
           </Box>
         </Flex>
       ) : (
-        <Box h={'36px'} bg={colorMode === 'light' && '#f5f5f5'}>
-          <Center
-            h={'36px'}
-            justifyContent={'right'}
-            mr={'20px'}
-            fontSize={'16px'}
-            cursor={'pointer'}
-          ></Center>
-        </Box>
+        <Flex px={'20px'} bg={colorMode === 'light' && '#f5f5f5'} h={'36px'}>
+          <Box w={'90px'} mt={'10px'}>
+            <Link to={'/'}>
+              <Image
+                width={'60px'}
+                src={colorMode === 'light' ? apoloLight : apoloDark}
+              />
+            </Link>
+          </Box>
+        </Flex>
       )}
 
       <Flex px={'20px'} justifyContent={'center'}>
