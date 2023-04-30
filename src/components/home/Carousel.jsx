@@ -53,13 +53,7 @@ export const MyStack = ({ image, title, onClick }) => {
         padding={'20px'}
         h='380px'
       >
-        <Text
-          mb={'20px'}
-          textShadow='1px 1px 15px black'
-          fontSize={'20px'}
-          w={'60%'}
-          color={'white'}
-        >
+        <Text mb={'20px'} fontSize={'20px'} w={'60%'} color={'white'}>
           {title}
         </Text>
         <Button
