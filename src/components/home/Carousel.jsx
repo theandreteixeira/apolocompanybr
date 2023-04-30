@@ -69,7 +69,7 @@ export const MyStack = ({ image, title, onClick }) => {
           color={'black'}
           border={`1px solid white`}
           w={'35%'}
-          fontSize={'15px'}
+          fontSize={'14px'}
           borderRadius='25'
           fontWeight={'normal'}
           mb={'20px'}
