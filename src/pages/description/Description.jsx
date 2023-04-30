@@ -30,6 +30,7 @@ import { verifyIsSouldOut } from '../../utils/VerifyIsSouldOut'
 import axios from 'axios'
 import { Cart } from '../../components/description/Cart'
 import { ProductDetails } from '../../components/description/ProductDetails'
+import { print } from '../../utils/print'
 
 export const Description = () => {
   const location = useLocation()
@@ -46,13 +47,13 @@ export const Description = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
 
   const handleAddToCart = async () => {
-    console.log(mySize)
+    print(mySize)
     if (mySize === false) {
       setToast(toast, 'Por favor selecione um tamanho', 'error')
     } else {
       const payload = { ...data, size: mySize, quantity: 1 }
-      console.log('-------payload')
-      console.log(payload)
+      print('-------payload')
+      print(payload)
       dispatch(addToCartRequest(payload, toast))
       onOpen()
     }
@@ -69,7 +70,7 @@ export const Description = () => {
       setData(data.produto)
       setIsLoading(false)
     } catch (error) {
-      console.log(error)
+      print(error)
       setIsLoading(false)
       setIsError(true)
     }

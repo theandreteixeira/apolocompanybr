@@ -12,14 +12,15 @@ import { Loading } from '../../components/loading/Loading.jsx'
 import { getClothData } from '../../redux/features/home/actions.js'
 import { setNavbarPath } from '../../redux/features/path/actions.js'
 import { setItemSession } from '../../utils/sessionStorage.js'
-import { Image, Box, Text, Center, Button } from '@chakra-ui/react'
+import { Image, Box, Text, Center, Button, Icon } from '@chakra-ui/react'
 import {
   beMember,
   menCollection,
   womenCollection,
   flexCollection
 } from '../../constants/images'
-import { Carousel } from '../../components/home/Carousel.jsx'
+import { Carousel, MyStack } from '../../components/home/Carousel.jsx'
+import { BsArrowRightShort } from 'react-icons/bs'
 import { MySlide } from '../../components/home/Slide.jsx'
 
 export const Home = () => {
@@ -68,65 +69,45 @@ export const Home = () => {
               navigate('/allProducts')
             }}
           >
-            {/* <Carousel /> */}
-            <Text fontSize={'26px'} textAlign={'start'}>
+            <Text fontWeight={'bold'} fontSize={'24px'} textAlign={'start'}>
               APOLO FLEX
             </Text>
-            <Text
-              fontSize={'16px'}
-              mb={'5px'}
-              textAlign={'start'}
-              color={'grey'}
-            >
+            <Image src={flexCollection} />
+            <Text fontSize={'18px'} my={'5px'} textAlign={'center'}>
               A primeira edição da Apolo conta com o estilo urbano e moderno.
               Confira.
             </Text>
-            <Image src={flexCollection} />
+            <Button
+              h={'40px'}
+              bg={'black'}
+              color={'white'}
+              border={`1px solid black`}
+              w={'35%'}
+              fontSize={'15px'}
+              borderRadius='25'
+              fontWeight={'normal'}
+              mb={'20px'}
+            >
+              Ver coleção <Icon as={BsArrowRightShort} />
+            </Button>
           </Box>
-          <Box
-            m={'30px auto 30px'}
-            w={['94%', '94%', '94%', '94%', '80%']}
-            textAlign={'center'}
+          <MyStack
+            image={menCollection}
+            title={'Coleção FLEX para os homens'}
             onClick={() => {
               setItemSession('path', JSON.stringify({ gender: 'men' }))
               navigate('/men')
             }}
-          >
-            <Text fontSize={'26px'} textAlign={'start'}>
-              Coleção masculina
-            </Text>
-            <Text
-              fontSize={'16px'}
-              mb={'5px'}
-              textAlign={'start'}
-              color={'grey'}
-            >
-              Confira as roupas da edição Apolo FLEX para os homens.
-            </Text>
-            <Image src={menCollection} />
-          </Box>
-          <Box
-            m={'30px auto 30px'}
-            w={['94%', '94%', '94%', '94%', '80%']}
-            textAlign={'center'}
+          />
+          <MyStack
+            image={womenCollection}
+            title={'Coleção FLEX para as mulheres'}
             onClick={() => {
               setItemSession('path', JSON.stringify({ gender: 'women' }))
               navigate('/women')
             }}
-          >
-            <Text fontSize={'26px'} textAlign={'start'}>
-              Coleção feminina
-            </Text>
-            <Text
-              fontSize={'16px'}
-              mb={'5px'}
-              textAlign={'start'}
-              color={'grey'}
-            >
-              Confira as roupas da edição Apolo FLEX para as mulheres.
-            </Text>
-            <Image src={womenCollection} />
-          </Box>
+          />
+          {/* <Carousel /> */}
         </>
       }
     </>

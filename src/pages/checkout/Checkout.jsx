@@ -21,6 +21,7 @@ import {
   removeCouponRequest
 } from '../../redux/features/cart/actions'
 import { PaymentIndevido } from '../../components/checkout/PaymentIndevido'
+import { print } from '../../utils/print'
 
 export const Checkout = () => {
   let { orderSummary, cartProducts } = useSelector(
@@ -28,8 +29,8 @@ export const Checkout = () => {
     shallowEqual
   )
   const [frete, setFrete] = useState(0)
-  console.log('=============cart products')
-  console.log(cartProducts)
+  print('=============cart products')
+  print(cartProducts)
   const toast = useToast()
   const user = useSelector(state => state.authReducer.user)
   const [isLoading, setIsLoading] = useState(false)
@@ -141,7 +142,7 @@ export const Checkout = () => {
         }
       })
     } catch (error) {
-      console.log(error)
+      print(error)
       setIsLoading(false)
       setToast(toast, 'Não foi possível criar o pedido', 'error', 3500)
       PaymentIndevido({ open: true })
@@ -161,7 +162,7 @@ export const Checkout = () => {
       district: form.district
     }
     try {
-      console.log(form)
+      print(form)
       setIsLoading(true)
       const response = await axios.post('/realizarPagamento', {
         env: 'dev',
@@ -197,7 +198,7 @@ export const Checkout = () => {
       })
       if (response.data.status == 'failed') {
         setIsLoading(false)
-        console.log(response.data)
+        print(response.data)
         const errorCreditCard =
           'Erro ao realizar cobrança no seu cartão de crédito, verifique se os dados estão corretos e se você possui saldo.'
         const errorPix =
@@ -206,7 +207,7 @@ export const Checkout = () => {
           form.paymentMethod === 'pix' ? errorPix : errorCreditCard
         setToast(toast, message, 'error', 4500)
       } else {
-        console.log(response.data)
+        print(response.data)
         createOrder({
           data: response.data
         })
@@ -216,13 +217,13 @@ export const Checkout = () => {
       const message =
         error.response.data ?? 'Não foi possível realizar o pagamento'
       setToast(toast, message, 'error', 4500)
-      console.log('erro ao pagar: ')
-      console.log(error)
+      print('erro ao pagar: ')
+      print(error)
     }
   }
 
   function handlePaymentMethod(method) {
-    console.log(method)
+    print(method)
     setForm({ ...form, paymentMethod: method })
   }
 

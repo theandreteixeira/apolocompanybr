@@ -1,9 +1,10 @@
 import { Box, Text } from '@chakra-ui/react'
 import { ItemBox } from './ItemBox'
+import { print } from '../../utils/print'
 
 export const BagItems = ({ products }) => {
-  console.log('PRODUCTS: abaixo:')
-  console.log(products)
+  print('PRODUCTS: abaixo:')
+  print(products)
 
   return (
     <>

@@ -1,3 +1,5 @@
+import { print } from "./print";
+
 const checkDuplicate = (arr, target) => {
     for (let item of arr) {
         if (item.id === target.id && item.size === target.size) {
@@ -12,13 +14,13 @@ export const handleCartDuplicate = (arr, target, operation) => {
 
     const isPresent = checkDuplicate(arr, target);
 
-    console.log('---------como chega no handleCartDuplicate')
-    console.log(arr)
-    console.log(target)
-    console.log(isPresent)
+    print('---------como chega no handleCartDuplicate')
+    print(arr)
+    print(target)
+    print(isPresent)
 
     if (!isPresent) {
-        console.log('isPresent', isPresent)
+        print('isPresent', isPresent)
         arr.push(target);
     } else {
         arr = arr.map((item) => {

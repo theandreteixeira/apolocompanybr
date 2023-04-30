@@ -5,6 +5,7 @@ import { GET_TOKEN, REMOVE_TOKEN, SHOW_LOGIN_PAGE, SHOW_RESET_PAGE } from "./act
 import { Auth } from 'aws-amplify';
 import { CognitoHostedUIIdentityProvider } from '@aws-amplify/auth';
 import { getItemSession } from "../../../utils/sessionStorage";
+import { print } from "../../../utils/print";
 
 
 export const showLoginPage = () => ({ type: SHOW_LOGIN_PAGE });
@@ -18,7 +19,7 @@ export const removeToken = () => ({ type: REMOVE_TOKEN });
 
 export const getSignupSuccess = (data, toast, navigate) => async (dispatch) => {
     try {
-        console.log(data)
+        print(data)
         const name = data.firstName + " " + data.lastName
         const { user } = await Auth.signUp({
             username: data.email,
@@ -32,7 +33,7 @@ export const getSignupSuccess = (data, toast, navigate) => async (dispatch) => {
                 enabled: true,
             }
         });
-        console.log(user);
+        print(user);
         // dispatch(getToken(res));
         // setItem('token', res.token);
         setItem('user', {
@@ -44,7 +45,7 @@ export const getSignupSuccess = (data, toast, navigate) => async (dispatch) => {
         setToast(toast, 'Cadastro realizado com sucesso', 'success');
         navigate("/confirmAccount");
     } catch (err) {
-        console.log("erro no signup: " + err);
+        print("erro no signup: " + err);
         setToast(toast, err.response.data.message, 'error');
     }
 };
@@ -53,7 +54,7 @@ export const getLoginSuccess = (data, toast, navigate, setIsLoading) => async (d
     try {
         setIsLoading(true)
         const user = await Auth.signIn(data.email, data.password);
-        console.log(user)
+        print(user)
         const token = user.signInUserSession.accessToken.jwtToken
         const userData = {
             id: user.attributes.sub,
@@ -68,7 +69,7 @@ export const getLoginSuccess = (data, toast, navigate, setIsLoading) => async (d
         setIsLoading(false)
         navigate(-1);
     } catch (err) {
-        console.log(err);
+        print(err);
         setIsLoading(false)
         setToast(toast, "erro ao fazer login", 'error');
     }
@@ -77,17 +78,17 @@ export const getLoginSuccess = (data, toast, navigate, setIsLoading) => async (d
 export const getLoginByGoogleSuccess = () => async (dispatch) => {
     try {
         const data = await Auth.federatedSignIn({ provider: CognitoHostedUIIdentityProvider.Google })
-        console.log(data)
+        print(data)
     } catch (err) {
-        console.log(err);
+        print(err);
     }
 };
 
 export const setUserData = (navigate) => async (dispatch) => {
     try {
-        console.log("passou no setuserdata")
+        print("passou no setuserdata")
         const data = await Auth.currentAuthenticatedUser();
-        console.log(data)
+        print(data)
         const token = data.signInUserSession.accessToken.jwtToken
         const userData = {
             id: data.attributes.sub,
@@ -100,10 +101,10 @@ export const setUserData = (navigate) => async (dispatch) => {
         setItem('token', token);
         dispatch(getToken(token, userData));
         const path = getItemSession('previousPath') ?? '/'
-        console.log('pathhhh:', path)
+        print('pathhhh:', path)
         navigate(path)
     } catch (err) {
-        console.log(err);
+        print(err);
     }
 };
 
@@ -116,7 +117,7 @@ export const logoutFromAccount = (toast, navigate) => async (dispatch) => {
         dispatch(removeToken());
         navigate('/')
     } catch (err) {
-        console.log(err);
+        print(err);
         setToast(toast, 'Something went wrong', 'error');
     }
 };

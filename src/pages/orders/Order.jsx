@@ -17,10 +17,11 @@ import { useSelector } from 'react-redux'
 import axios from 'axios'
 import { OrderSection } from '../../components/orders/OrderSection'
 import { dateFormator } from '../../utils/dateFormator'
+import { print } from '../../utils/print'
 
 export const Order = () => {
   const token = useSelector(state => state.authReducer.token)
-  console.log(useSelector(state => state.authReducer))
+  print(useSelector(state => state.authReducer))
   const id = useSelector(state => state.authReducer.user.id)
   const [isLoading, setIsLoading] = useState(true)
   const [isError, setIsError] = useState(false)
@@ -34,11 +35,11 @@ export const Order = () => {
           id
         }
       })
-      console.log(data.pedidos)
+      print(data.pedidos)
       setData(data.pedidos)
       setIsLoading(false)
     } catch (error) {
-      console.log(error)
+      print(error)
       setIsLoading(false)
       setIsError(true)
     }

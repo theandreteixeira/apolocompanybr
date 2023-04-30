@@ -2,6 +2,7 @@ import axios from "axios";
 import { updateCartDetails } from "../../redux/features/cart/actions";
 import { setToast } from "../../utils/extraFunctions";
 import { removeItem } from "../../utils/localstorage";
+import { print } from "../../utils/print";
 
 
 export const sendOrderRequest = async (shippingDetails, orderId, response, orderSummary, cartProducts, token, toast, dispatch, navigate) => {
@@ -29,6 +30,6 @@ export const sendOrderRequest = async (shippingDetails, orderId, response, order
         navigate('/orders');
 
     } catch (err) {
-        console.log(err);
+        print(err);
     }
 };

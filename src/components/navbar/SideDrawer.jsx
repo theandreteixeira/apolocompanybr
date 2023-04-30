@@ -17,13 +17,14 @@ import {
   DrawerCategory,
   DrawerCategoryWithSubCategory
 } from './CategoryAndIcon'
+import { print } from '../../utils/print'
 
 export const SideDrawer = ({ handlePath }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const user = useSelector(state => state.authReducer.user.firstName)
 
   const handleSelectSection = path => {
-    console.log('fria', path)
+    print('fria', path)
 
     onClose()
     handlePath(path)

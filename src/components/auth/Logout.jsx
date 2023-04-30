@@ -16,13 +16,14 @@ import { useDispatch, useSelector } from 'react-redux'
 import { logoutFromAccount } from '../../redux/features/auth/actions'
 import { useNavigate } from 'react-router-dom'
 import { Coupon } from '../../pages/coupon/Coupon'
+import { print } from '../../utils/print'
 
 export const Logout = () => {
   const dispatch = useDispatch()
   const toast = useToast()
   const navigate = useNavigate()
-  console.log('state.authReducer')
-  console.log(useSelector(state => state.authReducer))
+  print('state.authReducer')
+  print(useSelector(state => state.authReducer))
   const user = useSelector(state => state.authReducer.user.firstName)
 
   const handleLogoutBtn = () => {

@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { logoutFromAccount } from '../../redux/features/auth/actions'
+import { print } from '../../utils/print'
 
 export const Logout = () => {
   const [isLoading, setIsLoading] = useState(false)
@@ -15,11 +16,11 @@ export const Logout = () => {
 
   const handleOrdersGetRequest = async () => {
     try {
-      console.log('entrou no logout page')
+      print('entrou no logout page')
       setIsLoading(true)
       dispatch(logoutFromAccount(toast, navigate))
     } catch (error) {
-      console.log(error)
+      print(error)
       setIsLoading(false)
       setIsError(true)
     }

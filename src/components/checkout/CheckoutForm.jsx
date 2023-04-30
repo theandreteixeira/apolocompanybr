@@ -14,6 +14,7 @@ import React, { useState } from 'react'
 import { BrazilianStates } from '../../utils/BrazilianStates'
 import { phoneNumberMask, cpfMask, CEPMask } from '../../utils/InputMask'
 import axios from 'axios'
+import { print } from '../../utils/print'
 
 export const CheckoutForm = ({ onChange, isLoading, setFrete }) => {
   const [cpf, setCpf] = useState('')
@@ -44,7 +45,7 @@ export const CheckoutForm = ({ onChange, isLoading, setFrete }) => {
     onChange({ target: { name: 'pinCode', value } })
     setCEP(maskedValue.value)
     if (value.length == 8) {
-      console.log('aqui')
+      print('aqui')
       calcFrete(value)
     }
   }
@@ -58,8 +59,8 @@ export const CheckoutForm = ({ onChange, isLoading, setFrete }) => {
       })
       setFrete(res.data.frete)
     } catch (error) {
-      console.log('erro no frete')
-      console.log(error)
+      print('erro no frete')
+      print(error)
     }
   }
 

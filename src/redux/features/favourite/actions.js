@@ -1,6 +1,7 @@
 import { ADD_TO_FAVOURITE, GET_FAVOURITE_ERROR, GET_FAVOURITE_LOADING, GET_FAVOURITE_SUCCESS } from "./actionTypes";
 import { setToast } from "../../../utils/extraFunctions";
 import axios from "axios";
+import { print } from "../../../utils/print";
 
 
 export const addToFavourite = (payload) => {
@@ -26,7 +27,7 @@ export const addToFavouriteRequest = (data, token, toast) => async () => {
         await axios.post('/favourite', data, { headers: { 'Authorization': `Bearer ${token}` } });
         setToast(toast, 'Item added to the favourites', 'success');
     } catch (err) {
-        console.log(err.response.data);
+        print(err.response.data);
         if (err.response.data.message === "Already present in the Favourite") {
             setToast(toast, err.response.data.message, "info");
         } else {
@@ -41,7 +42,7 @@ export const getFavouriteRequest = (token) => async (dispatch) => {
         let res = await axios.get('/favourite', { headers: { 'Authorization': `Bearer ${token}` } });
         dispatch(getFavouriteSuccess(res.data));
     } catch (err) {
-        console.log(err);
+        print(err);
         dispatch(getFavouriteError());
     }
 };
@@ -53,7 +54,7 @@ export const deleteFavouriteRequest = (id, token, toast) => async (dispatch) => 
         dispatch(getFavouriteRequest(token));
         setToast(toast, 'Product removed from favourites', 'success');
     } catch (err) {
-        console.log(err);
+        print(err);
         dispatch(getFavouriteError());
         setToast(toast, 'Something went wrong', 'error');
     }

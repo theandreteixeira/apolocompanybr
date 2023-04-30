@@ -11,6 +11,7 @@ import { CheckoutBtn } from './CheckoutBtn'
 import { useNavigate } from 'react-router-dom'
 import { OrderSummaryDataSection } from './OrderSummaryDataSection'
 import axios from 'axios'
+import { print } from '../../utils/print'
 
 export const OrderSummary = () => {
   const orderSummary = useSelector(state => state.cartReducer.orderSummary)
@@ -50,7 +51,7 @@ export const OrderSummary = () => {
       dispatch(applyCouponRequest(discount.percentDiscount, toast))
       setIsLoading(false)
     } catch (error) {
-      console.log(error)
+      print(error)
       setToast(toast, 'Código de cupom inválido', 'error')
       setIsLoading(false)
     }

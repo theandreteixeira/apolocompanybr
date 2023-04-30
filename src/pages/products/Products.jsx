@@ -23,6 +23,7 @@ import { ProductDisplayBox } from '../../components/products/ProductDisplayBox'
 import { Loading } from '../../components/loading/Loading'
 import { Error } from '../../components/loading/Error'
 import { useMediaQuery } from 'react-responsive'
+import { print } from '../../utils/print'
 
 export const Products = () => {
   const { colorMode } = useColorMode()
@@ -52,10 +53,10 @@ export const Products = () => {
   }
 
   useEffect(() => {
-    console.log('puts', path)
+    print('puts', path)
     const attr = JSON.parse(path)
     const { gender, category } = attr
-    console.log('me aceita', gender, category)
+    print('me aceita', gender, category)
     dispatch(getRequest(attr.category, attr.gender, search))
   }, [path, search])
 

@@ -1,5 +1,6 @@
 import { Box, Divider, Flex, Text } from '@chakra-ui/react'
 import { numberWithCommas } from '../../utils/extraFunctions'
+import { print } from '../../utils/print'
 
 export const OrderSummaryDataSection = ({
   subTotal,
@@ -46,7 +47,7 @@ export const OrderSummaryDataSection = ({
 
       <Flex fontSize={'18px'} justifyContent={'space-between'} my={'20px'}>
         <Text fontWeight={'bold'}>Total</Text>
-        {console.log('flexxx', total, frete)}
+        {print('flexxx', total, frete)}
         <Text fontWeight={500}>R${numberWithCommas(total + (frete ?? 0))}</Text>
       </Flex>
 

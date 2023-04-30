@@ -1,3 +1,4 @@
+import { print } from "../../../utils/print";
 import { GET_DATA_ERROR, GET_DATA_LOADING, GET_DATA_SUCCESS, GET_PRICE_RANGE, NAME_A_TO_Z, NAME_Z_TO_A, RATING_HIGH_TO_LOW, RATING_LOW_TO_HIGH, RESET_FILTERS, SET_ALL_FILTERS, SORT_HIGH_TO_LOW, SORT_LOW_TO_HIGH } from "./actionTypes";
 import axios from "axios";
 
@@ -28,18 +29,18 @@ export const resetFilters = () => ({ type: RESET_FILTERS });
 
 export const getRequest = (category, gender, search) => async (dispatch) => {
     try {
-        console.log(search)
+        print(search)
         dispatch(getDataLoading());
-        console.log(category, gender)
+        print(category, gender)
         let response = await axios.get('/obterProdutos', {
             params: {
                 category, gender, search
             }
         });
-        console.log(response)
+        print(response)
         dispatch(getDataSuccess(response.data.produtos));
     } catch (err) {
-        console.log(err);
+        print(err);
         dispatch(getDataError());
     }
 };
