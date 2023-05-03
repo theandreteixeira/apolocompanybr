@@ -1,29 +1,78 @@
-import { Box, Button, Icon, Image, Text } from '@chakra-ui/react'
+import { Box, Button, Flex, Icon, Image, Text } from '@chakra-ui/react'
 import React from 'react'
 import { BsArrowRightShort } from 'react-icons/bs'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
+import './CustomSlider.css'
+import { Link } from 'react-router-dom'
 
-export const Carousel = () => {
+export const Carousel = ({ products }) => {
   var settings = {
     dots: false,
-    infinite: false,
-    slidesToShow: 1.2,
+    infinite: true,
+    slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: false,
-    speed: 200,
-    autoplaySpeed: 500,
-    cssEase: 'linear'
+    autoplay: true,
+    speed: 700,
+    autoplaySpeed: 2000,
+    cssEase: 'linear',
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2
+        }
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1
+        }
+      }
+    ]
   }
   return (
-    <Box mb={'15px'} w={['94%', '94%', '94%', '94%', '80%']}>
-      <Slider {...settings}>
-        {[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1].map(i => {
+    <Box
+      m={'5px auto 15px'}
+      w={['94%', '94%', '94%', '94%', '80%']}
+      maxW='1200px'
+      mx='auto'
+      h='400px'
+    >
+      <Slider {...settings} className='custom-slider'>
+        {products.map(product => {
           return (
-            <Box padding={'10px'}>
-              <Image src='https://static.nike.com/a/images/f_auto/dpr_3.0,cs_srgb/w_300,c_limit/15cdc7b5-6de0-4d5c-81e9-6d01fc944b18/nike-just-do-it.jpg' />
-              <Text fontSize='xl'>Air Force 1</Text>
+            <Box px={'10px'} display={'flex'} justifyContent={'center'}>
+              <Link
+                to={{ pathname: '/description', search: '?id=' + product.id }}
+              >
+                <Box
+                  position={'absolute'}
+                  zIndex={2}
+                  display='flex'
+                  flexDirection='column'
+                  justifyContent='flex-end'
+                  h='380px'
+                  p={'15px'}
+                >
+                  <Text
+                    fontSize={'15px'}
+                    // w={'85%'}
+                    lineHeight={'none'}
+                    textAlign={'center'}
+                  >
+                    {product.name}
+                  </Text>
+                </Box>
+                <Image
+                  src={product.photo}
+                  bg={'#F5F5F5'}
+                  w={'100%'}
+                  objectFit={'cover'}
+                  h='380px'
+                />
+              </Link>
             </Box>
           )
         })}

@@ -9,6 +9,7 @@ import {
   Spacer,
   Text,
   useColorMode,
+  useDisclosure,
   useToast
 } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
@@ -24,6 +25,7 @@ import { Loading } from '../../components/loading/Loading'
 import { Error } from '../../components/loading/Error'
 import { useMediaQuery } from 'react-responsive'
 import { print } from '../../utils/print'
+import { Filters } from '../../components/products/Filters'
 
 export const Products = () => {
   const { colorMode } = useColorMode()
@@ -38,6 +40,7 @@ export const Products = () => {
   const search = route.state?.search
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const { isOpen, onOpen, onClose } = useDisclosure()
 
   const resetFilter = () => {
     setIsFilter(!isFilter)
@@ -96,12 +99,12 @@ export const Products = () => {
           >
             <Button
               onClick={() => {
-                setIsFilter(!isFilter)
+                onOpen()
               }}
               fontSize={['13px', '16px']}
               rightIcon={<IoOptionsOutline />}
             >
-              {isFilter ? 'Ocultar filtros' : 'Exibir filtros'}
+              {isFilter ? 'Ocultar filtros' : 'Filtros'}
             </Button>
             <Spacer />
             <Button onClick={resetFilter} fontSize={['13px', '16px']}>
@@ -179,6 +182,7 @@ export const Products = () => {
               </Text>
             </Container>
           )}
+          <Filters isOpen={isOpen} onClose={onClose} />
         </Box>
       </Grid>
     </>

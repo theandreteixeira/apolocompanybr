@@ -2,6 +2,23 @@ import React from 'react'
 import { Flex, Box, Image, Text, VStack, Stack } from '@chakra-ui/react'
 
 export const MySlide = () => {
+  const camisas = [
+    {
+      id: '',
+      name: 'Camisa Barcelona 23/24',
+      photo: 'https://imgnike-a.akamaihd.net/1920x1920/02192515.jpg'
+    },
+    {
+      id: '',
+      name: 'Camisa Liverpool 23/24',
+      photo: 'https://imgnike-a.akamaihd.net/1920x1920/021924P1.jpg'
+    },
+    {
+      id: '',
+      name: 'Camisa Totteham 23/24',
+      photo: 'https://imgnike-a.akamaihd.net/1920x1920/02192251.jpg'
+    }
+  ]
   return (
     <Flex
       overflowX='scroll'
@@ -17,18 +34,24 @@ export const MySlide = () => {
       }}
       my={'10px'}
     >
-      {[2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3].map(i => {
+      {camisas.map(camisa => {
         return (
-          <Stack direction='column' spacing='4' align='center' mx={'5px'}>
+          <Stack
+            direction='column'
+            spacing='4'
+            align='center'
+            mx={'5px'}
+            w={['94%', '94%', '94%', '94%', '80%']}
+          >
             <Box w='300px'>
-              <Image
-                objectFit='cover'
-                w='100%'
-                h='auto'
-                src='https://static.nike.com/a/images/f_auto/dpr_3.0,cs_srgb/w_300,c_limit/15cdc7b5-6de0-4d5c-81e9-6d01fc944b18/nike-just-do-it.jpg'
-              />
+              <Image objectFit='cover' w='100%' h='auto' src={camisa.photo} />
             </Box>
-            <Text fontSize='xl'>Air Force 1</Text>
+            <Text fontSize='md' lineHeight={0}>
+              {camisa.name}
+            </Text>
+            <Text fontSize='sm' color={'grey'}>
+              {'Futebol'}
+            </Text>
           </Stack>
         )
       })}

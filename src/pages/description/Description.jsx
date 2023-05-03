@@ -31,11 +31,15 @@ import axios from 'axios'
 import { Cart } from '../../components/description/Cart'
 import { ProductDetails } from '../../components/description/ProductDetails'
 import { print } from '../../utils/print'
+import Fotos from '../../components/home/EmDestaque'
 
 export const Description = () => {
   const location = useLocation()
   const locationRef = useRef(location)
-  const id = locationRef.current.state.id
+  const searchParams = new URLSearchParams(locationRef.current.search)
+  // const id = locationRef.current.state.id
+  const id = searchParams.get('id')
+  print('idddddd:' + id)
   const [mySize, setMySize] = useState(false)
   const toast = useToast()
   const navigate = useNavigate()
