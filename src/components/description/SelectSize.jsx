@@ -15,12 +15,12 @@ const BoxCard = (value, handleBoxClick, selected) => {
         backgroundRepeat={isDisabled && 'repeat-x'}
         px={5}
         py={3}
-        borderRadius='md'
+        borderRadius='0'
         borderWidth='1px'
         cursor={isDisabled ? 'not-allowed' : 'pointer'}
         border={
           selected
-            ? `2px solid ${colorMode === 'light' ? 'black' : 'white'}`
+            ? `1.5px solid ${colorMode === 'light' ? 'black' : 'white'}`
             : undefined
         }
         _checked={

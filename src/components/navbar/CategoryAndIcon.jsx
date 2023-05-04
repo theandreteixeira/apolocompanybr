@@ -12,13 +12,15 @@ import {
   useDisclosure,
   FormControl,
   FormLabel,
-  Stack
+  Stack,
+  SlideFade
 } from '@chakra-ui/react'
 import { Form, Link, useNavigate } from 'react-router-dom'
 import { AiOutlineSearch } from 'react-icons/ai'
 import axios from 'axios'
 import { useState } from 'react'
 import { FaSearch } from 'react-icons/fa'
+import { IoIosArrowDown, IoIosArrowForward } from 'react-icons/io'
 
 export const Category = ({ text, link, handlePath, name }) => {
   const { colorMode } = useColorMode()
@@ -48,17 +50,20 @@ export const Category = ({ text, link, handlePath, name }) => {
 
 export const DrawerCategory = ({ text, link, handlePath, name }) => {
   return (
-    <Text fontSize={'20px'} fontWeight={500}>
-      <Link
-        onClick={p => {
-          handlePath({})
-        }}
-        to={link}
-        name={name}
-      >
-        {text}
-      </Link>
-    </Text>
+    <SlideFade in={true} offsetY='20px'>
+      <Text fontSize={'34px'} fontWeight={900}>
+        <Link
+          onClick={p => {
+            handlePath({})
+          }}
+          to={link}
+          name={name}
+        >
+          {text.toUpperCase()}
+          <Icon as={IoIosArrowForward} />
+        </Link>
+      </Text>
+    </SlideFade>
   )
 }
 export const DrawerCategoryWithSubCategory = ({
@@ -69,8 +74,16 @@ export const DrawerCategoryWithSubCategory = ({
   const { isOpen, onToggle } = useDisclosure()
   return (
     <>
-      <Text fontSize={'20px'} fontWeight={500}>
-        <Link onClick={onToggle}>{text}</Link>
+      <Text fontSize={'34px'} fontWeight={900}>
+        <Link onClick={onToggle}>
+          {text.toUpperCase()}
+          {isOpen ? (
+            <Icon as={IoIosArrowDown} />
+          ) : (
+            <Icon as={IoIosArrowForward} />
+          )}
+        </Link>
+        {isOpen && <Box w={'25px'} h={'6px'} bg={'#C8FF0B'} />}
       </Text>
       <Collapse in={isOpen} animateOpacity>
         {subCategories.map(sub => {

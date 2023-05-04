@@ -12,8 +12,8 @@ export const OrderSummaryDataSection = ({
 }) => {
   return (
     <>
-      <Text fontSize={'20px'} fontWeight={600}>
-        Resumo
+      <Text fontSize={'20px'} fontWeight={'black'}>
+        RESUMO
       </Text>
 
       <Box my={'20px'} fontSize={'18px'}>
@@ -36,7 +36,6 @@ export const OrderSummaryDataSection = ({
             R${numberWithCommas(frete ?? 0)}
           </Text>
         </Flex>
-
         <Flex mt={'5px'} justifyContent={'space-between'}>
           <Text>Desconto</Text>
           <Text>R${numberWithCommas(discount)}</Text>
@@ -46,7 +45,7 @@ export const OrderSummaryDataSection = ({
       <Divider />
 
       <Flex fontSize={'18px'} justifyContent={'space-between'} my={'20px'}>
-        <Text fontWeight={'bold'}>Total</Text>
+        <Text fontWeight={'bold'}>TOTAL</Text>
         {print('flexxx', total, frete)}
         <Text fontWeight={500}>R${numberWithCommas(total + (frete ?? 0))}</Text>
       </Flex>

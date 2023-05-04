@@ -1,6 +1,7 @@
-import { Box, Input, useToast } from '@chakra-ui/react'
+import { Box, Icon, Input, useToast } from '@chakra-ui/react'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { IoIosArrowForward } from 'react-icons/io'
 import {
   applyCouponRequest,
   removeCouponRequest
@@ -65,10 +66,10 @@ export const OrderSummary = () => {
 
   return (
     <>
-      <Box>
+      <Box border={'1px black solid'} padding={'25px 40px 50px'}>
         <OrderSummaryDataSection {...orderSummary} />
 
-        <Input
+        {/* <Input
           onChange={e => {
             if (e.target.value.length > 0) {
               setIsCuoponValid(true)
@@ -81,6 +82,7 @@ export const OrderSummary = () => {
           disabled={orderSummary.discount > 0}
           value={coupon}
           type={'text'}
+          borderRadius={0}
           mb={'20px'}
         />
 
@@ -93,16 +95,22 @@ export const OrderSummary = () => {
           borderColor={'#cecdce'}
           isLoading={isLoading}
           disabled={!isCuoponValid}
-        />
+        /> */}
 
         <CheckoutBtn
           onClick={() => {
             navigate('/checkout')
           }}
-          name={'CONTINUAR'}
-          bgColor={'black'}
-          color={'white'}
-          hoverBg={'#1e1e1e'}
+          name={
+            <>
+              {'CONTINUAR'}
+              <Icon as={IoIosArrowForward} ml={'5px'} />
+            </>
+          }
+          bgColor={'#C8FF0B'}
+          color={'#262626'}
+          hoverBg={'white'}
+          hoverBorder={'black'}
           borderColor={'transparent'}
         />
       </Box>

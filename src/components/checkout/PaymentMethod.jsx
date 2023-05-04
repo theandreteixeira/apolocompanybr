@@ -8,7 +8,7 @@ const BoxCard = (value, selected, isOpen, onChange) => {
       <Box
         px={5}
         py={3}
-        borderRadius='md'
+        borderRadius='0'
         borderWidth='1px'
         bg={selected && 'black'}
         color={selected && 'white'}
@@ -64,7 +64,7 @@ export const PaymentMethod = ({ handlePaymentMethod, onChange }) => {
 
   return (
     <Box width={'100%'}>
-      <Box display='flex' gap={'5px'} justifyContent={'center'}>
+      <Box display='flex' gap={'5px'} justifyContent={'stretch'}>
         {options.map(value => {
           return BoxCard(value, selectedBox === value.name, isOpen, onChange)
         })}

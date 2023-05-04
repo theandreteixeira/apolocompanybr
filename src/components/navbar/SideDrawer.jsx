@@ -8,6 +8,7 @@ import {
   DrawerHeader,
   DrawerOverlay,
   Icon,
+  Image,
   useDisclosure,
   VStack
 } from '@chakra-ui/react'
@@ -18,6 +19,7 @@ import {
   DrawerCategoryWithSubCategory
 } from './CategoryAndIcon'
 import { print } from '../../utils/print'
+import { apoloLight } from '../../constants/images'
 
 export const SideDrawer = ({ handlePath }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -33,11 +35,14 @@ export const SideDrawer = ({ handlePath }) => {
   return (
     <>
       <Icon w={'28px'} h={'28px'} onClick={onOpen} as={IoMenuOutline} />
-      <Drawer isOpen={isOpen} placement='right' onClose={onClose}>
+      <Drawer isOpen={isOpen} placement='right' onClose={onClose} size={'full'}>
         <DrawerOverlay />
         <DrawerContent>
           <DrawerCloseButton />
-          <DrawerHeader>Olá {user}</DrawerHeader>
+          <DrawerHeader>
+            {' '}
+            <Image width={'60px'} src={apoloLight} />
+          </DrawerHeader>
           <Divider />
           <DrawerBody>
             <VStack gap={'30px'} mt={'40px'}>
@@ -50,7 +55,7 @@ export const SideDrawer = ({ handlePath }) => {
               <DrawerCategory
                 handlePath={handleSelectSection}
                 name={'allProducts'}
-                text={'Todos os Produtos'}
+                text={'Unisex'}
                 link={'/allProducts'}
               />
               <DrawerCategoryWithSubCategory

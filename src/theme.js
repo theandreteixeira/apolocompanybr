@@ -23,11 +23,15 @@ const styles = {
 
 const Input = {
     defaultProps: {
-        focusBorderColor: 'black'
-    }
+        focusBorderColor: 'black',
+        borderRadius: 0
+    },
 };
 
 export const theme = extendTheme({
+    radii: {
+        base: '0',
+    },
     breakpoints,
     config,
     // styles,
