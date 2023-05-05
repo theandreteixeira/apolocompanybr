@@ -50,13 +50,13 @@ export const PaymentMethod = ({ handlePaymentMethod, onChange }) => {
       image:
         'https://user-images.githubusercontent.com/741969/99538099-3b7a5d00-298b-11eb-9f4f-c3d0cd4a5280.png',
       onClick: handlePix
-    },
-    {
-      name: 'credit_card',
-      value: 'Cartão de crédito',
-      image: 'https://cdn-icons-png.flaticon.com/512/233/233780.png',
-      onClick: handleCreditCard
     }
+    // {
+    //   name: 'credit_card',
+    //   value: 'Cartão de crédito',
+    //   image: 'https://cdn-icons-png.flaticon.com/512/233/233780.png',
+    //   onClick: handleCreditCard
+    // }
   ]
   const { isOpen, onOpen, onClose } = useDisclosure()
 
