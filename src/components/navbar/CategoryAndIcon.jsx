@@ -13,14 +13,14 @@ import {
   FormControl,
   FormLabel,
   Stack,
-  SlideFade
+  SlideFade,
+  Flex
 } from '@chakra-ui/react'
-import { Form, Link, useNavigate } from 'react-router-dom'
-import { AiOutlineSearch } from 'react-icons/ai'
-import axios from 'axios'
+import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { FaSearch } from 'react-icons/fa'
 import { IoIosArrowDown, IoIosArrowForward } from 'react-icons/io'
+import React from 'react'
 
 export const Category = ({ text, link, handlePath, name }) => {
   const { colorMode } = useColorMode()
@@ -50,20 +50,20 @@ export const Category = ({ text, link, handlePath, name }) => {
 
 export const DrawerCategory = ({ text, link, handlePath, name }) => {
   return (
-    <SlideFade in={true} offsetY='20px'>
-      <Text fontSize={'34px'} fontWeight={900}>
-        <Link
-          onClick={p => {
-            handlePath({})
-          }}
-          to={link}
-          name={name}
-        >
-          {text.toUpperCase()}
-          <Icon as={IoIosArrowForward} />
-        </Link>
-      </Text>
-    </SlideFade>
+    <Link
+      onClick={p => {
+        handlePath({})
+      }}
+      to={link}
+      name={name}
+    >
+      <Flex alignItems='center'>
+        <Text fontSize={'34px'} fontWeight={900} textTransform={'uppercase'}>
+          {text}
+        </Text>
+        <Icon as={IoIosArrowForward} boxSize={8} />
+      </Flex>
+    </Link>
   )
 }
 export const DrawerCategoryWithSubCategory = ({
@@ -72,19 +72,22 @@ export const DrawerCategoryWithSubCategory = ({
   name
 }) => {
   const { isOpen, onToggle } = useDisclosure()
+
   return (
     <>
-      <Text fontSize={'34px'} fontWeight={900}>
-        <Link onClick={onToggle}>
-          {text.toUpperCase()}
+      <Link onClick={onToggle}>
+        <Flex alignItems='center'>
+          <Text fontSize={'34px'} fontWeight={900} textTransform={'uppercase'}>
+            {text}
+          </Text>
           {isOpen ? (
-            <Icon as={IoIosArrowDown} />
+            <Icon as={IoIosArrowDown} boxSize={8} />
           ) : (
-            <Icon as={IoIosArrowForward} />
+            <Icon as={IoIosArrowForward} boxSize={8} />
           )}
-        </Link>
+        </Flex>
         {isOpen && <Box w={'25px'} h={'6px'} bg={'#C8FF0B'} />}
-      </Text>
+      </Link>
       <Collapse in={isOpen} animateOpacity>
         {subCategories.map(sub => {
           return DrawerSubCategory({ ...sub, gender: name })

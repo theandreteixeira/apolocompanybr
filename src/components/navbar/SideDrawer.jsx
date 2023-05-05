@@ -20,10 +20,11 @@ import {
 } from './CategoryAndIcon'
 import { print } from '../../utils/print'
 import { apoloLight } from '../../constants/images'
+import { CSSTransition, Transition } from 'react-transition-group'
+import { useRef } from 'react'
 
 export const SideDrawer = ({ handlePath }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
-  const user = useSelector(state => state.authReducer.user.firstName)
 
   const handleSelectSection = path => {
     print('fria', path)
@@ -31,6 +32,19 @@ export const SideDrawer = ({ handlePath }) => {
     onClose()
     handlePath(path)
   }
+
+  const defaultStyle = {
+    transition: `opacity 500ms ease-in-out`,
+    opacity: 0
+  }
+
+  const transitionStyles = {
+    entering: { opacity: 1 },
+    entered: { opacity: 1 },
+    exiting: { opacity: 0 },
+    exited: { opacity: 0 }
+  }
+  const nodeRef = useRef(null)
 
   return (
     <>
@@ -44,8 +58,8 @@ export const SideDrawer = ({ handlePath }) => {
             <Image width={'60px'} src={apoloLight} />
           </DrawerHeader>
           <Divider />
-          <DrawerBody>
-            <VStack gap={'30px'} mt={'40px'}>
+          <DrawerBody display='flex' justifyContent='flex-start'>
+            <VStack mt={'40px'} align={'start'}>
               <DrawerCategory
                 handlePath={handleSelectSection}
                 name={'/'}
