@@ -23,14 +23,13 @@ import { IoIosArrowDown, IoIosArrowForward } from 'react-icons/io'
 import React from 'react'
 
 export const Category = ({ text, link, handlePath, name }) => {
-  const { colorMode } = useColorMode()
   return (
     <Center
       h={'60px'}
       cursor={'pointer'}
       paddingX={'15px'}
       _hover={{
-        borderBottom: `2px solid ${colorMode === 'light' ? 'black' : 'white'}`
+        borderBottom: `2px solid white`
       }}
     >
       <Link
@@ -42,7 +41,14 @@ export const Category = ({ text, link, handlePath, name }) => {
         to={link}
         name={name}
       >
-        <Text fontWeight={'bold'}>{text}</Text>
+        <Text
+          fontWeight={'bold'}
+          color={'white'}
+          textTransform={'uppercase'}
+          fontSize={'16px'}
+        >
+          {text}
+        </Text>
       </Link>
     </Center>
   )
@@ -122,7 +128,7 @@ export const DrawerSubCategory = ({
 }
 
 export const NavIcon = ({ iconName }) => {
-  return <Icon as={iconName} w={'25px'} h={'25px'} />
+  return <Icon as={iconName} w={'25px'} h={'25px'} color={'white'} />
 }
 
 export const SearchBox = () => {

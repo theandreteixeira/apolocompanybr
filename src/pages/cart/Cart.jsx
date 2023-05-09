@@ -3,10 +3,11 @@ import { BagItems } from '../../components/cart/BagItems'
 import { OrderSummary } from '../../components/cart/OrderSummary'
 import { useSelector } from 'react-redux'
 import { EmptyCart } from '../../components/cart/EmptyCart'
+import { print } from '../../utils/print'
 
 export const Cart = () => {
   const cartProducts = useSelector(state => state.cartReducer.cartProducts)
-  console.log(cartProducts)
+  print(cartProducts)
 
   return (
     <>

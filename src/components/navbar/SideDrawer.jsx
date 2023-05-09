@@ -48,7 +48,13 @@ export const SideDrawer = ({ handlePath }) => {
 
   return (
     <>
-      <Icon w={'28px'} h={'28px'} onClick={onOpen} as={IoMenuOutline} />
+      <Icon
+        w={'28px'}
+        h={'28px'}
+        onClick={onOpen}
+        as={IoMenuOutline}
+        color={'white'}
+      />
       <Drawer isOpen={isOpen} placement='right' onClose={onClose} size={'full'}>
         <DrawerOverlay />
         <DrawerContent>

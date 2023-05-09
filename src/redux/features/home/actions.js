@@ -1,6 +1,6 @@
 import axios from "axios";
 import { GET_DATA_ERROR_HOME, GET_DATA_LOADING_HOME, GET_DATA_SUCCESS_CLOTH, GET_DATA_SUCCESS_SHOE } from "./actionTypes";
-import { Product } from "../cart/actions";
+import { print } from '../../../utils/print'
 
 export const getDataLoadingHome = () => ({ type: GET_DATA_LOADING_HOME });
 
@@ -17,7 +17,7 @@ export const getClothData = () => async (dispatch) => {
         let response = await axios.get('/obterProdutos');
         dispatch(getDataSuccessCloth(response.data.produtos));
     } catch (err) {
-        console.log("erro no getCloth:" + err);
+        print("erro no getCloth:" + err);
         dispatch(getDataErrorHome());
     }
 };

@@ -3,9 +3,6 @@ import { ItemBox } from './ItemBox'
 import { print } from '../../utils/print'
 
 export const BagItems = ({ products }) => {
-  print('PRODUCTS: abaixo:')
-  print(products)
-
   return (
     <>
       <Box>

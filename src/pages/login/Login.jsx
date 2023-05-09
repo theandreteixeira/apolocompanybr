@@ -10,6 +10,7 @@ import { OrderSection } from '../../components/orders/OrderSection'
 import { dateFormator } from '../../utils/dateFormator'
 import { setUserData } from '../../redux/features/auth/actions'
 import { useLocation, useNavigate } from 'react-router-dom'
+import { print } from '../../utils/print'
 
 export const Login = () => {
   const location = useLocation()
@@ -22,10 +23,10 @@ export const Login = () => {
   const handleOrdersGetRequest = async () => {
     try {
       setIsLoading(true)
-      console.log('PARAMS' + searchParams)
+      print('PARAMS' + searchParams)
       dispatch(setUserData(navigate))
     } catch (error) {
-      console.log(error)
+      print(error)
       setIsLoading(false)
       setIsError(true)
     }

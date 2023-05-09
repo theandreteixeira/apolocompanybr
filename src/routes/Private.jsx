@@ -6,7 +6,6 @@ import { setItemSession } from '../utils/sessionStorage'
 export const Private = ({ children, path }) => {
   const token = useSelector(state => state.authReducer.token)
 
-  console.log('path:', path)
   setItemSession('previousPath', path)
 
   return !token ? <Navigate to={'/auth'} /> : children

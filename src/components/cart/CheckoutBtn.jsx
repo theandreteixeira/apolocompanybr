@@ -9,6 +9,7 @@ export const CheckoutBtn = ({
   hoverBorder,
   borderColor,
   isLoading,
+  hoverColor,
   disabled
 }) => {
   return (
@@ -22,12 +23,12 @@ export const CheckoutBtn = ({
         w={'100%'}
         fontSize={'16px'}
         borderRadius='0'
-        mb={'20px'}
         isDisabled={disabled}
         transition='bg 0.6s ease-in-out'
         _hover={{
           bg: hoverBg,
           borderColor: hoverBorder,
+          color: hoverColor,
           opacity: 0.8
         }}
       >

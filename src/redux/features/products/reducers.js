@@ -52,7 +52,6 @@ export const prodReducer = (state = init, { type, payload }) => {
             };
         case SET_ALL_FILTERS:
             let usingFunc = checkSize([1], [1])
-            console.log('selectSize:', usingFunc);
             let { Gender, Category, Colour, Size } = convertObject(payload);
             let variableMapped = { Gender, Category, Colour, Size };
             let functionMapped = {
@@ -76,7 +75,7 @@ export const prodReducer = (state = init, { type, payload }) => {
 }
 
 
-function checkSize(A, B) {
+function checkSize (A, B) {
     for (let i = 0; i < A.length; i++) {
         for (let j = 0; j < B.length; j++) {
             if (A[i] === B[j]) {

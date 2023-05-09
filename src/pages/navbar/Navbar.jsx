@@ -10,7 +10,7 @@ import {
   HStack,
   Text
 } from '@chakra-ui/react'
-import { BsHandbag } from 'react-icons/bs'
+import { BsHandbag, BsSearch } from 'react-icons/bs'
 import { IoMenuOutline } from 'react-icons/io'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
@@ -28,12 +28,10 @@ import { TbBolt } from 'react-icons/tb'
 
 export const Navbar = () => {
   const dispatch = useDispatch()
-  const { token } = useSelector(state => state.authReducer, shallowEqual)
   const cart = useSelector(state => state.cartReducer.cartProducts)
   const { colorMode } = useColorMode()
 
   const handlePath = name => {
-    console.log('ele entra no navbar:' + name)
     const path = JSON.stringify(name)
     dispatch(setNavbarPath(path))
     setItemSession('path', path)
@@ -41,35 +39,13 @@ export const Navbar = () => {
 
   return (
     <>
-      {token ? (
-        <Flex px={'20px'} h={'36px'}>
-          <Spacer />
-          <Box>
-            <Center
-              h={'36px'}
-              justifyContent={'right'}
-              fontSize={'16px'}
-              cursor={'pointer'}
-            >
-              <Logout />
-            </Center>
-          </Box>
-        </Flex>
-      ) : (
-        <Flex px={'20px'} h={'36px'}>
-          <Box w={'90px'} mt={'10px'}>
-            <Link to={'/'}>
-              <Image
-                width={'60px'}
-                src={colorMode === 'light' ? apoloLight : apoloDark}
-              />
-            </Link>
-          </Box>
-        </Flex>
-      )}
-
-      <Flex px={'20px'} justifyContent={'center'}>
+      <Flex px={'20px'} py={'15px'} justifyContent={'center'} bg={'black'}>
         <Box display={['none', 'none', 'flex', 'flex', 'flex']}>
+          <Center h={'60px'} cursor={'pointer'} paddingX={'15px'}>
+            <Link to={'/'}>
+              <Image width={'90px'} src={apoloDark} />
+            </Link>
+          </Center>
           <Category
             handlePath={handlePath}
             name={'/'}
@@ -98,15 +74,15 @@ export const Navbar = () => {
 
         <Spacer />
 
-        <Center mr={'10px'} my={'5px'}>
-          <SearchBox />
+        <Center mr={'30px'} my={'5px'}>
+          <NavIcon iconName={BsSearch} />
         </Center>
 
         <Center mr={'10px'}>
           <Link to={'/cart'}>
             <HStack>
               <NavIcon iconName={BsHandbag} />
-              <Badge> {cart.length} </Badge>
+              <Text color={'white'}> {cart.length} </Text>
             </HStack>
           </Link>
         </Center>

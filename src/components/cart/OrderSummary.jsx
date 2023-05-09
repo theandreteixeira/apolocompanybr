@@ -66,7 +66,7 @@ export const OrderSummary = () => {
 
   return (
     <>
-      <Box border={'1px black solid'} padding={'25px 40px 50px'}>
+      <Box border={'1px black solid'} padding={'25px'}>
         <OrderSummaryDataSection {...orderSummary} />
 
         {/* <Input

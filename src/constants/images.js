@@ -12,5 +12,6 @@ import thankyou from '../assets/thankyou.png'
 import souldout from '../assets/souldout.png'
 import flexCollection from '../assets/flex-collection.png'
 import soccerCollection from '../assets/soccer-collection.png'
+import notFound from '../assets/not-found.png'
 
-export { souldout, flexCollection, apoloLogo, nikeLogoPayment, apoloLight, apoloDark, beMember, menCollection, womenCollection, proinsta, google, check, thankyou, soccerCollection };
+export { notFound, souldout, flexCollection, apoloLogo, nikeLogoPayment, apoloLight, apoloDark, beMember, menCollection, womenCollection, proinsta, google, check, thankyou, soccerCollection };

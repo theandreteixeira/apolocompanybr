@@ -1,11 +1,12 @@
 import { Box, Text, useColorMode } from '@chakra-ui/react'
 import { useState } from 'react'
 import { souldout } from '../../constants/images'
+import { print } from '../../utils/print'
 
 const BoxCard = (value, handleBoxClick, selected) => {
   const { colorMode } = useColorMode()
   const isDisabled = value.quantity <= 0
-  console.log(value.name, value.quantity, selected, isDisabled)
+  print(value.name, value.quantity, selected, isDisabled)
   return (
     <label>
       <Box

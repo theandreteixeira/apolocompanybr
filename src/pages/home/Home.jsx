@@ -27,6 +27,7 @@ import { BigGridBox } from '../../components/home/GridBox.jsx'
 import { BecomeAMember } from '../../components/home/BecomeAMember.jsx'
 import '../../fonts.css'
 import PageView from '../../components/home/PageView.jsx'
+import { print } from '../../utils/print'
 
 export const Home = () => {
   const navigate = useNavigate()
@@ -34,7 +35,7 @@ export const Home = () => {
   const { loading, error, clothData } = useSelector(state => state.homeReducer)
 
   const handleSection = gender => {
-    console.log('é no genero? ' + gender)
+    print('é no genero? ' + gender)
     dispatch(setNavbarPath(gender))
     setItemSession('path', gender)
     navigate(`/${gender}`)
