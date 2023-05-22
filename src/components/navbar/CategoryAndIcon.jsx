@@ -43,7 +43,7 @@ export const Category = ({ text, link, handlePath, name }) => {
       >
         <Text
           fontWeight={'bold'}
-          color={'white'}
+          color={'black'}
           textTransform={'uppercase'}
           fontSize={'16px'}
         >
@@ -128,7 +128,7 @@ export const DrawerSubCategory = ({
 }
 
 export const NavIcon = ({ iconName }) => {
-  return <Icon as={iconName} w={'25px'} h={'25px'} color={'white'} />
+  return <Icon as={iconName} w={'25px'} h={'25px'} color={'black'} />
 }
 
 export const SearchBox = () => {

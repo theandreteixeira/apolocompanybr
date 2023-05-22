@@ -39,11 +39,11 @@ export const Navbar = () => {
 
   return (
     <>
-      <Flex px={'20px'} py={'15px'} justifyContent={'center'} bg={'black'}>
+      <Flex px={'20px'} py={'15px'} justifyContent={'center'}>
         <Box display={['none', 'none', 'flex', 'flex', 'flex']}>
           <Center h={'60px'} cursor={'pointer'} paddingX={'15px'}>
             <Link to={'/'}>
-              <Image width={'90px'} src={apoloDark} />
+              <Image width={'75px'} src={apoloLight} />
             </Link>
           </Center>
           <Category
@@ -82,7 +82,7 @@ export const Navbar = () => {
           <Link to={'/cart'}>
             <HStack>
               <NavIcon iconName={BsHandbag} />
-              <Text color={'white'}> {cart.length} </Text>
+              <Text color={'black'}> {cart.length} </Text>
             </HStack>
           </Link>
         </Center>
@@ -93,7 +93,7 @@ export const Navbar = () => {
           </Center>
         </Box>
       </Flex>
-      <Badge
+      {/* <Badge
         w={'100%'}
         p={3}
         bgColor={colorMode === 'light' && '#f5f5f5'}
@@ -103,7 +103,7 @@ export const Navbar = () => {
           <Icon mx={'12px'} as={TbBolt} boxSize={4} />
           <Text>PEÇAS APOLO FLEX DISPONÍVEIS.</Text>
         </Flex>
-      </Badge>
+      </Badge> */}
       <Box h={['10px', '20px', '30px', '40px', '40px']}></Box>
     </>
   )
