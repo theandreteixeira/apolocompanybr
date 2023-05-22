@@ -28,6 +28,7 @@ import { BecomeAMember } from '../../components/home/BecomeAMember.jsx'
 import '../../fonts.css'
 import PageView from '../../components/home/PageView.jsx'
 import { print } from '../../utils/print'
+import { NoContent } from '../../components/home/NoContent.jsx'
 
 export const Home = () => {
   const navigate = useNavigate()
@@ -53,7 +54,8 @@ export const Home = () => {
     <>
       {
         <>
-          <Box
+          <NoContent />
+          {/* <Box
             m={'5px auto 15px'}
             w={['94%', '94%', '94%', '94%', '80%']}
             textAlign={'center'}
@@ -202,7 +204,7 @@ export const Home = () => {
             >
               Ver camisa <Icon as={BsArrowRightShort} />
             </Button>
-          </Box>
+          </Box> */}
           {/* <Box height={'50px'} />
           <BecomeAMember />
           <ClothSection

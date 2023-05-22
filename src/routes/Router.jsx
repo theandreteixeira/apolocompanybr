@@ -19,7 +19,7 @@ import { Public } from './Public'
 export const Router = () => {
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/allProducts' element={<Products />} />
@@ -80,7 +80,7 @@ export const Router = () => {
         <Route path='/orderMade' element={<OrderMade />} />
       </Routes>
 
-      <Footer />
+      {/* <Footer /> */}
     </>
   )
 }
