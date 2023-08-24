@@ -43,14 +43,16 @@ export const Home = () => {
   }
 
   useEffect(() => {
-    dispatch(getClothData())
+    // dispatch(getClothData())
   }, [])
 
-  return loading ? (
-    <Loading />
-  ) : error ? (
-    <Error />
-  ) : (
+  return 
+  //   loading ? (
+  //   <Loading />
+  // ) : error ? (
+  //   <Error />
+  // ) :
+      (
     <>
       {
         <>
