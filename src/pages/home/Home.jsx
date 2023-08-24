@@ -33,18 +33,18 @@ import { NoContent } from '../../components/home/NoContent.jsx'
 export const Home = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  const { loading, error, clothData } = useSelector(state => state.homeReducer)
+  // const { loading, error, clothData } = useSelector(state => state.homeReducer)
 
-  const handleSection = gender => {
-    print('é no genero? ' + gender)
-    dispatch(setNavbarPath(gender))
-    setItemSession('path', gender)
-    navigate(`/${gender}`)
-  }
+  // const handleSection = gender => {
+  //   print('é no genero? ' + gender)
+  //   dispatch(setNavbarPath(gender))
+  //   setItemSession('path', gender)
+  //   navigate(`/${gender}`)
+  // }
 
-  useEffect(() => {
+  // useEffect(() => {
     // dispatch(getClothData())
-  }, [])
+  // }, [])
 
   return 
   //   loading ? (
