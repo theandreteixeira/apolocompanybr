@@ -5,12 +5,11 @@ export const NoContent = () => {
   return (
     <>
       <Box padding={'50px'}>
-        <Text fontSize={'18px'}>
-          Nenhuma seção disponível. O conteúdo foi removido para a próxima linha
-          de roupas, aguarde a data definitiva no Instagram: @apolobr_oficial
+        <Text fontSize={'20px'}>
+          A Apolo agora é Apolo Mafia, estamos preparando o nosso primeiro lançamento, acompanhe-nos no nosso Instagram e fique por dentro das novidades: @apolomafiaofc
         </Text>
         <br />
-        <Link to={'https://instagram.com/apolobr_oficial'}>
+        <Link to={'https://instagram.com/apolomafiaofc'}>
           <Text color={'blue'} fontWeight={'bold'}>
             {'Ir para o Instagram'}
           </Text>
